@@ -189,17 +189,6 @@ See `sort-regexp-fields'."
 ;;(load "preview-latex.el" nil t t)
 
 ;;----------------------------------------------------------------------
-;; python-info-look [C-h S]
-;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
-;; (require 'pydoc-info)
-;; (require 'info-look)
-;; turn off word-wrap
-
-;; http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/
-;; (require 'python-pep8)
-;; (require 'python-pylint)
-
-;;----------------------------------------------------------------------
 ;; yasnippet
 (add-to-list 'load-path "~/.emacs.d/repo/yasnippet")
 (require 'yasnippet)
@@ -218,6 +207,16 @@ See `sort-regexp-fields'."
 ;;(require 'r-mode)
 ;; (autoload 'ess-site "php-mode.el" "Php mode." t)
 ;; (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+
+;;----------------------------------------------------------------------
+;; python-info-look [C-h S]
+;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
+;; (require 'pydoc-info)
+;; (require 'info-look)
+
+;; http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/
+;; (require 'python-pep8)
+;; (require 'python-pylint)
 
 ;;----------------------------------------------------------------------
 ;; CC-mode
@@ -271,13 +270,6 @@ See `sort-regexp-fields'."
 ;;   "Major mode for editing Markdown files" t)
 ;; (setq auto-mode-alist
 ;;       (cons '("\.json" . json-mode) auto-mode-alist))
-
-;;----------------------------------------------------------------------
-;; gnuplot-mode
-;; (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
-;; (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
-;; (setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) auto-mode-alist))
-;; (global-set-key [(f9)] 'gnuplot-make-buffer)
 
 ;;----------------------------------------------------------------------
 ;; ibus input method
