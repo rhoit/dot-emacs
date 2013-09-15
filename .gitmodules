@@ -1,0 +1,18 @@
+[submodule "repo/auctex"]
+	path = repo/auctex
+	url = http://git.savannah.gnu.org/r/auctex.git
+[submodule "repo/emacs-pills"]
+	path = repo/emacs-pills
+	url = https://bitbucket.org/rhoit/emacs-pills
+[submodule "repo/popup-el"]
+	path = repo/popup-el
+	url = https://github.com/auto-complete/popup-el
+[submodule "repo/auto-complete"]
+	path = repo/auto-complete
+	url = https://github.com/auto-complete/auto-complete
+[submodule "repo/yasnippet"]
+	path = repo/yasnippet
+	url = https://github.com/capitaomorte/yasnippet
+[submodule "repo/ESS"]
+	path = repo/ESS
+	url = https://github.com/emacs-ess/ESS
