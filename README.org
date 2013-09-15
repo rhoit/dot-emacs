@@ -1,0 +1,9 @@
+* dot-emacs
+
+my emacs config!
+
+* to build
+#+begin_src shell
+  ./configure
+  ./main.sh
+#+end_src
