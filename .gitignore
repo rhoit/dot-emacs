@@ -1,0 +1,13 @@
+*.bak
+*~
+.mc-lists.el
+00testing/*
+auto-save-list
+config.el
+elpa
+eshell/*
+ido.last
+pydoc-info/*
+recentf
+session.*
+smex-items

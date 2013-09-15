@@ -1,0 +1,20 @@
+#!/bin/bash
+
+git submodule init
+git submodule update --depth 1
+
+cd repo/auctex
+autoreconf
+autoreconf
+./configure
+make
+rm confdefs.h
+
+cd -
+sed -n 's/.*\(http.*el\)$/\1/p' emacs > /tmp/elist
+cd plug-ins
+while read i; do
+    wget -c "$i"
+done < /tmp/elist
+
+mv nlinum-1.1.el nlinum.el
