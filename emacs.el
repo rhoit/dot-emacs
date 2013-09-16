@@ -6,16 +6,23 @@
 
 (column-number-mode 1)
 (show-paren-mode 1)
+(setq show-paren-style 'expression) ; highlight entire bracket expression
 
 (global-set-key (kbd "C-z") 'undo)
 (setq make-backup-files nil)
+;; (setq auto-save-default nil)
 (add-hook 'write-file-hooks 'delete-trailing-whitespace)
+(delete-selection-mode 1)
+
+;; (electric-pair-mode 1) ; auto complete bracket
+;; (global-visual-line-mode 1)
 
 (setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
 
 (add-to-list 'load-path  "~/.emacs.d/plug-ins/")
 (setq browse-url-browser-function 'browse-url-firefox)
+(recentf-mode 0) ;; no recent files
 
 ;;----------------------------------------------------------------------
 ;; fonts
@@ -78,6 +85,12 @@
 
 ;; (add-to-list 'load-path  "~/.emacs.d/repo/tabrowse")
 ;; (require 'aquamacs-tabbar)
+
+;;----------------------------------------------------------------------
+;; golden-ratio resize
+(add-to-list 'load-path "~/.emacs.d/repo/golden-ratio")
+(require 'golden-ratio)
+;; (golden-ratio-mode 1)
 
 ;;----------------------------------------------------------------------
 ;; emacs-pills
