@@ -4,20 +4,27 @@
 (custom-set-variables '(inhibit-startup-screen t))
 (and window-system (server-start))
 
+;; make buffer names sensible unique
+(require 'uniquify)
+(custom-set-variables '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
+
 (column-number-mode 1)
 (show-paren-mode 1)
 (setq show-paren-style 'expression) ; highlight entire bracket expression
 
+;; auto complete when possible
+;; (setq tab-always-indent 'complete) ; By default it only indents.
+
 (global-set-key (kbd "C-z") 'undo)
 (setq make-backup-files nil)
 ;; (setq auto-save-default nil)
-(add-hook 'write-file-hooks 'delete-trailing-whitespace)
 (delete-selection-mode 1)
 
 ;; (electric-pair-mode 1) ; auto complete bracket
 ;; (global-visual-line-mode 1)
 
-(setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
+(setq auto-mode-alist
+      (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
 
 (add-to-list 'load-path  "~/.emacs.d/plug-ins/")
@@ -131,11 +138,18 @@
 ;; Programming mode
 (defun words_watch ()
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|HACK\\|REFACTOR\\|DONE\\|NOCOMMIT\\)"
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|BUG\\|HACK\\|DONE\\|WISH\\|NOTE\\)"
           1 font-lock-warning-face t))))
 
+(defun nuke_traling ()
+  (add-hook 'write-file-hooks 'delete-trailing-whitespace)
+  ;;(add-hook 'before-save-hooks 'delete-trailing-whitespace)
+)
+
 (add-hook 'prog-mode-hook 'words_watch)
+(add-hook 'prog-mode-hook 'nuke_traling)
 (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+
 
 ;;----------------------------------------------------------------------
 ;; insert date and time
@@ -217,9 +231,31 @@ See `sort-regexp-fields'."
 )
 (setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist))
 
-;;(require 'r-mode)
-;; (autoload 'ess-site "php-mode.el" "Php mode." t)
-;; (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+;;----------------------------------------------------------------------
+;; Arch pkgbuild-mode
+(add-to-list 'load-path "~/.emacs.d/repo/pkgbuild-mode")
+(autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
+(setq auto-mode-alist
+      (append '(("/PKGBUILD.*" . pkgbuild-mode)) auto-mode-alist))
+
+;;----------------------------------------------------------------------
+;; php-mode
+;; http://www.emacswiki.org/emacs/download/php-mode-improved.el
+(autoload 'php-mode "php-mode-improved.el" "Php mode." t)
+(setq auto-mode-alist
+      (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+
+;;----------------------------------------------------------------------
+;; multi-mode
+;; (add-to-list 'load-path "~/.emacs.d/multi-web-mode")
+;; (require 'multi-web-mode)
+;; (setq mweb-default-major-mode 'html-mode)
+;; (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+;;                   (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+;;                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+;; (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+;; (multi-web-global-mode 1)
+
 
 ;;----------------------------------------------------------------------
 ;; python-info-look [C-h S]
@@ -237,16 +273,6 @@ See `sort-regexp-fields'."
 ;; (defun my-make-CR-do-indent ()
 ;;  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 ;; (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
-
-;;----------------------------------------------------------------------
-;; Arch pkg-build mode
-;; (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
-;; (setq auto-mode-alist (append '(("/PKGBUILD.*" . pkgbuild-mode)) auto-mode-alist))
-
-;;----------------------------------------------------------------------
-;; php mode
-;; (autoload 'php-mode "php-mode.el" "Php mode." t)
-;; (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
 
 ;;----------------------------------------------------------------------
 ;; markdown mode
@@ -269,12 +295,12 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; highlight indentation
-;;(add-to-list 'load-path  "~/.emacs.d/repo/pyindent")
-;;(autoload 'highlight-indentation "highlight-indentation.el" t)
-;;(custom-set-faces '(highlight-indent-face ((t (:inherit fringe :background "light green")))))
-;;(set-face-background 'highlight-indentation-face "#e3e3d3")
-;;(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-;;(add-hook 'python-mode-hook 'highlight-indentation)
+(add-to-list 'load-path  "~/.emacs.d/hindent")
+(autoload 'highlight-indentation "highlight-indentation.el" t)
+;; (custom-set-faces '(highlight-indent-face ((t (:inherit fringe :background "light green")))))
+;; (set-face-background 'highlight-indentation-face "#e3e3d3")
+;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+;; (add-hook 'python-mode-hook 'highlight-indentation)
 
 ;;----------------------------------------------------------------------
 ;; json-mode
@@ -359,3 +385,9 @@ See `sort-regexp-fields'."
 ;; (setq locale-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 ;; (set-input-method nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
