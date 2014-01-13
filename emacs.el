@@ -23,28 +23,17 @@
 ;; (electric-pair-mode 1) ; auto complete bracket
 ;; (global-visual-line-mode 1)
 
-(setq auto-mode-alist
-      (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
-(setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
-
-(add-to-list 'load-path  "~/.emacs.d/plug-ins/")
 (setq browse-url-browser-function 'browse-url-firefox)
 (recentf-mode 0) ;; no recent files
 
-;;----------------------------------------------------------------------
-;; fonts
-;; (set-default-font "Inconsolata-12")
-;; (set-default-font "monofur-12")
-;; (set-default-font "Source Code Pro Light-12")
-;; (set-face-attribute 'default (selected-frame) :height 108)
+;;======================================================================
+;; Setting Modes
 
-;;----------------------------------------------------------------------
-;; color current line
-;; http://raebear.net/comp/emacscolors.html
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "#b4eeb4")
-(set-face-background 'region' "#a1a9c1")
+(setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
 
+;;======================================================================
+;; UI
 ;;----------------------------------------------------------------------
 ;; Remove unused UI elements
 (tool-bar-mode 0)
@@ -60,66 +49,22 @@
 (global-set-key [f5] 'toggle-bars-view)
 
 ;;----------------------------------------------------------------------
-;; line-number
-;; http://www.emacswiki.org/LineNumbers
-;; http://elpa.gnu.org/packages/nlinum-1.1.el
-(require 'nlinum)
-(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
+;; color current line
+;; http://raebear.net/comp/emacscolors.html
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#b4eeb4")
+(set-face-background 'region' "#a1a9c1")
 
 ;;----------------------------------------------------------------------
-;; smooth-scroll
-;; http://www.emacswiki.org/emacs/SmoothScrolling
-;; http://www.emacswiki.org/emacs/download/smooth-scroll.el
-;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
-(setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
-(require 'smooth-scroll)
-(smooth-scroll-mode t)
-;;(require 'smooth-scrolling)
+;; fonts
+;; (set-default-font "Inconsolata-12")
+;; (set-default-font "monofur-12")
+;; (set-default-font "Source Code Pro Light-12")
+;; (set-face-attribute 'default (selected-frame) :height 108)
 
-;;----------------------------------------------------------------------
-;; tabbar mode
-;; http://emacswiki.org/emacs/TabBarMode
-;; https://raw.github.com/dholm/tabbar/master/tabbar.el
-(require 'tabbar)
-;(tabbar-mode 1)
-(load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
 
-(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
-(require 'tabbar-ruler)
-
-;; (add-to-list 'load-path  "~/.emacs.d/repo/tabrowse")
-;; (require 'aquamacs-tabbar)
-
-;;----------------------------------------------------------------------
-;; golden-ratio resize
-(add-to-list 'load-path "~/.emacs.d/repo/golden-ratio")
-(require 'golden-ratio)
-;; (golden-ratio-mode 1)
-
-;;----------------------------------------------------------------------
-;; emacs-pills
-(load "~/.emacs.d/repo/emacs-pills/config/global-zoom.cfg.el")
-(load "~/.emacs.d/repo/emacs-pills/config/compile.cfg.el")
-
-;;----------------------------------------------------------------------
-;; hideshowvis mode
-;; http://www.emacswiki.org/emacs/download/hideshowvis.el
-(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
-(autoload 'hideshowvis-minor-mode
-  "hideshowvis"
-  "Will indicate regions foldable with hideshow in the fringe."
-  'interactive)
-
-(dolist (hook (list 'emacs-lisp-mode-hook
-                    'c++-mode-hook
-		    'python-mode-hook))
-  (add-hook hook 'hideshowvis-enable))
-
-(add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
-
+;;======================================================================
+;; Custom Features
 ;;----------------------------------------------------------------------
 ;; Duplicate Lines
 (defun duplicate-current-line()
@@ -174,29 +119,73 @@ See `sort-regexp-fields'."
   (interactive "*P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
-;;----------------------------------------------------------------------
-;; Interactively Do Things [IDO]
-(require 'ido)
-(ido-mode t)
-;;(ido-ubiquitous t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t ;; enable fuzzy matching
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+;;======================================================================
+;; PLUGINS
+
+(add-to-list 'load-path  "~/.emacs.d/plug-ins/")
 
 ;;----------------------------------------------------------------------
-;; ansi-color sequence for complitaion mode
-;; (add-to-list 'load-path "~/.emacs.d/colors")
-(require 'ansi-color)
-(defun colorize-compilation-buffer ()
-  (toggle-read-only)
-  (ansi-color-apply-on-region (point-min) (point-max))
-  (toggle-read-only))
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+;; line-number
+;; http://www.emacswiki.org/LineNumbers
+;; http://elpa.gnu.org/packages/nlinum-1.1.el
+(require 'nlinum)
+(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
+
+;;----------------------------------------------------------------------
+;; smooth-scroll
+;; http://www.emacswiki.org/emacs/SmoothScrolling
+;; http://www.emacswiki.org/emacs/download/smooth-scroll.el
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
+(setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+(require 'smooth-scroll)
+(smooth-scroll-mode t)
+;;(require 'smooth-scrolling)
+
+;;----------------------------------------------------------------------
+;; tabbar mode
+;; http://emacswiki.org/emacs/TabBarMode
+;; https://raw.github.com/dholm/tabbar/master/tabbar.el
+(require 'tabbar)
+;(tabbar-mode 1)
+(load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
+
+(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
+(require 'tabbar-ruler)
+
+;; (add-to-list 'load-path  "~/.emacs.d/repo/tabrowse")
+;; (require 'aquamacs-tabbar)
+
+;;----------------------------------------------------------------------
+;; hideshowvis mode
+;; http://www.emacswiki.org/emacs/download/hideshowvis.el
+(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+(autoload 'hideshowvis-minor-mode
+  "hideshowvis"
+  "Will indicate regions foldable with hideshow in the fringe."
+  'interactive)
+
+(dolist (hook (list 'emacs-lisp-mode-hook
+                    'c++-mode-hook
+		    'python-mode-hook))
+  (add-hook hook 'hideshowvis-enable))
+
+(add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
+
+;;======================================================================
+;; REPO plugins
+;;----------------------------------------------------------------------
+;; golden-ratio resize
+(add-to-list 'load-path "~/.emacs.d/repo/golden-ratio")
+(require 'golden-ratio)
+;; (golden-ratio-mode 1)
+
+;;----------------------------------------------------------------------
+;; emacs-pills
+(load "~/.emacs.d/repo/emacs-pills/config/global-zoom.cfg.el")
+(load "~/.emacs.d/repo/emacs-pills/config/compile.cfg.el")
 
 ;;----------------------------------------------------------------------
 ;; auto-complete
@@ -238,12 +227,59 @@ See `sort-regexp-fields'."
 (setq auto-mode-alist
       (append '(("/PKGBUILD.*" . pkgbuild-mode)) auto-mode-alist))
 
+;;======================================================================
+;; INBUILT PLUGINS
+;;----------------------------------------------------------------------
+;; Interactively Do Things [IDO]
+(require 'ido)
+(ido-mode t)
+;;(ido-ubiquitous t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t ;; enable fuzzy matching
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10)
+
+
+;;======================================================================
+;; BROKEN PLUGINS
+;;----------------------------------------------------------------------
+;; highlight indentation
+(add-to-list 'load-path  "~/.emacs.d/hindent")
+(autoload 'highlight-indentation "highlight-indentation.el" t)
+;; (custom-set-faces '(highlight-indent-face ((t (:inherit fringe :background "light green")))))
+;; (set-face-background 'highlight-indentation-face "#e3e3d3")
+;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+;; (add-hook 'python-mode-hook 'highlight-indentation)
+
+;;======================================================================
+;; TESTING PLUGINS
+;;----------------------------------------------------------------------
+;; ansi-color sequence for complitaion mode
+;; (add-to-list 'load-path "~/.emacs.d/colors")
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
 ;;----------------------------------------------------------------------
 ;; php-mode
 ;; http://www.emacswiki.org/emacs/download/php-mode-improved.el
 (autoload 'php-mode "php-mode-improved.el" "Php mode." t)
 (setq auto-mode-alist
       (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+
+;;----------------------------------------------------------------------
+;; sed-mode
+;; https://raw.github.com/ocodo/emacs.d/master/plugins/sed-mode.el
+;; (autoload 'sed-mode "sed-mode.el" "sed mode." t)
+;; (setq auto-mode-alist
+;;       (append '(("/*.\.sed$" . sed-mode)) auto-mode-alist))
 
 ;;----------------------------------------------------------------------
 ;; multi-mode
@@ -292,15 +328,6 @@ See `sort-regexp-fields'."
 ;;  '(markdown-header-face-5 ((t (:inherit markdown-header-face :underline t))) t)
 ;;  '(markdown-header-face-6 ((t (:inherit markdown-header-face :underline t))) t))
 ;; (put 'set-goal-column 'disabled nil)
-
-;;----------------------------------------------------------------------
-;; highlight indentation
-(add-to-list 'load-path  "~/.emacs.d/hindent")
-(autoload 'highlight-indentation "highlight-indentation.el" t)
-;; (custom-set-faces '(highlight-indent-face ((t (:inherit fringe :background "light green")))))
-;; (set-face-background 'highlight-indentation-face "#e3e3d3")
-;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-;; (add-hook 'python-mode-hook 'highlight-indentation)
 
 ;;----------------------------------------------------------------------
 ;; json-mode
@@ -385,9 +412,3 @@ See `sort-regexp-fields'."
 ;; (setq locale-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 ;; (set-input-method nil)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
