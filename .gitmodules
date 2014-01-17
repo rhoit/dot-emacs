@@ -22,3 +22,6 @@
 [submodule "repo/pkgbuild-mode"]
 	path = repo/pkgbuild-mode
 	url = https://github.com/juergenhoetzel/pkgbuild-mode
+[submodule "repo/hindent"]
+	path = repo/hindent
+	url = https://github.com/antonj/Highlight-Indentation-for-Emacs

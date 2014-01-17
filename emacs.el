@@ -1,12 +1,18 @@
 (setq user-full-name    "Rhoit Man Amatya"
       user-mail-address "rho.rhoit@gmail.com")
 
-(custom-set-variables '(inhibit-startup-screen t))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 (and window-system (server-start))
 
 ;; make buffer names sensible unique
 (require 'uniquify)
-(custom-set-variables '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
+
 
 (column-number-mode 1)
 (show-paren-mode 1)
@@ -174,8 +180,26 @@ See `sort-regexp-fields'."
 
 (add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
 
+
 ;;======================================================================
-;; REPO plugins
+;; INBUILT PLUGINS
+;;----------------------------------------------------------------------
+;; Interactively Do Things [IDO]
+(require 'ido)
+(ido-mode t)
+;;(ido-ubiquitous t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t ;; enable fuzzy matching
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10)
+
+;;======================================================================
+;; REPO PLUGINS
+
 ;;----------------------------------------------------------------------
 ;; golden-ratio resize
 (add-to-list 'load-path "~/.emacs.d/repo/golden-ratio")
@@ -227,33 +251,17 @@ See `sort-regexp-fields'."
 (setq auto-mode-alist
       (append '(("/PKGBUILD.*" . pkgbuild-mode)) auto-mode-alist))
 
-;;======================================================================
-;; INBUILT PLUGINS
+
 ;;----------------------------------------------------------------------
-;; Interactively Do Things [IDO]
-(require 'ido)
-(ido-mode t)
-;;(ido-ubiquitous t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t ;; enable fuzzy matching
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+;; highlight indentation
+(load "~/.emacs.d/hindent/highlight-indentation.el")
+(set-face-background 'highlight-indentation-face "#aaeeba")
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
 
 
 ;;======================================================================
 ;; BROKEN PLUGINS
-;;----------------------------------------------------------------------
-;; highlight indentation
-(add-to-list 'load-path  "~/.emacs.d/hindent")
-(autoload 'highlight-indentation "highlight-indentation.el" t)
-;; (custom-set-faces '(highlight-indent-face ((t (:inherit fringe :background "light green")))))
-;; (set-face-background 'highlight-indentation-face "#e3e3d3")
-;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-;; (add-hook 'python-mode-hook 'highlight-indentation)
+
 
 ;;======================================================================
 ;; TESTING PLUGINS
@@ -266,6 +274,14 @@ See `sort-regexp-fields'."
   (ansi-color-apply-on-region (point-min) (point-max))
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
+;;----------------------------------------------------------------------
+;; git-gutter
+(add-to-list 'load-path "~/.emacs.d/emacs-git-gutter")
+(require 'git-gutter)
+;; (add-to-list 'load-path "~/.emacs.d/emacs-git-gutter-fringe")
+;; (require 'git-gutter-fringe)
 
 ;;----------------------------------------------------------------------
 ;; php-mode
