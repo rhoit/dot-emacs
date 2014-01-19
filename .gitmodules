@@ -25,3 +25,9 @@
 [submodule "repo/hindent"]
 	path = repo/hindent
 	url = https://github.com/antonj/Highlight-Indentation-for-Emacs
+[submodule "repo/sumblimity"]
+	path = repo/sumblimity
+	url = https://github.com/zk-phi/sublimity
+[submodule "repo/sublimity"]
+	path = repo/sublimity
+	url = https://github.com/zk-phi/sublimity

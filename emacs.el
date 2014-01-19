@@ -1,18 +1,8 @@
 (setq user-full-name    "Rhoit Man Amatya"
       user-mail-address "rho.rhoit@gmail.com")
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
-(and window-system (server-start))
-
 ;; make buffer names sensible unique
 (require 'uniquify)
-
 
 (column-number-mode 1)
 (show-paren-mode 1)
@@ -33,13 +23,14 @@
 (recentf-mode 0) ;; no recent files
 
 ;;======================================================================
-;; Setting Modes
+;; SETTING MODES
 
 (setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
 
 ;;======================================================================
 ;; UI
+
 ;;----------------------------------------------------------------------
 ;; Remove unused UI elements
 (tool-bar-mode 0)
@@ -142,13 +133,15 @@ See `sort-regexp-fields'."
 ;; http://www.emacswiki.org/emacs/SmoothScrolling
 ;; http://www.emacswiki.org/emacs/download/smooth-scroll.el
 ;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
-(setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
-(require 'smooth-scroll)
-(smooth-scroll-mode t)
-;;(require 'smooth-scrolling)
+
+;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
+;; (setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
+;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+;; (setq scroll-step 1) ;; keyboard scroll one line at a time
+;; (require 'smooth-scroll)
+;; (smooth-scroll-mode t)
+
+;;;;(require 'smooth-scrolling)
 
 ;;----------------------------------------------------------------------
 ;; tabbar mode
@@ -183,6 +176,7 @@ See `sort-regexp-fields'."
 
 ;;======================================================================
 ;; INBUILT PLUGINS
+
 ;;----------------------------------------------------------------------
 ;; Interactively Do Things [IDO]
 (require 'ido)
@@ -251,13 +245,19 @@ See `sort-regexp-fields'."
 (setq auto-mode-alist
       (append '(("/PKGBUILD.*" . pkgbuild-mode)) auto-mode-alist))
 
-
 ;;----------------------------------------------------------------------
 ;; highlight indentation
-(load "~/.emacs.d/hindent/highlight-indentation.el")
+(load "~/.emacs.d/repo/hindent/highlight-indentation.el")
 (set-face-background 'highlight-indentation-face "#aaeeba")
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 
+;;----------------------------------------------------------------------
+;; sublime mode
+(add-to-list 'load-path "~/.emacs.d/repo/sublimity")
+(require 'sublimity)
+(require 'sublimity-scroll)
+(require 'sublimity-map)
+(sublimity-global-mode)
 
 ;;======================================================================
 ;; BROKEN PLUGINS
@@ -275,7 +275,6 @@ See `sort-regexp-fields'."
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-
 ;;----------------------------------------------------------------------
 ;; git-gutter
 (add-to-list 'load-path "~/.emacs.d/emacs-git-gutter")
@@ -289,6 +288,12 @@ See `sort-regexp-fields'."
 (autoload 'php-mode "php-mode-improved.el" "Php mode." t)
 (setq auto-mode-alist
       (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+
+;;----------------------------------------------------------------------
+;; minimap: sublimity has its own minmap its not needed
+;; (add-to-list 'load-path "~/.emacs.d/minimap")
+;; (require 'minimap)
+;; (global-set-key [f8] 'minimap-toggle)
 
 ;;----------------------------------------------------------------------
 ;; sed-mode
@@ -420,6 +425,7 @@ See `sort-regexp-fields'."
 ;;                   ac-sources)))
 ;;(setq load-home-init-file t) ; don't load init file from ~/.xemacs/init.el
 
+;;----------------------------------------------------------------------
 ;; utf-8
 ;; (set-language-environment 'utf-8)
 ;; (prefer-coding-system 'utf-8)
@@ -428,3 +434,11 @@ See `sort-regexp-fields'."
 ;; (setq locale-coding-system 'utf-8)
 ;; (set-selection-coding-system 'utf-8)
 ;; (set-input-method nil)
+
+;;----------------------------------------------------------------------
+;; custom variable
+
+(custom-set-variables
+ '(inhibit-startup-screen t)
+ '(uniquify-buffer-name-stylex (quote forward) nil (uniquify)))
+(and window-system (server-start))
