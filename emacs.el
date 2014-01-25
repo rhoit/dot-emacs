@@ -32,6 +32,13 @@
 ;; UI
 
 ;;----------------------------------------------------------------------
+;; window
+;;(add-to-list 'default-frame-alist '(left . 0))
+;;(add-to-list 'default-frame-alist '(top . 0))
+(add-to-list 'default-frame-alist '(height . 39))
+(add-to-list 'default-frame-alist '(width . 104))
+
+;;----------------------------------------------------------------------
 ;; Remove unused UI elements
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -57,8 +64,7 @@
 ;; (set-default-font "Inconsolata-12")
 ;; (set-default-font "monofur-12")
 ;; (set-default-font "Source Code Pro Light-12")
-;; (set-face-attribute 'default (selected-frame) :height 108)
-
+;; (set-face-attribute 'default (selected-frame) :height 105)
 
 ;;======================================================================
 ;; Custom Features
@@ -89,6 +95,7 @@
 )
 
 (add-hook 'prog-mode-hook 'words_watch)
+(add-hook 'LaTeX-mode-hook 'words_watch) ;; yeah yeah its not programming
 (add-hook 'prog-mode-hook 'nuke_traling)
 (add-hook 'prog-mode-hook 'toggle-truncate-lines)
 
@@ -120,6 +127,7 @@ See `sort-regexp-fields'."
 ;; PLUGINS
 
 (add-to-list 'load-path  "~/.emacs.d/plug-ins/")
+(add-to-list 'load-path  "~/.emacs.d/extra/")
 
 ;;----------------------------------------------------------------------
 ;; line-number
@@ -134,14 +142,15 @@ See `sort-regexp-fields'."
 ;; http://www.emacswiki.org/emacs/download/smooth-scroll.el
 ;; scroll one line at a time (less "jumpy" than defaults)
 
+(require 'smooth-scroll)
 ;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
 ;; (setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
 ;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 ;; (setq scroll-step 1) ;; keyboard scroll one line at a time
-;; (require 'smooth-scroll)
 ;; (smooth-scroll-mode t)
 
-;;;;(require 'smooth-scrolling)
+;; yet anotheng package
+;;(require 'smooth-scrolling)
 
 ;;----------------------------------------------------------------------
 ;; tabbar mode
@@ -229,16 +238,6 @@ See `sort-regexp-fields'."
 (yas/global-mode 1)
 
 ;;----------------------------------------------------------------------
-;; Emacs Speaks Statistics
-;; (setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
-(defun ess-loader()
-  (add-to-list 'load-path "~/.emacs.d/repo/ESS/lisp")
-  (require 'ess-site)
-  (r-mode t)
-)
-(setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist))
-
-;;----------------------------------------------------------------------
 ;; Arch pkgbuild-mode
 (add-to-list 'load-path "~/.emacs.d/repo/pkgbuild-mode")
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
@@ -265,6 +264,26 @@ See `sort-regexp-fields'."
 
 ;;======================================================================
 ;; TESTING PLUGINS
+
+;;----------------------------------------------------------------------
+;; renpy
+;; http://www.renpy.org/w/images/1/1d/Renpy.el
+
+(autoload 'renpy-mode "Renpy.el" "Ren'py mode" t)
+(setq auto-mode-alist
+      (append '((".rpy$" . renpy-mode)) auto-mode-alist))
+
+;;----------------------------------------------------------------------
+;; Emacs Speaks Statistics
+;; (setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
+;; (defun ess-loader()
+;;   (add-to-list 'load-path "~/.emacs.d/repo/ESS/lisp")
+;;   (require 'ess-site)
+;;   (r-mode t)
+;; )
+;; (setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist))
+
+
 ;;----------------------------------------------------------------------
 ;; ansi-color sequence for complitaion mode
 ;; (add-to-list 'load-path "~/.emacs.d/colors")
@@ -439,6 +458,17 @@ See `sort-regexp-fields'."
 ;; custom variable
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
+ '(smooth-scroll/vscroll-step-size 1)
  '(uniquify-buffer-name-stylex (quote forward) nil (uniquify)))
 (and window-system (server-start))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

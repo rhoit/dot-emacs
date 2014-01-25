@@ -2,6 +2,10 @@
 
 my emacs config!
 
+* getting it
+
+git clone --recursive <repo>
+
 * to build
 #+begin_src shell
   ./configure
