@@ -23,6 +23,17 @@
 (recentf-mode 0) ;; no recent files
 
 ;;======================================================================
+;; PACKAGE MANAGER
+
+;; (when (>= emacs-major-version 24)
+;;   (require 'package)
+;;   (package-initialize)
+
+;;   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;   (add-to-list 'package-archives '("marmalade" . "http://melpa.milkbox.net/packages/") t)
+;;   )
+
+;;======================================================================
 ;; SETTING MODES
 
 (setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
@@ -30,7 +41,6 @@
 
 ;;======================================================================
 ;; UI
-
 ;;----------------------------------------------------------------------
 ;; window
 ;;(add-to-list 'default-frame-alist '(left . 0))
@@ -95,6 +105,7 @@
 )
 
 (add-hook 'prog-mode-hook 'words_watch)
+(add-hook 'prog-mode-hook 'which-function-mode)
 (add-hook 'LaTeX-mode-hook 'words_watch) ;; yeah yeah its not programming
 (add-hook 'prog-mode-hook 'nuke_traling)
 (add-hook 'prog-mode-hook 'toggle-truncate-lines)
@@ -143,11 +154,11 @@ See `sort-regexp-fields'."
 ;; scroll one line at a time (less "jumpy" than defaults)
 
 (require 'smooth-scroll)
-;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
-;; (setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
-;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-;; (setq scroll-step 1) ;; keyboard scroll one line at a time
-;; (smooth-scroll-mode t)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
+(setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+(smooth-scroll-mode t)
 
 ;; yet anotheng package
 ;;(require 'smooth-scrolling)
@@ -157,14 +168,11 @@ See `sort-regexp-fields'."
 ;; http://emacswiki.org/emacs/TabBarMode
 ;; https://raw.github.com/dholm/tabbar/master/tabbar.el
 (require 'tabbar)
-;(tabbar-mode 1)
-(load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
 
+(load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
 (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
 (require 'tabbar-ruler)
 
-;; (add-to-list 'load-path  "~/.emacs.d/repo/tabrowse")
-;; (require 'aquamacs-tabbar)
 
 ;;----------------------------------------------------------------------
 ;; hideshowvis mode
@@ -202,12 +210,6 @@ See `sort-regexp-fields'."
 
 ;;======================================================================
 ;; REPO PLUGINS
-
-;;----------------------------------------------------------------------
-;; golden-ratio resize
-(add-to-list 'load-path "~/.emacs.d/repo/golden-ratio")
-(require 'golden-ratio)
-;; (golden-ratio-mode 1)
 
 ;;----------------------------------------------------------------------
 ;; emacs-pills
@@ -256,7 +258,7 @@ See `sort-regexp-fields'."
 (require 'sublimity)
 (require 'sublimity-scroll)
 (require 'sublimity-map)
-(sublimity-global-mode)
+;; (sublimity-global-mode)
 
 ;;======================================================================
 ;; BROKEN PLUGINS
@@ -272,6 +274,87 @@ See `sort-regexp-fields'."
 (autoload 'renpy-mode "Renpy.el" "Ren'py mode" t)
 (setq auto-mode-alist
       (append '((".rpy$" . renpy-mode)) auto-mode-alist))
+
+
+;;----------------------------------------------------------------------
+;; etags-select
+;; http://www.emacswiki.org/emacs/EtagsSelect
+;; http://www.emacswiki.org/emacs/download/etags-select.el
+
+(require 'etags-select)
+
+;; Use ido to list tags, but then select via etags-select (best of both worlds!)
+(defun my-ido-find-tag ()
+  "Find a tag using ido"
+  (interactive)
+  (tags-completion-table)
+  (let (tag-names)
+    (mapatoms (lambda (x)
+                (push (prin1-to-string x t) tag-names))
+              tags-completion-table)
+    (etags-select-find (ido-completing-read "Tag: " tag-names))))
+
+(global-set-key "\M-." 'my-ido-find-tag)
+(global-set-key "\M-?" 'etags-select-find-tag-at-point)
+
+(global-unset-key (kbd "C-<down-mouse-1>"))
+;; (global-set-key (kbd "C-<mouse-1>") 'etag-select-find-tag-at-point)
+
+(defun jds-find-tags-file ()
+  "recursively searches each parent directory for a file named 'TAGS' and returns the
+path to that file or nil if a tags file is not found. Returns nil if the buffer is
+not visiting a file"
+  (progn
+      (defun find-tags-file-r (path)
+         "find the tags file from the parent directories"
+         (let* ((parent (file-name-directory path))
+                (possible-tags-file (concat parent "TAGS")))
+           (cond
+             ((file-exists-p possible-tags-file) (throw 'found-it possible-tags-file))
+             ((string= "/TAGS" possible-tags-file) (error "no tags file found"))
+             (t (find-tags-file-r (directory-file-name parent))))))
+
+    (if (buffer-file-name)
+        (catch 'found-it
+          (find-tags-file-r (buffer-file-name)))
+        (error "buffer is not visiting a file"))))
+
+(defun jds-set-tags-file-path ()
+  "calls `jds-find-tags-file' to recursively search up the directory tree to find
+a file named 'TAGS'. If found, set 'tags-table-list' with that path as an argument
+otherwise raises an error."
+  (interactive)
+  (setq tags-table-list (cons (jds-find-tags-file) tags-table-list)))
+
+
+;;----------------------------------------------------------------------
+;; Funtion Browsing
+;; (defun tzz-find-symbol-at-point ()
+;;   "Find the function, face, or variable definition for the symbol at point
+;; in the other window."
+;;   (interactive)
+;;   (let ((symb (symbol-at-point)))
+;;     (cond
+;;      ((and (or (functionp symb)
+;;                (fboundp symb))
+;;            (find-definition-noselect symb nil))
+;;       (find-function-other-window symb))
+;;      ((and (facep symb) (find-definition-noselect symb 'defface))
+;;       (find-face-definition symb))
+;;      ((and (boundp symb) (find-definition-noselect symb 'defvar))
+;;       (find-variable-other-window symb))
+;;      (t (message "No symbol at point")))))
+
+;; (global-set-key [(control mouse-1)]
+;;                 (lambda (click)
+;;                   (interactive "e")
+;;                   (mouse-minibuffer-check click)
+;;                   (let* ((window (posn-window (event-start click)))
+;;                          (buf (window-buffer window)))
+;;                     (with-current-buffer buf
+;;                       (save-excursion
+;;                         (goto-char (posn-point (event-start click)))
+;;                         (tzz-find-symbol-at-point))))))
 
 ;;----------------------------------------------------------------------
 ;; Emacs Speaks Statistics
@@ -394,8 +477,8 @@ See `sort-regexp-fields'."
 ;; http://www.emacswiki.org/emacs/download/ide-skel.el
 ;; (require 'ide-skel)
 ;; (global-set-key [f4] 'ide-skel-proj-find-files-by-regexp)
-;; (global-set-key [f5] 'ide-skel-proj-grep-files-by-regexp)
-;; (global-set-key [f10] 'ide-skel-toggle-left-view-window)
+;; (global-set-key [f6] 'ide-skel-proj-grep-files-by-regexp)
+;; (global-set-key [f9] 'ide-skel-toggle-left-view-window)
 ;; (global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
 ;; (global-set-key [f12] 'ide-skel-toggle-right-view-window)
 
@@ -466,9 +549,3 @@ See `sort-regexp-fields'."
  '(smooth-scroll/vscroll-step-size 1)
  '(uniquify-buffer-name-stylex (quote forward) nil (uniquify)))
 (and window-system (server-start))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
