@@ -16,9 +16,6 @@
 [submodule "repo/ESS"]
 	path = repo/ESS
 	url = https://github.com/emacs-ess/ESS
-[submodule "repo/golden-ratio"]
-	path = repo/golden-ratio
-	url = https://github.com/roman/golden-ratio.el
 [submodule "repo/pkgbuild-mode"]
 	path = repo/pkgbuild-mode
 	url = https://github.com/juergenhoetzel/pkgbuild-mode
