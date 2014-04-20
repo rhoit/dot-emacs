@@ -1,12 +1,13 @@
 (setq user-full-name    "Rhoit Man Amatya"
       user-mail-address "rho.rhoit@gmail.com")
 
-;; make buffer names sensible unique
-(require 'uniquify)
-
 (column-number-mode 1)
 (show-paren-mode 1)
 (setq show-paren-style 'expression) ; highlight entire bracket expression
+
+;; make buffer names sensible unique
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 ;; auto complete when possible
 ;; (setq tab-always-indent 'complete) ; By default it only indents.
@@ -25,13 +26,11 @@
 ;;======================================================================
 ;; PACKAGE MANAGER
 
-;; (when (>= emacs-major-version 24)
-;;   (require 'package)
-;;   (package-initialize)
-
-;;   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;;   (add-to-list 'package-archives '("marmalade" . "http://melpa.milkbox.net/packages/") t)
-;;   )
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;     '("marmalade" .
+;;       "http://marmalade-repo.org/packages/"))
+;; (package-initialize)
 
 ;;======================================================================
 ;; SETTING MODES
@@ -42,6 +41,7 @@
 ;;======================================================================
 ;; UI
 ;;----------------------------------------------------------------------
+
 ;; window
 ;;(add-to-list 'default-frame-alist '(left . 0))
 ;;(add-to-list 'default-frame-alist '(top . 0))
@@ -61,13 +61,6 @@
   (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1))
 )
 (global-set-key [f5] 'toggle-bars-view)
-
-;;----------------------------------------------------------------------
-;; color current line
-;; http://raebear.net/comp/emacscolors.html
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "#b4eeb4")
-(set-face-background 'region' "#a1a9c1")
 
 ;;----------------------------------------------------------------------
 ;; fonts
@@ -93,25 +86,6 @@
 (global-set-key (kbd "C-`") 'duplicate-current-line)
 
 ;;----------------------------------------------------------------------
-;; Programming mode
-(defun words_watch ()
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|BUG\\|HACK\\|DONE\\|WISH\\|NOTE\\)"
-          1 font-lock-warning-face t))))
-
-(defun nuke_traling ()
-  (add-hook 'write-file-hooks 'delete-trailing-whitespace)
-  ;;(add-hook 'before-save-hooks 'delete-trailing-whitespace)
-)
-
-(add-hook 'prog-mode-hook 'words_watch)
-(add-hook 'prog-mode-hook 'which-function-mode)
-(add-hook 'LaTeX-mode-hook 'words_watch) ;; yeah yeah its not programming
-(add-hook 'prog-mode-hook 'nuke_traling)
-(add-hook 'prog-mode-hook 'toggle-truncate-lines)
-
-
-;;----------------------------------------------------------------------
 ;; insert date and time
 (defun insert-datetime ()
   "Insert a time-stamp according to locale's date and time format."
@@ -135,6 +109,26 @@ See `sort-regexp-fields'."
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
 ;;======================================================================
+;; PROGRAMMING MODES
+
+(defun words_watch ()
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|BUG\\|HACK\\|DONE\\|WISH\\|NOTE\\)"
+          1 font-lock-warning-face t))))
+
+(defun nuke_traling ()
+  (add-hook 'write-file-hooks 'delete-trailing-whitespace)
+  (add-hook 'before-save-hooks 'whitespace-cleanup)
+  ;;(add-hook 'before-save-hooks 'delete-trailing-whitespace)
+)
+
+(add-hook 'prog-mode-hook 'words_watch)
+(add-hook 'prog-mode-hook 'which-function-mode)
+(add-hook 'LaTeX-mode-hook 'words_watch)
+(add-hook 'prog-mode-hook 'nuke_traling)
+(add-hook 'prog-mode-hook 'toggle-truncate-lines)
+
+;;======================================================================
 ;; PLUGINS
 
 (add-to-list 'load-path  "~/.emacs.d/plug-ins/")
@@ -148,31 +142,14 @@ See `sort-regexp-fields'."
 (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
 
 ;;----------------------------------------------------------------------
-;; smooth-scroll
-;; http://www.emacswiki.org/emacs/SmoothScrolling
-;; http://www.emacswiki.org/emacs/download/smooth-scroll.el
-;; scroll one line at a time (less "jumpy" than defaults)
-
-(require 'smooth-scroll)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
-(setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
-(smooth-scroll-mode t)
-
-;; yet anotheng package
-;;(require 'smooth-scrolling)
-
-;;----------------------------------------------------------------------
 ;; tabbar mode
 ;; http://emacswiki.org/emacs/TabBarMode
 ;; https://raw.github.com/dholm/tabbar/master/tabbar.el
-(require 'tabbar)
+;; (require 'tabbar)
 
 (load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
 (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
 (require 'tabbar-ruler)
-
 
 ;;----------------------------------------------------------------------
 ;; hideshowvis mode
@@ -217,40 +194,11 @@ See `sort-regexp-fields'."
 (load "~/.emacs.d/repo/emacs-pills/config/compile.cfg.el")
 
 ;;----------------------------------------------------------------------
-;; auto-complete
-(add-to-list 'load-path "~/.emacs.d/repo/popup-el")
-(add-to-list 'load-path "~/.emacs.d/repo/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~.emacs.d/repo/auto-complete/dict")
-(ac-config-default)
-(ac-linum-workaround)
-
-;;----------------------------------------------------------------------
-;; AUCTeX
-(add-to-list 'load-path "~/.emacs.d/repo/auctex")
-;;(add-to-list 'load-path "~/.emacs.d/repo/auto-complete-auctex")
-(load "auctex.el" nil t t)
-;;(load "auctex.el" t)
-;;(load "preview-latex.el" nil t t)
-
-;;----------------------------------------------------------------------
-;; yasnippet
-(add-to-list 'load-path "~/.emacs.d/repo/yasnippet")
-(require 'yasnippet)
-(yas/global-mode 1)
-
-;;----------------------------------------------------------------------
 ;; Arch pkgbuild-mode
 (add-to-list 'load-path "~/.emacs.d/repo/pkgbuild-mode")
 (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t)
 (setq auto-mode-alist
       (append '(("/PKGBUILD.*" . pkgbuild-mode)) auto-mode-alist))
-
-;;----------------------------------------------------------------------
-;; highlight indentation
-(load "~/.emacs.d/repo/hindent/highlight-indentation.el")
-(set-face-background 'highlight-indentation-face "#aaeeba")
-(add-hook 'python-mode-hook 'highlight-indentation-mode)
 
 ;;----------------------------------------------------------------------
 ;; sublime mode
@@ -261,25 +209,98 @@ See `sort-regexp-fields'."
 ;; (sublimity-global-mode)
 
 ;;======================================================================
-;; BROKEN PLUGINS
-
-
-;;======================================================================
-;; TESTING PLUGINS
+;; EL-GET Section
 
 ;;----------------------------------------------------------------------
-;; renpy
-;; http://www.renpy.org/w/images/1/1d/Renpy.el
+;; el-get
+;; https://github.com/dimitri/el-get
+(add-to-list 'load-path "~/.emacs.d/el-get")
+(require 'el-get)
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
 
-(autoload 'renpy-mode "Renpy.el" "Ren'py mode" t)
+;;----------------------------------------------------------------------
+;; zenburn-theme
+(load-theme 'zenburn t)
+
+;;----------------------------------------------------------------------
+;; jedi
+;; http://tkf.github.io/emacs-jedi/
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t) ; optional
+;; (setq jedi:setup-keys t) ; optional
+
+;;----------------------------------------------------------------------
+;; json-mode
 (setq auto-mode-alist
-      (append '((".rpy$" . renpy-mode)) auto-mode-alist))
+      (cons '("\.json" . json-mode) auto-mode-alist))
+
+;;----------------------------------------------------------------------
+;; rainbow-delimiter-mode
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;;----------------------------------------------------------------------
+;; highlight indentation
+;; other color: "#aaeeba"
+(add-hook 'prog-mode-hook 'highlight-indentation-mode)
+
+;;----------------------------------------------------------------------
+;; smooth-scroll
+(require 'smooth-scroll)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
+(setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+(smooth-scroll-mode t)
+
+;;----------------------------------------------------------------------
+;; auto-complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
+(ac-config-default)
+;; (ac-linum-workaround)
+;; (ac-flyspell-workaround)
+;; (global-auto-complete-mode t)
+
+;;----------------------------------------------------------------------
+;; yasnippet
+(require 'yasnippet)
+(yas/global-mode 1)
+
+;;----------------------------------------------------------------------
+;; AUCTeX
+;; (load "auctex.el" nil t t)
+(load "auctex.el" t)
+;; (load "preview-latex.el" nil t t)
+
+;;----------------------------------------------------------------------
+;; github-issue
+;; here because required deferred
+(add-to-list 'load-path "~/.emacs.d/emacs-github")
+(require 'github-issue)
+
+;;----------------------------------------------------------------------
+;; multiple cursor
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+
+;;----------------------------------------------------------------------
+;; ibus input method
+;; (require 'ibus)
+;; Turn on ibus-mode automatically after loading .emacs
+;; (add-hook 'after-init-hook 'ibus-mode-on)
+;; Choose your key to toggle input status:
+;; (ibus-define-common-key ?\S-\s nil)
+;; (global-set-key (kbd "C-S-SPC") 'ibus-toggle)
+;; (global-set-key (kbd "C-\\") 'ibus-toggle)
+;; Change cursor color depending on IBus status
+;; (setq ibus-cursor-color '("red" "blue" "limegreen"))
 
 
 ;;----------------------------------------------------------------------
 ;; etags-select
 ;; http://www.emacswiki.org/emacs/EtagsSelect
-;; http://www.emacswiki.org/emacs/download/etags-select.el
 
 (require 'etags-select)
 
@@ -297,13 +318,13 @@ See `sort-regexp-fields'."
 (global-set-key "\M-." 'my-ido-find-tag)
 (global-set-key "\M-?" 'etags-select-find-tag-at-point)
 
-(global-unset-key (kbd "C-<down-mouse-1>"))
-;; (global-set-key (kbd "C-<mouse-1>") 'etag-select-find-tag-at-point)
+;; (global-unset-key (kbd "C-<down-mouse-1>"))
+(global-set-key (kbd "C-M-<mouse-1>") 'etag-select-find-tag-at-point)
 
 (defun jds-find-tags-file ()
-  "recursively searches each parent directory for a file named 'TAGS' and returns the
-path to that file or nil if a tags file is not found. Returns nil if the buffer is
-not visiting a file"
+  "recursively searches each parent directory for a file named
+'TAGS' and returns the path to that file or nil if a tags file is
+not found. Returns nil if the buffer is not visiting a file"
   (progn
       (defun find-tags-file-r (path)
          "find the tags file from the parent directories"
@@ -319,13 +340,40 @@ not visiting a file"
           (find-tags-file-r (buffer-file-name)))
         (error "buffer is not visiting a file"))))
 
-(defun jds-set-tags-file-path ()
-  "calls `jds-find-tags-file' to recursively search up the directory tree to find
+(defun tags-file-load-recursive ()
+  "calls `tags-file-load-recursive' to recursively search up the directory tree to find
 a file named 'TAGS'. If found, set 'tags-table-list' with that path as an argument
 otherwise raises an error."
   (interactive)
   (setq tags-table-list (cons (jds-find-tags-file) tags-table-list)))
 
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command
+   (format "find %s -type f -name \"*.[ch]\" -o -name \"*.py\" -o \
+   -name \"*.java\" -o -name \"*.cpp\"| etags -" dir-name))
+  (setq tags-table-list (cons (jds-find-tags-file) tags-table-list)))
+
+(defadvice find-tag (around refresh-etags activate)
+  "Rerun etags and reload tags if tag not found and redo find-tag.
+   If buffer is modified, ask about save before running etags."
+  (let ((extension (file-name-extension (buffer-file-name))))
+    (condition-case err
+	ad-do-it
+      (error (and (buffer-modified-p)
+		  (not (ding))
+		  (y-or-n-p "Buffer is modified, save it? ")
+		  (save-buffer))
+	     (er-refresh-etags extension)
+	     ad-do-it))))
+
+(defun er-refresh-etags (&optional extension)
+  "Run etags on all peer files in current dir and reload them silently."
+  (interactive)
+  (shell-command (format "etags *.%s" (or extension "el")))
+  (let ((tags-revert-without-query t))  ; don't query, revert silently
+    (visit-tags-table default-directory nil)))
 
 ;;----------------------------------------------------------------------
 ;; Funtion Browsing
@@ -356,6 +404,45 @@ otherwise raises an error."
 ;;                         (goto-char (posn-point (event-start click)))
 ;;                         (tzz-find-symbol-at-point))))))
 
+
+;;======================================================================
+;; BROKEN PLUGINS
+
+;;----------------------------------------------------------------------
+;; sed-mode
+;; https://github.com/emacsfodder/sed-mode.git
+;; (add-to-list 'load-path "~/.emacs.d/sed-mode")
+;; (autoload 'sed-mode "sed-mode.el" "PKGBUILD mode." t)
+;; (setq auto-mode-alist
+;;       (append '((".sed$" . sed-mode)) auto-mode-alist))
+
+;;======================================================================
+;; TESTING PLUGINS
+
+;;----------------------------------------------------------------------
+;; CC-mode indentation
+;; http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
+;; (setq-default c-basic-offset 4
+;; 	      tab-width 4
+;; 	      indent-tabs-mode t)
+
+(setq-default tab-width 4)
+(add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
+(require 'cc-mode)
+(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+
+;; (defun my-make-CR-do-indent ()
+;;  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
+;; (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
+
+
+;;----------------------------------------------------------------------
+;; smart-tab
+;; https://github.com/genehack/smart-tab.git
+(add-to-list 'load-path "~/.emacs.d/smart-tab")
+(require 'smart-tab)
+;; (global-smart-tab-mode 1)
+
 ;;----------------------------------------------------------------------
 ;; Emacs Speaks Statistics
 ;; (setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
@@ -378,60 +465,24 @@ otherwise raises an error."
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 ;;----------------------------------------------------------------------
-;; git-gutter
-(add-to-list 'load-path "~/.emacs.d/emacs-git-gutter")
-(require 'git-gutter)
-;; (add-to-list 'load-path "~/.emacs.d/emacs-git-gutter-fringe")
-;; (require 'git-gutter-fringe)
-
-;;----------------------------------------------------------------------
 ;; php-mode
 ;; http://www.emacswiki.org/emacs/download/php-mode-improved.el
-(autoload 'php-mode "php-mode-improved.el" "Php mode." t)
-(setq auto-mode-alist
-      (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
-
-;;----------------------------------------------------------------------
-;; minimap: sublimity has its own minmap its not needed
-;; (add-to-list 'load-path "~/.emacs.d/minimap")
-;; (require 'minimap)
-;; (global-set-key [f8] 'minimap-toggle)
-
-;;----------------------------------------------------------------------
-;; sed-mode
-;; https://raw.github.com/ocodo/emacs.d/master/plugins/sed-mode.el
-;; (autoload 'sed-mode "sed-mode.el" "sed mode." t)
+;; (autoload 'php-mode "php-mode-improved.el" "Php mode." t)
 ;; (setq auto-mode-alist
-;;       (append '(("/*.\.sed$" . sed-mode)) auto-mode-alist))
+;;       (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
 
 ;;----------------------------------------------------------------------
-;; multi-mode
-;; (add-to-list 'load-path "~/.emacs.d/multi-web-mode")
-;; (require 'multi-web-mode)
-;; (setq mweb-default-major-mode 'html-mode)
-;; (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-;;                   (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-;;                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-;; (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-;; (multi-web-global-mode 1)
-
+;; renpy
+;; http://www.renpy.org/w/images/1/1d/Renpy.el
+;; (autoload 'renpy-mode "Renpy.el" "Ren'py mode" t)
+;; (setq auto-mode-alist
+;;       (append '((".rpy$" . renpy-mode)) auto-mode-alist))
 
 ;;----------------------------------------------------------------------
 ;; python-info-look [C-h S]
 ;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
 ;; (require 'pydoc-info)
 ;; (require 'info-look)
-
-;; http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/
-;; (require 'python-pep8)
-;; (require 'python-pylint)
-
-;;----------------------------------------------------------------------
-;; CC-mode
-;; http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
-;; (defun my-make-CR-do-indent ()
-;;  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
-;; (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 
 ;;----------------------------------------------------------------------
 ;; markdown mode
@@ -453,26 +504,6 @@ otherwise raises an error."
 ;; (put 'set-goal-column 'disabled nil)
 
 ;;----------------------------------------------------------------------
-;; json-mode
-;; (add-to-list 'load-path "~/.emacs.d/repo/json-mode")
-;; (autoload 'json-mode "json-mode.el"
-;;   "Major mode for editing Markdown files" t)
-;; (setq auto-mode-alist
-;;       (cons '("\.json" . json-mode) auto-mode-alist))
-
-;;----------------------------------------------------------------------
-;; ibus input method
-;; (require 'ibus)
-;; Turn on ibus-mode automatically after loading .emacs
-;; (add-hook 'after-init-hook 'ibus-mode-on)
-;; Choose your key to toggle input status:
-;; (ibus-define-common-key ?\S-\s nil)
-;; (global-set-key (kbd "C-S-SPC") 'ibus-toggle)
-;; (global-set-key (kbd "C-\\") 'ibus-toggle)
-;; Change cursor color depending on IBus status
-;; (setq ibus-cursor-color '("red" "blue" "limegreen"))
-
-;;----------------------------------------------------------------------
 ;; ide-skel
 ;; http://www.emacswiki.org/emacs/download/ide-skel.el
 ;; (require 'ide-skel)
@@ -483,25 +514,9 @@ otherwise raises an error."
 ;; (global-set-key [f12] 'ide-skel-toggle-right-view-window)
 
 ;;----------------------------------------------------------------------
-;; color-themes
-;;(require 'color-theme)
-
-;;----------------------------------------------------------------------
-;; tty-colors
-;; http://www.opensource.apple.com/source/emacs/emacs-56/emacs/lisp/term/tty-colors.el?txt
-;;(require 'tty-colors)
-
-;;----------------------------------------------------------------------
 ;; custom mode line
 ;; http://amitp.blogspot.com/2011/08/emacs-custom-mode-line.html
 ;; (load-library "~/.emacs.d/plug-ins/customodline")
-
-;;----------------------------------------------------------------------
-;; button-lock
-;; (add-to-list 'load-path "~/.emacs.d/button-lock")
-;; (require 'wiki-nav)
-;; (global-wiki-nav-mode 1)
-;; (button-lock-set-button "http://google.com" 'browse-url-at-mouse)
 
 ;;----------------------------------------------------------------------
 ;; emoji
@@ -515,37 +530,24 @@ otherwise raises an error."
 ;; (require 'nyan-mode)
 ;; (nyan-mode 1)
 
-;;---------------------------------------------------------------------
-;; elpy
-;; https://hub.com/jorgenschaefer/elpy
-;; (package-initialize)
-;; (elpy-enable)
-;; ;;(auto-complete-mode 0)
-;; (setq ac-sources
-;;       (delq 'ac-source-nropemacs-dot
-;;             (delq 'ac-source-nropemacs
-;;                   ac-sources)))
-;;(setq load-home-init-file t) ; don't load init file from ~/.xemacs/init.el
-
-;;----------------------------------------------------------------------
-;; utf-8
-;; (set-language-environment 'utf-8)
-;; (prefer-coding-system 'utf-8)
-;; (set-terminal-coding-system 'utf-8)
-;; (set-keyboard-coding-system 'utf-8)
-;; (setq locale-coding-system 'utf-8)
-;; (set-selection-coding-system 'utf-8)
-;; (set-input-method nil)
-
-;;----------------------------------------------------------------------
-;; custom variable
+;;======================================================================
+;; CUSTOMIZE
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(inhibit-startup-screen t)
  '(smooth-scroll/vscroll-step-size 1)
  '(uniquify-buffer-name-stylex (quote forward) nil (uniquify)))
 (and window-system (server-start))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(highlight-indentation-face ((t (:inherit fringe :background "forest green"))))
+ '(which-func ((t (:inherit mode-line))))
+ '(zenburn-highlight-alerting ((t (:background "yellow1" :foreground "red1" :weight bold))) t))
