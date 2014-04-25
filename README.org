@@ -12,7 +12,8 @@ my emacs config!
 git clone --recursive https://github.com/rhoit/dot-emacs
 #+end_src
 
-*** if you accidently forgot --recursive then
+*** oops!
+if you accidently forgot --recursive then
 
 #+begin_src shell
 git clone https://github.com/rhoit/dot-emacs
