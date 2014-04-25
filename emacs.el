@@ -12,6 +12,7 @@
 ;; auto complete when possible
 ;; (setq tab-always-indent 'complete) ; By default it only indents.
 
+(global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z") 'undo)
 (setq make-backup-files nil)
 ;; (setq auto-save-default nil)
@@ -49,7 +50,7 @@
 (add-to-list 'default-frame-alist '(width . 104))
 
 ;;----------------------------------------------------------------------
-;; Remove unused UI elements
+;; UI elements
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
@@ -61,6 +62,9 @@
   (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1))
 )
 (global-set-key [f5] 'toggle-bars-view)
+
+;; speedbar
+(global-set-key [f9] 'speedbar)
 
 ;;----------------------------------------------------------------------
 ;; fonts
@@ -111,7 +115,8 @@ See `sort-regexp-fields'."
 ;;======================================================================
 ;; PROGRAMMING MODES
 
-(defun words_watch ()
+(defun watch-words ()
+  (interactive)
   (font-lock-add-keywords
    nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|BUG\\|HACK\\|DONE\\|WISH\\|NOTE\\)"
           1 font-lock-warning-face t))))
@@ -119,12 +124,10 @@ See `sort-regexp-fields'."
 (defun nuke_traling ()
   (add-hook 'write-file-hooks 'delete-trailing-whitespace)
   (add-hook 'before-save-hooks 'whitespace-cleanup)
-  ;;(add-hook 'before-save-hooks 'delete-trailing-whitespace)
 )
 
-(add-hook 'prog-mode-hook 'words_watch)
+(add-hook 'prog-mode-hook 'watch-words)
 (add-hook 'prog-mode-hook 'which-function-mode)
-(add-hook 'LaTeX-mode-hook 'words_watch)
 (add-hook 'prog-mode-hook 'nuke_traling)
 (add-hook 'prog-mode-hook 'toggle-truncate-lines)
 
@@ -208,6 +211,20 @@ See `sort-regexp-fields'."
 (require 'sublimity-map)
 ;; (sublimity-global-mode)
 
+;;----------------------------------------------------------------------
+;; smart-cursor-color-mode
+(add-to-list 'load-path "~/.emacs.d/smart-cursor-color-mode")
+(require 'smart-cursor-color-mode)
+(setq smart-cursor-color-mode t)
+
+;;----------------------------------------------------------------------
+;; auto-dim-buffer
+(add-to-list 'load-path "~/.emacs.d/auto-dim-other-buffers.el")
+(require 'auto-dim-other-buffers)
+(add-hook 'after-init-hook (lambda ()
+      (when (fboundp 'auto-dim-other-buffers-mode)
+        (auto-dim-other-buffers-mode t))))
+
 ;;======================================================================
 ;; EL-GET Section
 
@@ -270,9 +287,16 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX
-;; (load "auctex.el" nil t t)
 (load "auctex.el" t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
 ;; (load "preview-latex.el" nil t t)
+(add-hook 'LaTeX-mode-hook 'watch-words)
+
+;;----------------------------------------------------------------------
+;; AUCTeX autocomplete
+(require 'auto-complete-auctex)
 
 ;;----------------------------------------------------------------------
 ;; github-issue
@@ -297,11 +321,13 @@ See `sort-regexp-fields'."
 ;; Change cursor color depending on IBus status
 ;; (setq ibus-cursor-color '("red" "blue" "limegreen"))
 
+;;----------------------------------------------------------------------
+;; goto-last-change
+(require 'goto-chg)
 
 ;;----------------------------------------------------------------------
 ;; etags-select
 ;; http://www.emacswiki.org/emacs/EtagsSelect
-
 (require 'etags-select)
 
 ;; Use ido to list tags, but then select via etags-select (best of both worlds!)
@@ -351,7 +377,7 @@ otherwise raises an error."
   "Create tags file."
   (interactive "DDirectory: ")
   (eshell-command
-   (format "find %s -type f -name \"*.[ch]\" -o -name \"*.py\" -o \
+   (format "find \"%s\" -type f -name \"*.[ch]\" -o -name \"*.py\" -o \
    -name \"*.java\" -o -name \"*.cpp\"| etags -" dir-name))
   (setq tags-table-list (cons (jds-find-tags-file) tags-table-list)))
 
