@@ -2,11 +2,26 @@
 
 my emacs config!
 
-* getting it
 
-git clone --recursive <repo>
+#+ATTR_HTML: title="screenshot"
+[[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot_01.png]]
 
-* to build
+** getting it
+
+#+begin_src shell
+git clone --recursive https://github.com/rhoit/dot-emacs
+#+end_src
+
+*** if you accidently forgot --recursive then
+
+#+begin_src shell
+git clone https://github.com/rhoit/dot-emacs
+cd dot-emacs
+git submodule init
+git submodule update
+#+end_src
+
+*** to build
 #+begin_src shell
   ./configure
   ./main.sh
