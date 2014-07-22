@@ -66,6 +66,10 @@
 ;; speedbar
 (global-set-key [f9] 'speedbar)
 
+;; winner mode - saving the window conf
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
 ;;----------------------------------------------------------------------
 ;; fonts
 ;; (set-default-font "Inconsolata-12")
@@ -145,16 +149,6 @@ See `sort-regexp-fields'."
 (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
 
 ;;----------------------------------------------------------------------
-;; tabbar mode
-;; http://emacswiki.org/emacs/TabBarMode
-;; https://raw.github.com/dholm/tabbar/master/tabbar.el
-;; (require 'tabbar)
-
-(load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
-(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
-(require 'tabbar-ruler)
-
-;;----------------------------------------------------------------------
 ;; hideshowvis mode
 ;; http://www.emacswiki.org/emacs/download/hideshowvis.el
 (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
@@ -170,6 +164,10 @@ See `sort-regexp-fields'."
 
 (add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
 
+
+;;----------------------------------------------------------------------
+;; indent-hint
+;; (load "~/.emacs.d/plug-ins/indent-hint.el")
 
 ;;======================================================================
 ;; INBUILT PLUGINS
@@ -205,6 +203,7 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; sublime mode
+(setq sublimity-map-active-region 'hl-line)
 (add-to-list 'load-path "~/.emacs.d/repo/sublimity")
 (require 'sublimity)
 (require 'sublimity-scroll)
@@ -213,17 +212,17 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; smart-cursor-color-mode
-(add-to-list 'load-path "~/.emacs.d/smart-cursor-color-mode")
-(require 'smart-cursor-color-mode)
-(setq smart-cursor-color-mode t)
+;; (add-to-list 'load-path "~/.emacs.d/smart-cursor-color-mode")
+;; (require 'smart-cursor-color-mode)
+;; (setq smart-cursor-color-mode t)
 
 ;;----------------------------------------------------------------------
 ;; auto-dim-buffer
-(add-to-list 'load-path "~/.emacs.d/auto-dim-other-buffers.el")
-(require 'auto-dim-other-buffers)
-(add-hook 'after-init-hook (lambda ()
-      (when (fboundp 'auto-dim-other-buffers-mode)
-        (auto-dim-other-buffers-mode t))))
+;; (add-to-list 'load-path "~/.emacs.d/auto-dim-other-buffers.el")
+;; (require 'auto-dim-other-buffers)
+;; (add-hook 'after-init-hook (lambda ()
+;;       (when (fboundp 'auto-dim-other-buffers-mode)
+;;         (auto-dim-other-buffers-mode t))))
 
 ;;======================================================================
 ;; EL-GET Section
@@ -272,6 +271,18 @@ See `sort-regexp-fields'."
 (smooth-scroll-mode t)
 
 ;;----------------------------------------------------------------------
+;; tabbar mode
+;; http://emacswiki.org/emacs/TabBarMode
+;; https://raw.github.com/dholm/tabbar/master/tabbar.el
+;; (require 'tabbar)
+
+;; (add-to-list 'load-path  "~/.emacs.d/tabbar/")
+
+(load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
+(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
+(require 'tabbar-ruler)
+
+;;----------------------------------------------------------------------
 ;; auto-complete
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
@@ -287,22 +298,22 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX
-(load "auctex.el" t)
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-;; (load "preview-latex.el" nil t t)
-(add-hook 'LaTeX-mode-hook 'watch-words)
+;; (load "auctex.el" t)
+;; (setq TeX-auto-save t)
+;; (setq TeX-parse-self t)
+;; (setq-default TeX-master nil)
+;; ;; (load "preview-latex.el" nil t t)
+;; (add-hook 'LaTeX-mode-hook 'watch-words)
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX autocomplete
-(require 'auto-complete-auctex)
+;; (require 'auto-complete-auctex)
 
 ;;----------------------------------------------------------------------
 ;; github-issue
 ;; here because required deferred
-(add-to-list 'load-path "~/.emacs.d/emacs-github")
-(require 'github-issue)
+;; (add-to-list 'load-path "~/.emacs.d/emacs-github")
+;; (require 'github-issue)
 
 ;;----------------------------------------------------------------------
 ;; multiple cursor
@@ -322,8 +333,44 @@ See `sort-regexp-fields'."
 ;; (setq ibus-cursor-color '("red" "blue" "limegreen"))
 
 ;;----------------------------------------------------------------------
+;; anzu.el - search highlight
+(require 'anzu)
+(global-anzu-mode +1)
+(global-unset-key (kbd "M-%"))
+(global-unset-key (kbd "C-M-%"))
+(global-set-key (kbd "M-%") 'anzu-query-replace)
+(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+
+;;----------------------------------------------------------------------
 ;; goto-last-change
 (require 'goto-chg)
+
+;;----------------------------------------------------------------------
+;; markdown mode
+(setq auto-mode-alist
+      (cons '("\.md" . markdown-mode) auto-mode-alist))
+
+(custom-set-faces
+ '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.8))) t)
+ '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.6))) t)
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.4))) t)
+ '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.2))) t)
+ '(markdown-header-face-5 ((t (:inherit markdown-header-face :height 1.1 :weight bold))) t)
+ '(markdown-header-face-6 ((t (:inherit markdown-header-face :weight bold))) t))
+;; (put 'set-goal-column 'disabled nil)
+
+;;----------------------------------------------------------------------
+;; pdb
+
+;; (setq pdb-path '/usr/lib/python2.4/pdb.py
+;; gud-pdb-command-name (symbol-name pdb-path))
+
+;; (defadvice pdb (before gud-query-cmdline activate)
+;; "Provide a better default command line when called interactively."
+;; (interactive
+;; (list (gud-query-cmdline pdb-path
+;; (file-name-nondirectory buffer-file-name)))))
 
 ;;----------------------------------------------------------------------
 ;; etags-select
@@ -465,8 +512,8 @@ otherwise raises an error."
 ;;----------------------------------------------------------------------
 ;; smart-tab
 ;; https://github.com/genehack/smart-tab.git
-(add-to-list 'load-path "~/.emacs.d/smart-tab")
-(require 'smart-tab)
+;; (add-to-list 'load-path "~/.emacs.d/smart-tab")
+;; (require 'smart-tab)
 ;; (global-smart-tab-mode 1)
 
 ;;----------------------------------------------------------------------
@@ -510,24 +557,6 @@ otherwise raises an error."
 ;; (require 'pydoc-info)
 ;; (require 'info-look)
 
-;;----------------------------------------------------------------------
-;; markdown mode
-;; (autoload 'markdown-mode "markdown-mode.el"
-;;   "Major mode for editing Markdown files" t)
-;; (setq auto-mode-alist
-;;       (cons '("\.md" . markdown-mode) auto-mode-alist))
-;; (setq auto-mode-alist
-;;       (cons '("\.markdown" . markdown-mode) auto-mode-alist))
-
-;; (custom-set-faces
-;;  '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :underline t :weight bold))) t)
-;;  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.5))) t)
-;;  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.3))) t)
-;;  '(markdown-header-face-3 ((t (:inherit markdown-header-face :underline t :height 1.2))) t)
-;;  '(markdown-header-face-4 ((t (:inherit markdown-header-face :underline t :height 1.1))) t)
-;;  '(markdown-header-face-5 ((t (:inherit markdown-header-face :underline t))) t)
-;;  '(markdown-header-face-6 ((t (:inherit markdown-header-face :underline t))) t))
-;; (put 'set-goal-column 'disabled nil)
 
 ;;----------------------------------------------------------------------
 ;; ide-skel
@@ -567,6 +596,7 @@ otherwise raises an error."
  '(custom-safe-themes (quote ("d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(inhibit-startup-screen t)
  '(smooth-scroll/vscroll-step-size 1)
+ '(tabbar-background-color "dim gray")
  '(uniquify-buffer-name-stylex (quote forward) nil (uniquify)))
 (and window-system (server-start))
 (custom-set-faces
@@ -575,5 +605,38 @@ otherwise raises an error."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight-indentation-face ((t (:inherit fringe :background "forest green"))))
+ '(tabbar-selected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(tabbar-unselected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(which-func ((t (:inherit mode-line))))
- '(zenburn-highlight-alerting ((t (:background "yellow1" :foreground "red1" :weight bold))) t))
+)
+;; '(zenburn-highlight-alerting ((t (:background "yellow1" :foreground "red1" :weight bold))) t))
+
+;; TODO: invert color
+;; (defvar hexcolour-keywords
+;;   '(("#[abcdefABCDEF[:digit:]]\\{6\\}"
+;; 	 (0 (put-text-property (match-beginning 0)
+;; 						   (match-end 0)
+;; 						   'face (list :background
+;; 									   (match-string-no-properties 0)))))))
+
+(defvar hexcolour-keywords
+  '(("#[abcdef[:digit:]]\\{3,6\\}"
+	 (0 (let ((colour (match-string-no-properties 0)))
+		  (if (or (= (length colour) 4)
+				  (= (length colour) 7))
+			  (put-text-property
+			   (match-beginning 0)
+			   (match-end 0)
+			   'face (list :background (match-string-no-properties 0)
+						   :foreground (if (>= (apply '+ (x-color-values
+														  (match-string-no-properties 0)))
+											   (* (apply '+ (x-color-values "white")) .6))
+										   "black" ;; light bg, dark text
+										 "white" ;; dark bg, light text
+										 )))))
+		append))))
+
+(defun hexcolour-add-to-font-lock ()
+  (interactive)
+  (font-lock-add-keywords nil hexcolour-keywords))
+(put 'scroll-left 'disabled nil)
