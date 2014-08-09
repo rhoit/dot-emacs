@@ -9,29 +9,15 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; auto complete when possible
-;; (setq tab-always-indent 'complete) ; By default it only indents.
-
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z") 'undo)
 (setq make-backup-files nil)
 ;; (setq auto-save-default nil)
 (delete-selection-mode 1)
 
-;; (electric-pair-mode 1) ; auto complete bracket
-;; (global-visual-line-mode 1)
-
 (setq browse-url-browser-function 'browse-url-firefox)
 (recentf-mode 0) ;; no recent files
-
-;;======================================================================
-;; PACKAGE MANAGER
-
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;     '("marmalade" .
-;;       "http://marmalade-repo.org/packages/"))
-;; (package-initialize)
+;; (setq debug-on-quit t)
 
 ;;======================================================================
 ;; SETTING MODES
@@ -42,10 +28,7 @@
 ;;======================================================================
 ;; UI
 ;;----------------------------------------------------------------------
-
 ;; window
-;;(add-to-list 'default-frame-alist '(left . 0))
-;;(add-to-list 'default-frame-alist '(top . 0))
 (add-to-list 'default-frame-alist '(height . 39))
 (add-to-list 'default-frame-alist '(width . 104))
 
@@ -61,7 +44,9 @@
   (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
   (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1))
 )
+
 (global-set-key [f5] 'toggle-bars-view)
+(global-set-key [f6] 'toggle-truncate-lines)
 
 ;; speedbar
 (global-set-key [f9] 'speedbar)
@@ -94,15 +79,6 @@
 (global-set-key (kbd "C-`") 'duplicate-current-line)
 
 ;;----------------------------------------------------------------------
-;; insert date and time
-(defun insert-datetime ()
-  "Insert a time-stamp according to locale's date and time format."
-  (interactive)
-  (insert (format-time-string "%c" (current-time))))
-
-(global-set-key [f3] 'insert-datetime)
-
-;;----------------------------------------------------------------------
 ;; word-sort
 ;; http://www.emacswiki.org/emacs/SortWords
 (defun sort-words (reverse beg end)
@@ -122,7 +98,7 @@ See `sort-regexp-fields'."
 (defun watch-words ()
   (interactive)
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|BUG\\|HACK\\|DONE\\|WISH\\|NOTE\\)"
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|BUG\\|HACK\\|DONE\\|TESTING\\|WISH\\|NOTE\\)"
           1 font-lock-warning-face t))))
 
 (defun nuke_traling ()
@@ -134,40 +110,6 @@ See `sort-regexp-fields'."
 (add-hook 'prog-mode-hook 'which-function-mode)
 (add-hook 'prog-mode-hook 'nuke_traling)
 (add-hook 'prog-mode-hook 'toggle-truncate-lines)
-
-;;======================================================================
-;; PLUGINS
-
-(add-to-list 'load-path  "~/.emacs.d/plug-ins/")
-(add-to-list 'load-path  "~/.emacs.d/extra/")
-
-;;----------------------------------------------------------------------
-;; line-number
-;; http://www.emacswiki.org/LineNumbers
-;; http://elpa.gnu.org/packages/nlinum-1.1.el
-(require 'nlinum)
-(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
-
-;;----------------------------------------------------------------------
-;; hideshowvis mode
-;; http://www.emacswiki.org/emacs/download/hideshowvis.el
-(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
-(autoload 'hideshowvis-minor-mode
-  "hideshowvis"
-  "Will indicate regions foldable with hideshow in the fringe."
-  'interactive)
-
-(dolist (hook (list 'emacs-lisp-mode-hook
-                    'c++-mode-hook
-		    'python-mode-hook))
-  (add-hook hook 'hideshowvis-enable))
-
-(add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
-
-
-;;----------------------------------------------------------------------
-;; indent-hint
-;; (load "~/.emacs.d/plug-ins/indent-hint.el")
 
 ;;======================================================================
 ;; INBUILT PLUGINS
@@ -185,6 +127,43 @@ See `sort-regexp-fields'."
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
+
+;;======================================================================
+;; PLUGINS
+(add-to-list 'load-path  "~/.emacs.d/plug-ins/")
+(add-to-list 'load-path  "~/.emacs.d/extra/")
+
+;;----------------------------------------------------------------------
+;; line-number
+;; http://www.emacswiki.org/LineNumbers
+;; http://elpa.gnu.org/packages/nlinum-1.1.el
+(require 'nlinum)
+(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
+
+;; TESTING: using default
+;; (add-hook 'find-file-hook (lambda () (linum-mode 1)))
+
+;;----------------------------------------------------------------------
+;; hideshowvis mode
+;; http://www.emacswiki.org/emacs/download/hideshowvis.el
+;; (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+;; (autoload 'hideshowvis-minor-mode
+;;   "hideshowvis"
+;;   "Will indicate regions foldable with hideshow in the fringe."
+;;   'interactive)
+
+;; (dolist (hook (list 'emacs-lisp-mode-hook
+;;                     'c++-mode-hook
+;; 					'python-mode-hook
+;; 					)
+;; 			  )
+;;   (add-hook hook 'hideshowvis-enable))
+;; (add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
+
+;;----------------------------------------------------------------------
+;; indent-hint
+;; (load "~/.emacs.d/plug-ins/indent-hint.el")
+;; (indent-hint t)
 
 ;;======================================================================
 ;; REPO PLUGINS
@@ -236,8 +215,8 @@ See `sort-regexp-fields'."
 (el-get 'sync)
 
 ;;----------------------------------------------------------------------
-;; zenburn-theme
-(load-theme 'zenburn t)
+;; themes
+(load-theme 'wombat t)
 
 ;;----------------------------------------------------------------------
 ;; jedi
@@ -264,10 +243,10 @@ See `sort-regexp-fields'."
 ;;----------------------------------------------------------------------
 ;; smooth-scroll
 (require 'smooth-scroll)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
-(setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
+;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
+;; (setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
+;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+;; (setq scroll-step 1) ;; keyboard scroll one line at a time
 (smooth-scroll-mode t)
 
 ;;----------------------------------------------------------------------
@@ -284,9 +263,10 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; auto-complete
-(require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
+(require 'auto-complete-config)
 (ac-config-default)
+
 ;; (ac-linum-workaround)
 ;; (ac-flyspell-workaround)
 ;; (global-auto-complete-mode t)
@@ -294,26 +274,33 @@ See `sort-regexp-fields'."
 ;;----------------------------------------------------------------------
 ;; yasnippet
 (require 'yasnippet)
-(yas/global-mode 1)
+(yas-reload-all)
+(add-hook 'prog-mode-hook
+          '(lambda ()
+             (yas-minor-mode)))
+
+;;----------------------------------------------------------------------
+;; Emacs Speaks Statistics
+;; (setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
+(defun ess-loader()
+  ;; (add-to-list 'load-path "~/.emacs.d/repo/ESS/lisp")
+  (require 'ess-site)
+  (r-mode t)
+)
+(setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist))
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX
-;; (load "auctex.el" t)
-;; (setq TeX-auto-save t)
-;; (setq TeX-parse-self t)
-;; (setq-default TeX-master nil)
+(load "auctex.el" t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
 ;; ;; (load "preview-latex.el" nil t t)
 ;; (add-hook 'LaTeX-mode-hook 'watch-words)
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX autocomplete
-;; (require 'auto-complete-auctex)
-
-;;----------------------------------------------------------------------
-;; github-issue
-;; here because required deferred
-;; (add-to-list 'load-path "~/.emacs.d/emacs-github")
-;; (require 'github-issue)
+(require 'auto-complete-auctex)
 
 ;;----------------------------------------------------------------------
 ;; multiple cursor
@@ -344,20 +331,13 @@ See `sort-regexp-fields'."
 ;;----------------------------------------------------------------------
 ;; goto-last-change
 (require 'goto-chg)
+(global-unset-key (kbd "C-j"))
+(global-set-key (kbd "C-j") 'goto-last-change)
 
 ;;----------------------------------------------------------------------
 ;; markdown mode
 (setq auto-mode-alist
       (cons '("\.md" . markdown-mode) auto-mode-alist))
-
-(custom-set-faces
- '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
- '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.8))) t)
- '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.6))) t)
- '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.4))) t)
- '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.2))) t)
- '(markdown-header-face-5 ((t (:inherit markdown-header-face :height 1.1 :weight bold))) t)
- '(markdown-header-face-6 ((t (:inherit markdown-header-face :weight bold))) t))
 ;; (put 'set-goal-column 'disabled nil)
 
 ;;----------------------------------------------------------------------
@@ -508,25 +488,6 @@ otherwise raises an error."
 ;;  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 ;; (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 
-
-;;----------------------------------------------------------------------
-;; smart-tab
-;; https://github.com/genehack/smart-tab.git
-;; (add-to-list 'load-path "~/.emacs.d/smart-tab")
-;; (require 'smart-tab)
-;; (global-smart-tab-mode 1)
-
-;;----------------------------------------------------------------------
-;; Emacs Speaks Statistics
-;; (setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
-;; (defun ess-loader()
-;;   (add-to-list 'load-path "~/.emacs.d/repo/ESS/lisp")
-;;   (require 'ess-site)
-;;   (r-mode t)
-;; )
-;; (setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist))
-
-
 ;;----------------------------------------------------------------------
 ;; ansi-color sequence for complitaion mode
 ;; (add-to-list 'load-path "~/.emacs.d/colors")
@@ -545,18 +506,10 @@ otherwise raises an error."
 ;;       (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
 
 ;;----------------------------------------------------------------------
-;; renpy
-;; http://www.renpy.org/w/images/1/1d/Renpy.el
-;; (autoload 'renpy-mode "Renpy.el" "Ren'py mode" t)
-;; (setq auto-mode-alist
-;;       (append '((".rpy$" . renpy-mode)) auto-mode-alist))
-
-;;----------------------------------------------------------------------
 ;; python-info-look [C-h S]
 ;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
 ;; (require 'pydoc-info)
 ;; (require 'info-look)
-
 
 ;;----------------------------------------------------------------------
 ;; ide-skel
@@ -567,49 +520,6 @@ otherwise raises an error."
 ;; (global-set-key [f9] 'ide-skel-toggle-left-view-window)
 ;; (global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
 ;; (global-set-key [f12] 'ide-skel-toggle-right-view-window)
-
-;;----------------------------------------------------------------------
-;; custom mode line
-;; http://amitp.blogspot.com/2011/08/emacs-custom-mode-line.html
-;; (load-library "~/.emacs.d/plug-ins/customodline")
-
-;;----------------------------------------------------------------------
-;; emoji
-;; http://d.hatena.ne.jp/tomoya/20090706/1246874191
-;; (add-to-list 'load-path  "~/.emacs.d/repo/emoji/")
-;; (require 'emoji)
-
-;;----------------------------------------------------------------------
-;; nyan-mode
-;; (add-to-list 'load-path  "~/.emacs.d/repo/nyan-mode/")
-;; (require 'nyan-mode)
-;; (nyan-mode 1)
-
-;;======================================================================
-;; CUSTOMIZE
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
- '(inhibit-startup-screen t)
- '(smooth-scroll/vscroll-step-size 1)
- '(tabbar-background-color "dim gray")
- '(uniquify-buffer-name-stylex (quote forward) nil (uniquify)))
-(and window-system (server-start))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(highlight-indentation-face ((t (:inherit fringe :background "forest green"))))
- '(tabbar-selected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(tabbar-unselected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(which-func ((t (:inherit mode-line))))
-)
-;; '(zenburn-highlight-alerting ((t (:background "yellow1" :foreground "red1" :weight bold))) t))
 
 ;; TODO: invert color
 ;; (defvar hexcolour-keywords
@@ -640,3 +550,48 @@ otherwise raises an error."
   (interactive)
   (font-lock-add-keywords nil hexcolour-keywords))
 (put 'scroll-left 'disabled nil)
+
+;;======================================================================
+;; CUSTOMIZE
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
+ '(custom-safe-themes (quote ("3c9d994e18db86ae397d077b6324bfdc445ecc7dc81bb9d528cd9bba08c1dac1" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
+ '(el-get-git-shallow-clone t)
+ '(fci-rule-color "#383838")
+ '(inhibit-startup-screen t)
+ '(smooth-scroll/vscroll-step-size 1)
+ '(tabbar-background-color "dim gray")
+ '(uniquify-buffer-name-stylex (quote forward) nil (uniquify))
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3"))
+(and window-system (server-start))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-comment-face ((t (:slant oblique))))
+ '(font-lock-function-name-face ((t (:foreground "#cae682" :slant oblique :weight bold))))
+ '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
+ '(font-lock-string-face ((t (:foreground "gold2" :weight semi-light :family "Source Code Pro"))))
+ '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
+ '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
+ '(highlight-indentation-face ((t (:background "olive drab"))))
+ '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
+ '(markdown-header-face-1 ((t (:height 1.8))) t)
+ '(markdown-header-face-2 ((t (:height 1.6))) t)
+ '(markdown-header-face-3 ((t (:height 1.4))) t)
+ '(markdown-header-face-4 ((t (:height 1.2))) t)
+ '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
+ '(markdown-header-face-6 ((t (:weight bold))) t)
+ ;; '(tabbar-selected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ ;; '(tabbar-unselected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(which-func ((t (:inherit mode-line))))
+)
