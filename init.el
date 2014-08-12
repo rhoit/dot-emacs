@@ -1,38 +1,45 @@
 (setq user-full-name    "Rhoit Man Amatya"
       user-mail-address "rho.rhoit@gmail.com")
 
-(column-number-mode 1)
+;;======================================================================
+;; CONFIGURE STUFFS
+
+(column-number-mode 1) ; show column no in modline
+
+;; highlight entire bracket expression
+(setq show-paren-style 'expression)
 (show-paren-mode 1)
-(setq show-paren-style 'expression) ; highlight entire bracket expression
 
 ;; make buffer names sensible unique
-(require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+(require 'uniquify) ;; [ inbuilt: package ]
 
-(global-unset-key (kbd "C-z"))
-(global-set-key (kbd "C-z") 'undo)
+;; backup configuration
+(setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
 (setq make-backup-files nil)
+
 ;; (setq auto-save-default nil)
 (delete-selection-mode 1)
 
 (setq browse-url-browser-function 'browse-url-firefox)
 (recentf-mode 0) ;; no recent files
+
+;; debug on C-g; to point broken modules
 ;; (setq debug-on-quit t)
 
-;;======================================================================
-;; SETTING MODES
+(fset 'yes-or-no-p 'y-or-n-p)
 
+;; mode set
 (setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
 (setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
 
 ;;======================================================================
 ;; UI
-;;----------------------------------------------------------------------
+
 ;; window
 (add-to-list 'default-frame-alist '(height . 39))
 (add-to-list 'default-frame-alist '(width . 104))
 
-;;----------------------------------------------------------------------
 ;; UI elements
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -45,17 +52,25 @@
   (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1))
 )
 
-(global-set-key [f5] 'toggle-bars-view)
-(global-set-key [f6] 'toggle-truncate-lines)
-
-;; speedbar
-(global-set-key [f9] 'speedbar)
-
 ;; winner mode - saving the window conf
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
-;;----------------------------------------------------------------------
+;; keybinds
+(global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key [f5] 'toggle-bars-view)
+(global-set-key [f6] 'toggle-truncate-lines)
+(global-set-key [f9] 'speedbar)
+(global-set-key [C-mouse-4] 'text-scale-increase)
+(global-set-key [(control ?+)] 'text-scale-increase)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
+(global-set-key [(control ?-)] 'text-scale-decrease)
+(global-set-key (kbd "C-0") '(lambda () (interactive)
+							   (text-scale-adjust
+								(- text-scale-mode-amount))
+							   (text-scale-mode -1)))
+
 ;; fonts
 ;; (set-default-font "Inconsolata-12")
 ;; (set-default-font "monofur-12")
@@ -94,6 +109,10 @@ See `sort-regexp-fields'."
 
 ;;======================================================================
 ;; PROGRAMMING MODES
+
+;; declaration
+(setq-default tab-width 4)
+(setq-default py-indent-offset 4)
 
 (defun watch-words ()
   (interactive)
@@ -169,9 +188,8 @@ See `sort-regexp-fields'."
 ;; REPO PLUGINS
 
 ;;----------------------------------------------------------------------
-;; emacs-pills
-(load "~/.emacs.d/repo/emacs-pills/config/global-zoom.cfg.el")
-(load "~/.emacs.d/repo/emacs-pills/config/compile.cfg.el")
+;; compile modline color theme
+(load "~/.emacs.d/plug-ins/config/compile.cfg.el")
 
 ;;----------------------------------------------------------------------
 ;; Arch pkgbuild-mode
@@ -197,11 +215,11 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; auto-dim-buffer
-;; (add-to-list 'load-path "~/.emacs.d/auto-dim-other-buffers.el")
-;; (require 'auto-dim-other-buffers)
-;; (add-hook 'after-init-hook (lambda ()
-;;       (when (fboundp 'auto-dim-other-buffers-mode)
-;;         (auto-dim-other-buffers-mode t))))
+(add-to-list 'load-path "~/.emacs.d/00testing/auto-dim-other-buffers.el")
+(require 'auto-dim-other-buffers)
+(add-hook 'after-init-hook (lambda ()
+      (when (fboundp 'auto-dim-other-buffers-mode)
+        (auto-dim-other-buffers-mode t))))
 
 ;;======================================================================
 ;; EL-GET Section
@@ -221,9 +239,9 @@ See `sort-regexp-fields'."
 ;;----------------------------------------------------------------------
 ;; jedi
 ;; http://tkf.github.io/emacs-jedi/
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t) ; optional
+;; (autoload 'jedi:setup "jedi" nil t)
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:complete-on-dot t) ; optional
 ;; (setq jedi:setup-keys t) ; optional
 
 ;;----------------------------------------------------------------------
@@ -257,7 +275,7 @@ See `sort-regexp-fields'."
 
 ;; (add-to-list 'load-path  "~/.emacs.d/tabbar/")
 
-(load "~/.emacs.d/repo/emacs-pills/config/tabbar.cfg.el")
+(load "~/.emacs.d/plug-ins/config/tabbar.cfg.el")
 (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
 (require 'tabbar-ruler)
 
@@ -591,7 +609,5 @@ otherwise raises an error."
  '(markdown-header-face-4 ((t (:height 1.2))) t)
  '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
  '(markdown-header-face-6 ((t (:weight bold))) t)
- ;; '(tabbar-selected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- ;; '(tabbar-unselected ((t (:inherit nil :stipple nil :background "#3f3f3f" :foreground "#dcdc3f" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(which-func ((t (:inherit mode-line))))
-)
+ '(show-paren-match ((t (:inverse-video t))))
+ '(which-func ((t (:inherit mode-line)))))
