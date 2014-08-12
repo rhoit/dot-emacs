@@ -1,9 +1,3 @@
-[submodule "repo/emacs-pills"]
-	path = repo/emacs-pills
-	url = https://bitbucket.org/rhoit/emacs-pills
-[submodule "repo/ESS"]
-	path = repo/ESS
-	url = https://github.com/emacs-ess/ESS
 [submodule "repo/pkgbuild-mode"]
 	path = repo/pkgbuild-mode
 	url = https://github.com/juergenhoetzel/pkgbuild-mode
