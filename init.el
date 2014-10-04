@@ -420,6 +420,7 @@ See `sort-regexp-fields'."
           (if selection_flag ;; flag to continue the run mode :D
               (progn
                 (deactivate-mark)
+                (next-line)
                 (setq selection_flag nil)))
           (return)))
 
@@ -429,9 +430,10 @@ See `sort-regexp-fields'."
         (beginning-of-visual-line)
         (set-mark-command nil)
         (setq selection_flag t)
-        (if (re-search-forward "\n\n[^ \t]*?" (point-max) t)
-            (previous-line)
+        (if (re-search-forward "\n\n+[^\t ]+?" (point-max) t)
+            (search-backward-regexp "[^\t\n ]\n")
             (end-of-buffer))
+        (end-of-line)
         (return)))
 
   ;; # for un-marked section
@@ -439,7 +441,7 @@ See `sort-regexp-fields'."
       ;; check validity of current line
       (progn
         (search-forward-regexp "^[^\n\t ]+")
-        (end-of-visual-line)
+        (end-of-line)
         (return)))
 
   (python-shell-send-region (point-at-bol) (point-at-eol))
