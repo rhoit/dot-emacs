@@ -4,6 +4,12 @@
 ;;======================================================================
 ;; CONFIGURE STUFFS
 
+(set-language-environment "UTF-8")
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 (column-number-mode 1) ; show column no in modline
 
 ;; highlight entire bracket expression
@@ -58,6 +64,9 @@
 
 ;; keybinds
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-w"))
+
+(global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key [f5] 'toggle-bars-view)
 (global-set-key [f6] 'toggle-truncate-lines)
@@ -111,6 +120,7 @@ See `sort-regexp-fields'."
 ;; PROGRAMMING MODES
 
 ;; declaration
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default py-indent-offset 4)
 
@@ -130,8 +140,37 @@ See `sort-regexp-fields'."
 (add-hook 'prog-mode-hook 'nuke_traling)
 (add-hook 'prog-mode-hook 'toggle-truncate-lines)
 
+;;----------------------------------------------------------------------
+;; CC-mode indentation
+;; http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
+
+(add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
+(require 'cc-mode)
+(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+
 ;;======================================================================
 ;; INBUILT PLUGINS
+
+;;----------------------------------------------------------------------
+(defun mwheel-scroll-all-function-all (func arg)
+  (if scroll-all-mode
+      (save-selected-window
+        (walk-windows
+         (lambda (win)
+           (select-window win)
+           (condition-case nil
+               (funcall func arg)
+             (error nil)))))
+    (funcall func arg)))
+
+(defun mwheel-scroll-all-scroll-up-all (arg)
+  (mwheel-scroll-all-function-all 'scroll-up arg))
+
+(defun mwheel-scroll-all-scroll-down-all (arg)
+  (mwheel-scroll-all-function-all 'scroll-down arg))
+
+(setq mwheel-scroll-up-function 'mwheel-scroll-all-scroll-up-all)
+(setq mwheel-scroll-down-function 'mwheel-scroll-all-scroll-down-all)
 
 ;;----------------------------------------------------------------------
 ;; Interactively Do Things [IDO]
@@ -158,9 +197,6 @@ See `sort-regexp-fields'."
 ;; http://elpa.gnu.org/packages/nlinum-1.1.el
 (require 'nlinum)
 (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
-
-;; TESTING: using default
-;; (add-hook 'find-file-hook (lambda () (linum-mode 1)))
 
 ;;----------------------------------------------------------------------
 ;; hideshowvis mode
@@ -239,9 +275,9 @@ See `sort-regexp-fields'."
 ;;----------------------------------------------------------------------
 ;; jedi
 ;; http://tkf.github.io/emacs-jedi/
-;; (autoload 'jedi:setup "jedi" nil t)
-;; (add-hook 'python-mode-hook 'jedi:setup)
-;; (setq jedi:complete-on-dot t) ; optional
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t) ; optional
 ;; (setq jedi:setup-keys t) ; optional
 
 ;;----------------------------------------------------------------------
@@ -356,6 +392,7 @@ See `sort-regexp-fields'."
 ;; markdown mode
 (setq auto-mode-alist
       (cons '("\.md" . markdown-mode) auto-mode-alist))
+;; (add-hook 'find-file-hooks 'turn-on-flyspell)
 ;; (put 'set-goal-column 'disabled nil)
 
 ;;----------------------------------------------------------------------
@@ -369,6 +406,48 @@ See `sort-regexp-fields'."
 ;; (interactive
 ;; (list (gud-query-cmdline pdb-path
 ;; (file-name-nondirectory buffer-file-name)))))
+
+;;----------------------------------------------------------------------
+;; ess style exection for python
+(setq selection_flag nil)
+(defun ess-style-py-execution ()
+  "Call python-shell with selected region or current line (if none selected)"
+  (interactive)
+  ;; # for the marked section
+  (if (and transient-mark-mode mark-active)
+      (progn ;true
+          (python-shell-send-region (point) (mark))
+          (if selection_flag ;; flag to continue the run mode :D
+              (progn
+                (deactivate-mark)
+                (setq selection_flag nil)))
+          (return)))
+
+  ;; auto select the section for execution to avoid error
+  (if (string-match ":[\t\n ]*$" (thing-at-point 'line))
+      (progn
+        (beginning-of-visual-line)
+        (set-mark-command nil)
+        (setq selection_flag t)
+        (if (re-search-forward "\n\n[^ \t]*?" (point-max) t)
+            (previous-line)
+            (end-of-buffer))
+        (return)))
+
+  ;; # for un-marked section
+  (if (string-match "^[#\n]" (thing-at-point 'line))
+      ;; check validity of current line
+      (progn
+        (search-forward-regexp "^[^\n\t ]+")
+        (end-of-visual-line)
+        (return)))
+
+  (python-shell-send-region (point-at-bol) (point-at-eol))
+  (re-search-forward "[^\n\t ]+")
+  (end-of-visual-line))
+
+(add-hook 'python-mode-hook
+          (lambda () (local-set-key (kbd "<C-return>") 'ess-style-py-execution)))
 
 ;;----------------------------------------------------------------------
 ;; etags-select
@@ -491,24 +570,8 @@ otherwise raises an error."
 ;; TESTING PLUGINS
 
 ;;----------------------------------------------------------------------
-;; CC-mode indentation
-;; http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
-;; (setq-default c-basic-offset 4
-;; 	      tab-width 4
-;; 	      indent-tabs-mode t)
-
-(setq-default tab-width 4)
-(add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
-(require 'cc-mode)
-(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-
-;; (defun my-make-CR-do-indent ()
-;;  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
-;; (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
-
-;;----------------------------------------------------------------------
 ;; ansi-color sequence for complitaion mode
-;; (add-to-list 'load-path "~/.emacs.d/colors")
+(add-to-list 'load-path "~/.emacs.d/00testing/colors")
 (require 'ansi-color)
 (defun colorize-compilation-buffer ()
   (toggle-read-only)
@@ -517,36 +580,13 @@ otherwise raises an error."
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 ;;----------------------------------------------------------------------
-;; php-mode
-;; http://www.emacswiki.org/emacs/download/php-mode-improved.el
-;; (autoload 'php-mode "php-mode-improved.el" "Php mode." t)
-;; (setq auto-mode-alist
-;;       (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
-
-;;----------------------------------------------------------------------
 ;; python-info-look [C-h S]
 ;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
 ;; (require 'pydoc-info)
 ;; (require 'info-look)
 
 ;;----------------------------------------------------------------------
-;; ide-skel
-;; http://www.emacswiki.org/emacs/download/ide-skel.el
-;; (require 'ide-skel)
-;; (global-set-key [f4] 'ide-skel-proj-find-files-by-regexp)
-;; (global-set-key [f6] 'ide-skel-proj-grep-files-by-regexp)
-;; (global-set-key [f9] 'ide-skel-toggle-left-view-window)
-;; (global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
-;; (global-set-key [f12] 'ide-skel-toggle-right-view-window)
-
-;; TODO: invert color
-;; (defvar hexcolour-keywords
-;;   '(("#[abcdefABCDEF[:digit:]]\\{6\\}"
-;; 	 (0 (put-text-property (match-beginning 0)
-;; 						   (match-end 0)
-;; 						   'face (list :background
-;; 									   (match-string-no-properties 0)))))))
-
+;; html-mode hex value show color
 (defvar hexcolour-keywords
   '(("#[abcdef[:digit:]]\\{3,6\\}"
 	 (0 (let ((colour (match-string-no-properties 0)))
@@ -577,18 +617,9 @@ otherwise raises an error."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
- '(custom-safe-themes (quote ("3c9d994e18db86ae397d077b6324bfdc445ecc7dc81bb9d528cd9bba08c1dac1" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" default)))
  '(el-get-git-shallow-clone t)
- '(fci-rule-color "#383838")
  '(inhibit-startup-screen t)
- '(smooth-scroll/vscroll-step-size 1)
- '(tabbar-background-color "dim gray")
- '(uniquify-buffer-name-stylex (quote forward) nil (uniquify))
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3"))
-(and window-system (server-start))
+)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -611,3 +642,8 @@ otherwise raises an error."
  '(markdown-header-face-6 ((t (:weight bold))) t)
  '(show-paren-match ((t (:inverse-video t))))
  '(which-func ((t (:inherit mode-line)))))
+
+;;----------------------------------------------------------------------
+;; LFG mode
+;; (setq xle-buffer-process-coding-system 'utf-8)
+;; (load-library "/opt/xle/emacs/lfg-mode")
