@@ -243,20 +243,6 @@ See `sort-regexp-fields'."
 (require 'sublimity-map)
 ;; (sublimity-global-mode)
 
-;;----------------------------------------------------------------------
-;; smart-cursor-color-mode
-;; (add-to-list 'load-path "~/.emacs.d/smart-cursor-color-mode")
-;; (require 'smart-cursor-color-mode)
-;; (setq smart-cursor-color-mode t)
-
-;;----------------------------------------------------------------------
-;; auto-dim-buffer
-(add-to-list 'load-path "~/.emacs.d/00testing/auto-dim-other-buffers.el")
-(require 'auto-dim-other-buffers)
-(add-hook 'after-init-hook (lambda ()
-      (when (fboundp 'auto-dim-other-buffers-mode)
-        (auto-dim-other-buffers-mode t))))
-
 ;;======================================================================
 ;; EL-GET Section
 
@@ -571,6 +557,15 @@ otherwise raises an error."
 ;;======================================================================
 ;; TESTING PLUGINS
 
+
+;;----------------------------------------------------------------------
+;; auto-dim-buffer
+(add-to-list 'load-path "~/.emacs.d/00testing/auto-dim-other-buffers.el")
+(require 'auto-dim-other-buffers)
+(add-hook 'after-init-hook (lambda ()
+      (when (fboundp 'auto-dim-other-buffers-mode)
+        (auto-dim-other-buffers-mode t))))
+
 ;;----------------------------------------------------------------------
 ;; ansi-color sequence for complitaion mode
 (add-to-list 'load-path "~/.emacs.d/00testing/colors")
@@ -580,12 +575,6 @@ otherwise raises an error."
   (ansi-color-apply-on-region (point-min) (point-max))
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-
-;;----------------------------------------------------------------------
-;; python-info-look [C-h S]
-;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
-;; (require 'pydoc-info)
-;; (require 'info-look)
 
 ;;----------------------------------------------------------------------
 ;; html-mode hex value show color
@@ -610,6 +599,18 @@ otherwise raises an error."
   (interactive)
   (font-lock-add-keywords nil hexcolour-keywords))
 (put 'scroll-left 'disabled nil)
+
+;;----------------------------------------------------------------------
+;; smart-cursor-color-mode
+;; (add-to-list 'load-path "~/.emacs.d/smart-cursor-color-mode")
+;; (require 'smart-cursor-color-mode)
+;; (setq smart-cursor-color-mode t)
+
+;;----------------------------------------------------------------------
+;; python-info-look [C-h S]
+;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
+;; (require 'pydoc-info)
+;; (require 'info-look)
 
 ;;======================================================================
 ;; CUSTOMIZE
