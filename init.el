@@ -68,9 +68,10 @@
 
 (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
 (global-set-key (kbd "C-z") 'undo)
-(global-set-key [f5] 'toggle-bars-view)
+(global-set-key [f5] '(lambda() (interactive) (load-file "~/.emacs.d/init.el")))
 (global-set-key [f6] 'toggle-truncate-lines)
 (global-set-key [f9] 'speedbar)
+(global-set-key [f12] 'toggle-bars-view)
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [(control ?+)] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
