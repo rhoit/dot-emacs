@@ -1,5 +1,9 @@
+;;======================================================================
+;; emacs config file
+
 (setq user-full-name    "Rhoit Man Amatya"
       user-mail-address "rho.rhoit@gmail.com")
+
 
 ;;======================================================================
 ;; CONFIGURE STUFFS
@@ -12,6 +16,8 @@
 
 (column-number-mode 1) ; show column no in modline
 
+(global-hl-line-mode) ; highlight current line
+
 ;; highlight entire bracket expression
 (setq show-paren-style 'expression)
 (show-paren-mode 1)
@@ -23,6 +29,9 @@
 ;; backup configuration
 (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
 (setq make-backup-files nil)
+
+;; getting def var and path if switching to interactive mode
+;; (setq shell-command-switch "-ic")
 
 ;; (setq auto-save-default nil)
 (delete-selection-mode 1)
@@ -37,20 +46,19 @@
 
 ;; mode set
 (setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
 
 ;;======================================================================
 ;; UI
 
-;; window
-(add-to-list 'default-frame-alist '(height . 39))
-(add-to-list 'default-frame-alist '(width . 104))
-
-;; UI elements
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
-(global-visual-line-mode t)
+
+;; window
+(add-to-list 'default-frame-alist '(height . 39))
+(add-to-list 'default-frame-alist '(width . 104))
 
 (defun toggle-bars-view()
   (interactive)
@@ -63,11 +71,12 @@
   (winner-mode 1))
 
 ;; keybinds
-(global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "C-w"))
+(when window-system ;; make C-z as normal-undo, C-_ is always there :)
+  (global-unset-key (kbd "C-z"))
+  (global-set-key (kbd "C-z") 'undo-only))
 
+(global-unset-key (kbd "C-w"))
 (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
-(global-set-key (kbd "C-z") 'undo)
 (global-set-key [f5] '(lambda() (interactive) (load-file "~/.emacs.d/init.el")))
 (global-set-key [f6] 'toggle-truncate-lines)
 (global-set-key [f9] 'speedbar)
@@ -91,6 +100,7 @@
 ;; Custom Features
 ;;----------------------------------------------------------------------
 ;; Duplicate Lines
+;; TODO: write this again seem really messed up
 (defun duplicate-current-line()
   (interactive)
   (beginning-of-line nil)
@@ -257,7 +267,8 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; themes
-(load-theme 'wombat t)
+(when window-system
+  (load-theme 'wombat t))
 
 ;;----------------------------------------------------------------------
 ;; jedi
@@ -297,10 +308,10 @@ See `sort-regexp-fields'."
 ;; (require 'tabbar)
 
 ;; (add-to-list 'load-path  "~/.emacs.d/tabbar/")
-
-(load "~/.emacs.d/plug-ins/config/tabbar.cfg.el")
-(setq tabbar-ruler-global-tabbar t) ; If you want tabbar
-(require 'tabbar-ruler)
+(when window-system
+  (load "~/.emacs.d/plug-ins/config/tabbar.cfg.el")
+  (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
+  (require 'tabbar-ruler))
 
 ;;----------------------------------------------------------------------
 ;; auto-complete
@@ -345,8 +356,9 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; multiple cursor
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+(when window-system
+  (require 'multiple-cursors)
+  (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
 
 ;;----------------------------------------------------------------------
 ;; ibus input method
@@ -407,6 +419,7 @@ See `sort-regexp-fields'."
     (call-interactively 'run-python)
     (other-window 1))
 
+  ;; execute the selected region
   (when (and transient-mark-mode mark-active)
     (python-shell-send-region (point) (mark))
     (when selection_flag ;; flag to continue the run mode :D
@@ -415,7 +428,7 @@ See `sort-regexp-fields'."
       (setq selection_flag nil))
     (return))
 
-  ;; auto select the section for execution to avoid error
+  ;; auto select the section
   (when (string-match ":[\t\n ]*$" (thing-at-point 'line))
     (beginning-of-visual-line)
     (set-mark-command nil)
@@ -432,8 +445,8 @@ See `sort-regexp-fields'."
         (buffer-substring
          (line-beginning-position) (line-end-position)))
 
+  ;; check validity of current line
   (when (string-match "^[#\n]" (thing-at-point 'line))
-    ;; check validity of current line
     (search-forward-regexp "^[^\n\t ]+")
     (end-of-line)
     (return))
@@ -445,29 +458,33 @@ See `sort-regexp-fields'."
     (end-of-line)
     (return))
 
-  (when (string= "echo_off" coding)
+  (when coding
     (python-shell-send-region (point-at-bol) (point-at-eol))
     (return))
 
-  ;; (funcall (key-binding (kbd "RET")))
   ;; TODO: behave according to the position like coding mode, inspection mode, debug mode
-  (next-line)
+  ;; executing while coding
+  (if (= (point-max) (point))
+    (funcall (key-binding (kbd "RET")))
+    (next-line))
+
   (beginning-of-visual-line)
 
   (with-current-buffer "*Python*"
     (goto-char (point-max))
     (insert current_line)
-    (funcall (key-binding (kbd "RET")))))
+    (funcall (key-binding (kbd "RET")))
+    (end-of-buffer)))
 
 (add-hook 'python-mode-hook
           (lambda () (local-set-key (kbd "<C-return>") 'py-execution)))
 
 (defun py-execution-echo-off()
   (interactive)
-  (funcall py-execution "echo-off"))
+  (py-execution t))
 
 (add-hook 'python-mode-hook
-          (lambda () (local-set-key (kbd "<M-return>") 'py-execution-echo-off)))
+          (lambda() (local-set-key (kbd "<M-return>") 'py-execution-echo-off)))
 
 ;;----------------------------------------------------------------------
 ;; etags-select
@@ -596,11 +613,12 @@ otherwise raises an error."
 
 ;;----------------------------------------------------------------------
 ;; auto-dim-buffer
-(add-to-list 'load-path "~/.emacs.d/00testing/auto-dim-other-buffers.el")
-(require 'auto-dim-other-buffers)
-(add-hook 'after-init-hook (lambda ()
-      (when (fboundp 'auto-dim-other-buffers-mode)
-        (auto-dim-other-buffers-mode t))))
+(when window-system
+  (add-to-list 'load-path "~/.emacs.d/00testing/auto-dim-other-buffers.el")
+  (require 'auto-dim-other-buffers)
+  (add-hook 'after-init-hook (lambda ()
+                               (when (fboundp 'auto-dim-other-buffers-mode)
+                                 (auto-dim-other-buffers-mode t)))))
 
 ;;----------------------------------------------------------------------
 ;; ansi-color sequence for complitaion mode
@@ -657,30 +675,31 @@ otherwise raises an error."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(el-get-git-shallow-clone t)
- '(inhibit-startup-screen t)
-)
+ '(inhibit-startup-screen t))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(font-lock-comment-face ((t (:slant oblique))))
- '(font-lock-function-name-face ((t (:foreground "#cae682" :slant oblique :weight bold))))
- '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
- '(font-lock-string-face ((t (:foreground "gold2" :weight semi-light :family "Source Code Pro"))))
- '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
- '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
- '(highlight-indentation-face ((t (:background "olive drab"))))
- '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
- '(markdown-header-face-1 ((t (:height 1.8))) t)
- '(markdown-header-face-2 ((t (:height 1.6))) t)
- '(markdown-header-face-3 ((t (:height 1.4))) t)
- '(markdown-header-face-4 ((t (:height 1.2))) t)
- '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
- '(markdown-header-face-6 ((t (:weight bold))) t)
- '(show-paren-match ((t (:inverse-video t))))
- '(which-func ((t (:inherit mode-line)))))
+(when window-system
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(font-lock-comment-face ((t (:slant oblique))))
+   '(font-lock-function-name-face ((t (:foreground "#cae682" :slant oblique :weight bold))))
+   '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
+   '(font-lock-string-face ((t (:foreground "gold2" :weight semi-light :family "Source Code Pro"))))
+   '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
+   '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
+   '(highlight-indentation-face ((t (:background "olive drab"))))
+   '(hl-line ((t (:background "gray9"))))
+   '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
+   '(markdown-header-face-1 ((t (:height 1.8))) t)
+   '(markdown-header-face-2 ((t (:height 1.6))) t)
+   '(markdown-header-face-3 ((t (:height 1.4))) t)
+   '(markdown-header-face-4 ((t (:height 1.2))) t)
+   '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
+   '(markdown-header-face-6 ((t (:weight bold))) t)
+   '(show-paren-match ((t (:inverse-video t))))
+   '(which-func ((t (:inherit mode-line))))))
 
 ;;----------------------------------------------------------------------
 ;; LFG mode
