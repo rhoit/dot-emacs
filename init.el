@@ -138,7 +138,7 @@ See `sort-regexp-fields'."
 (defun watch-words ()
   (interactive)
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|BUG\\|HACK\\|DONE\\|TESTING\\|WISH\\|NOTE\\)"
+   nil '(("\\<\\(FIX\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WISH\\|NOTE\\)"
           1 font-lock-warning-face t))))
 
 (defun nuke_traling ()
@@ -247,11 +247,11 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; sublime mode
-(setq sublimity-map-active-region 'hl-line)
-(add-to-list 'load-path "~/.emacs.d/repo/sublimity")
-(require 'sublimity)
-(require 'sublimity-scroll)
-(require 'sublimity-map)
+;; (setq sublimity-map-active-region 'hl-line)
+;; (add-to-list 'load-path "~/.emacs.d/repo/sublimity")
+;; (require 'sublimity)
+;; (require 'sublimity-scroll)
+;; (require 'sublimity-map))
 ;; (sublimity-global-mode)
 
 ;;======================================================================
@@ -325,34 +325,36 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; yasnippet
-(require 'yasnippet)
-(yas-reload-all)
-(add-hook 'prog-mode-hook
-          '(lambda ()
-             (yas-minor-mode)))
+(when window-system
+  (require 'yasnippet)
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook
+            '(lambda ()
+               (yas-minor-mode))))
 
 ;;----------------------------------------------------------------------
 ;; Emacs Speaks Statistics
-;; (setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
 (defun ess-loader()
-  ;; (add-to-list 'load-path "~/.emacs.d/repo/ESS/lisp")
   (require 'ess-site)
-  (r-mode t)
-)
-(setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist))
+  (r-mode t))
+(when window-system
+  (setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist)))
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX
-(load "auctex.el" t)
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-;; ;; (load "preview-latex.el" nil t t)
-;; (add-hook 'LaTeX-mode-hook 'watch-words)
+(when window-system
+  (load "auctex.el" t)
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil)
+  ;; ;; (load "preview-latex.el" nil t t)
+  ;; (add-hook 'LaTeX-mode-hook 'watch-words)
+  )
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX autocomplete
-(require 'auto-complete-auctex)
+(when window-system
+  (require 'auto-complete-auctex))
 
 ;;----------------------------------------------------------------------
 ;; multiple cursor
