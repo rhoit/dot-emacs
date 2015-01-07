@@ -1,4 +1,8 @@
+.mc-lists.el
+00testing/*
+_*
 ac-comphist.dat
 auto-save-list
-_*
+eshell/*
+pydoc-info/*
 session.*
