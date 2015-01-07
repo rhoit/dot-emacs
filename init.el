@@ -1,5 +1,5 @@
 ;;======================================================================
-;; emacs config file
+;; emacs config file for 24.4
 
 (setq user-full-name    "Rhoit Man Amatya"
       user-mail-address "rho.rhoit@gmail.com")
@@ -23,8 +23,8 @@
 (show-paren-mode 1)
 
 ;; make buffer names sensible unique
+;; (require 'uniquify) ;; [ inbuilt: package ] [by default >= 24.4.1 ]
 (setq uniquify-buffer-name-style 'forward)
-(require 'uniquify) ;; [ inbuilt: package ]
 
 ;; backup configuration
 (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
@@ -138,7 +138,7 @@ See `sort-regexp-fields'."
 (defun watch-words ()
   (interactive)
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WISH\\|NOTE\\)"
+   nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|NOTE\\)"
           1 font-lock-warning-face t))))
 
 (defun nuke_traling ()
@@ -212,11 +212,11 @@ See `sort-regexp-fields'."
 ;;----------------------------------------------------------------------
 ;; hideshowvis mode
 ;; http://www.emacswiki.org/emacs/download/hideshowvis.el
-;; (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
-;; (autoload 'hideshowvis-minor-mode
-;;   "hideshowvis"
-;;   "Will indicate regions foldable with hideshow in the fringe."
-;;   'interactive)
+(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+(autoload 'hideshowvis-minor-mode
+  "hideshowvis"
+  "Will indicate regions foldable with hideshow in the fringe."
+  'interactive)
 
 ;; (dolist (hook (list 'emacs-lisp-mode-hook
 ;;                     'c++-mode-hook
@@ -225,11 +225,6 @@ See `sort-regexp-fields'."
 ;; 			  )
 ;;   (add-hook hook 'hideshowvis-enable))
 ;; (add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
-
-;;----------------------------------------------------------------------
-;; indent-hint
-;; (load "~/.emacs.d/plug-ins/indent-hint.el")
-;; (indent-hint t)
 
 ;;======================================================================
 ;; REPO PLUGINS
@@ -288,11 +283,6 @@ See `sort-regexp-fields'."
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;----------------------------------------------------------------------
-;; highlight indentation
-;; other color: "#aaeeba"
-(add-hook 'prog-mode-hook 'highlight-indentation-mode)
-
-;;----------------------------------------------------------------------
 ;; smooth-scroll
 (require 'smooth-scroll)
 ;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
@@ -331,6 +321,14 @@ See `sort-regexp-fields'."
   (add-hook 'prog-mode-hook
             '(lambda ()
                (yas-minor-mode))))
+
+
+;;----------------------------------------------------------------------
+;; android mode
+;; http://blog.refu.co/?p=1242
+(add-to-list 'load-path "~/opt/android-mode")
+(require 'android-mode)
+(custom-set-variables '(android-mode-sdk-dir "/opt/android"))
 
 ;;----------------------------------------------------------------------
 ;; Emacs Speaks Statistics
@@ -607,6 +605,23 @@ otherwise raises an error."
 
 ;;======================================================================
 ;; TESTING PLUGINS
+
+;;----------------------------------------------------------------------
+;; indent-hint
+;; (load "~/.emacs.d/plug-ins/indent-hint.el")
+;; (indent-hint t)
+
+;;----------------------------------------------------------------------
+;; highlight indentation
+;; other color: "#aaeeba"
+;; ver1
+(load "~/.emacs.d/00testing/hdent-antonj/highlight-indentation.el")
+(add-hook 'prog-mode-hook 'highlight-indentation-mode)
+;; ver2
+;; (add-to-list 'load-path "~/.emacs.d/00testing/hdent-mgalgs/")
+;; (require 'indent-hints)
+;; (indent-hints-global-mode)
+
 
 ;;----------------------------------------------------------------------
 ;; isend-mode
