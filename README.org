@@ -2,17 +2,15 @@
 
 my emacs config!
 
-> *DISCLAIMER* Author will be not responsible for the harm cause done by using this configuration, Make Sure You have the backup before applying these settings
-
-> *NOTE* I have stop maintaing the packages on my own except one with the modifications, since in found el-get.
-> you will need el-get https://github.com/dimitri/el-get
-> how to install http://tapoueh.org/emacs/el-get.html
-
+> *DISCLAIMER* AUTHOR will be not responsible for the harm cause done
+by using this config, its not likely to harm (but there are always
+some assholes lying around to blame). *MAKE SURE YOU HAVE THE BACKUP*
 
 #+ATTR_HTML: title="screenshot"
 [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot_01.png]]
 
-** getting it
+** Getting it
+
 #+begin_src shell
 git clone --recursive https://github.com/rhoit/dot-emacs
 #+end_src
@@ -28,16 +26,33 @@ git submodule update
 #+end_src
 
 *** to build
+
+> *NOTE* Build is kinda broken for now. Will *fix it some day*, not like
+I have to install config every day! So STFU!
+
 #+begin_src shell
   ./configure
-  ./main.sh
+  make
+  make install
 #+end_src
 
-** structure
+> *NOTE* you might need to do some el-get [[http://tapoueh.org/emacs/el-get.html][config]], yourself its too
+much work to make the auto-installer (send me patch if you did).
 
-00testing/ - where new things comes
-bak/ - old conf compressed archives
-el-get/ - stuff managed by el-get
-plugins/ - independent plugin beyond el-get
-repo/ - independent scripts in github repos
 
+** Structure
+
+dot-emacs
+├── el-get                 # package manager linux addicts
+├── plug-ins               # packages with mods and config
+│   ├── config             # custom config of packages
+│   │   ├── compile.cfg.el
+│   │   └── tabbar.cfg.el
+│   ├── ...
+:   :
+│   └── tabbar-ruler.el
+├── ...
+:
+├── repo                   # submoduled packages not yet in el-get
+└── snippets               # ya-snippet stuffs
+    └── python-mode
