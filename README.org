@@ -1,34 +1,33 @@
-* dot-emacs
+#+TITLE:       dot-emacs
+#+DESCRIPTION: my emacs config!
 
-my emacs config!
-
-> *DISCLAIMER* AUTHOR will be not responsible for the harm cause done
-by using this config, its not likely to harm (but there are always
-some assholes lying around to blame). *MAKE SURE YOU HAVE THE BACKUP*
+*DISCLAIMER* AUTHOR will _not_ be _responsible_ for the _harm_ cause by
+using this config, its unlikely to harm (but there are always some
+assholes lying around to blame) so *MAKE SURE YOU HAVE THE BACKUP*
 
 #+ATTR_HTML: title="screenshot"
 [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot_01.png]]
 
-** Getting it
+** 1. Getting it
 
 #+begin_src shell
-git clone --recursive https://github.com/rhoit/dot-emacs
+  git clone --recursive https://github.com/rhoit/dot-emacs /path/to/dot-emacs
 #+end_src
 
-*** oops!
-if you accidently forgot --recursive then
+*** 1.1 oops!
+If you accidently forgot =--recursive= then
 
 #+begin_src shell
-git clone https://github.com/rhoit/dot-emacs
-cd dot-emacs
-git submodule init
-git submodule update
+  cd /path/to/dot-emacs
+  git submodule init
+  git submodule update
 #+end_src
 
-*** to build
+*** 1.2 How to build
 
-> *NOTE* Build is kinda broken for now. Will *fix it some day*, not like
-I have to install config every day! So STFU!
+*NOTE*: Build is kinda broken. Will fix it some day. Might need to
+configure [[http://tapoueh.org/emacs/el-get.html][el-get]] yourself, its too much work to make the installer
+(send me patch if you did).
 
 #+begin_src shell
   ./configure
@@ -36,23 +35,21 @@ I have to install config every day! So STFU!
   make install
 #+end_src
 
-> *NOTE* you might need to do some el-get [[http://tapoueh.org/emacs/el-get.html][config]], yourself its too
-much work to make the auto-installer (send me patch if you did).
+** 2. Structure
 
-
-** Structure
-
-dot-emacs
-├── el-get                 # package manager linux addicts
-├── plug-ins               # packages with mods and config
-│   ├── config             # custom config of packages
-│   │   ├── compile.cfg.el
-│   │   └── tabbar.cfg.el
-│   ├── ...
-:   :
-│   └── tabbar-ruler.el
-├── ...
-:
-├── repo                   # submoduled packages not yet in el-get
-└── snippets               # ya-snippet stuffs
-    └── python-mode
+#+BEGIN_EXAMPLE
+  dot-emacs
+  ├── el-get                 # pacman
+  ├── plug-ins               # packages with mods and config
+  │   ├── config             # custom config of packages
+  │   │   ├── compile.cfg.el
+  │   │   └── tabbar.cfg.el
+  │   ├── ...
+  :   :
+  │   └── tabbar-ruler.el
+  ├── ...
+  :
+  ├── repo                   # packages not yet in el-get as *submodules*
+  └── snippets               # ya-snippet stuffs
+      └── python-mode
+#+END_EXAMPLE
