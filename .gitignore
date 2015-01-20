@@ -1,9 +1,10 @@
-.mc-lists.el
-00testing/*
 _*
+00testing/*
 ac-comphist.dat
 auto-save-list
+elpa
 eshell/*
+.mc-lists.el
 pydoc-info/*
 session.*
-elpa
+smex-items
