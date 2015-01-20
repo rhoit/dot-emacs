@@ -1,7 +1,7 @@
 ;;======================================================================
 ;; emacs config file for 24.4
 
-(setq user-full-name    "Rhoit Man Amatya"
+(setq user-full-name    "rhoit"
       user-mail-address "rho.rhoit@gmail.com")
 
 
@@ -48,6 +48,36 @@
 (setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
+
+;; org-mode stuffs
+;; https://yoo2080.wordpress.com/2013/08/24/changing-the-number-format-for-section-headings-in-org-mode-html-export/
+(defun my-html-filter-headline-yesdot (text backend info)
+  "Ensure dots in headlines."
+  (when (org-export-derived-backend-p backend 'html)
+    (save-match-data
+      (when (let ((case-fold-search t))
+              (string-match (rx (group "<span class=\"section-number-" (+ (char digit)) "\">"
+                                       (+ (char digit ".")))
+                                (group "</span>"))
+                            text))
+        (replace-match "\\1.\\2"
+                       t nil text)))))
+
+(eval-after-load 'ox
+  '(progn
+     (add-to-list 'org-export-filter-headline-functions
+                  'my-html-filter-headline-yesdot)))
+
+;; http://kdr2.com/tech/emacs/1405-orgmode-checkbox-unicode.html
+(defun unicode-for-org-html-checkbox (checkbox)
+  "Format CHECKBOX into Unicode Characters."
+  (case checkbox (on "☑") ;&#x22A0
+        (off "☐") ;&#x25FB;")
+        (trans "?") ;&#x22A1;")
+        (t "")))
+(defadvice org-html-checkbox (around unicode-checkbox activate)
+  (setq ad-return-value (unicode-for-org-html-checkbox (ad-get-arg 0))))
+
 
 ;;======================================================================
 ;; UI
@@ -193,6 +223,7 @@ See `sort-regexp-fields'."
       ido-auto-merge-work-directories-length nil
       ido-create-new-buffer 'always
       ido-use-filename-at-point 'guess
+      ;; ido-default-file-method 'select-window
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
@@ -266,6 +297,12 @@ See `sort-regexp-fields'."
   (load-theme 'wombat t))
 
 ;;----------------------------------------------------------------------
+;; smex
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+
+;;----------------------------------------------------------------------
 ;; jedi
 ;; http://tkf.github.io/emacs-jedi/
 (autoload 'jedi:setup "jedi" nil t)
@@ -304,7 +341,17 @@ See `sort-regexp-fields'."
   (require 'tabbar-ruler))
 
 ;;----------------------------------------------------------------------
+;; yasnippet
+(when window-system
+  (require 'yasnippet)
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook
+            '(lambda ()
+               (yas-minor-mode))))
+
+;;----------------------------------------------------------------------
 ;; auto-complete
+;; Note: for ya-snippet to work put it after it
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
 (require 'auto-complete-config)
 (ac-config-default)
@@ -313,14 +360,20 @@ See `sort-regexp-fields'."
 ;; (ac-flyspell-workaround)
 ;; (global-auto-complete-mode t)
 
-;;----------------------------------------------------------------------
-;; yasnippet
-(when window-system
-  (require 'yasnippet)
-  (yas-reload-all)
-  (add-hook 'prog-mode-hook
-            '(lambda ()
-               (yas-minor-mode))))
+
+;; play well with org-mode | yasnippet | auto-complete
+;; BUG: reload Required press [F5]
+;; http://orgmode.org/manual/Conflicts.html
+(defun yas/org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (auto-complete-mode 1)
+            (make-variable-buffer-local 'yas/trigger-key)
+            (setq yas/trigger-key [tab])
+            (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+            (define-key yas/keymap [tab] 'yas/next-field)))
 
 
 ;;----------------------------------------------------------------------
@@ -622,10 +675,15 @@ otherwise raises an error."
 ;; (require 'indent-hints)
 ;; (indent-hints-global-mode)
 
+;;----------------------------------------------------------------------
+;; flx-ido
+;; (add-to-list 'load-path "~/.emacs.d/00testing/flx/")
+;; (require 'flx-ido)
+;; (flx-ido-mode 1)
 
 ;;----------------------------------------------------------------------
 ;; isend-mode
-(add-to-list 'load-path "~/.emacs.d/00testing/isend-mode.el")
+(add-to-list 'load-path "~/.emacs.d/00testing/isend-mode/")
 (require 'isend)
 
 ;;----------------------------------------------------------------------
