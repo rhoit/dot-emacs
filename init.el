@@ -345,9 +345,16 @@ See `sort-regexp-fields'."
 (when window-system
   (require 'yasnippet)
   (yas-reload-all)
-  (add-hook 'prog-mode-hook
-            '(lambda ()
-               (yas-minor-mode))))
+  (add-hook 'prog-mode-hook 'yas-minor-mode-on))
+
+;; fix snippet exit
+;; https://github.com/capitaomorte/yasnippet/issues/459
+(add-hook 'org-mode-hook 'yas-minor-mode-on)
+
+;; indentation with heading and drawers
+;; https://github.com/capitaomorte/yasnippet/issues/362
+;; NOTE: commented because I haven't encountered yet
+;; (setq yas-indent-line 'fixed)
 
 ;;----------------------------------------------------------------------
 ;; auto-complete
@@ -355,6 +362,7 @@ See `sort-regexp-fields'."
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
 (require 'auto-complete-config)
 (ac-config-default)
+(add-hook 'org-mode-hook 'auto-complete-mode)
 
 ;; (ac-linum-workaround)
 ;; (ac-flyspell-workaround)
@@ -364,16 +372,15 @@ See `sort-regexp-fields'."
 ;; play well with org-mode | yasnippet | auto-complete
 ;; BUG: reload Required press [F5]
 ;; http://orgmode.org/manual/Conflicts.html
-(defun yas/org-very-safe-expand ()
-  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+(defun yas-org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas-expand)))
 
 (add-hook 'org-mode-hook
           (lambda ()
-            (auto-complete-mode 1)
-            (make-variable-buffer-local 'yas/trigger-key)
-            (setq yas/trigger-key [tab])
-            (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-            (define-key yas/keymap [tab] 'yas/next-field)))
+            (make-variable-buffer-local 'yas-trigger-key)
+            (setq yas-trigger-key [tab])
+            (add-to-list 'org-tab-first-hook 'yas-org-very-safe-expand)
+            (define-key yas/keymap [tab] 'yas-next-field)))
 
 
 ;;----------------------------------------------------------------------
