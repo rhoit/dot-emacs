@@ -157,28 +157,33 @@ See `sort-regexp-fields'."
   (interactive "*P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
-;;======================================================================
-;; PROGRAMMING MODES
-
-;; declaration
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq-default py-indent-offset 4)
-
+;;----------------------------------------------------------------------
+;; watch-words
 (defun watch-words ()
   (interactive)
   (font-lock-add-keywords
    nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|NOTE\\)"
           1 font-lock-warning-face t))))
 
+(add-hook 'prog-mode-hook 'watch-words)
+(add-hook 'org-mode 'watch-words)
+
+;;----------------------------------------------------------------------
+;; clean up trailing whitespaces
 (defun nuke_traling ()
   (add-hook 'write-file-hooks 'delete-trailing-whitespace)
   (add-hook 'before-save-hooks 'whitespace-cleanup)
 )
 
-(add-hook 'prog-mode-hook 'watch-words)
-(add-hook 'prog-mode-hook 'which-function-mode)
 (add-hook 'prog-mode-hook 'nuke_traling)
+
+;;======================================================================
+;; PROGRAMMING MODES
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default py-indent-offset 4)
+(add-hook 'prog-mode-hook 'which-function-mode)
 (add-hook 'prog-mode-hook 'toggle-truncate-lines)
 
 ;;----------------------------------------------------------------------
@@ -345,11 +350,8 @@ See `sort-regexp-fields'."
 (when window-system
   (require 'yasnippet)
   (yas-reload-all)
-  (add-hook 'prog-mode-hook 'yas-minor-mode-on))
-
-;; fix snippet exit
-;; https://github.com/capitaomorte/yasnippet/issues/459
-(add-hook 'org-mode-hook 'yas-minor-mode-on)
+  (add-hook 'prog-mode-hook 'yas-minor-mode-on)
+  (add-hook 'org-mode-hook 'yas-minor-mode-on))
 
 ;; indentation with heading and drawers
 ;; https://github.com/capitaomorte/yasnippet/issues/362
