@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: show
+# contributor: rho
+# key: show
+# --
+#+STARTUP: showall
+$0

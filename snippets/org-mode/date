@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: date
+# contributor: rho
+# key: date
+# --
+#+DATE: `(format-time-string "%A, %b %d %Y" (current-time))`

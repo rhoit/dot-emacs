@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: bang
+# contributor: rho
 # key: !
 # --
 #!/usr/bin/env python

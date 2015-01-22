@@ -1,5 +1,7 @@
-#+TITLE:       dot-emacs
+#+TITLE: dot-emacs
 #+DESCRIPTION: my emacs config!
+
+#+STARTUP: showall
 
 *DISCLAIMER* AUTHOR will _not_ be _responsible_ for the _harm_ cause by
 using this config, its unlikely to harm (but there are always some
@@ -9,47 +11,45 @@ assholes lying around to blame) so *MAKE SURE YOU HAVE THE BACKUP*
 [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot_01.png]]
 
 ** 1. Getting it
-
-#+begin_src shell
-  git clone --recursive https://github.com/rhoit/dot-emacs /path/to/dot-emacs
-#+end_src
+   #+BEGIN_SRC bash
+     $ git clone --recursive https://github.com/rhoit/dot-emacs /path/to/dot-emacs
+   #+END_SRC
 
 *** 1.1 oops!
-If you accidently forgot =--recursive= then
+    If you accidently forgot =--recursive= then
 
-#+begin_src shell
-  cd /path/to/dot-emacs
-  git submodule init
-  git submodule update
-#+end_src
+    #+BEGIN_SRC bash
+      $ cd /path/to/dot-emacs
+      $ git submodule init
+      $ git submodule update
+    #+END_SRC
 
 *** 1.2 How to build
 
-*NOTE*: Build is kinda broken. Will fix it some day. Might need to
-configure [[http://tapoueh.org/emacs/el-get.html][el-get]] yourself, its too much work to make the installer
-(send me patch if you did).
+    *NOTE*: Build is kinda broken. Will fix it some day. Might need to
+    configure [[http://tapoueh.org/emacs/el-get.html][el-get]] yourself, its too much work to make the installer
+    (send me patch if you did).
 
-#+begin_src shell
-  ./configure
-  make
-  make install
-#+end_src
+    #+BEGIN_SRC bash
+      $ ./configure
+      $ make
+      $ make install
+    #+END_SRC
 
 ** 2. Structure
-
-#+BEGIN_EXAMPLE
-  dot-emacs
-  ├── el-get                 # pacman
-  ├── plug-ins               # packages with mods and config
-  │   ├── config             # custom config of packages
-  │   │   ├── compile.cfg.el
-  │   │   └── tabbar.cfg.el
-  │   ├── ...
-  :   :
-  │   └── tabbar-ruler.el
-  ├── ...
-  :
-  ├── repo                   # packages not yet in el-get as *submodules*
-  └── snippets               # ya-snippet stuffs
-      └── python-mode
-#+END_EXAMPLE
+   #+BEGIN_EXAMPLE
+     dot-emacs
+     ├── el-get                 # pacman
+     ├── plug-ins               # packages with mods and config
+     │   ├── config             # custom config of packages
+     │   │   ├── compile.cfg.el
+     │   │   └── tabbar.cfg.el
+     │   ├── ...
+     :   :
+     │   └── tabbar-ruler.el
+     ├── ...
+     :
+     ├── repo                   # packages not yet in el-get as *submodules*
+     └── snippets               # ya-snippet stuffs
+         └── python-mode
+   #+END_EXAMPLE
