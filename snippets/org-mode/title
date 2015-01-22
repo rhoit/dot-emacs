@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: title
+# contributor: rho
+# key: title
+# --
+
+#+TITLE: ${1:title}
+$0
