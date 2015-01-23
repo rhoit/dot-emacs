@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: options
+# contributor: rho
+# key: opt
+# --
+#+OPTIONS: num:${1:t|0} toc:${2:nil,1..5} H:${3:1..5}
+$0
