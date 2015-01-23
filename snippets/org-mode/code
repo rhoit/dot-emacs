@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: code
+# contributor: rho
+# key: code
+# :prologue "exec 2>&1"
+# :epilogue
+# https://necromuralist.github.io/posts/org-babel-stderr-results/
+# https://www.orgmode.org/worg/org-contrib/babel/header-args.html
+# :verbatim don't stop in error
+# :results can have multiple option {
+# raw - make output org part
+# table - make table
+# }
+# :file name of the file
+# --
+
+#+NAME: $1
+#+HEADER: :var $2
+#+BEGIN_SRC ${3:lang} :dir ${4:working-dir} :results ${4:$$(yas-choose-value '("value" "output" "replace" "silent"))} :session $4
+  $0
+#+END_SRC
