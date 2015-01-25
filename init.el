@@ -47,9 +47,11 @@
 ;; mode set
 (setq auto-mode-alist (append '(("emacs" . emacs-lisp-mode)) auto-mode-alist))
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
 
 ;; org-mode stuffs
+(setq auto-mode-alist (append '((".org$" . org-mode)) auto-mode-alist))
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+
 ;; https://yoo2080.wordpress.com/2013/08/24/changing-the-number-format-for-section-headings-in-org-mode-html-export/
 (defun my-html-filter-headline-yesdot (text backend info)
   "Ensure dots in headlines."
@@ -75,6 +77,7 @@
         (off "☐") ;&#x25FB;")
         (trans "?") ;&#x22A1;")
         (t "")))
+
 (defadvice org-html-checkbox (around unicode-checkbox activate)
   (setq ad-return-value (unicode-for-org-html-checkbox (ad-get-arg 0))))
 
@@ -390,7 +393,6 @@ See `sort-regexp-fields'."
 ;; http://blog.refu.co/?p=1242
 (add-to-list 'load-path "~/opt/android-mode")
 (require 'android-mode)
-(custom-set-variables '(android-mode-sdk-dir "/opt/android"))
 
 ;;----------------------------------------------------------------------
 ;; Emacs Speaks Statistics
@@ -408,8 +410,10 @@ See `sort-regexp-fields'."
   (setq TeX-parse-self t)
   (setq-default TeX-master nil)
   ;; ;; (load "preview-latex.el" nil t t)
-  ;; (add-hook 'LaTeX-mode-hook 'watch-words)
   )
+
+;; (add-hook 'LaTeX-mode-hook 'watch-words)
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX autocomplete
@@ -758,15 +762,12 @@ otherwise raises an error."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(android-mode-sdk-dir "/opt/android")
  '(el-get-git-shallow-clone t)
  '(inhibit-startup-screen t))
 
 (when window-system
   (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
    '(font-lock-comment-face ((t (:slant oblique))))
    '(font-lock-function-name-face ((t (:foreground "#cae682" :slant oblique :weight bold))))
    '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
@@ -775,6 +776,7 @@ otherwise raises an error."
    '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
    '(highlight-indentation-face ((t (:background "olive drab"))))
    '(hl-line ((t (:background "gray9"))))
+   '(linum ((t (:inherit (shadow default) :height 108))))
    '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
    '(markdown-header-face-1 ((t (:height 1.8))) t)
    '(markdown-header-face-2 ((t (:height 1.6))) t)
