@@ -3,24 +3,17 @@
 ;| Convenience configuration for ``compile`` command.
 ;|
 ;| See the screencast:
-;|
-;|    |compile-screencast|_
-;|
 ;| .. |compile-screencast| image:: http://i3.ytimg.com/vi/ZnWN7htqT48/2.jpg?time=1371658070649
 ;| .. _compile-screencast: http://youtu.be/ZnWN7htqT48
 ;|
 ;| Features:
-;|
 ;| - auto-save file before compilation, instead of asking.
 ;| - modeline background color represents compilation process:
-;|
 ;|   - blue: compilation in progress
 ;|   - green:  compilation finished successfully
 ;|   - orange: compilation finished with warnnings
 ;|   - red: compilation finished with errors
-;|
-;|
-;| (new in version 0.20130327)
+
 
 ; References:
 ; - http://vwood.github.com/emacs-compile-on-save.html
@@ -47,7 +40,7 @@
 (defun modeline-set-color (color)
   "Colors the modeline"
   (interactive)
-  (if (and (>= emacs-major-version 24) (>= emacs-minor-version 3))
+  (if (>= emacs-major-version 24)
     (set-face-background 'mode-line color)
     (set-face-background 'modeline color)
     )
@@ -175,7 +168,6 @@
     (display-buffer "*compilation*"))
   (modeline-delayed-clean)
   )
-
 
 ;; (defun open-compilation-buffer()
 ;;   (interactive)

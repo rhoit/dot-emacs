@@ -1,5 +1,5 @@
 ;;======================================================================
-;; emacs config file for 24.4
+;; emacs config file for 25.0
 
 (setq user-full-name    "rhoit"
       user-mail-address "rho.rhoit@gmail.com")
@@ -70,16 +70,16 @@
      (add-to-list 'org-export-filter-headline-functions
                   'my-html-filter-headline-yesdot)))
 
+;; other hacks
 ;; http://kdr2.com/tech/emacs/1405-orgmode-checkbox-unicode.html
-(defun unicode-for-org-html-checkbox (checkbox)
-  "Format CHECKBOX into Unicode Characters."
-  (case checkbox (on "☑") ;&#x22A0
-        (off "☐") ;&#x25FB;")
-        (trans "?") ;&#x22A1;")
-        (t "")))
 
-(defadvice org-html-checkbox (around unicode-checkbox activate)
-  (setq ad-return-value (unicode-for-org-html-checkbox (ad-get-arg 0))))
+;; (add-to-list 'load-path "~/.emacs.d/el-get/00testing/org-mode/contrib/lisp")
+;; (load-file "~/.emacs.d/00testing/org-mode/contrib/lisp/org-export.el")
+;; (load-file "/home/rho/.emacs.d/00testing/org-mode/contrib/lisp/org-export-generic.el")
+;; (load-file "~/.emacs.d/00testing/org-mode/contrib/lisp/org-e-man.el")
+;; (org-install)
+;; (require 'org-export)
+;; (require 'org-e-man)
 
 
 ;;======================================================================
