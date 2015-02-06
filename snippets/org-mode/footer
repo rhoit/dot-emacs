@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: footer
+# contributor: rho
+# key: footer
+# --
+#+OPTIONS: html-postamble:${t|nil}
+$0
