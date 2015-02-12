@@ -15,7 +15,6 @@
   (server-start))
 
 (column-number-mode 1) ; show column no in modline
-
 (global-hl-line-mode) ; highlight current line
 
 ;; highlight entire bracket expression
@@ -237,6 +236,14 @@ See `sort-regexp-fields'."
       ido-max-prospects 10)
 
 ;;======================================================================
+;; CONFIG
+
+;; (when window-system
+;;   (load "~/.emacs.d/config/eye-candy.cfg.el"))
+
+
+
+;;======================================================================
 ;; PLUGINS
 (add-to-list 'load-path  "~/.emacs.d/plug-ins/")
 (add-to-list 'load-path  "~/.emacs.d/extra/")
@@ -270,7 +277,7 @@ See `sort-regexp-fields'."
 
 ;;----------------------------------------------------------------------
 ;; compile modline color theme
-(load "~/.emacs.d/plug-ins/config/compile.cfg.el")
+(load "~/.emacs.d/config/compile.cfg.el")
 
 ;;----------------------------------------------------------------------
 ;; Arch pkgbuild-mode
@@ -344,7 +351,7 @@ See `sort-regexp-fields'."
 
 ;; (add-to-list 'load-path  "~/.emacs.d/tabbar/")
 (when window-system
-  (load "~/.emacs.d/plug-ins/config/tabbar.cfg.el")
+  (load "~/.emacs.d/config/tabbar.cfg.el")
   (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
   (require 'tabbar-ruler))
 
@@ -764,6 +771,7 @@ otherwise raises an error."
  ;; If there is more than one, they won't work right.
  '(android-mode-sdk-dir "/opt/android")
  '(el-get-git-shallow-clone t)
+ '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t))
 
 (when window-system
@@ -791,3 +799,26 @@ otherwise raises an error."
 ;; LFG mode
 ;; (setq xle-buffer-process-coding-system 'utf-8)
 ;; (load-library "/opt/xle/emacs/lfg-mode")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-comment-face ((t (:slant oblique))))
+ '(font-lock-function-name-face ((t (:foreground "#cae682" :slant oblique :weight bold))))
+ '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
+ '(font-lock-string-face ((t (:foreground "gold2" :weight semi-light :family "Source Code Pro"))))
+ '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
+ '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
+ '(highlight-indentation-face ((t (:background "olive drab"))))
+ '(hl-line ((t (:background "gray9"))))
+ '(linum ((t (:inherit (shadow default) :height 108))))
+ '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
+ '(markdown-header-face-1 ((t (:height 1.8))) t)
+ '(markdown-header-face-2 ((t (:height 1.6))) t)
+ '(markdown-header-face-3 ((t (:height 1.4))) t)
+ '(markdown-header-face-4 ((t (:height 1.2))) t)
+ '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
+ '(markdown-header-face-6 ((t (:weight bold))) t)
+ '(show-paren-match ((t (:inverse-video t))))
+ '(which-func ((t (:inherit mode-line)))))
