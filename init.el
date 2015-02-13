@@ -13,7 +13,6 @@
   (server-start))
 
 (column-number-mode 1) ; show column no in modline
-(global-hl-line-mode) ; highlight current line
 
 ;; highlight entire bracket expression
 (setq show-paren-style 'expression)
@@ -135,7 +134,7 @@
 ;; (add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
 
 ;;======================================================================
-;; REPO PLUGINS
+;; SUB-MODULES PLUGINS
 
 ;;----------------------------------------------------------------------
 ;; Arch pkgbuild-mode
@@ -144,33 +143,32 @@
 (setq auto-mode-alist
       (append '(("/PKGBUILD.*" . pkgbuild-mode)) auto-mode-alist))
 
-
 ;;----------------------------------------------------------------------
-;; pdb
+;; el-get
+;; https://github.com/dimitri/el-get
+(add-to-list 'load-path "~/.emacs.d/el-get")
+(require 'el-get)
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
 
-;; (setq pdb-path '/usr/lib/python2.4/pdb.py
-;; gud-pdb-command-name (symbol-name pdb-path))
-
-;; (defadvice pdb (before gud-query-cmdline activate)
-;; "Provide a better default command line when called interactively."
-;; (interactive
-;; (list (gud-query-cmdline pdb-path
-;; (file-name-nondirectory buffer-file-name)))))
 
 ;;======================================================================
 ;; CONFIGS
 
-(load "~/.emacs.d/config/ui.cfg.el")
+(load "~/.emacs.d/config/babel.cfg.el")
+(load "~/.emacs.d/config/compile.cfg.el")
+;; (load "~/.emacs.d/config/currentline.cfg.el")
+(load "~/.emacs.d/config/el-get.cfg.el")
+(load "~/.emacs.d/config/etag.cfg.el")
+(load "~/.emacs.d/config/html.cfg.el")
 (load "~/.emacs.d/config/ido.cfg.el")
 (load "~/.emacs.d/config/org-mode.cfg.el")
-(load "~/.emacs.d/config/compile.cfg.el")
-(load "~/.emacs.d/config/el-get.cfg.el")
 (load "~/.emacs.d/config/py-exec.cfg.el")
-(load "~/.emacs.d/config/etag.cfg.el")
+(load "~/.emacs.d/config/python.cfg.el")
+(load "~/.emacs.d/config/ui.cfg.el")
 
 ;;======================================================================
 ;; BROKEN PLUGINS
-
 ;;----------------------------------------------------------------------
 ;; sed-mode
 ;; https://github.com/emacsfodder/sed-mode.git
@@ -199,12 +197,6 @@
 ;; (indent-hints-global-mode)
 
 ;;----------------------------------------------------------------------
-;; flx-ido
-;; (add-to-list 'load-path "~/.emacs.d/00testing/flx/")
-;; (require 'flx-ido)
-;; (flx-ido-mode 1)
-
-;;----------------------------------------------------------------------
 ;; isend-mode
 (add-to-list 'load-path "~/.emacs.d/00testing/isend-mode/")
 (require 'isend)
@@ -229,43 +221,19 @@
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 ;;----------------------------------------------------------------------
-;; html-mode hex value show color
-(defvar hexcolour-keywords
-  '(("#[abcdef[:digit:]]\\{3,6\\}"
-	 (0 (let ((colour (match-string-no-properties 0)))
-		  (if (or (= (length colour) 4)
-				  (= (length colour) 7))
-			  (put-text-property
-			   (match-beginning 0)
-			   (match-end 0)
-			   'face (list :background (match-string-no-properties 0)
-						   :foreground (if (>= (apply '+ (x-color-values
-														  (match-string-no-properties 0)))
-											   (* (apply '+ (x-color-values "white")) .6))
-										   "black" ;; light bg, dark text
-										 "white" ;; dark bg, light text
-										 )))))
-		append))))
-
-(defun hexcolour-add-to-font-lock ()
-  (interactive)
-  (font-lock-add-keywords nil hexcolour-keywords))
-(put 'scroll-left 'disabled nil)
-
-;;----------------------------------------------------------------------
 ;; smart-cursor-color-mode
 ;; (add-to-list 'load-path "~/.emacs.d/smart-cursor-color-mode")
 ;; (require 'smart-cursor-color-mode)
 ;; (setq smart-cursor-color-mode t)
 
 ;;----------------------------------------------------------------------
-;; python-info-look [C-h S]
-;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
-;; (require 'pydoc-info)
-;; (require 'info-look)
+;; LFG mode
+;; (setq xle-buffer-process-coding-system 'utf-8)
+;; (load-library "/opt/xle/emacs/lfg-mode")
+
 
 ;;======================================================================
-;; CUSTOMIZE
+;; EMACS AUTO GEN-STUFFS
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -277,31 +245,6 @@
  '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t))
 
-(when window-system
-  (custom-set-faces
-   '(font-lock-comment-face ((t (:slant oblique))))
-   '(font-lock-function-name-face ((t (:foreground "#cae682" :slant oblique :weight bold))))
-   '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
-   '(font-lock-string-face ((t (:foreground "gold2" :weight semi-light :family "Source Code Pro"))))
-   '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
-   '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
-   '(highlight-indentation-face ((t (:background "olive drab"))))
-   '(hl-line ((t (:background "gray9"))))
-   '(linum ((t (:inherit (shadow default) :height 108))))
-   '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
-   '(markdown-header-face-1 ((t (:height 1.8))) t)
-   '(markdown-header-face-2 ((t (:height 1.6))) t)
-   '(markdown-header-face-3 ((t (:height 1.4))) t)
-   '(markdown-header-face-4 ((t (:height 1.2))) t)
-   '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
-   '(markdown-header-face-6 ((t (:weight bold))) t)
-   '(show-paren-match ((t (:inverse-video t))))
-   '(which-func ((t (:inherit mode-line))))))
-
-;;----------------------------------------------------------------------
-;; LFG mode
-;; (setq xle-buffer-process-coding-system 'utf-8)
-;; (load-library "/opt/xle/emacs/lfg-mode")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -314,7 +257,6 @@
  '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
  '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
  '(highlight-indentation-face ((t (:background "olive drab"))))
- '(hl-line ((t (:background "gray9"))))
  '(linum ((t (:inherit (shadow default) :height 108))))
  '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))) t)
  '(markdown-header-face-1 ((t (:height 1.8))) t)

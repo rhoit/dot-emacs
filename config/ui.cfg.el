@@ -39,6 +39,10 @@
 							   (text-scale-mode -1)))
 
 ;;----------------------------------------------------------------------
+;; switch-window from el-get
+(global-set-key (kbd "C-x o") 'switch-window)
+
+;;----------------------------------------------------------------------
 ;; comman-keybinds
 (when window-system ;; make C-z as normal-undo, C-_ is always there :)
   (global-unset-key (kbd "C-z"))
@@ -47,7 +51,12 @@
 (global-unset-key (kbd "C-w"))
 (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
 (global-set-key [f5] '(lambda() (interactive) (load-file "~/.emacs.d/init.el")))
-(global-set-key [f6] 'toggle-truncate-lines)
+
+(global-set-key [f6] '(lambda() (interactive)
+                        (toggle-truncate-lines)
+                        (fci-mode)))
+
+
 (global-set-key [f9] 'speedbar)
 
 ;;----------------------------------------------------------------------

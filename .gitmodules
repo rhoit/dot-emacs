@@ -4,9 +4,6 @@
 [submodule "repo/sumblimity"]
 	path = repo/sumblimity
 	url = https://github.com/zk-phi/sublimity
-[submodule "repo/sublimity"]
-	path = repo/sublimity
-	url = https://github.com/zk-phi/sublimity
 [submodule "el-get"]
 	path = el-get
 	url = https://github.com/dimitri/el-get

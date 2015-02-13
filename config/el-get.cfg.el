@@ -2,26 +2,24 @@
 ;; EL-GET Section
 
 ;;----------------------------------------------------------------------
-;; el-get
-;; https://github.com/dimitri/el-get
-(add-to-list 'load-path "~/.emacs.d/el-get")
-(require 'el-get)
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(el-get 'sync)
+;; highlight symbol
+(require 'highlight-symbol)
+(global-set-key [(control f3)] 'highlight-symbol-at-point)
+(global-set-key [(shift f3)] 'highlight-symbol-next)
+(global-set-key [(shift f2)] 'highlight-symbol-prev)
+(global-set-key [(control f2)] 'highlight-symbol-query-replace)
+
+;;----------------------------------------------------------------------
+;; 80 ruler
+(require 'fill-column-indicator)
+;; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;; (global-fci-mode 1)
 
 ;;----------------------------------------------------------------------
 ;; smex
 (require 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
-
-;;----------------------------------------------------------------------
-;; jedi
-;; http://tkf.github.io/emacs-jedi/
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t) ; optional
-;; (setq jedi:setup-keys t) ; optional
 
 ;;----------------------------------------------------------------------
 ;; json-mode
