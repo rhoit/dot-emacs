@@ -3,5 +3,5 @@
 # contributor: rho
 # key: opt
 # --
-#+OPTIONS: num:${1:t|0} toc:${2:nil,1..5} H:${3:1..5}
+#+OPTIONS: num:${1:$$(yas-choose-value '("t" "nil"))} toc:${2:$$(yas-choose-value '("nil" "1" "2" "3" "4" "5"))} H:${3:$$(yas-choose-value '("1" "2" "3" "4" "5"))}
 $0
