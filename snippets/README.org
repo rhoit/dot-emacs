@@ -1,0 +1,25 @@
+#+TITLE: Snippet for yasnippet
+
+#+STARTUP: showall entitiespretty
+
+Bunch of scripts for yasnippet.
+
+* org-mode
+  More details about buffer setting can be found in [[http://orgmode.org/manual/In_002dbuffer-settings.html][manual]].
+
+** Load images
+   | variable  | org-startup-with-inline-images                      |
+   | command   | (org-toggle-inline-images &optional INCLUDE-LINKED) |
+   | shortcut  | =C-c C-x C-v=                                       |
+   | #+STARTUP | inlineimages \vert noinlineimages                       |
+
+
+** UTF-8 characters
+   | variable  | org-startup-with-inline-images |
+   | command   | (org-toggle-pretty-entities)   |
+   | shortcut  | =C-c C-x \=                    |
+   | #+STARTUP | entitiespretty \vert entitiesplain |
+
+   =\ vert= for the pipe, to escape table
+
+   Subscripts =_= and superscripts =^= more details see [[http://orgmode.org/manual/Subscripts-and-superscripts.html][manual]] page.
