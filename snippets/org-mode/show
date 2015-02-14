@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: show
+# contributor: rho
+# key: show
+# --
+#+STARTUP: ${1:$$(yas-choose-value '("overview" "content" "showall" "showeverything"))}
+$0
