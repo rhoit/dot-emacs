@@ -3,5 +3,5 @@
 # contributor: rho
 # key: show
 # --
-#+STARTUP: showall
+#+STARTUP: ${1:$$(yas-choose-value '("overview" "content" "showall"))}
 $0
