@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: startup
+# contributor: rho
+# key: start
+# --
+#+STARTUP: ${1:$$(yas-choose-value '("overview" "content" "showall" "showeverything"))} ${2:$$(yas-choose-value '("inlineimages" "noinlineimages"))} ${3:$$(yas-choose-value '("entitiespretty" "entitiesplain"))}
+$0
