@@ -36,39 +36,6 @@
 ;; mode set
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
-;;======================================================================
-;; Custom Features
-;;----------------------------------------------------------------------
-;; Duplicate Lines
-;; TODO: write this again seem really messed up
-(defun duplicate-current-line()
-  (interactive)
-  (beginning-of-line nil)
-  (let ((b (point)))
-    (end-of-line nil)
-    (copy-region-as-kill b (point)))
-  (beginning-of-line 2)
-  (open-line 1)
-  (yank)
-  (back-to-indentation))
-(global-set-key (kbd "C-`") 'duplicate-current-line)
-
-;;----------------------------------------------------------------------
-;; word-sort
-;; http://www.emacswiki.org/emacs/SortWords
-(defun sort-words (reverse beg end)
-  "Sort words in region alphabetically, in REVERSE if negative.
-   Prefixed with negative \\[universal-argument], sorts in
-   reverse.
-
-   The variable `sort-fold-case' determines whether alphabetic
-   case affects the sort order.
-
-   See `sort-regexp-fields'.
-  "
-  (interactive "*P\nr")
-  (sort-regexp-fields reverse "\\w+" "\\&" beg end))
-
 ;;----------------------------------------------------------------------
 ;; watch-words
 (defun watch-words ()
@@ -166,6 +133,7 @@
 (load "~/.emacs.d/config/py-exec.cfg.el")
 (load "~/.emacs.d/config/python.cfg.el")
 (load "~/.emacs.d/config/ui.cfg.el")
+(load "~/.emacs.d/config/wordplay.el")
 
 ;;======================================================================
 ;; BROKEN PLUGINS
