@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: readonly
+# contributor: rho
+# key: readonly
+# --
+`comment-start`;; Local Variables:`comment-end`
+`comment-start`;; eval: (read-only-mode) `comment-end`
+`comment-start`;; End: `comment-end`
+$0
+
