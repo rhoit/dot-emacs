@@ -4,7 +4,27 @@
 
 Bunch of scripts for yasnippet.
 
+* Specifying File Variables
+
+  This is work with all modes, this is the emacs things.
+
+** Startup file as read-only-mode
+
+   To learn more about *File-Variables* in emacs see [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html][manual]].
+
+   This can be done in many other ways, one of them might be.
+   #+begin_verse
+   M-x add-file-local-variable RET buffer-read-only RET t RET
+   #+end_verse
+
+   Here I have creaded keyword *readonly* to generate the block, which
+   is also some what similar to =yasnippet/fundamental-mode= localvar,
+   triggered by *var*.
+
+   *NOTE*: snippet doesn't put the block end of the buffer
+
 * org-mode
+
   More details about buffer setting can be found in [[http://orgmode.org/manual/In_002dbuffer-settings.html][manual]].
 
 ** Load images
