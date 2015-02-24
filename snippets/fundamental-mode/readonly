@@ -3,8 +3,7 @@
 # contributor: rho
 # key: readonly
 # --
-`comment-start`;; Local Variables:`comment-end`
-`comment-start`;; eval: (read-only-mode) `comment-end`
-`comment-start`;; End: `comment-end`
+`comment-start`Local Variables:`comment-end`
+`comment-start`buffer-read-only: t`comment-end`
+`comment-start`End: `comment-end`
 $0
-
