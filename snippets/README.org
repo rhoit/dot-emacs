@@ -7,10 +7,9 @@ Bunch of scripts for yasnippet.
 * Specifying File Variables
 
   This is work with all modes, this is the emacs things.
+  To learn more about *File-Variables* in emacs see [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html][manual]].
 
 ** Startup file as read-only-mode
-
-   To learn more about *File-Variables* in emacs see [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html][manual]].
 
    This can be done in many other ways, one of them might be.
    #+begin_verse
