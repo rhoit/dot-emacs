@@ -92,6 +92,7 @@
   "Will indicate regions foldable with hideshow in the fringe."
   'interactive)
 
+(add-hook 'python-mode-hook 'hideshowvis-enable)
 ;; (dolist (hook (list 'emacs-lisp-mode-hook
 ;;                     'c++-mode-hook
 ;; 					'python-mode-hook
