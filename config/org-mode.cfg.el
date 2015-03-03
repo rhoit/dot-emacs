@@ -5,6 +5,17 @@
 ;; (add-to-list 'load-path "/usr/share/emacs/25.0.50/lisp/")
 (require 'org-mouse)
 
+;; TODO: org -mode image zoom
+;; (setq org-image-actual-width 800)
+
+(add-hook 'org-mode-hook
+      '(lambda ()
+         (setq org-file-apps
+           '((auto-mode . emacs)
+             ("\\.png\\'" . "eog %s")
+             ("\\.mkv\\'" . "vlc %s")
+             ("\\.pdf\\'" . "evince %s")))))
+
 ;;----------------------------------------------------------------------
 ;; Add dot after headline
 ;; https://yoo2080.wordpress.com/2013/08/24/changing-the-number-format-for-section-headings-in-org-mode-html-export/
