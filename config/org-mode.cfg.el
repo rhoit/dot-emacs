@@ -9,12 +9,17 @@
 ;; (setq org-image-actual-width 800)
 
 (add-hook 'org-mode-hook
-      '(lambda ()
-         (setq org-file-apps
-           '((auto-mode . emacs)
-             ("\\.png\\'" . "eog %s")
-             ("\\.mkv\\'" . "vlc %s")
-             ("\\.pdf\\'" . "evince %s")))))
+          '(lambda ()
+             (setq org-file-apps
+                   '((auto-mode . emacs)
+                     ("\\.png\\'" . "eog %s")
+                     ("\\.mkv\\'" . "vlc %s")
+                     ("\\.pdf\\'" . "evince %s")))))
+
+;; removing the C-j bind for goto-last-change, of el-get
+(add-hook 'org-mode-hook
+          '(lambda ()
+             (define-key org-mode-map (kbd "C-j") nil)))
 
 ;;----------------------------------------------------------------------
 ;; Add dot after headline
