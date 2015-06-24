@@ -11,7 +11,7 @@ make
 rm confdefs.h
 
 cd -
-sed -n 's/.*\(http.*el\)$/\1/p' emacs.el > /tmp/elist
+sed -n 's/.*\(http.*el\)$/\1/p' init.el > /tmp/elist
 cd plug-ins
 while read i; do
     wget -c "$i"
