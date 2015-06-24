@@ -12,14 +12,49 @@
           '(lambda ()
              (setq org-file-apps
                    '((auto-mode . emacs)
+                     ("\\.jpg\\'" . "eog %s")
                      ("\\.png\\'" . "eog %s")
                      ("\\.mkv\\'" . "vlc %s")
+                     ("\\.mp4\\'" . "vlc %s")
                      ("\\.pdf\\'" . "evince %s")))))
 
 ;; removing the C-j bind for goto-last-change, of el-get
 (add-hook 'org-mode-hook
           '(lambda ()
              (define-key org-mode-map (kbd "C-j") nil)))
+
+;;----------------------------------------------------------------------
+;; Sort list by checkbox type
+;; http://orgmode.org/worg/org-hacks.html
+
+(defun org-sort-list-by-checkbox-type ()
+  "Sort list items according to Checkbox state."
+  (interactive)
+  (org-sort-list
+   nil ?f
+   (lambda ()
+     (if (looking-at org-list-full-item-re)
+         (cdr (assoc (match-string 3)
+                     '(("[X]" . 1) ("[-]" . 2) ("[ ]" . 3) (nil . 4))))
+       4))))
+
+;;----------------------------------------------------------------------
+;; org put checkbox if previous is checkbox
+
+(defun org-i-need-checkbox ()
+  (interactive)
+  (previous-line)
+  (setq previous_line
+        (buffer-substring
+         (line-beginning-position) (line-end-position)))
+  (next-line)
+  (when (string-match "- \\[" previous_line)
+    (insert "[ ] "))
+  (insert "haoeush")
+  )
+
+;; (add-hook 'org-meta-return 'org-i-need-checkbox)
+
 
 ;;----------------------------------------------------------------------
 ;; Add dot after headline

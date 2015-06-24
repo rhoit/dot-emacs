@@ -31,7 +31,9 @@
 ;; debug on C-g; to point broken modules
 ;; (setq debug-on-quit t)
 
+;; avoid typing complete 'yes' and 'no
 (fset 'yes-or-no-p 'y-or-n-p)
+;;(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; mode set
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -41,7 +43,7 @@
 (defun watch-words ()
   (interactive)
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|NOTE\\)"
+   nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|IMP\\|NOTE\\)"
           1 font-lock-warning-face t))))
 
 (add-hook 'prog-mode-hook 'watch-words)
@@ -212,7 +214,8 @@
  '(android-mode-sdk-dir "/opt/android")
  '(el-get-git-shallow-clone t)
  '(grep-command "grep --color -nH -r -e ")
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(safe-local-variable-values (quote ((eval server-force-delete)))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
