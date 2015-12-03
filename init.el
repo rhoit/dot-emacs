@@ -5,8 +5,13 @@
       user-mail-address "rho.rhoit@gmail.com")
 
 ;;======================================================================
-
+;; UTF-8
 (set-language-environment "UTF-8")
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 (require 'server)
 (unless (server-running-p)
@@ -70,6 +75,10 @@
 ;; CC-mode indentation
 ;; http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
 
+(setq c++-tab-always-indent t)
+(setq c-basic-offset 4)
+(setq c-indent-level 4)
+(c-set-offset 'substatement-open 0)
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-hungry-state 1)))
 (require 'cc-mode)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
@@ -129,7 +138,7 @@
 (load "~/.emacs.d/config/compile.cfg.el")
 ;; (load "~/.emacs.d/config/currentline.cfg.el")
 (load "~/.emacs.d/config/el-get.cfg.el")
-(load "~/.emacs.d/config/etag.cfg.el")
+;; (load "~/.emacs.d/config/etag.cfg.el")
 (load "~/.emacs.d/config/html.cfg.el")
 (load "~/.emacs.d/config/ido.cfg.el")
 (load "~/.emacs.d/config/org-mode.cfg.el")
@@ -215,7 +224,8 @@
  '(el-get-git-shallow-clone t)
  '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t)
- '(safe-local-variable-values (quote ((eval server-force-delete)))))
+ '(safe-local-variable-values (quote ((lisp-mode . t) (eval server-force-delete))))
+ '(which-key-idle-delay 0.4))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
