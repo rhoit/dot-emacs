@@ -2,6 +2,15 @@
 ;; HTML stuffs
 
 ;;----------------------------------------------------------------------
+;; web-mode configs
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 4)
+(setq web-mode-enable-block-face t)
+(setq web-mode-enable-current-column-highlight t)
+
+;;----------------------------------------------------------------------
 ;; mozrepl
 ;; (autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
 ;; (add-hook 'javascript-mode-hook 'javascript-custom-setup)
@@ -19,6 +28,8 @@
 
 (add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)
 (add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
+(add-hook 'org-mode-hook 'auto-reload-firefox-on-after-save-hook)
+(add-hook 'web-mode-hook 'auto-reload-firefox-on-after-save-hook)
 
 ;;----------------------------------------------------------------------
 ;; html-mode hex value show color

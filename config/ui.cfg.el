@@ -45,8 +45,12 @@
 ;;----------------------------------------------------------------------
 ;; comman-keybinds
 (when window-system ;; make C-z as normal-undo, C-_ is always there :)
+  (require 'undo-tree)
+  (global-undo-tree-mode 1)
+  (defalias 'redo 'undo-tree-redo)
   (global-unset-key (kbd "C-z"))
-  (global-set-key (kbd "C-z") 'undo-only))
+  (global-set-key (kbd "C-z") 'undo-only)
+  (global-set-key (kbd "C-S-z") 'redo))
 
 (global-unset-key (kbd "C-w"))
 (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal

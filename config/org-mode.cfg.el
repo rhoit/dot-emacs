@@ -2,6 +2,7 @@
 ;; ORG-MODE
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
+
 ;; (add-to-list 'load-path "/usr/share/emacs/25.0.50/lisp/")
 (require 'org-mouse)
 
@@ -14,8 +15,10 @@
                    '((auto-mode . emacs)
                      ("\\.jpg\\'" . "eog %s")
                      ("\\.png\\'" . "eog %s")
+                     ("\\.gif\\'" . "eog %s")
                      ("\\.mkv\\'" . "vlc %s")
                      ("\\.mp4\\'" . "vlc %s")
+                     ("\\.webm\\'" . "vlc %s")
                      ("\\.pdf\\'" . "evince %s")))))
 
 ;; removing the C-j bind for goto-last-change, of el-get
@@ -75,6 +78,9 @@
   '(progn
      (add-to-list 'org-export-filter-headline-functions
                   'my-html-filter-headline-yesdot)))
+
+;; (setq org-src-fontify-natively t)
+
 
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/00testing/org-mode/contrib/lisp")
 ;; (load-file "~/.emacs.d/00testing/org-mode/contrib/lisp/org-export.el")
