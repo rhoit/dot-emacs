@@ -17,8 +17,6 @@
 (unless (server-running-p)
   (server-start))
 
-(column-number-mode 1) ; show column no in modline
-
 ;; highlight entire bracket expression
 (setq show-paren-style 'expression)
 (show-paren-mode 1)
@@ -146,16 +144,7 @@
 (load "~/.emacs.d/config/python.cfg.el")
 (load "~/.emacs.d/config/ui.cfg.el")
 (load "~/.emacs.d/config/wordplay.el")
-
-;;======================================================================
-;; BROKEN PLUGINS
-;;----------------------------------------------------------------------
-;; sed-mode
-;; https://github.com/emacsfodder/sed-mode.git
-;; (add-to-list 'load-path "~/.emacs.d/sed-mode")
-;; (autoload 'sed-mode "sed-mode.el" "PKGBUILD mode." t)
-;; (setq auto-mode-alist
-;;       (append '((".sed$" . sed-mode)) auto-mode-alist))
+(load "~/.emacs.d/config/modeline.cfg.el")
 
 ;;======================================================================
 ;; TESTING PLUGINS
