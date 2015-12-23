@@ -145,10 +145,6 @@
 (global-set-key (kbd "C-j") 'goto-last-change)
 
 ;;----------------------------------------------------------------------
-;; which-key
-(which-key-mode 1)
-
-;;----------------------------------------------------------------------
 ;; markdown mode
 (setq auto-mode-alist
       (cons '("\.md" . markdown-mode) auto-mode-alist))

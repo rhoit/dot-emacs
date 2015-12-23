@@ -4,9 +4,14 @@
 ;;----------------------------------------------------------------------
 ;; web-mode configs
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml?\\'" . web-mode))
+
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 4)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-style-padding 2)
+(setq web-mode-script-padding 2)
+(setq web-mode-attr-indent-offset 2)
 (setq web-mode-enable-block-face t)
 (setq web-mode-enable-current-column-highlight t)
 
@@ -30,6 +35,7 @@
 (add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
 (add-hook 'org-mode-hook 'auto-reload-firefox-on-after-save-hook)
 (add-hook 'web-mode-hook 'auto-reload-firefox-on-after-save-hook)
+(add-hook 'programming-mode-hook 'auto-reload-firefox-on-after-save-hook)
 
 ;;----------------------------------------------------------------------
 ;; html-mode hex value show color
