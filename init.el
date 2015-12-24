@@ -140,11 +140,14 @@
 (load "~/.emacs.d/config/html.cfg.el")
 (load "~/.emacs.d/config/ido.cfg.el")
 (load "~/.emacs.d/config/org-mode.cfg.el")
-(load "~/.emacs.d/config/py-exec.cfg.el")
 (load "~/.emacs.d/config/python.cfg.el")
 (load "~/.emacs.d/config/ui.cfg.el")
-(load "~/.emacs.d/config/wordplay.el")
 (load "~/.emacs.d/config/modeline.cfg.el")
+
+
+;;======================================================================
+;; SCRIPTS
+(load "~/.emacs.d/scripts/wordplay.el")
 
 ;;======================================================================
 ;; TESTING PLUGINS
