@@ -2,6 +2,22 @@
 ;; EMACS UI
 
 ;;----------------------------------------------------------------------
+;; comment action change
+(global-unset-key (kbd "M-;"))
+(global-set-key (kbd "M-;") 'comment-line)
+
+;;----------------------------------------------------------------------
+;; on point line copy
+(defun kill-ring-save-current-line()
+  (interactive)
+  (if (use-region-p)
+      (kill-ring-save (point) (mark))
+    (kill-new (thing-at-point 'line))))
+
+(global-unset-key (kbd "C-<insert>"))
+(global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
+
+;;----------------------------------------------------------------------
 ;; window
 (add-to-list 'default-frame-alist '(height . 39))
 (add-to-list 'default-frame-alist '(width . 104))
