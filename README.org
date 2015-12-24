@@ -8,7 +8,7 @@ using this config, its unlikely to harm (but there are always some
 assholes lying around to blame) so *MAKE SURE YOU HAVE THE BACKUP*
 
 #+ATTR_HTML: title="screenshot"
-[[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot_01.png]]
+[[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
 ** 1. Getting it
    #+BEGIN_SRC bash
