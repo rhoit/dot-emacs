@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: src
+# key: src
+# alternative use '>s TAB' https://orgmode.org/org.html#Easy-templates
+# --
+
+#+HEADER: :results output :eval no-export
+#+BEGIN_SRC ${1:language} :exports both
+  $0
+#+END_SRC
