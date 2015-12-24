@@ -2,6 +2,13 @@
 ;; EL-GET Section
 
 ;;----------------------------------------------------------------------
+;; highline: hight current line
+(require 'highline)
+(set-face-background 'highline-face "#111")
+(add-hook 'prog-mode-hook 'highline-mode-on)
+;; (highline-mode 1)
+
+;;----------------------------------------------------------------------
 ;; highlight symbol
 (require 'highlight-symbol)
 (global-set-key [(control f3)] 'highlight-symbol-at-point)

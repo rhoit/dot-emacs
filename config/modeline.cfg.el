@@ -74,6 +74,7 @@
     ;; (auto-dim-other-buffers-mode . #("auto-dim-other-buffers" 0 22 (display (image :type xpm :file "~/.emacs.d/00testing/mode-icons/icons/dim.xpm" :ascent center))))
     (yas-minor-mode . #("YASnippet" 0 9 (display (image :type xpm :file "~/.emacs.d/00testing/mode-icons/icons/yas.xpm" :ascent center))))
     (auto-dim-other-buffers-mode . "")
+    (highline-mode . "")
     (highlight-indentation-mode . "")
     (anzu-mode . "")
     (smooth-scroll-mode . "")
