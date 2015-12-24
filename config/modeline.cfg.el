@@ -2,6 +2,8 @@
 (setq powerline-default-separator 'wave)
 
 ;; Make a face for the octicons font (must be installed on your system)
+;; https://octicons.github.com/
+
 (make-face 'octicons)
 (set-face-attribute 'octicons nil
                     :family "octicons")
@@ -9,6 +11,7 @@
 (setq octicon-rocket "")
 
 ;; mode icon stuff
+;; https://github.com/rhoit/mode-icons/
 (load-file "~/.emacs.d/00testing/mode-icons/mode-icons.el")
 (mode-icons-mode)
 

@@ -41,12 +41,13 @@ assholes lying around to blame) so *MAKE SURE YOU HAVE THE BACKUP*
      dot-emacs
      ├── el-get                 # pacman
      ├── plug-ins               # packages with mods and config
-     │   ├── config             # custom config of packages
-     │   │   ├── compile.cfg.el
-     │   │   └── tabbar.cfg.el
      │   ├── ...
      :   :
      │   └── tabbar-ruler.el
+     ├── config                 # custom config of packages
+     │   ├── compile.cfg.el
+     :   :
+     │   └── tabbar.cfg.el
      ├── ...
      :
      ├── repo                   # packages not yet in el-get as *submodules*
