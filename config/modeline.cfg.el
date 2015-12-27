@@ -3,7 +3,6 @@
 
 ;; Make a face for the octicons font (must be installed on your system)
 ;; https://octicons.github.com/
-
 (make-face 'octicons)
 (set-face-attribute 'octicons nil
                     :family "octicons")
@@ -45,6 +44,7 @@
                                      (powerline-minor-modes face1 'l)
                                      (powerline-narrow face1 'l)
                                      (powerline-raw " " face1)
+                                     (powerline-zigzag-left face1 nil)
                                      (when (and (boundp 'which-func-mode) which-func-mode)
                                        (powerline-raw which-func-format nil 'l))))
                           (rhs (list (powerline-raw global-mode-string face1 'r)
@@ -55,7 +55,7 @@
                                      (powerline-vc face2 'r)
                                      (if (vc-backend buffer-file-name)
                                          (funcall separator-right face2 face1)
-                                       (funcall separator-right nil face1))
+                                       (powerline-zigzag-left nil face1))
                                      (powerline-raw "%4l" face1 'r)
                                      (powerline-raw ":" face1 'r)
                                      (powerline-raw "%3c," face1 'r)
@@ -77,6 +77,7 @@
     (highline-mode . "")
     (highlight-indentation-mode . "")
     (anzu-mode . "")
+    (markdown-mode . "")
     (smooth-scroll-mode . "")
     (undo-tree-mode . ""))
   "Alist for `clean-mode-line'.
@@ -96,6 +97,11 @@ want to use in the modeline *in lieu of* the original.")
              (when (eq mode major-mode)
                (setq mode-name mode-str)))))
 
+
+;; modeline from spacmacs
+(add-to-list 'load-path  "~/.emacs.d/00testing/spaceline/")
+(require 'spaceline-config)
+;; (spaceline-spacemacs-theme)
 
 (powerline-rho-theme)
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
