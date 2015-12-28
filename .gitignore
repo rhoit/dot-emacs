@@ -11,3 +11,4 @@ pydoc-info/*
 recentf
 session.*
 smex-items
+.python-environments/
