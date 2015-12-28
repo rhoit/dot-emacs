@@ -2,6 +2,17 @@
 ;; Custom Features
 
 ;;----------------------------------------------------------------------
+;; watch-words
+(defun watch-words ()
+  (interactive)
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|IMP\\|NOTE\\)"
+          1 font-lock-warning-face t))))
+
+(add-hook 'prog-mode-hook 'watch-words)
+(add-hook 'org-mode 'watch-words)
+
+;;----------------------------------------------------------------------
 ;; duplicate lines
 (defun duplicate-current-line()
   (interactive)
