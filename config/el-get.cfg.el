@@ -2,11 +2,8 @@
 ;; EL-GET Section
 
 ;;----------------------------------------------------------------------
-;; highline: hight current line
-(require 'highline)
-(set-face-background 'highline-face "#111")
-(add-hook 'prog-mode-hook 'highline-mode-on)
-;; (highline-mode 1)
+;; switch windows
+(global-set-key (kbd "C-x o") 'switch-window)
 
 ;;----------------------------------------------------------------------
 ;; highlight symbol

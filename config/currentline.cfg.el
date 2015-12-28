@@ -12,6 +12,14 @@
                      0))
                  (color-values (cdr (assoc 'background-color (frame-parameters)))))))
 
-;; ;; Default hl
-(global-hl-line-mode t)
-(set-face-background hl-line-face (shade-color 08))
+;;----------------------------------------------------------------------
+;; Default hl
+;; (global-hl-line-mode t)
+
+;;----------------------------------------------------------------------
+;; highline mode; from el-get
+(require 'highline)
+
+;; (set-face-background 'highline-face "#111")
+(set-face-background 'highline-face (shade-color 09))
+(add-hook 'prog-mode-hook 'highline-mode-on)

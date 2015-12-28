@@ -5,21 +5,22 @@
       user-mail-address "rho.rhoit@gmail.com")
 
 ;;======================================================================
+
+;; debug on C-g; to point broken modules
+;; (setq debug-on-quit t)
+
 ;; UTF-8
-(set-language-environment "UTF-8")
+(set-language-environment "utf-8")
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; emacs server client
 (require 'server)
 (unless (server-running-p)
   (server-start))
-
-;; highlight entire bracket expression
-(setq show-paren-style 'expression)
-(show-paren-mode 1)
 
 ;; backup configuration
 (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
@@ -31,26 +32,15 @@
 (setq browse-url-browser-function 'browse-url-firefox)
 (recentf-mode 0) ;; no recent files
 
-;; debug on C-g; to point broken modules
-;; (setq debug-on-quit t)
-
 ;; avoid typing complete 'yes' and 'no
 (fset 'yes-or-no-p 'y-or-n-p)
-;;(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; highlight entire bracket expression
+(setq show-paren-style 'expression)
+(show-paren-mode 1)
 
 ;; mode set
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-
-;;----------------------------------------------------------------------
-;; watch-words
-(defun watch-words ()
-  (interactive)
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|IMP\\|NOTE\\)"
-          1 font-lock-warning-face t))))
-
-(add-hook 'prog-mode-hook 'watch-words)
-(add-hook 'org-mode 'watch-words)
 
 ;;----------------------------------------------------------------------
 ;; clean up trailing whitespaces
@@ -102,13 +92,7 @@
   'interactive)
 
 (add-hook 'python-mode-hook 'hideshowvis-enable)
-;; (dolist (hook (list 'emacs-lisp-mode-hook
-;;                     'c++-mode-hook
-;; 					'python-mode-hook
-;; 					)
-;; 			  )
-;;   (add-hook hook 'hideshowvis-enable))
-;; (add-hook 'hideshowvis-minor-mode-hook 'hideshowvis-symbols)
+
 
 ;;======================================================================
 ;; SUB-MODULES PLUGINS
@@ -134,7 +118,6 @@
 
 (load "~/.emacs.d/config/babel.cfg.el")
 (load "~/.emacs.d/config/compile.cfg.el")
-;; (load "~/.emacs.d/config/currentline.cfg.el")
 (load "~/.emacs.d/config/el-get.cfg.el")
 ;; (load "~/.emacs.d/config/etag.cfg.el")
 (load "~/.emacs.d/config/html.cfg.el")
@@ -142,6 +125,7 @@
 (load "~/.emacs.d/config/org-mode.cfg.el")
 (load "~/.emacs.d/config/python.cfg.el")
 (load "~/.emacs.d/config/ui.cfg.el")
+(load "~/.emacs.d/config/currentline.cfg.el") ;; load after theme
 (load "~/.emacs.d/config/modeline.cfg.el")
 
 
