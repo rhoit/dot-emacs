@@ -10,8 +10,8 @@
 ;; (setq debug-on-quit t)
 
 ;; UTF-8
-(set-language-environment "utf-8")
 (setq locale-coding-system 'utf-8)
+(set-language-environment 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
@@ -116,18 +116,18 @@
 ;;======================================================================
 ;; CONFIGS
 
-(load "~/.emacs.d/config/babel.cfg.el")
-(load "~/.emacs.d/config/compile.cfg.el")
 (load "~/.emacs.d/config/el-get.cfg.el")
+(load "~/.emacs.d/config/compile.cfg.el")
 ;; (load "~/.emacs.d/config/etag.cfg.el")
-(load "~/.emacs.d/config/html.cfg.el")
 (load "~/.emacs.d/config/ido.cfg.el")
-(load "~/.emacs.d/config/org-mode.cfg.el")
-(load "~/.emacs.d/config/python.cfg.el")
 (load "~/.emacs.d/config/ui.cfg.el")
 (load "~/.emacs.d/config/currentline.cfg.el") ;; load after theme
 (load "~/.emacs.d/config/modeline.cfg.el")
-
+(load "~/.emacs.d/config/tabbar.cfg.el")
+(load "~/.emacs.d/config/org-mode.cfg.el")
+(load "~/.emacs.d/config/babel.cfg.el")
+(load "~/.emacs.d/config/html.cfg.el")
+(load "~/.emacs.d/config/python.cfg.el")
 
 ;;======================================================================
 ;; SCRIPTS
@@ -224,4 +224,4 @@
  '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
  '(markdown-header-face-6 ((t (:weight bold))) t)
  '(show-paren-match ((t (:inverse-video t))))
- '(which-func ((t (:inherit mode-line)))))
+ '(which-func ((t (:background "gray40")))))
