@@ -72,10 +72,3 @@
 
 (add-hook 'python-mode-hook
           (lambda () (local-set-key (kbd "<C-return>") 'py-execution)))
-
-(defun py-execution-echo-off()
-  (interactive)
-  (py-execution t))
-
-(add-hook 'python-mode-hook
-          (lambda() (local-set-key (kbd "<M-return>") 'py-execution-echo-off)))
