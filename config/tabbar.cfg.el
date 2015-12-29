@@ -1,13 +1,7 @@
-; -*- mode:lisp -*-
-; author: David.Villa@uclm.es
+;; original author: David.Villa@uclm.es
 
-;| A very good customization for tabbar-mode.
-;|
-;| - Better faces for tabs.
-;| - Separate buffers in three independent groups: user files, dired and messages.
-;|
-;| .. image:: http://crysol.org/files/emacs-tabbar.png
-;|
+;; - Better faces for tabs.
+;; - Separate buffers in three independent groups: user files, dired and messages.
 
 ;; (custom-set-faces
 ;;  '(tabbar-default
@@ -29,23 +23,24 @@
 ;;    (( t (:box nil))))
 ;;  )
 
+;;----------------------------------------------------------------------
+;; tabbar
 (require 'tabbar)
-(tabbar-mode 1)
+(tabbar-mode t)
 
 ;; (setq tabbar-separator (quote (0.3)))
-;; (setq tabbar-background-color "gray75")
+;; (setq tabbar-background-color "gray40")
 ;; (setq tabbar-cycle-scope (quote tabs))
 ;; (setq tabbar-use-images t)
 
-;; key binding
-(global-set-key [f7] 'tabbar-mode)
-(global-set-key [(control shift prior)] 'tabbar-backward-group)
-(global-set-key [(control shift next)] 'tabbar-forward-group)
-(define-key global-map [(control tab)] 'tabbar-forward)
-(define-key global-map (kbd "C-<next>") 'tabbar-forward)
-(define-key global-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
-(define-key global-map (kbd "C-<prior>") 'tabbar-backward)
-
+;;----------------------------------------------------------------------
+;; tabbar rular
+;; https://github.com/mattfidler/tabbar-ruler.el
+;; (setq tabbar-ruler-global-ruler t)
+;; (setq tabbar-ruler-popup-menu t)
+;; (require 'tabbar-ruler)
+;; using tabbar mod
+(load-file "~/.emacs.d/plug-ins/tabbar-ruler_mod.el")
 
 (setq tabbar-buffer-groups-function
       (lambda ()
@@ -172,3 +167,12 @@ KEYS defines the elements to use for `tabbar-key-binding-keys'."
 ; (marker-insertion-type (cdr (car tab-points)))
 
 (tabbar-define-access-keys)
+
+;; key binding
+(global-set-key [f7] 'tabbar-mode)
+(global-set-key [(control shift prior)] 'tabbar-backward-group)
+(global-set-key [(control shift next)] 'tabbar-forward-group)
+(define-key global-map [(control tab)] 'tabbar-forward)
+(define-key global-map (kbd "C-<next>") 'tabbar-forward)
+(define-key global-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
+(define-key global-map (kbd "C-<prior>") 'tabbar-backward)

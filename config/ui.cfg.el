@@ -83,6 +83,11 @@
 (global-set-key (kbd "M-;") 'comment-line)
 
 ;;----------------------------------------------------------------------
+;; unbind strange bindings
+(global-unset-key [(control prior)])
+(global-unset-key [(control next)])
+
+;;----------------------------------------------------------------------
 ;; other bindings
 (global-set-key [f5] '(lambda() (interactive) (load-file "~/.emacs.d/init.el")))
 (global-set-key [f6] '(lambda() (interactive)

@@ -44,18 +44,6 @@
 (smooth-scroll-mode t)
 
 ;;----------------------------------------------------------------------
-;; tabbar mode
-;; http://emacswiki.org/emacs/TabBarMode
-;; https://raw.github.com/dholm/tabbar/master/tabbar.el
-;; (require 'tabbar)
-
-;; (add-to-list 'load-path  "~/.emacs.d/tabbar/")
-(when window-system
-  (load "~/.emacs.d/config/tabbar.cfg.el")
-  (setq tabbar-ruler-global-tabbar t) ; If you want tabbar
-  (require 'tabbar-ruler))
-
-;;----------------------------------------------------------------------
 ;; yasnippet
 (when window-system
   (require 'yasnippet)

@@ -14,6 +14,9 @@
 (load-file "~/.emacs.d/00testing/mode-icons/mode-icons.el")
 (mode-icons-mode)
 
+;; temporary fix
+;; (set-face-background 'which-func "gray40")
+
 (defun powerline-rho-theme ()
   "Setup the default mode-line."
   (interactive)
@@ -34,7 +37,7 @@
                                      (when powerline-display-mule-info
                                        (powerline-raw mode-line-mule-info nil 'l))
                                      (powerline-raw " ")
-                                     (funcall separator-left mode-line face2)
+                                     (funcall separator-left nil face2)
                                      (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
                                        (powerline-raw erc-modified-channels-object face1 'l))
                                      (powerline-major-mode face2 'l)
@@ -44,9 +47,19 @@
                                      (powerline-minor-modes face1 'l)
                                      (powerline-narrow face1 'l)
                                      (powerline-raw " " face1)
-                                     (powerline-zigzag-left face1 nil)
-                                     (when (and (boundp 'which-func-mode) which-func-mode)
-                                       (powerline-raw which-func-format nil 'l))))
+                                     ;;            (powerline-zigzag-left face1 nil)
+                                     ;;            (powerline-raw " " nil)
+                                     ))
+                          (center (list
+                                   (when (and (boundp 'which-func-mode) which-func-mode)
+                                     (powerline-arrow-left face1 face2))
+                                   (when (and (boundp 'which-func-mode) which-func-mode)
+                                     (powerline-raw which-func-format face2 'l))
+                                   (when (and (boundp 'which-func-mode) which-func-mode)
+                                     (powerline-raw " " face2))
+                                   (when (and (boundp 'which-func-mode) which-func-mode)
+                                     (powerline-zigzag-right face2 nil))
+                                   ))
                           (rhs (list (powerline-raw global-mode-string face1 'r)
                                      (when (vc-backend buffer-file-name)
                                        (funcall separator-left nil face2))
@@ -61,6 +74,7 @@
                                      (powerline-raw "%6p" face1 'r)
                                      )))
                      (concat (powerline-render lhs)
+                             (powerline-render center)
                              (powerline-fill nil (powerline-width rhs))
                              (powerline-render rhs))
                      )))))
