@@ -43,13 +43,38 @@
       (kill-ring-save (point) (mark))
     (kill-new (thing-at-point 'line))))
 
-(global-unset-key (kbd "C-<insert>"))
 (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
 
 ;;----------------------------------------------------------------------
 ;; winner mode - saving the window conf
 (when (fboundp 'winner-mode)
   (winner-mode 1))
+
+;;----------------------------------------------------------------------
+;; line-number
+;; http://www.emacswiki.org/LineNumbers
+;; http://elpa.gnu.org/packages/nlinum-1.1.el
+(require 'nlinum)
+(setq nlinum-delay t)
+(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
+
+;;----------------------------------------------------------------------
+;; smooth-scrolling
+(require 'smooth-scroll)
+(smooth-scroll-mode t)
+
+;; (setq scroll-margin 1)
+(setq linum-delay t)
+;; (setq scroll-step 1) ;; scroll one line at a time
+(setq redisplay-dont-pause t)
+(setq scroll-conservatively 0) ;;cursor on the middle of the screen
+(setq scroll-up-aggressively 0.01)
+(setq scroll-down-aggressively 0.01)
+(setq auto-window-vscroll nil)
+;; (setq scroll-preserve-screen-position 1)
+;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
+;; (setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
+;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 ;;----------------------------------------------------------------------
 ;; text zoom
@@ -78,9 +103,11 @@
 (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
 
 ;;----------------------------------------------------------------------
-;; comment action change
-(global-unset-key (kbd "M-;"))
-(global-set-key (kbd "M-;") 'comment-line)
+;; comment whole line
+(defun comment-indent()
+  "custom over-ride comment-indent to comment whole line"
+  (interactive)
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
 ;;----------------------------------------------------------------------
 ;; unbind strange bindings
