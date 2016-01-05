@@ -46,6 +46,24 @@
 (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
 
 ;;----------------------------------------------------------------------
+;; popup kill ring
+(require 'popup)
+(require 'pos-tip)
+(require 'popup-kill-ring)
+
+(defun repetitive-yanking()
+  "yank and yank whats rest are in the kill ring"
+  (interactive)
+  (message "last-command: %S" last-command)
+  (if (string= last-command "yank")
+      (progn
+        (undo-only)
+        (popup-kill-ring))
+      (yank)))
+
+(global-set-key [(shift insert)] 'repetitive-yanking)
+
+;;----------------------------------------------------------------------
 ;; winner mode - saving the window conf
 (when (fboundp 'winner-mode)
   (winner-mode 1))
