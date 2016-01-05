@@ -76,13 +76,6 @@
 (add-to-list 'load-path  "~/.emacs.d/plug-ins/")
 
 ;;----------------------------------------------------------------------
-;; line-number
-;; http://www.emacswiki.org/LineNumbers
-;; http://elpa.gnu.org/packages/nlinum-1.1.el
-(require 'nlinum)
-(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
-
-;;----------------------------------------------------------------------
 ;; hideshowvis mode
 ;; http://www.emacswiki.org/emacs/download/hideshowvis.el
 (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
@@ -135,6 +128,12 @@
 
 ;;======================================================================
 ;; TESTING PLUGINS
+
+;;----------------------------------------------------------------------
+;; window numbering
+(add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
+(require 'window-numbering)
+(window-numbering-mode)
 
 ;;----------------------------------------------------------------------
 ;; indent-hint

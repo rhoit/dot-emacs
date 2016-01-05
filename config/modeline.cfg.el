@@ -15,69 +15,93 @@
 (mode-icons-mode)
 
 ;; temporary fix
-;; (set-face-background 'which-func "gray40")
+;; (set-face-background 'which-func "gray40") ; move to customize face
+
+(defun powerline-simpler-vc-mode (s)
+  (if s
+      (replace-regexp-in-string "Git[:-]" "" s)
+    s))
+
+(setq which-func-format
+      `(" "
+        (:propertize which-func-current local-map
+                     (keymap
+                      (mode-line keymap
+                                 (mouse-3 . end-of-defun)
+                                 (mouse-2 . narrow-to-defun)
+                                 (mouse-1 . beginning-of-defun)))
+                     face which-func
+                     mouse-face mode-line-highlight
+                     help-echo "mouse-1: go to beginning\n\
+mouse-2: toggle rest visibility\n\
+mouse-3: go to end")
+        " "))
 
 (defun powerline-rho-theme ()
-  "Setup the default mode-line."
+  "A powerline theme that removes many minor-modes that don't
+serve much purpose on the mode-line."
   (interactive)
-  (setq-default mode-line-format
-                '("%e"
-                  (:eval
-                   (let* ((active (powerline-selected-window-active))
-                          (mode-line (if active 'mode-line 'mode-line-inactive))
-                          (face1 (if active 'powerline-active1 'powerline-inactive1))
-                          (face2 (if active 'powerline-active2 'powerline-inactive2))
-                          (separator-left (intern (format "powerline-%s-%s"
-                                                          (powerline-current-separator)
-                                                          (car powerline-default-separator-dir))))
-                          (separator-right (intern (format "powerline-%s-%s"
-                                                           (powerline-current-separator)
-                                                           (cdr powerline-default-separator-dir))))
-                          (lhs (list (powerline-raw "%*" nil 'l)
-                                     (when powerline-display-mule-info
-                                       (powerline-raw mode-line-mule-info nil 'l))
-                                     (powerline-raw " ")
-                                     (funcall separator-left nil face2)
-                                     (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
-                                       (powerline-raw erc-modified-channels-object face1 'l))
-                                     (powerline-major-mode face2 'l)
-                                     (powerline-raw " " face2)
-                                     (funcall separator-right face2 face1)
-                                     (powerline-process face1)
-                                     (powerline-minor-modes face1 'l)
-                                     (powerline-narrow face1 'l)
-                                     (powerline-raw " " face1)
-                                     ;;            (powerline-zigzag-left face1 nil)
-                                     ;;            (powerline-raw " " nil)
-                                     ))
-                          (center (list
-                                   (when (and (boundp 'which-func-mode) which-func-mode)
-                                     (powerline-arrow-left face1 face2))
-                                   (when (and (boundp 'which-func-mode) which-func-mode)
-                                     (powerline-raw which-func-format face2 'l))
-                                   (when (and (boundp 'which-func-mode) which-func-mode)
-                                     (powerline-raw " " face2))
-                                   (when (and (boundp 'which-func-mode) which-func-mode)
-                                     (powerline-zigzag-right face2 nil))
-                                   ))
-                          (rhs (list (powerline-raw global-mode-string face1 'r)
-                                     (when (vc-backend buffer-file-name)
-                                       (funcall separator-left nil face2))
-                                     (when (vc-backend buffer-file-name)
-                                        (powerline-raw octicon-mark-github face2))
-                                     (powerline-vc face2 'r)
-                                     (when (vc-backend buffer-file-name)
-                                       (funcall separator-right face2 nil))
-                                     (powerline-raw " " nil)
-                                     (powerline-zigzag-left nil face1)
-                                     (powerline-raw "%3c," face1 'r)
-                                     (powerline-raw "%6p" face1 'r)
-                                     )))
-                     (concat (powerline-render lhs)
-                             (powerline-render center)
-                             (powerline-fill nil (powerline-width rhs))
-                             (powerline-render rhs))
-                     )))))
+  (setq-default
+   mode-line-format
+   '("%e"
+     (:eval
+      (let* ((active (powerline-selected-window-active))
+             (mode-line (if active 'mode-line 'mode-line-inactive))
+             (face1 (if active 'powerline-active1 'powerline-inactive1))
+             (face2 (if active 'powerline-active2 'powerline-inactive2))
+             (separator-left (intern (format "powerline-%s-%s"
+                                             (powerline-current-separator)
+                                             (car powerline-default-separator-dir))))
+             (separator-right (intern (format "powerline-%s-%s"
+                                              (powerline-current-separator)
+                                              (cdr powerline-default-separator-dir))))
+             (lhs (list (powerline-raw "%*" nil 'l)
+                        (when powerline-display-mule-info
+                          (powerline-raw mode-line-mule-info nil 'l))
+                        (powerline-raw " ")
+                        (funcall separator-left nil face2)
+                        (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
+                          (powerline-raw erc-modified-channels-object face1 'l))
+                        (powerline-major-mode face2 'l)
+                        (powerline-raw " " face2)
+                        (funcall separator-right face2 face1)
+                        (powerline-process face1)
+                        (powerline-minor-modes face1 'l)
+                        (powerline-narrow face1 'l)
+                        (powerline-raw " " face1)
+                        ;;            (powerline-zigzag-left face1 nil)
+                        ;;            (powerline-raw " " nil)
+                        ))
+             (center (list
+                      (when (and (boundp 'which-func-mode) which-func-mode)
+                        (powerline-arrow-left face1 face2))
+                      (when (and (boundp 'which-func-mode) which-func-mode)
+                        (powerline-raw which-func-format face2 'l))
+                      (when (and (boundp 'which-func-mode) which-func-mode)
+                        (powerline-raw " " face2))
+                      (when (and (boundp 'which-func-mode) which-func-mode)
+                        (powerline-zigzag-right face2 nil))
+                      ))
+             (rhs (list (powerline-raw global-mode-string nil 'r)
+                        (when (vc-backend buffer-file-name)
+                          (funcall separator-left nil face2))
+                        (when (vc-backend buffer-file-name)
+                          (powerline-raw octicon-mark-github face2))
+                        (powerline-simpler-vc-mode (powerline-vc face2 'r))
+                        (when (vc-backend buffer-file-name)
+                          (funcall separator-right face2 nil))
+                        (powerline-raw " " nil)
+                        (powerline-zigzag-left nil face1)
+                        (powerline-raw "%3c," face1 'r)
+                        (powerline-raw "%p" face1 'r)
+                        (powerline-zigzag-right face1 nil)
+                        (powerline-raw "  " nil)
+                        )))
+        (concat (powerline-render lhs)
+                (powerline-render center)
+                (powerline-fill nil (powerline-width rhs))
+                (powerline-render rhs))
+        )))))
 
 (defvar mode-line-cleaner-alist
   `((auto-complete-mode . "")
@@ -88,6 +112,7 @@
     (yas-minor-mode . #("YASnippet " 0 9 (display (image :type xpm :file "~/.emacs.d/00testing/mode-icons/icons/yas.xpm" :ascent center))))
     ;; (hs-minor-mode . "aoue")
     (hs-minor-mode . #("hs " 0 2 (display (image :type xpm :file "/home/rho/.emacs.d/00testing/mode-icons//icons/hs.xpm" :ascent center))))
+    (outline-minor-mode . " Outline ")
     (auto-dim-other-buffers-mode . "")
     (highline-mode . "")
     (highlight-indentation-mode . "")
@@ -104,11 +129,11 @@ want to use in the modeline *in lieu of* the original.")
   (interactive)
   (loop for cleaner in mode-line-cleaner-alist
         do (let* ((mode (car cleaner))
-                 (mode-str (cdr cleaner))
-                 (old-mode-str (cdr (assq mode minor-mode-alist))))
+                  (mode-str (cdr cleaner))
+                  (old-mode-str (cdr (assq mode minor-mode-alist))))
              (when old-mode-str
-                 (setcar old-mode-str mode-str))
-               ;; major mode
+               (setcar old-mode-str mode-str))
+             ;; major mode
              (when (eq mode major-mode)
                (setq mode-name mode-str)))))
 
@@ -120,35 +145,3 @@ want to use in the modeline *in lieu of* the original.")
 
 (powerline-rho-theme)
 (add-hook 'after-change-major-mode-hook 'clean-mode-line)
-
-
-;; (message "%S" (type-of (mode-icons-get-icon-file "yas.xpm")))
-;; (message "%S" (get-mode-icon "YASnippet"))
-;; (message "%S" (get-mode-icon "auto-dim-other-buffers"))
-;; (message "%S" (get-mode-icon ""))
-;; (message "%S"  (mode-icons-get-icon-file "cl.xpm"))
-;; (message "%S"  (get-mode-icon "YASnippet"))
-;; ;; ;; (add-hook 'after-change-major-mode-hook 'clean-mode-line)
-;; (message "%S" mode-name)
-
-;; (let ((i 0) (l (length minor-mode-alist)))
-;;   (while ( < i l)
-;;     (message "%S" (car (last (nth i minor-mode-alist))))
-;;     (when (assoc (car (last (nth i minor-mode-alist))) mode-icons)
-;;       (message "%S" (nth i minor-mode-alist))
-;;       (message "%S" (get-mode-icon (car (last (nth i minor-mode-alist)))))
-;;       (message "%S" (list
-;;                      (car (nth i minor-mode-alist))
-;;                      (get-mode-icon (car (last (nth i minor-mode-alist))))
-;;                      )
-;;                )
-
-;;       ;; (setcar (nthcdr i minor-mode-alist) 'testing
-;;       ;;         ;; '(list
-;;       ;;         ;;   (car (nth i minor-mode-alist))
-;;       ;;         ;;   (get-mode-icon (car (last (nth i minor-mode-alist)))))
-;;       ;;         ;; )
-;;       )
-;;     (setq i (+ i 1))
-;;     )
-;;   )

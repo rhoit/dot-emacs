@@ -35,15 +35,6 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;----------------------------------------------------------------------
-;; smooth-scroll
-(require 'smooth-scroll)
-;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
-;; (setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
-;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-;; (setq scroll-step 1) ;; keyboard scroll one line at a time
-(smooth-scroll-mode t)
-
-;;----------------------------------------------------------------------
 ;; yasnippet
 (when window-system
   (require 'yasnippet)

@@ -79,9 +79,15 @@
      (add-to-list 'org-export-filter-headline-functions
                   'my-html-filter-headline-yesdot)))
 
+;; outline
+(require 'outline)
+(add-hook 'prog-mode-hook 'outline-minor-mode)
+
+;; outshine
+(require 'outshine)
+(add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+
 ;; (setq org-src-fontify-natively t)
-
-
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/00testing/org-mode/contrib/lisp")
 ;; (load-file "~/.emacs.d/00testing/org-mode/contrib/lisp/org-export.el")
 ;; (load-file "/home/rho/.emacs.d/00testing/org-mode/contrib/lisp/org-export-generic.el")
