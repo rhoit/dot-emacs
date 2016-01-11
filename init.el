@@ -1,7 +1,7 @@
 ;;======================================================================
 ;; emacs config file for 25.0
 
-(setq user-full-name    "rhoit"
+(setq user-full-name    "rho"
       user-mail-address "rho.rhoit@gmail.com")
 
 ;;======================================================================
@@ -41,6 +41,9 @@
 
 ;; mode set
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+
+;; default comment variable
+(setq-default comment-start "# ")
 
 ;;----------------------------------------------------------------------
 ;; clean up trailing whitespaces
@@ -110,11 +113,11 @@
 ;; CONFIGS
 
 (load "~/.emacs.d/config/el-get.cfg.el")
-(load "~/.emacs.d/config/compile.cfg.el")
 ;; (load "~/.emacs.d/config/etag.cfg.el")
 (load "~/.emacs.d/config/ido.cfg.el")
 (load "~/.emacs.d/config/ui.cfg.el")
 (load "~/.emacs.d/config/currentline.cfg.el") ;; load after theme
+(load "~/.emacs.d/config/compile.cfg.el")
 (load "~/.emacs.d/config/modeline.cfg.el")
 (load "~/.emacs.d/config/tabbar.cfg.el")
 (load "~/.emacs.d/config/org-mode.cfg.el")
@@ -199,8 +202,11 @@
  '(el-get-git-shallow-clone t)
  '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t)
- '(safe-local-variable-values (quote ((lisp-mode . t) (eval server-force-delete))))
- '(which-key-idle-delay 0.4))
+ '(safe-local-variable-values
+   (quote
+    ((eval outline-hide-sublevels 1)
+     (lisp-mode . t)
+     (eval server-force-delete)))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -224,3 +230,4 @@
  '(markdown-header-face-6 ((t (:weight bold))) t)
  '(show-paren-match ((t (:inverse-video t))))
  '(which-func ((t (:background "gray40")))))
+(put 'narrow-to-region 'disabled nil)
