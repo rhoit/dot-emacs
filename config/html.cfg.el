@@ -3,6 +3,11 @@
 
 ;;----------------------------------------------------------------------
 ;; web-mode configs
+
+;; NOTE: if you are antonj's highlight-indentation-mode
+;;       please use the *localreadhead* fork
+;; https://github.com/capitaomorte/yasnippet/issues/396
+
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml?\\'" . web-mode))
 
@@ -14,6 +19,9 @@
 (setq web-mode-attr-indent-offset 2)
 (setq web-mode-enable-block-face t)
 (setq web-mode-enable-current-column-highlight t)
+
+;; ya-snippet completion for web-mode
+(add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
 
 ;;----------------------------------------------------------------------
 ;; mozrepl
