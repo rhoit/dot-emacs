@@ -22,6 +22,24 @@
 ;;    (( t (:box nil))))
 ;;  )
 
+;;----------------------------------------------------------------------
+;; tabbar
+(add-to-list 'load-path  "~/.emacs.d/00testing/tabbar")
+(require 'tabbar)
+(tabbar-mode t)
+
+;;----------------------------------------------------------------------
+;; tabbar ruler
+;; https://github.com/mattfidler/tabbar-ruler.el
+;; (setq tabbar-ruler-global-ruler t)
+;; (setq tabbar-ruler-popup-menu t)
+;; (require 'tabbar-ruler)
+
+(setq tabbar-ruler-fancy-current-tab-separator 'wave)
+(setq tabbar-ruler-fancy-tab-separator 'bar)
+(setq tabbar-ruler-fancy-hover-tab-separator 'rounded)
+(load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
+
 
 ;--- From https://github.com/dholm/tabbar/blob/master/aquamacs-tabbar.el
 ;; you may redefine these:
