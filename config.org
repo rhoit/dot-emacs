@@ -147,12 +147,19 @@ growing with time, it has been difficult to keep take of config. In
    #+end_src
 
 * Scripts
-** word play
+
+  Some useful tiny custom features. Here is the [[https://github.com/rhoit/dot-emacs/tree/master/scripts][folder]].
+
+** [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][word play]]
+
    #+begin_src emacs-lisp
      (load "~/.emacs.d/scripts/wordplay.el")
    #+end_src
 
-** py execution script
+** [[https://github.com/rhoit/dot-emacs/blob/master/scripts/py-exec.el][py execution]]
+
+   ess-style executing /python/ script.
+
    #+begin_src emacs-lisp
      (load "~/.emacs.d/scripts/py-exec.el")
    #+end_src
