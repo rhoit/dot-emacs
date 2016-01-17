@@ -1,29 +1,9 @@
 ;;======================================================================
 ;; emacs config file for 25.0
-
-(setq user-full-name    "rho"
-      user-mail-address "rho.rhoit@gmail.com")
-
 ;;======================================================================
+
 ;; debug on C-g; to point broken modules
 ;; (setq debug-on-quit t)
-
-;;----------------------------------------------------------------------
-;; el-get
-;; https://github.com/dimitri/el-get
-;; (add-to-list 'load-path "~/.emacs.d/el-get")
-;; (require 'el-get)
-;; (el-get 'sync)
-
-;; ;; my packages
-;; (setq dim-packages
-;;       (append
-;;        ;; list of packages we use straight from official recipes
-;;        '(org-mode)
-
-;;        (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources))))
-
-;; (el-get 'sync dim-packages)
 
 ;;----------------------------------------------------------------------
 ;; load config file

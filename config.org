@@ -5,10 +5,19 @@
 #+STARTUP: overview
 
 I've been using Emacs since of 2012, and my emacs config is slowing
-growing with time, it has been difficult to keep on of configuration.
-This org style is based on original config [[https://github.com/danielmai/.emacs.d/blob/master/config.org][here]].
+growing with time, it has been difficult to keep take of config. In
+*2016* I switched to this _org style_ config.
+
+* Personal Info
+  #+begin_src emacs-lisp
+    (setq user-full-name "rho"
+          user-mail-address "rho.rhoit@gmail.com")
+  #+end_src
 
 * Emacs Server
+
+  Stop opening *emacs* for each file. Set default open appelication
+  using =emacsclient -n -a=emacs [FILE]=.
 
   #+begin_src emacs-lisp
     (require 'server)
@@ -16,7 +25,7 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
       (server-start))
   #+end_src
 
-* helpful default settings
+* Defaults
 ** encoding
    #+begin_src emacs-lisp
      (setq locale-coding-system 'utf-8)
@@ -43,9 +52,10 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
      (fset 'yes-or-no-p 'y-or-n-p)
    #+end_src
 
-** nothing in recent files
+** recent files
+
    #+begin_src emacs-lisp
-     (recentf-mode 0) ;; no recent files
+     ;; (recentf-mode nil)
    #+end_src
 
 ** delete selection mode
@@ -64,7 +74,7 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
      (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
    #+end_src
 
-* Programming modes
+* Programming Modes
 ** common stuffs
    #+begin_src emacs-lisp
      (setq-default indent-tabs-mode nil)
@@ -84,7 +94,6 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
       (add-hook 'prog-mode-hook 'nuke_traling)
     #+end_src
 
-
 ** CC-mode indentation
 
    http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
@@ -99,26 +108,6 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
      (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
    #+end_src
 
-* plug-ins not in el-get
-
-   #+begin_src emacs-lisp
-     (add-to-list 'load-path "~/.emacs.d/plug-ins/")
-   #+end_src
-
-** hideshowvis mode
-
-   http://www.emacswiki.org/emacs/download/hideshowvis.el
-
-   #+begin_src emacs-lisp
-     (autoload 'hideshowvis-enable "hideshowvis")
-     (autoload 'hideshowvis-minor-mode
-       "hideshowvis"
-       "Will indicate regions foldable with hideshow in the fringe."
-       'interactive)
-
-     (add-hook 'python-mode-hook 'hideshowvis-enable)
-   #+end_src
-
 * el-get
   https://github.com/dimitri/el-get
 
@@ -128,6 +117,17 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
     (el-get 'sync)
   #+end_src
 
+** my packages
+  #+begin_src emacs-lisp
+    ;; (setq dim-packages
+    ;;       (append
+    ;;        ;; list of packages we use straight from official recipes
+    ;;        '(org-mode)
+
+    ;;        (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources))))
+
+    ;; (el-get 'sync dim-packages)
+   #+end_src
 
 * Split Configs
    #+begin_src emacs-lisp
@@ -145,12 +145,20 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
      (load "~/.emacs.d/config/python.cfg.el")
    #+end_src
 
-* SCRIPTS
+* Scripts
   #+begin_src emacs-lisp
     (load "~/.emacs.d/scripts/wordplay.el")
   #+end_src
 
-* Testing Plugins
+* Testing
+
+  This section contain modes (plug-in) which extremely personalized
+  or unavailable in =el-get=.
+
+  #+begin_src emacs-lisp
+    (add-to-list 'load-path "~/.emacs.d/00testing/")
+  #+end_src
+
 ** window numbering
    #+begin_src emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
@@ -170,6 +178,19 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
      (add-hook 'prog-mode-hook 'highlight-indentation-mode)
      (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
    #+end_src
+** hideshowvis mode
+
+   http://www.emacswiki.org/emacs/download/hideshowvis.el
+
+   #+begin_src emacs-lisp
+     (autoload 'hideshowvis-enable "hideshowvis")
+     (autoload 'hideshowvis-minor-mode
+       "hideshowvis"
+       "Will indicate regions foldable with hideshow in the fringe."
+       'interactive)
+
+     (add-hook 'python-mode-hook 'hideshowvis-enable)
+   #+end_src
 
 ** auto-dim-buffer
    #+begin_src emacs-lisp
@@ -181,7 +202,7 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
                                       (auto-dim-other-buffers-mode t)))))
    #+end_src
 
-** ansi-color sequence for complitaion mode
+** ansi-color
    #+begin_src emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/00testing/colors")
      (require 'ansi-color)
@@ -190,6 +211,16 @@ This org style is based on original config [[https://github.com/danielmai/.emacs
        (ansi-color-apply-on-region (point-min) (point-max))
        (toggle-read-only))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+   #+end_src
+
+** line number
+   http://www.emacswiki.org/LineNumbers
+   http://elpa.gnu.org/packages/nlinum-1.1.el
+
+   #+begin_src emacs-lisp
+     (require 'nlinum)
+     (setq nlinum-delay t)
+     (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
    #+end_src
 
 ** isend-mode
