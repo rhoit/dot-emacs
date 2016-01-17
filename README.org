@@ -1,0 +1,239 @@
+#+TITLE: emacs diaries
+#+DATE: Sunday, Jan 17 2016
+#+DESCRIPTION: my emacs config diaries!
+#+AUTHOR: rho
+#+OPTIONS: num:t
+#+STARTUP: overview
+
+
+*BEWARE:* AUTHOR does'nt know much *elisp* and suffer from
+*parenthesiophobia*, but couldn't stop tinker around.
+
+
+* INTRO
+** structure
+
+   #+BEGIN_EXAMPLE
+     Entropy is important but not here
+   #+END_EXAMPLE
+
+   This is the way, I keep my things have been same for many year now!
+
+   #+BEGIN_EXAMPLE
+     dot-emacs
+     ├── el-get                 # pacman
+     ├── config                 # config subsection
+     │   ├── compile.cfg.el
+     :   :
+     │   └── tabbar.cfg.el
+     ├── ...
+     :
+     ├── 00testing              # testing stuffs
+     └── snippets               # yasnippet stuffs
+         ├── fundamental-mode
+         :
+         └── python-mode
+   #+END_EXAMPLE
+
+* CORE
+** server
+
+   Stop ⛔ opening *emacs* for each file. Set default open application
+   to *emacsclient*, or set it manually:
+
+   =emacsclient --no-wait--alternate-editor=emacs [FILE]=
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'server)
+     (unless (server-running-p)
+       (server-start))
+   #+END_SRC
+
+* UX
+** yes-or-no
+
+   yup thing are annoying 😤 here! avoid typing complete 'yes' and
+   'no'.
+
+   #+BEGIN_SRC emacs-lisp
+     (fset 'yes-or-no-p 'y-or-n-p)
+   #+END_SRC
+
+** search
+*** anzu
+
+    [[https://github.com/syohex/emacs-anzu][anzu]] highlight all search matches, most of the text editor does
+    even [[https://github.com/osyo-manga/vim-anzu][vi]] this why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original
+    repository.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'anzu)
+
+      (global-anzu-mode +1)
+      (global-unset-key (kbd "M-%"))
+      (global-unset-key (kbd "C-M-%"))
+      (global-set-key (kbd "M-%") 'anzu-query-replace)
+      (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+    #+END_SRC
+
+* PROGRAMMING
+
+  some of the basic things provide by *emacs* internal packages.
+
+  #+BEGIN_SRC emacs-lisp
+    (add-hook 'prog-mode-hook 'subword-mode)  ; camelCase is subword
+    (add-hook 'prog-mode-hook 'which-function-mode)
+    (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+  #+END_SRC
+
+** comments
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq-default comment-start "# ")
+   #+END_SRC
+
+** parenthesis
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq show-paren-style 'expression)
+     ;; (setq show-paren-match '((t (:inverse-video t)))) ;; this is not working using custom set face
+     (show-paren-mode 1)
+   #+END_SRC
+
+*** rainbow-delimiters
+
+    This 🌈 mode is barely noticeable at first glance but, if you live
+    by parenthesis it nice thing to have around.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+    #+END_SRC
+
+** white-spaces
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (defun nuke-trailing ()
+       (add-hook 'write-file-hooks 'delete-trailing-whitespace)
+       (add-hook 'before-save-hooks 'whitespace-cleanup))
+
+     (add-hook 'prog-mode-hook 'nuke-trailing)
+   #+END_SRC
+
+* PYTHON
+
+  Welcome to flying circus 🎪.
+
+  #+BEGIN_SRC emacs-lisp
+    (setq-default py-indent-offset 4)
+  #+END_SRC
+
+* MODES
+** C/C++
+
+   http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
+
+   #+BEGIN_SRC emacs-lisp
+     (setq c-tab-always-indent t)
+     (setq c-basic-offset 4)
+     (setq c-indent-level 4)
+   #+END_SRC
+
+** dockerfile
+
+   Goodies for 🐳 🐳 🐳
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'dockerfile-mode)
+     (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
+   #+END_SRC
+
+** json
+
+   #+BEGIN_SRC emacs-lisp
+     (setq auto-mode-alist
+        (cons '("\.json$" . json-mode) auto-mode-alist))
+   #+END_SRC
+
+** yasnippet
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'yasnippet)
+     (yas-reload-all)
+     (add-hook 'prog-mode-hook 'yas-minor-mode-on)
+     (add-hook 'org-mode-hook 'yas-minor-mode-on)
+   #+END_SRC
+
+* WORDPLAY
+
+  [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][wordplay]] consist of collection of nifty scripts.
+
+  #+BEGIN_SRC emacs-lisp
+    (load "~/.emacs.d/scripts/wordplay.el")
+  #+END_SRC
+
+** duplicate lines/words
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "C-`") 'duplicate-current-line)
+     (global-set-key (kbd "C-~") 'duplicate-current-word)
+   #+END_SRC
+
+** on point line copy
+
+   only enable for =C-<insert>=
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
+   #+END_SRC
+
+* TESTING
+
+  This :construction: section :construction: contain modes (plug-in)
+  which modified to *extreme* or :bug: *buggy*. May still not be
+  *available* in =el-get=.
+
+  #+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path "~/.emacs.d/00testing/")
+  #+END_SRC
+
+** ansi-color
+
+   Need to fix 265-color support, has been such for a long
+   time, since we very few work on teminal colors it might
+   not be fixed anytime sooner.
+
+   This is what I meant [[https://camo.githubusercontent.com/67e508f03a93d4e9935e38ea201dff7cc32c0afd/68747470733a2f2f7261772e6769746875622e636f6d2f72686f69742f72686f69742e6769746875622e636f6d2f6d61737465722f73637265656e73686f74732f656d6163732d323536636f6c6f722e706e67][screenshot]] was produced using [[https://github.com/bekar/vt100_colors][code]].
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'ansi-color)
+     (defun colorize-compilation-buffer ()
+       (toggle-read-only)
+       (ansi-color-apply-on-region (point-min) (point-max))
+       (toggle-read-only))
+     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+   #+END_SRC
+
+** isend-mode
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (add-to-list 'load-path "~/.emacs.d/00testing/isend-mode/")
+     ;; (require 'isend)
+   #+END_SRC
+
+** LFG mode
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (setq xle-buffer-process-coding-system 'utf-8)
+     ;; (load-library "/opt/xle/emacs/lfg-mode")
+   #+END_SRC
+
+* META :noexport:
+
+  # Local Variables:
+  # buffer-read-only: t
+  # End:
