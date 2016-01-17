@@ -1,0 +1,663 @@
+#+TITLE: dot-emacs
+#+DATE: Sunday, Jan 17 2016
+#+DESCRIPTION: my emacs config!
+#+AUTHOR: rho
+#+OPTIONS: num:t
+#+STARTUP: overview
+
+*DISCLAIMER:* :warning: AUTHOR will _not_ be _responsible_ for
+the :fire: _harm_ :fire: cause by using this config :bangbang:
+
+Its unlikely to harm,
+
+but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
+
+* INTRO
+
+  I've been using /emacs/ since of *2012*, and slowly config is grown
+  from few lines to a full repository of /tweaks/, /hacks/ and few of
+  my own /scripts/. This is the action I took to make config more
+  verbose and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init.el][init.el]] been converted to org
+  mode.
+
+  #+ATTR_HTML: title="screenshot"
+  [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
+
+** Get it
+
+   #+BEGIN_EXAMPLE
+     $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
+   #+END_EXAMPLE
+
+** How to build
+
+   =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
+   stuffs.
+
+   #+BEGIN_SRC bash
+     $ ./configure
+     $ make
+     $ make install
+   #+END_SRC
+
+** Structure
+
+   #+BEGIN_EXAMPLE
+     dot-emacs
+     ├── el-get                 # pacman
+     ├── config                 # config subsection
+     │   ├── compile.cfg.el
+     :   :
+     │   └── tabbar.cfg.el
+     ├── ...
+     :
+     ├── 00testing              # testing stuffs
+     └── snippets               # yasnippet stuffs
+         ├── fundamental-mode
+         :
+         └── python-mode
+   #+END_EXAMPLE
+
+* CORE
+** emacs server
+
+   Stop opening *emacs* for each file. Set default open application
+   using =emacsclient -n -a=emacs [FILE]=.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'server)
+     (unless (server-running-p)
+       (server-start))
+   #+END_SRC
+
+** encoding
+
+   #+BEGIN_SRC emacs-lisp
+     (setq locale-coding-system 'utf-8)
+     (set-language-environment 'utf-8)
+     (set-terminal-coding-system 'utf-8)
+     (set-keyboard-coding-system 'utf-8)
+     (set-selection-coding-system 'utf-8)
+     (prefer-coding-system 'utf-8)
+   #+END_SRC
+
+** backup configuration
+
+   #+BEGIN_SRC emacs-lisp
+     (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
+     (setq make-backup-files nil)
+   #+END_SRC
+
+** avoid typing complete 'yes' and 'no
+
+   #+BEGIN_SRC emacs-lisp
+     (fset 'yes-or-no-p 'y-or-n-p)
+   #+END_SRC
+
+** recent files
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (recentf-mode nil)
+   #+END_SRC
+
+* PACMAN
+
+  [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
+
+  #+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path "~/.emacs.d/el-get")
+    (require 'el-get)
+    (setq el-get-git-shallow-clone 't)
+    (el-get 'sync)
+  #+END_SRC
+
+** my packages
+
+   To replicate a package set for another emacs installation is
+   explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
+
+   you can list current installed package using.
+
+   #+BEGIN_EXAMPLE
+     `(setq my-packages
+         ',(mapcar #'el-get-as-symbol
+               (el-get-list-package-names-with-status "installed")))
+   #+END_EXAMPLE
+
+* [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
+
+  Basic configuration, like window size keybindings
+
+  #+BEGIN_SRC emacs-lisp
+    (load "~/.emacs.d/config/ui.cfg.el")
+  #+END_SRC
+
+  these are kind of strange bindings for beginner and for me too, so
+  lets remove it
+
+  #+BEGIN_SRC emacs-lisp
+    (global-unset-key [(control prior)])
+    (global-unset-key [(control next)])
+  #+END_SRC
+
+  I find these binding quite handful.
+
+  #+BEGIN_SRC emacs-lisp
+    (require 'fill-column-indicator)
+    (global-set-key [M-f4] 'save-buffers-kill-terminal)
+    (global-set-key [(control f5)] '(lambda() (interactive)
+                                    (load-file "~/.emacs.d/init.el")))
+    (global-set-key [f6] '(lambda() (interactive)
+                          (toggle-truncate-lines)
+                          (fci-mode)))
+    (global-set-key [f9] 'speedbar)
+  #+END_SRC
+
+** highlight current line
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'highline)
+     (require 'highline)
+
+     ;; (set-face-background 'highline-face "#111")
+     (set-face-background 'highline-face (shade-color 09))
+     (add-hook 'prog-mode-hook 'highline-mode-on)
+   #+END_SRC
+
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
+
+   #+ATTR_HTML: title="modline-screenshot"
+   [[https://github.com/ryuslash/mode-icons][file:https://raw.githubusercontent.com/rhoit/mode-icons/dump/screenshots/screenshot01.png]]
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (el-get 'sync 'mode-icons)
+     ;; (require 'mode-icons)
+     ;;; mode-icons directly from repo, for experiments
+     ;;; https://github.com/ryuslash/mode-icons
+     (load-file "~/.emacs.d/00testing/mode-icons/mode-icons.el")
+     ;; (setq mode-icons-desaturate-inactive nil)
+     ;; (setq mode-icons-desaturate-active nil)
+     ;; (setq mode-icons-grayscale-transform nil)
+     (mode-icons-mode)
+
+     (el-get 'sync 'powerline)
+     (require 'powerline)
+     ;; (powerline-default-theme)
+     ;;; https://github.com/rhoit/powerline-iconic-theme
+     ;; (add-to-list 'load-path "~/.emacs.d/00testing/powerline-iconic-theme/")
+     (load-file "~/.emacs.d/00testing/powerline-iconic-theme/iconic.el")
+     ;; (require 'iconic)
+     (powerline-iconic-theme)
+
+     ;; modeline from spacmacs
+     ;;; https://github.com/TheBB/spaceline
+     ;; (add-to-list 'load-path  "~/.emacs.d/00testing/spaceline/")
+     ;; (require 'spaceline-config)
+     ;; (spaceline-spacemacs-theme)
+   #+END_SRC
+
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
+
+   #+ATTR_HTML: title="tabbar-screenshot"
+   [[https://github.com/mattfidler/tabbar-ruler.el][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (add-to-list 'load-path  "~/.emacs.d/00testing/tabbar")
+     (require 'tabbar)
+     (tabbar-mode t)
+
+     (setq tabbar-ruler-style 'firefox)
+     (load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
+     ;; (require 'tabbar-ruler)
+
+     (load "~/.emacs.d/config/tabbar.cfg.el")
+     (global-set-key [f7] 'tabbar-mode)
+   #+END_SRC
+
+   bind them as modern GUI system.
+
+   #+BEGIN_SRC emacs-lisp
+     (define-key global-map [(control tab)] 'tabbar-forward)
+     (define-key global-map [(control next)] 'tabbar-forward)
+     (define-key global-map [(control prior)] 'tabbar-backward)
+     (define-key global-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
+   #+END_SRC
+
+   Binding for the tab groups, some how I use lots of buffers.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key [(control shift prior)] 'tabbar-backward-group)
+     (global-set-key [(control shift next)] 'tabbar-forward-group)
+   #+END_SRC
+
+** smooth scroll
+
+   Unfortunately emacs :barber: scrolling :barber: is not smooth, its
+   *2016* already.
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'smooth-scroll)
+     (require 'smooth-scroll)
+     (smooth-scroll-mode t)
+
+     (setq linum-delay t)
+     (setq redisplay-dont-pause t)
+     (setq scroll-conservatively 0) ;; cursor on the middle of the screen
+     (setq scroll-up-aggressively 0.01)
+     (setq scroll-down-aggressively 0.01)
+     (setq auto-window-vscroll nil)
+
+     (setq mouse-wheel-progressive-speed 10)
+     (setq mouse-wheel-follow-mouse 't)
+   #+END_SRC
+
+** delete selection mode
+
+   Default behavious of emacs weird, I wish this was *default*.
+
+   #+BEGIN_SRC emacs-lisp
+     (delete-selection-mode 1)
+   #+END_SRC
+
+** anzu
+
+   Highlight all search matches, most of the text editor does this
+   why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'anzu)
+     (require 'anzu)
+     (global-anzu-mode +1)
+     (global-unset-key (kbd "M-%"))
+     (global-unset-key (kbd "C-M-%"))
+     (global-set-key (kbd "M-%") 'anzu-query-replace)
+     (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+   #+END_SRC
+
+** [[https://github.com/magnars/multiple-cursors.el][multiple cursor]]
+
+   if [[https://www.sublimetext.com/][sublime]] can have multiple selections, *emacs* can too..
+
+   Here is [[https://youtu.be/jNa3axo40qM][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e13.html][ep13]].
+
+   #+BEGIN_SRC emacs-lisp
+     (when window-system
+       (el-get 'sync 'multiple-cursors)
+       (require 'multiple-cursors)
+       (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
+   #+END_SRC
+
+** goto-last-change
+
+   This is the gem feature, this might be true answer to the /sublime
+   mini-map/ which is over rated, this is what you need.
+
+   If you aren't using el-get here is the [[https://raw.github.com/emacsmirror/emacswiki.org/master/goto-last-change.el][source]], guessing it its
+   avaliable in all major repository by now.
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'goto-chg)
+     (require 'goto-chg)
+     (global-unset-key (kbd "C-j"))
+     (global-set-key (kbd "C-j") 'goto-last-change)
+   #+END_SRC
+
+** switch windows
+
+   It kinda has been stuck in my config for years, just addicted to
+   it. Seems like this is by default now.
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (el-get 'sync 'switch-window)
+     ;; (require 'switch-window)
+     ;; (global-set-key (kbd "C-x o") 'switch-window)
+   #+END_SRC
+
+** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
+
+   People have emotions and so do *emacs* 😂.
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'emojify)
+     (require 'emojify)
+
+     (add-hook 'org-mode-hook 'emojify-mode)
+     (add-hook 'markdown-mode-hook 'emojify-mode)
+     (add-hook 'git-commit-mode-hook 'emojify-mode)
+   #+END_SRC
+
+* PROGRAMMING
+
+   #+BEGIN_SRC emacs-lisp
+     (setq-default comment-start "# ")
+   #+END_SRC
+
+** internal packages
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'prog-mode-hook 'which-function-mode)
+     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (setq show-paren-style 'expression)
+     (show-paren-mode 1)
+   #+END_SRC
+
+** watch word
+
+   #+BEGIN_SRC emacs-lisp
+     (defun watch-words ()
+       (interactive)
+       (font-lock-add-keywords
+        nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|IMP\\|NOTE\\)"
+               1 font-lock-warning-face t))))
+
+     (add-hook 'prog-mode-hook 'watch-words)
+   #+END_SRC
+
+** highlight symbol
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'highlight-symbol)
+     (global-set-key [(control f3)] 'highlight-symbol-at-point)
+     (global-set-key [(shift f3)] 'highlight-symbol-next)
+     (global-set-key [(shift f2)] 'highlight-symbol-prev)
+     (global-set-key [(control f2)] 'highlight-symbol-query-replace)
+   #+END_SRC
+
+** trailing white-spaces
+
+   #+BEGIN_SRC emacs-lisp
+     (defun nuke_traling ()
+       (add-hook 'write-file-hooks 'delete-trailing-whitespace)
+       (add-hook 'before-save-hooks 'whitespace-cleanup))
+
+     (add-hook 'prog-mode-hook 'nuke_traling)
+    #+END_SRC
+
+** indentation
+
+   #+BEGIN_SRC emacs-lisp
+     (setq-default indent-tabs-mode nil)
+     (setq-default tab-width 4)
+   #+END_SRC
+
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][complie]]
+
+   #+BEGIN_SRC emacs-lisp
+     (load "~/.emacs.d/config/compile.cfg.el")
+   #+END_SRC
+
+*** few hooks
+
+    #+BEGIN_SRC emacs-lisp
+      (el-get 'sync 'fill-column-indicator)
+      (require 'fill-column-indicator)
+      (defun my-compilation-mode-hook ()
+        (setq truncate-lines nil) ;; automatically becomes buffer local
+        (set (make-local-variable 'truncate-partial-width-windows) nil)
+        (toggle-truncate-lines)
+        (fci-mode))
+      (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+    #+END_SRC
+
+*** bindings
+
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "C-<f8>") 'save-and-compile-again)
+      (global-set-key (kbd "C-<f9>") 'ask-new-compile-command)
+      (global-set-key (kbd "<f8>") 'toggle-compilation-buffer)
+    #+END_SRC
+
+** rainbow delimiters
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'rainbow-delimiters)
+     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+   #+END_SRC
+
+* MODES
+** C/C++
+
+   http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
+
+   #+BEGIN_SRC emacs-lisp
+     (setq c++-tab-always-indent t)
+     (setq c-basic-offset 4)
+     (setq c-indent-level 4)
+     (require 'cc-mode)
+     (c-set-offset 'substatement-open 0)
+     (add-hook 'c-mode-common-hook '(lambda() (c-toggle-hungry-state 1)))
+     (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+   #+END_SRC
+
+** python
+
+   Welcome to flying circus :circus_tent:.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq-default py-indent-offset 4)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (load "~/.emacs.d/config/python.cfg.el")
+   #+END_SRC
+
+*** [[https://github.com/rhoit/dot-emacs/blob/master/scripts/py-exec.el][py execution]]
+
+    ess-style executing /python/ script.
+
+    #+BEGIN_SRC emacs-lisp
+    ;;  (load "~/.emacs.d/scripts/py-exec.el")
+    #+END_SRC
+
+** Org
+
+   #+BEGIN_SRC emacs-lisp
+     (load "~/.emacs.d/config/org-mode.cfg.el")
+     (load "~/.emacs.d/config/babel.cfg.el")
+   #+END_SRC
+
+*** Minor mode
+
+    Org-mode is addictive, why not use it as minor-modes.
+
+    *outline*
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'outline)
+      (add-hook 'prog-mode-hook 'outline-minor-mode)
+      (add-hook 'compilation-mode-hook 'outline-minor-mode)
+    #+END_SRC
+
+    *outshine*
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'outshine)
+      (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+      ;; (add-hook 'outline-minor-mode-hook
+      ;;          '(lambda ()
+      ;;             (define-key org-mode-map (kbd "C-j") nil)))
+    #+END_SRC
+
+** dockerfile
+
+   Goodies for :whale: :whale: :whale:
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'dockerfile-mode)
+     (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
+   #+END_SRC
+
+** json
+
+   #+BEGIN_SRC emacs-lisp
+     (setq auto-mode-alist
+        (cons '("\.json$" . json-mode) auto-mode-alist))
+   #+END_SRC
+
+** markdown
+
+   disable because markdown creating problem to dockerfile-mode
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (el-get 'sync 'markdown-mode)
+     (add-to-list 'auto-mode-alist '("\.md" . markdown-mode))
+   #+END_SRC
+
+** yasnippet
+
+   #+BEGIN_SRC emacs-lisp
+     (when window-system
+       (require 'yasnippet)
+       (yas-reload-all)
+       (add-hook 'prog-mode-hook 'yas-minor-mode-on)
+       (add-hook 'org-mode-hook 'yas-minor-mode-on))
+   #+END_SRC
+
+* [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][WORD PLAY]]
+
+  Word play consist of collection of nify scripts.
+
+  #+BEGIN_SRC emacs-lisp
+    (load "~/.emacs.d/scripts/wordplay.el")
+  #+END_SRC
+
+** duplicate lines/words
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "C-`") 'duplicate-current-line)
+     (global-set-key (kbd "C-~") 'duplicate-current-word)
+   #+END_SRC
+
+** on point line copy
+
+   only enable for =C-<insert>=
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
+   #+END_SRC
+
+** sort words
+
+   http://www.emacswiki.org/emacs/SortWords
+
+** popup kill ring
+
+   kill :skull: ring :ring:
+
+   Only enable for =Shift + <insert>=
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key [(shift insert)] 'repetitive-yanking)
+   #+END_SRC
+
+* TESTING
+
+  This :construction: section :construction: contain modes (plug-in)
+  which modified to *extreme* or :bug: *buggy*. May still not be
+  *available* in =el-get=.
+
+  #+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path "~/.emacs.d/00testing/")
+  #+END_SRC
+
+** window numbering
+
+   also avalible in *el-get*.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
+     (require 'window-numbering)
+     (window-numbering-mode)
+   #+END_SRC
+
+** highlight indentation
+
+   Using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
+   compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]]
+
+   other color: "#aaeeba"
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "~/.emacs.d/00testing/indent/antonj/")
+     (require 'highlight-indentation)
+     (set-face-background 'highlight-indentation-face "olive drab")
+     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
+     (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+     (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+   #+END_SRC
+
+** hideshowvis mode
+
+   http://www.emacswiki.org/emacs/download/hideshowvis.el
+
+   #+BEGIN_SRC emacs-lisp
+     (autoload 'hideshowvis-enable "hideshowvis")
+     (autoload 'hideshowvis-minor-mode
+       "hideshowvis"
+       "Will indicate regions foldable with hideshow in the fringe."
+       'interactive)
+
+     (add-hook 'python-mode-hook 'hideshowvis-enable)
+   #+END_SRC
+
+** auto-dim-buffer
+
+   https://github.com/mina86/auto-dim-other-buffers.el
+
+   #+BEGIN_SRC emacs-lisp
+     (when window-system
+       (add-to-list 'load-path "~/.emacs.d/00testing/auto-dim-other-buffers.el")
+       (require 'auto-dim-other-buffers)
+       (add-hook 'after-init-hook (lambda ()
+                                    (when (fboundp 'auto-dim-other-buffers-mode)
+                                      (auto-dim-other-buffers-mode t)))))
+   #+END_SRC
+
+** ansi-color
+
+   Need to fix 265 color support.
+   This is what I meant [[https://camo.githubusercontent.com/67e508f03a93d4e9935e38ea201dff7cc32c0afd/68747470733a2f2f7261772e6769746875622e636f6d2f72686f69742f72686f69742e6769746875622e636f6d2f6d61737465722f73637265656e73686f74732f656d6163732d323536636f6c6f722e706e67][screenshot]] was produced using [[https://github.com/bekar/vt100_colors][code]].
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "~/.emacs.d/00testing/colors")
+     (require 'ansi-color)
+     (defun colorize-compilation-buffer ()
+       (toggle-read-only)
+       (ansi-color-apply-on-region (point-min) (point-max))
+       (toggle-read-only))
+     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+   #+END_SRC
+
+** line number
+   http://www.emacswiki.org/LineNumbers
+   http://elpa.gnu.org/packages/nlinum-1.1.el
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'nlinum)
+     (setq nlinum-delay t)
+     (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
+   #+END_SRC
+
+** isend-mode
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (add-to-list 'load-path "~/.emacs.d/00testing/isend-mode/")
+     ;; (require 'isend)
+   #+END_SRC
+
+** LFG mode
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (setq xle-buffer-process-coding-system 'utf-8)
+     ;; (load-library "/opt/xle/emacs/lfg-mode")
+   #+END_SRC
+
+* META :noexport:
+
+  # Local Variables:
+  # buffer-read-only: t
+  # End:
