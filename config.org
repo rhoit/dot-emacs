@@ -1,13 +1,12 @@
 #+TITLE: Emacs Configuration
 #+DATE: Sunday, Jan 17 2016
 #+AUTHOR: rho
+#+OPTIONS: num:t
+#+STARTUP: overview
 
 I've been using Emacs since of 2012, and my emacs config is slowing
 growing with time, it has been difficult to keep on of configuration.
-
-This configuration uses the [[https://github.com/jwiegley/use-package][use-package]] package from John Wiegley,
-which is a fantastic way to manage package configurations. You can see
-original config [[https://github.com/danielmai/.emacs.d/blob/master/config.org][here]].
+This org style is based on original config [[https://github.com/danielmai/.emacs.d/blob/master/config.org][here]].
 
 * Emacs Server
 
