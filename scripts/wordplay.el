@@ -35,6 +35,17 @@
 (global-set-key (kbd "C-~") 'duplicate-current-word)
 
 ;;----------------------------------------------------------------------
+;; additional copy function
+(defun kill-ring-save-current-line()
+  "on point line copy"
+  (interactive)
+  (if (use-region-p)
+      (kill-ring-save (point) (mark))
+    (kill-new (thing-at-point 'line))))
+
+(global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
+
+;;----------------------------------------------------------------------
 ;; word-sort
 ;; http://www.emacswiki.org/emacs/SortWords
 (defun sort-words (reverse beg end)
@@ -49,3 +60,21 @@
   "
   (interactive "*P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+
+;;----------------------------------------------------------------------
+;; popup kill ring
+(require 'popup)
+(require 'pos-tip)
+(require 'popup-kill-ring)
+
+(defun repetitive-yanking()
+  "yank and yank whats rest are in the kill ring"
+  (interactive)
+  (message "last-command: %S" last-command)
+  (if (string= last-command "yank")
+      (progn
+        (undo-only)
+        (popup-kill-ring))
+      (yank)))
+
+(global-set-key [(shift insert)] 'repetitive-yanking)
