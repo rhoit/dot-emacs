@@ -10,6 +10,9 @@ Its unlikely to harm just *MAKE SURE YOU HAVE THE BACKUP*
 #+ATTR_HTML: title="screenshot"
 [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
+** 0. [[https://github.com/rhoit/dot-emacs/blob/master/config.org][See it]]
+   yeah! =init= is in /org-mode/, just open [[https://github.com/rhoit/dot-emacs/blob/master/config.org][config.org]].
+
 ** 1. Getting it
    #+BEGIN_SRC bash
      $ git clone --recursive https://github.com/rhoit/dot-emacs /path/to/dot-emacs

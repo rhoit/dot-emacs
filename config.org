@@ -4,9 +4,10 @@
 #+OPTIONS: num:t
 #+STARTUP: overview
 
-I've been using Emacs since of 2012, and my emacs config is slowing
-growing with time, it has been difficult to keep take of config. In
-*2016* I switched to this _org style_ config.
+I've been using /emacs/ since of *2012*, and slowly config is grown
+from few lines to a full repository of /tweaks/, /hacks/ and few of my
+own /scripts/. This is the action I took to make config more verbose
+and friendly for everyone.
 
 * Personal Info
   #+begin_src emacs-lisp
@@ -140,7 +141,7 @@ growing with time, it has been difficult to keep take of config. In
     ;; (el-get 'sync dim-packages)
    #+end_src
 
-** configs
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/el-get.cfg.el][configs]]
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/el-get.cfg.el")
    #+end_src
@@ -164,8 +165,7 @@ growing with time, it has been difficult to keep take of config. In
    #+end_src
 
 * Split Configs
-
-** UI
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI]]
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/ui.cfg.el")
    #+end_src
@@ -202,8 +202,8 @@ growing with time, it has been difficult to keep take of config. In
 
 * Testing
 
-  This section contain modes (plug-in) which extremely personalized
-  or unavailable in =el-get=.
+  This section contain modes (plug-in) which modified to *extrem* or
+  *buggy*. May still not be *available* in =el-get=.
 
   #+begin_src emacs-lisp
     (add-to-list 'load-path "~/.emacs.d/00testing/")
