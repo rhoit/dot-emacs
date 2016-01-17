@@ -115,6 +115,7 @@ serve much purpose on the mode-line."
     (auto-dim-other-buffers-mode . "")
     (highline-mode . "")
     (highlight-indentation-mode . "")
+    (highlight-indentation-current-column-mode . "")
     (anzu-mode . "")
     (markdown-mode . " ")
     (smooth-scroll-mode . "")
