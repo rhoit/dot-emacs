@@ -1,8 +1,11 @@
+*.bak
 .mc-lists.el
+.python-environments/
 00testing/*
 _*
 ac-comphist.dat
 auto-save-list
+config.el
 elpa
 eshell/*
 ido.last
@@ -10,4 +13,4 @@ pydoc-info/*
 recentf
 session.*
 smex-items
-.python-environments/
+~*
