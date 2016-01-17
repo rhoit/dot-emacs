@@ -1,11 +1,11 @@
 #+TITLE: dot-emacs
 #+DESCRIPTION: my emacs config!
-
 #+STARTUP: showall
 
-*DISCLAIMER* AUTHOR will _not_ be _responsible_ for the _harm_ cause by
-using this config, its unlikely to harm (but there are always some
-assholes lying around to blame) so *MAKE SURE YOU HAVE THE BACKUP*
+*DISCLAIMER:* AUTHOR will _not_ be _responsible_ for the _harm_ cause
+by using this config.
+
+Its unlikely to harm just *MAKE SURE YOU HAVE THE BACKUP*
 
 #+ATTR_HTML: title="screenshot"
 [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
@@ -40,17 +40,13 @@ assholes lying around to blame) so *MAKE SURE YOU HAVE THE BACKUP*
    #+BEGIN_EXAMPLE
      dot-emacs
      ├── el-get                 # pacman
-     ├── plug-ins               # packages with mods and config
-     │   ├── ...
-     :   :
-     │   └── tabbar-ruler.el
      ├── config                 # custom config of packages
      │   ├── compile.cfg.el
      :   :
      │   └── tabbar.cfg.el
      ├── ...
      :
-     ├── repo                   # packages not yet in el-get as *submodules*
+     ├── 00testing              # testing stuffs
      └── snippets               # ya-snippet stuffs
          └── python-mode
    #+END_EXAMPLE

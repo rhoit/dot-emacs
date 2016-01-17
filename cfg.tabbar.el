@@ -1,8 +1,4 @@
-;; original author: David.Villa@uclm.es
-
 ;; - Better faces for tabs.
-;; - Separate buffers in three independent groups: user files, dired and messages.
-
 ;; (custom-set-faces
 ;;  '(tabbar-default
 ;;    ((t (:inherit variable-pitch :background "gray94" :foreground "gray25" :height 0.8))))
@@ -10,11 +6,11 @@
 ;;    ((t (:foreground "blue"))))
 ;;  '(tabbar-selected
 ;;    ((t (:inherit tabbar-default :background "gray95" :weight bold
-;; ;				 :box '(:line-width 8 :color "white" :style released-button)
+;; 				 :box '(:line-width 8 :color "white" :style released-button)
 ;; 				 ))))
 ;;  '(tabbar-unselected
 ;;    ((t (:inherit tabbar-default :background "gray85" :foreground "gray30"
-;; ;				 :box '(:line-width 1 :color "gray80" :style nil)
+;; 				 :box '(:line-width 1 :color "gray80" :style nil)
 ;; 				 ))))
 ;;  '(tabbar-separator
 ;;    ((t (:background "gray50" :height 1.2)))
@@ -39,8 +35,11 @@
 ;; (setq tabbar-ruler-global-ruler t)
 ;; (setq tabbar-ruler-popup-menu t)
 ;; (require 'tabbar-ruler)
-;; using tabbar mod
-(load-file "~/.emacs.d/plug-ins/tabbar-ruler_mod.el")
+
+(setq tabbar-ruler-fancy-current-tab-separator 'wave)
+(setq tabbar-ruler-fancy-tab-separator 'bar)
+(setq tabbar-ruler-fancy-hover-tab-separator 'rounded)
+(load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
 
 (setq tabbar-buffer-groups-function
       (lambda ()
@@ -52,32 +51,8 @@
 	       ))))
 
 
-;; ;; group by directory
-;; (setq tabbar-buffer-groups-function
-;;       (lambda ()
-;; 	(let ((dir (expand-file-name default-directory)))
-;; 	  (cond ((member (buffer-name) '("*Completions*"
-;; 					 "*scratch*"
-;; 					 "*Messages*"
-;; 					 "*Ediff Registry*"))
-;; 		 (list "#misc"))
-;; 		(
-;; 		 (string-match-p "/.emacs.d/" dir)
-;; 		 '".emacs.d"
-;; 		 )
-;; 		(t (list dir))
-;; 		)
-;; 	  )
-;; 	)
-;;       )
-
-;--- from  http://emacswiki.org/emacs/TabBarMode
-;; (defadvice tabbar-buffer-tab-label (after fixup_tab_label_space_and_flag activate)
-;;   (setq ad-return-value (concat "  " (concat ad-return-value "  "))))
-
 
 ;--- From https://github.com/dholm/tabbar/blob/master/aquamacs-tabbar.el
-
 ;; you may redefine these:
 (defvar tabbar-key-binding-modifier-list '(meta)
   "List of modifiers to be used for keys bound to tabs.
