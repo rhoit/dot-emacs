@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: justify
+# contributor: rho
+# key: align
+# --
+
+#+BEGIN_JUSTIFY${1:$$(yas-choose-value '("LEFT" "RIGHT"))}
+$0
+#+END_JUSTIFY$1
