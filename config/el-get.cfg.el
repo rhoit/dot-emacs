@@ -77,34 +77,34 @@
 ;;----------------------------------------------------------------------
 ;; android mode
 ;; http://blog.refu.co/?p=1242
-(add-to-list 'load-path "~/opt/android-mode")
-(require 'android-mode)
+;; (add-to-list 'load-path "~/opt/android-mode")
+;; (require 'android-mode)
 
 ;;----------------------------------------------------------------------
 ;; Emacs Speaks Statistics
-(defun ess-loader()
-  (require 'ess-site)
-  (r-mode t))
-(when window-system
-  (setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist)))
+;; (defun ess-loader()
+;;   (require 'ess-site)
+;;   (r-mode t))
+;; (when window-system
+;;   (setq auto-mode-alist (append '(("\.r$" . ess-loader)) auto-mode-alist)))
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX
-(when window-system
-  (load "auctex.el" t)
-  (setq TeX-auto-save t)
-  (setq TeX-parse-self t)
-  (setq-default TeX-master nil)
-  ;; ;; (load "preview-latex.el" nil t t)
-  )
+;; (when window-system
+;;   (load "auctex.el" t)
+;;   (setq TeX-auto-save t)
+;;   (setq TeX-parse-self t)
+;;   (setq-default TeX-master nil)
+;;   ;; ;; (load "preview-latex.el" nil t t)
+;;   )
 
-;; (add-hook 'LaTeX-mode-hook 'watch-words)
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+;; ;; (add-hook 'LaTeX-mode-hook 'watch-words)
+;; (add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 
 ;;----------------------------------------------------------------------
 ;; AUCTeX autocomplete
-(when window-system
-  (require 'auto-complete-auctex))
+;; (when window-system
+;;   (require 'auto-complete-auctex))
 
 ;;----------------------------------------------------------------------
 ;; multiple cursor
@@ -131,17 +131,3 @@
 ;; markdown mode
 (setq auto-mode-alist
       (cons '("\.md" . markdown-mode) auto-mode-alist))
-;; (add-hook 'find-file-hooks 'turn-on-flyspell)
-;; (put 'set-goal-column 'disabled nil)
-
-;;----------------------------------------------------------------------
-;; ibus input method
-;; (require 'ibus)
-;; Turn on ibus-mode automatically after loading .emacs
-;; (add-hook 'after-init-hook 'ibus-mode-on)
-;; Choose your key to toggle input status:
-;; (ibus-define-common-key ?\S-\s nil)
-;; (global-set-key (kbd "C-S-SPC") 'ibus-toggle)
-;; (global-set-key (kbd "C-\\") 'ibus-toggle)
-;; Change cursor color depending on IBus status
-;; (setq ibus-cursor-color '("red" "blue" "limegreen"))
