@@ -69,14 +69,6 @@
   (winner-mode 1))
 
 ;;----------------------------------------------------------------------
-;; line-number
-;; http://www.emacswiki.org/LineNumbers
-;; http://elpa.gnu.org/packages/nlinum-1.1.el
-(require 'nlinum)
-(setq nlinum-delay t)
-(add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
-
-;;----------------------------------------------------------------------
 ;; smooth-scrolling
 (require 'smooth-scroll)
 (smooth-scroll-mode t)
