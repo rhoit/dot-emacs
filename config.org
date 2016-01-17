@@ -74,7 +74,7 @@ growing with time, it has been difficult to keep take of config. In
      (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
    #+end_src
 
-* Programming Modes
+* Programming modes
 ** common stuffs
    #+begin_src emacs-lisp
      (setq-default indent-tabs-mode nil)
@@ -147,9 +147,15 @@ growing with time, it has been difficult to keep take of config. In
    #+end_src
 
 * Scripts
-  #+begin_src emacs-lisp
-    (load "~/.emacs.d/scripts/wordplay.el")
-  #+end_src
+** word play
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/scripts/wordplay.el")
+   #+end_src
+
+** py execution script
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/scripts/py-exec.el")
+   #+end_src
 
 * Testing
 
