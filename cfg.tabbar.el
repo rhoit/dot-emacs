@@ -44,12 +44,12 @@
 (setq tabbar-buffer-groups-function
       (lambda ()
 	(list (cond
-	       ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs Buffer")
+	       ((string-match "*magit" (buffer-name)) "Magit Buffers")
+	       ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs Buffers")
 	       ((eq major-mode 'dired-mode) "Dired")
 	       ((eq major-mode 'compilation-mode) "Compilation")
-	       (t "User Buffer")
+	       (t "User Buffers")
 	       ))))
-
 
 
 ;--- From https://github.com/dholm/tabbar/blob/master/aquamacs-tabbar.el
