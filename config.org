@@ -140,12 +140,38 @@ growing with time, it has been difficult to keep take of config. In
     ;; (el-get 'sync dim-packages)
    #+end_src
 
-* Split Configs
+** configs
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/el-get.cfg.el")
-     ;; (load "~/.emacs.d/config/etag.cfg.el")
-     (load "~/.emacs.d/config/ido.cfg.el")
+   #+end_src
+
+* mode-config
+** ido-mode
+   Interactively Do Things
+
+   #+begin_src emacs-lisp
+     (ido-mode t)
+     ;;(ido-ubiquitous t)
+     (setq ido-enable-prefix nil
+           ido-enable-flex-matching t ;; enable fuzzy matching
+           ido-auto-merge-work-directories-length nil
+           ido-create-new-buffer 'always
+           ido-use-filename-at-point 'guess
+           ;; ido-default-file-method 'select-window
+           ido-use-virtual-buffers t
+           ido-handle-duplicate-virtual-buffers 2
+           ido-max-prospects 10)
+   #+end_src
+
+* Split Configs
+
+** UI
+   #+begin_src emacs-lisp
      (load "~/.emacs.d/config/ui.cfg.el")
+   #+end_src
+
+** Others
+   #+begin_src emacs-lisp
      (load "~/.emacs.d/config/currentline.cfg.el") ;; load after theme
      (load "~/.emacs.d/config/compile.cfg.el")
      (load "~/.emacs.d/config/modeline.cfg.el")

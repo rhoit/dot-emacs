@@ -1,16 +1,16 @@
 ;;======================================================================
-;; emacs config file for 25.0
+;;; emacs config file for 25.0
 ;;======================================================================
 
 ;; debug on C-g; to point broken modules
 ;; (setq debug-on-quit t)
 
 ;;----------------------------------------------------------------------
-;; load config file
+;;; load config file
 (org-babel-load-file "~/.emacs.d/config.org")
 
 ;;======================================================================
-;; EMACS AUTO GEN-STUFFS
+;;; EMACS AUTO GEN-STUFFS
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
