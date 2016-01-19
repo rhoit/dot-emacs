@@ -14,7 +14,7 @@
     (other-window 1))
 
   ;; execute the selected region
-  (when (and transient-mark-mode mark-active)
+  (when (use-region-p)
     (python-shell-send-region (point) (mark))
     (when selection_flag ;; flag to continue the run mode :D
       (deactivate-mark)
