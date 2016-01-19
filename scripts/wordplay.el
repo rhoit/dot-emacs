@@ -64,7 +64,7 @@
 ;;----------------------------------------------------------------------
 ;; popup kill ring
 (require 'popup-kill-ring)
-
+(setq repetitive_yank_region_point 0) ;; 0 doesn't exist min is 1
 (defun repetitive-yanking()
   "yank and yank whats rest are in the kill ring"
   (interactive)
