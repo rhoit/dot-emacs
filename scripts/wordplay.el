@@ -63,8 +63,6 @@
 
 ;;----------------------------------------------------------------------
 ;; popup kill ring
-(require 'popup)
-(require 'pos-tip)
 (require 'popup-kill-ring)
 
 (defun repetitive-yanking()
@@ -74,7 +72,19 @@
   (if (string= last-command "yank")
       (progn
         (undo-only)
+        (when (= (point) repetitive_yank_region_point)
+            (progn
+              (goto-char repetitive_yank_region_mark)
+              (set-mark-command nil)
+              (goto-char repetitive_yank_region_point)
+              (delete-selection-helper "yank")))
         (popup-kill-ring))
-      (yank)))
+    (progn
+      (when (use-region-p)
+        (setq repetitive_yank_region_mark (mark))
+        (setq repetitive_yank_region_point (point))
+        (message "%s" repetitive_yank_region_point)
+        (delete-selection-helper "yank"))
+      (yank))))
 
 (global-set-key [(shift insert)] 'repetitive-yanking)
