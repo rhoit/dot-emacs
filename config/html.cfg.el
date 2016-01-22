@@ -35,6 +35,8 @@
   (add-hook 'after-save-hook
             '(lambda ()
                (interactive)
+               (when (not (bound-and-true-p moz-minor-mode))
+                 (return))
                (comint-send-string (inferior-moz-process)
                                    "setTimeout(BrowserReload(), \"1000\");"))
             'append 'local)) ; buffer-local

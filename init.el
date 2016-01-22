@@ -47,7 +47,4 @@
  '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
  '(markdown-header-face-6 ((t (:weight bold))) t)
  '(show-paren-match ((t (:inverse-video t))))
- '(tabbar-default ((t (:background "#c5c5c5"))))
- '(tabbar-button ((t (:background "#c5c5c5"))))
  '(which-func ((t (:background "gray40")))))
-(put 'narrow-to-region 'disabled nil)

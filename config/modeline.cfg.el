@@ -6,7 +6,7 @@
 (make-face 'octicons)
 (set-face-attribute 'octicons nil
                     :family "octicons")
-(setq octicon-mark-github " ")
+(setq octicon-mark-github "  ")
 (setq octicon-rocket "")
 
 ;; mode icon stuff
