@@ -21,6 +21,7 @@
 
 ;;----------------------------------------------------------------------
 ;; tabbar
+(add-to-list 'load-path  "~/.emacs.d/00testing/tabbar")
 (require 'tabbar)
 (tabbar-mode t)
 
@@ -36,9 +37,11 @@
 ;; (setq tabbar-ruler-popup-menu t)
 ;; (require 'tabbar-ruler)
 
-(setq tabbar-ruler-fancy-current-tab-separator 'wave)
-(setq tabbar-ruler-fancy-tab-separator 'bar)
-(setq tabbar-ruler-fancy-hover-tab-separator 'rounded)
+;; (setq tabbar-separator-value 0)
+;; (setq tabbar-ruler-fancy-current-tab-separator 'wave)
+;; (setq tabbar-ruler-fancy-tab-separator 'nil)
+;; (setq tabbar-ruler-fancy-hover-tab-separator 'rounded)
+(setq tabbar-ruler-style 'firefox)
 (load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
 
 (setq tabbar-buffer-groups-function
