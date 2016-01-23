@@ -74,42 +74,6 @@ and friendly for everyone.
    #+begin_src emacs-lisp
      (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
    #+end_src
-* Programming
-  #+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'which-function-mode)
-  (add-hook 'prog-mode-hook 'toggle-truncate-lines)
-  #+end_src
-
-** trailing white-spaces
-   #+begin_src emacs-lisp
-     (defun nuke_traling ()
-       (add-hook 'write-file-hooks 'delete-trailing-whitespace)
-       (add-hook 'before-save-hooks 'whitespace-cleanup))
-
-     (add-hook 'prog-mode-hook 'nuke_traling)
-    #+end_src
-
-** indentation
-
-   #+begin_src emacs-lisp
-     (setq-default indent-tabs-mode nil)
-     (setq-default tab-width 4)
-     (setq-default py-indent-offset 4)
-   #+end_src
-
-** CC mode
-   http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
-
-   #+begin_src emacs-lisp
-     (setq c++-tab-always-indent t)
-     (setq c-basic-offset 4)
-     (setq c-indent-level 4)
-     (require 'cc-mode)
-     (c-set-offset 'substatement-open 0)
-     (add-hook 'c-mode-common-hook '(lambda() (c-toggle-hungry-state 1)))
-     (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-   #+end_src
-
 * el-get
   https://github.com/dimitri/el-get
 
@@ -155,10 +119,23 @@ and friendly for everyone.
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/el-get.cfg.el")
    #+end_src
+* UI
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][Basic]]
+   Basic configuration, like window size keybindings
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/config/ui.cfg.el")
+   #+end_src
 
-* mode-config
-** ido-mode
-   Interactively Do Things
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/config/tabbar.cfg.el")
+   #+end_src
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/config/modeline.cfg.el")
+   #+end_src
+** Interactively Do Things
+   ido-mode
 
    #+begin_src emacs-lisp
      (ido-mode t)
@@ -174,23 +151,59 @@ and friendly for everyone.
            ido-max-prospects 10)
    #+end_src
 
-* Split Configs
-** [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI]]
+* Programming
+  #+begin_src emacs-lisp
+    (add-hook 'prog-mode-hook 'which-function-mode)
+    (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+  #+end_src
+
+** trailing white-spaces
    #+begin_src emacs-lisp
-     (load "~/.emacs.d/config/ui.cfg.el")
+     (defun nuke_traling ()
+       (add-hook 'write-file-hooks 'delete-trailing-whitespace)
+       (add-hook 'before-save-hooks 'whitespace-cleanup))
+
+     (add-hook 'prog-mode-hook 'nuke_traling)
+    #+end_src
+
+** indentation
+
+   #+begin_src emacs-lisp
+     (setq-default indent-tabs-mode nil)
+     (setq-default tab-width 4)
+     (setq-default py-indent-offset 4)
    #+end_src
 
-** Others
+** C/C++
+   http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
+
    #+begin_src emacs-lisp
-     (load "~/.emacs.d/config/currentline.cfg.el") ;; load after theme
-     (load "~/.emacs.d/config/compile.cfg.el")
-     (load "~/.emacs.d/config/modeline.cfg.el")
-     (load "~/.emacs.d/config/tabbar.cfg.el")
-     (load "~/.emacs.d/config/org-mode.cfg.el")
-     (load "~/.emacs.d/config/babel.cfg.el")
-     (load "~/.emacs.d/config/html.cfg.el")
+     (setq c++-tab-always-indent t)
+     (setq c-basic-offset 4)
+     (setq c-indent-level 4)
+     (require 'cc-mode)
+     (c-set-offset 'substatement-open 0)
+     (add-hook 'c-mode-common-hook '(lambda() (c-toggle-hungry-state 1)))
+     (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+   #+end_src
+
+** python
+   #+begin_src emacs-lisp
      (load "~/.emacs.d/config/python.cfg.el")
    #+end_src
+
+** compile
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/config/compile.cfg.el")
+   #+end_src
+
+* Others
+  #+begin_src emacs-lisp
+    (load "~/.emacs.d/config/org-mode.cfg.el")
+    (load "~/.emacs.d/config/babel.cfg.el")
+    (load "~/.emacs.d/config/html.cfg.el")
+    (load "~/.emacs.d/config/python.cfg.el")
+  #+end_src
 
 * Scripts
 
