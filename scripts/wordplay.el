@@ -2,18 +2,7 @@
 ;; Custom Features
 
 ;;----------------------------------------------------------------------
-;; watch-words
-(defun watch-words ()
-  (interactive)
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|IMP\\|NOTE\\)"
-          1 font-lock-warning-face t))))
-
-(add-hook 'prog-mode-hook 'watch-words)
-(add-hook 'org-mode 'watch-words)
-
-;;----------------------------------------------------------------------
-;; duplicate lines
+;;; duplicate lines
 (defun duplicate-current-line()
   (interactive)
   (beginning-of-line nil)
@@ -24,7 +13,7 @@
   (open-line 1)
   (yank)
   (back-to-indentation))
-(global-set-key (kbd "C-`") 'duplicate-current-line)
+
 
 ;;----------------------------------------------------------------------
 ;; duplicate word
@@ -32,7 +21,6 @@
   (interactive)
   (beginning-of-sexp)
   (insert (word-at-point)))
-(global-set-key (kbd "C-~") 'duplicate-current-word)
 
 ;;----------------------------------------------------------------------
 ;; additional copy function
@@ -42,8 +30,6 @@
   (if (use-region-p)
       (kill-ring-save (point) (mark))
     (kill-new (thing-at-point 'line))))
-
-(global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
 
 ;;----------------------------------------------------------------------
 ;; word-sort
@@ -86,5 +72,3 @@
         (message "%s" repetitive_yank_region_point)
         (delete-selection-helper "yank"))
       (yank))))
-
-(global-set-key [(shift insert)] 'repetitive-yanking)
