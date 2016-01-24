@@ -10,6 +10,7 @@ own /scripts/. This is the action I took to make config more verbose
 and friendly for everyone.
 
 * Personal Info
+
   #+begin_src emacs-lisp
     (setq user-full-name "rho"
           user-mail-address "rho.rhoit@gmail.com")
@@ -17,7 +18,7 @@ and friendly for everyone.
 
 * Emacs Server
 
-  Stop opening *emacs* for each file. Set default open appelication
+  Stop opening *emacs* for each file. Set default open application
   using =emacsclient -n -a=emacs [FILE]=.
 
   #+begin_src emacs-lisp
@@ -163,9 +164,8 @@ and friendly for everyone.
            ido-max-prospects 10)
    #+end_src
 
-** my packages
 
-
+* programming
   #+begin_src emacs-lisp
     (add-hook 'prog-mode-hook 'which-function-mode)
     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
@@ -199,9 +199,15 @@ and friendly for everyone.
    #+begin_src emacs-lisp
      (setq-default indent-tabs-mode nil)
      (setq-default tab-width 4)
-     (setq-default py-indent-offset 4)
    #+end_src
 
+** compile
+
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/config/compile.cfg.el")
+   #+end_src
+
+* modes
 ** C/C++
 
    http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
@@ -219,7 +225,11 @@ and friendly for everyone.
 ** python
 
    #+begin_src emacs-lisp
-   ;;  (load "~/.emacs.d/config/python.cfg.el")
+     (setq-default py-indent-offset 4)
+   #+end_src
+
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/config/python.cfg.el")
    #+end_src
 
 *** [[https://github.com/rhoit/dot-emacs/blob/master/scripts/py-exec.el][py execution]]
@@ -230,31 +240,52 @@ and friendly for everyone.
     ;;  (load "~/.emacs.d/scripts/py-exec.el")
     #+end_src
 
-** compile
-
-   #+begin_src emacs-lisp
-   ;;  (load "~/.emacs.d/config/compile.cfg.el")
-   #+end_src
-
 ** web modes
 
    #+begin_src emacs-lisp
    ;;  (load "~/.emacs.d/config/html.cfg.el")
    #+end_src
 
-* Org
-
-  #+begin_src emacs-lisp
-    (load "~/.emacs.d/config/org-mode.cfg.el")
-    (load "~/.emacs.d/config/babel.cfg.el")
-  #+end_src
-
-* Scripts
-
-** [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][word play]]
+** Org
 
    #+begin_src emacs-lisp
-     (load "~/.emacs.d/scripts/wordplay.el")
+     (load "~/.emacs.d/config/org-mode.cfg.el")
+     (load "~/.emacs.d/config/babel.cfg.el")
+   #+end_src
+
+* [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][word play]]
+
+  Word play consist of collection of nify scripts.
+
+  #+begin_src emacs-lisp
+    (load "~/.emacs.d/scripts/wordplay.el")
+  #+end_src
+
+** duplicate lines/words
+
+   #+begin_src emacs-lisp
+     (global-set-key (kbd "C-`") 'duplicate-current-line)
+     (global-set-key (kbd "C-~") 'duplicate-current-word)
+   #+end_src
+
+** on point line copy
+
+   only enable for =C-<insert>=
+
+   #+begin_src emacs-lisp
+     (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
+   #+end_src
+
+** sort words
+
+   http://www.emacswiki.org/emacs/SortWords
+
+** popup kill ring
+
+   only enable for =Shift + <insert>=
+
+   #+begin_src emacs-lisp
+     (global-set-key [(shift insert)] 'repetitive-yanking)
    #+end_src
 
 * Testing
@@ -267,6 +298,9 @@ and friendly for everyone.
   #+end_src
 
 ** window numbering
+
+   also avalible in *el-get*.
+
    #+begin_src emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
      (require 'window-numbering)
@@ -274,6 +308,10 @@ and friendly for everyone.
    #+end_src
 
 ** highlight indentation
+
+   Using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
+   compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]]
+
    other color: "#aaeeba"
 
    #+begin_src emacs-lisp
@@ -300,6 +338,9 @@ and friendly for everyone.
    #+end_src
 
 ** auto-dim-buffer
+
+   https://github.com/mina86/auto-dim-other-buffers.el
+
    #+begin_src emacs-lisp
      (when window-system
        (add-to-list 'load-path "~/.emacs.d/00testing/auto-dim-other-buffers.el")
@@ -310,6 +351,9 @@ and friendly for everyone.
    #+end_src
 
 ** ansi-color
+
+   Need to fix 265 color support.
+
    #+begin_src emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/00testing/colors")
      (require 'ansi-color)
@@ -331,12 +375,14 @@ and friendly for everyone.
    #+end_src
 
 ** isend-mode
+
    #+begin_src emacs-lisp
      ;; (add-to-list 'load-path "~/.emacs.d/00testing/isend-mode/")
      ;; (require 'isend)
    #+end_src
 
 ** LFG mode
+
    #+begin_src emacs-lisp
      ;; (setq xle-buffer-process-coding-system 'utf-8) (load-library
      ;; "/opt/xle/emacs/lfg-mode")
