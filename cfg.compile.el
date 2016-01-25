@@ -70,8 +70,10 @@
         )
     (progn
 	  (modeline-set-color "OrangeRed")
-	  (when open-compilation-buffer-flag
-        (open-compilation-buffer))))
+	  (if open-compilation-buffer-flag
+	      (open-compilation-buffer)
+	      (modeline-delayed-clean)
+	      )))
 
   ;; (setq current-frame (car (car (cdr (current-frame-configuration)))))
   ;; (select-frame-set-input-focus current-frame)
@@ -92,47 +94,45 @@
 
 
 (defun interrupt-compilation ()
+  (interactive)
   (setq compilation-exit-message-function 'nil)
   (ignore-errors
-    (progn (process-kill-without-query
-            (get-buffer-process (get-buffer "*compilation*")))
-           (modeline-set-color "DeepSkyBlue")))
-
-                                        ;  (condition-case nil
-                                        ;      (process-kill-without-query
-                                        ;       (get-buffer-process (get-buffer "*compilation*")))
-                                        ;    (error (modeline-set-color "DeepSkyBlue")))
-  )
+    (progn (delete-process "*compilation*")
+  	   (modeline-set-color "DeepSkyBlue")
+  	   (message "previous compilation aborted!")
+  	   (sit-for 1.5)
+  	   )))
 
 
 (defun interrupt-and-recompile ()
   "Interrupt old compilation, if any, and recompile."
   (interactive)
-  (interrupt-compilation)
+  (ignore-errors (interrupt-compilation))
   (recompile))
+
 
 (setq compilation-last-buffer nil)
 (defun compile-again ()
   "Run the same compile as the last time.
-    If there was no last time, or there is a prefix argument, this acts like
-      M-x compile."
+   If there was no last time, or there is a prefix argument, this acts like
+     M-x compile."
   (interactive)
 
   (setq compilation-process-setup-function
-        (lambda() (progn (modeline-cancel-timer)
-                         (setq compilation-exit-message-function 'compilation-exit-hook)
-                         (modeline-set-color "LightBlue"))))
+        (lambda()
+          (progn (modeline-cancel-timer)
+                 (setq compilation-exit-message-function 'compilation-exit-hook)
+                 (modeline-set-color "LightBlue"))))
 
   (if compilation-last-buffer
       (progn
-                                        ;	 (condition-case nil
-                                        ;	     (set-buffer compilation-last-buffer)
-                                        ;	   (error 'ask-new-compile-command))
+        ;; (condition-case nil
+        ;; (set-buffer compilation-last-buffer)
+        ;; (error 'ask-new-compile-command))
         (modeline-cancel-timer)
-        (interrupt-and-recompile)
-        )
-    (call-interactively 'compile)
-    ))
+        (interrupt-and-recompile))
+    (call-interactively 'compile)))
+
 
 (defun save-and-compile-again ()
   (interactive)
@@ -152,8 +152,7 @@
   (display-buffer "*compilation*"))
 
 
-; -- compile-on-save minor mode ---
-
+;; -- compile-on-save minor mode ---
 (define-minor-mode compile-on-save-mode
   "Minor mode to automatically compile whenever the current buffer is
   saved. When there is ongoing compilation, nothing happens."
