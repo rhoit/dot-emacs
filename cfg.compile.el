@@ -163,7 +163,6 @@
 ;;   (modeline-delayed-clean)
 ;;   )
 
-                                        ;-- compile-on-save minor mode ---
 
 (define-minor-mode compile-on-save-mode
   "Minor mode to automatically compile whenever the current buffer is
@@ -179,18 +178,3 @@
   (message "Compiling after saving...")
   (setq open-compilation-buffer-flag nil)
   (compile-again))
-
-;; just few hooks
-(defun my-compilation-mode-hook ()
-  (setq truncate-lines nil) ;; automatically becomes buffer local
-  (set (make-local-variable 'truncate-partial-width-windows) nil)
-  (toggle-truncate-lines)
-  (outline-minor-mode)
-  (fci-mode))
-(add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
-
-
-;; bindings
-(global-set-key (kbd "C-<f8>")  'save-and-compile-again)
-(global-set-key (kbd "C-<f9>") 'ask-new-compile-command)
-(global-set-key (kbd "<f8>") 'toggle-compilation-buffer)
