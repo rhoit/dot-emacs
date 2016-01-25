@@ -164,7 +164,6 @@ and friendly for everyone.
            ido-max-prospects 10)
    #+end_src
 
-
 * programming
   #+begin_src emacs-lisp
     (add-hook 'prog-mode-hook 'which-function-mode)
@@ -201,11 +200,29 @@ and friendly for everyone.
      (setq-default tab-width 4)
    #+end_src
 
-** compile
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][complie]]
 
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/compile.cfg.el")
    #+end_src
+
+*** few hooks
+    #+begin_src emacs-lisp
+      (defun my-compilation-mode-hook ()
+        (setq truncate-lines nil) ;; automatically becomes buffer local
+        (set (make-local-variable 'truncate-partial-width-windows) nil)
+        (toggle-truncate-lines)
+        (outline-minor-mode)
+        (fci-mode))
+      (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+    #+end_src
+
+*** bindings
+    #+begin_src emacs-lisp
+      (global-set-key (kbd "C-<f8>") 'save-and-compile-again)
+      (global-set-key (kbd "C-<f9>") 'ask-new-compile-command)
+      (global-set-key (kbd "<f8>") 'toggle-compilation-buffer)
+    #+end_src
 
 * modes
 ** C/C++
