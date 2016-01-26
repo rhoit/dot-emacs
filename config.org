@@ -117,9 +117,30 @@ and friendly for everyone.
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
 
+   #+ATTR_HTML: title="tabbar-screenshot"
+   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
+
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/tabbar.cfg.el")
+     (global-set-key [f7] 'tabbar-mode)
    #+end_src
+
+   bind them as modern GUI system.
+
+   #+begin_src emacs-lisp
+     (define-key global-map [(control tab)] 'tabbar-forward)
+     (define-key global-map [(control next)] 'tabbar-forward)
+     (define-key global-map [(control prior)] 'tabbar-backward)
+     (define-key global-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
+   #+end_src
+
+   Binding for the tab groups.
+
+   #+begin_src emacs-lisp
+     (global-set-key [(control shift prior)] 'tabbar-backward-group)
+     (global-set-key [(control shift next)] 'tabbar-forward-group)
+   #+end_src
+
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
 
