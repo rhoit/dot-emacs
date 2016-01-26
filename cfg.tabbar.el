@@ -145,12 +145,3 @@ KEYS defines the elements to use for `tabbar-key-binding-keys'."
 ; (marker-insertion-type (cdr (car tab-points)))
 
 (tabbar-define-access-keys)
-
-;; key binding
-(global-set-key [f7] 'tabbar-mode)
-(global-set-key [(control shift prior)] 'tabbar-backward-group)
-(global-set-key [(control shift next)] 'tabbar-forward-group)
-(define-key global-map [(control tab)] 'tabbar-forward)
-(define-key global-map (kbd "C-<next>") 'tabbar-forward)
-(define-key global-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
-(define-key global-map (kbd "C-<prior>") 'tabbar-backward)
