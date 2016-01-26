@@ -16,18 +16,18 @@ and friendly for everyone.
           user-mail-address "rho.rhoit@gmail.com")
   #+end_src
 
-* Emacs Server
+* emacs core
+** emacs server
 
-  Stop opening *emacs* for each file. Set default open application
-  using =emacsclient -n -a=emacs [FILE]=.
+   Stop opening *emacs* for each file. Set default open application
+   using =emacsclient -n -a=emacs [FILE]=.
 
-  #+begin_src emacs-lisp
-    (require 'server)
-    (unless (server-running-p)
-      (server-start))
-  #+end_src
+   #+begin_src emacs-lisp
+     (require 'server)
+     (unless (server-running-p)
+       (server-start))
+   #+end_src
 
-* Defaults
 ** encoding
 
    #+begin_src emacs-lisp
@@ -37,12 +37,6 @@ and friendly for everyone.
      (set-keyboard-coding-system 'utf-8)
      (set-selection-coding-system 'utf-8)
      (prefer-coding-system 'utf-8)
-   #+end_src
-
-** default comment variable
-
-   #+begin_src emacs-lisp
-     (setq-default comment-start "# ")
    #+end_src
 
 ** backup configuration
@@ -64,22 +58,9 @@ and friendly for everyone.
      ;; (recentf-mode nil)
    #+end_src
 
-** delete selection mode
-
-   #+begin_src emacs-lisp
-     (delete-selection-mode 1)
-   #+end_src
-
-** highlight entire bracket expression
-
-   #+begin_src emacs-lisp
-     (setq show-paren-style 'expression)
-     (show-paren-mode 1)
-   #+end_src
-
 * el-get
 
-  https://github.com/dimitri/el-get
+  [[https://github.com/dimitri/el-get][el-get]] is the package manage, which is similar to *apt-get*.
 
   #+begin_src emacs-lisp
     (add-to-list 'load-path "~/.emacs.d/el-get")
@@ -125,7 +106,7 @@ and friendly for everyone.
      (load "~/.emacs.d/config/el-get.cfg.el")
    #+end_src
 
-* UI
+* UI/UX
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][Basic]]
 
    Basic configuration, like window size keybindings
@@ -146,6 +127,12 @@ and friendly for everyone.
      (load "~/.emacs.d/config/modeline.cfg.el")
    #+end_src
 
+** delete selection mode
+
+   #+begin_src emacs-lisp
+     (delete-selection-mode 1)
+   #+end_src
+
 ** Interactively Do Things
 
    ido-mode
@@ -164,10 +151,47 @@ and friendly for everyone.
            ido-max-prospects 10)
    #+end_src
 
+** anzu - search highlight
+
+   #+begin_src emacs-lisp
+     (require 'anzu)
+     (global-anzu-mode +1)
+     (global-unset-key (kbd "M-%"))
+     (global-unset-key (kbd "C-M-%"))
+     (global-set-key (kbd "M-%") 'anzu-query-replace)
+     (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+   #+end_src
+
+** goto-last-change
+
+   #+begin_src emacs-lisp
+     (require 'goto-chg)
+     (global-unset-key (kbd "C-j"))
+     (global-set-key (kbd "C-j") 'goto-last-change)
+   #+end_src
+
+** switch windows
+
+   #+begin_src emacs-lisp
+     (require 'switch-window)
+     (global-set-key (kbd "C-x o") 'switch-window)
+   #+end_src
+
 * programming
+   #+begin_src emacs-lisp
+     (setq-default comment-start "# ")
+   #+end_src
+
+** internal packages
+
+   #+begin_src emacs-lisp
+     (add-hook 'prog-mode-hook 'which-function-mode)
+     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+   #+end_src
+
   #+begin_src emacs-lisp
-    (add-hook 'prog-mode-hook 'which-function-mode)
-    (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+    (setq show-paren-style 'expression)
+    (show-paren-mode 1)
   #+end_src
 
 ** watch word
@@ -180,7 +204,16 @@ and friendly for everyone.
                1 font-lock-warning-face t))))
 
      (add-hook 'prog-mode-hook 'watch-words)
-     (add-hook 'org-mode 'watch-words)
+   #+end_src
+
+** highlight symbol
+
+   #+begin_src emacs-lisp
+     (require 'highlight-symbol)
+     (global-set-key [(control f3)] 'highlight-symbol-at-point)
+     (global-set-key [(shift f3)] 'highlight-symbol-next)
+     (global-set-key [(shift f2)] 'highlight-symbol-prev)
+     (global-set-key [(control f2)] 'highlight-symbol-query-replace)
    #+end_src
 
 ** trailing white-spaces

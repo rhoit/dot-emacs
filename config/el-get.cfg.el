@@ -2,18 +2,6 @@
 ;; EL-GET Section
 
 ;;----------------------------------------------------------------------
-;; switch windows
-(global-set-key (kbd "C-x o") 'switch-window)
-
-;;----------------------------------------------------------------------
-;; highlight symbol
-(require 'highlight-symbol)
-(global-set-key [(control f3)] 'highlight-symbol-at-point)
-(global-set-key [(shift f3)] 'highlight-symbol-next)
-(global-set-key [(shift f2)] 'highlight-symbol-prev)
-(global-set-key [(control f2)] 'highlight-symbol-query-replace)
-
-;;----------------------------------------------------------------------
 ;; 80 ruler
 (require 'fill-column-indicator)
 ;; (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
@@ -50,29 +38,27 @@
 ;;----------------------------------------------------------------------
 ;; auto-complete
 ;; Note: for ya-snippet to work put it after it
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
-(require 'auto-complete-config)
-(ac-config-default)
-(add-hook 'org-mode-hook 'auto-complete-mode)
 
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (add-hook 'org-mode-hook 'auto-complete-mode)
 ;; (ac-linum-workaround)
 ;; (ac-flyspell-workaround)
 ;; (global-auto-complete-mode t)
 
-
+;;----------------------------------------------------------------------
 ;; play well with org-mode | yasnippet | auto-complete
-;; BUG: reload Required press [F5]
 ;; http://orgmode.org/manual/Conflicts.html
-(defun yas-org-very-safe-expand ()
-  (let ((yas/fallback-behavior 'return-nil)) (yas-expand)))
+;; (defun yas-org-very-safe-expand ()
+;;   (let ((yas/fallback-behavior 'return-nil)) (yas-expand)))
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (make-variable-buffer-local 'yas-trigger-key)
-            (setq yas-trigger-key [tab])
-            (add-to-list 'org-tab-first-hook 'yas-org-very-safe-expand)
-            (define-key yas/keymap [tab] 'yas-next-field)))
-
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (make-variable-buffer-local 'yas-trigger-key)
+;;             (setq yas-trigger-key [tab])
+;;             (add-to-list 'org-tab-first-hook 'yas-org-very-safe-expand)
+;;             (define-key yas/keymap [tab] 'yas-next-field)))
 
 ;;----------------------------------------------------------------------
 ;; android mode
@@ -108,24 +94,9 @@
 
 ;;----------------------------------------------------------------------
 ;; multiple cursor
-(when window-system
-  (require 'multiple-cursors)
-  (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
-
-;;----------------------------------------------------------------------
-;; anzu.el - search highlight
-(require 'anzu)
-(global-anzu-mode +1)
-(global-unset-key (kbd "M-%"))
-(global-unset-key (kbd "C-M-%"))
-(global-set-key (kbd "M-%") 'anzu-query-replace)
-(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
-
-;;----------------------------------------------------------------------
-;; goto-last-change
-(require 'goto-chg)
-(global-unset-key (kbd "C-j"))
-(global-set-key (kbd "C-j") 'goto-last-change)
+;; (when window-system
+;;   (require 'multiple-cursors)
+;;   (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
 
 ;;----------------------------------------------------------------------
 ;; markdown mode
