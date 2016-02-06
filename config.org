@@ -107,18 +107,17 @@ and friendly for everyone.
    #+end_src
 
 * UI/UX
-** [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][Basic]]
 
-   Basic configuration, like window size keybindings
+  Basic configuration, like window size keybindings
 
-   #+begin_src emacs-lisp
-     (load "~/.emacs.d/config/ui.cfg.el")
-   #+end_src
+  #+begin_src emacs-lisp
+    (load "~/.emacs.d/config/ui.cfg.el")
+  #+end_src
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
 
    #+ATTR_HTML: title="tabbar-screenshot"
-   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
+   [[https://github.com/mattfidler/tabbar-ruler.el][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
 
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/tabbar.cfg.el")
@@ -134,21 +133,25 @@ and friendly for everyone.
      (define-key global-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
    #+end_src
 
-   Binding for the tab groups.
+   Binding for the tab groups, some how I use lots of buffers.
 
    #+begin_src emacs-lisp
      (global-set-key [(control shift prior)] 'tabbar-backward-group)
      (global-set-key [(control shift next)] 'tabbar-forward-group)
    #+end_src
 
-
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
+
+   #+ATTR_HTML: title="modline-screenshot"
+   [[https://github.com/ryuslash/mode-icons][file:https://raw.githubusercontent.com/rhoit/mode-icons/dump/screenshots/screenshot01.png]]
 
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/modeline.cfg.el")
    #+end_src
 
 ** delete selection mode
+
+   Default behavious of emacs weird, I wish this was *default*.
 
    #+begin_src emacs-lisp
      (delete-selection-mode 1)
@@ -172,7 +175,10 @@ and friendly for everyone.
            ido-max-prospects 10)
    #+end_src
 
-** anzu - search highlight
+** anzu
+
+   Highlight all search matches, most of the text editor does this
+   why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
 
    #+begin_src emacs-lisp
      (require 'anzu)
@@ -185,6 +191,12 @@ and friendly for everyone.
 
 ** goto-last-change
 
+   This is the gem feature, this might be true answer to the /sublime
+   mini-map/ which is over rated, this is what you need.
+
+   If you aren't using el-get here is the [[https://raw.github.com/emacsmirror/emacswiki.org/master/goto-last-change.el][source]], guessing it its
+   avaliable in all major repository by now.
+
    #+begin_src emacs-lisp
      (require 'goto-chg)
      (global-unset-key (kbd "C-j"))
@@ -192,6 +204,9 @@ and friendly for everyone.
    #+end_src
 
 ** switch windows
+
+   It kinda has been stuck in my config for years, just addicted to
+   it.
 
    #+begin_src emacs-lisp
      (require 'switch-window)
