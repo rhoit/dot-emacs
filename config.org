@@ -106,7 +106,7 @@ and friendly for everyone.
      (load "~/.emacs.d/config/el-get.cfg.el")
    #+end_src
 
-* UI/UX
+* [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
 
   Basic configuration, like window size keybindings
 
@@ -147,6 +147,25 @@ and friendly for everyone.
 
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/modeline.cfg.el")
+   #+end_src
+
+** smooth scroll
+
+   Unfortunately emacs scrolling is not smooth, its *2016* already.
+
+   #+begin_src emacs-lisp
+     (require 'smooth-scroll)
+     (smooth-scroll-mode t)
+
+     (setq linum-delay t)
+     (setq redisplay-dont-pause t)
+     (setq scroll-conservatively 0) ;; cursor on the middle of the screen
+     (setq scroll-up-aggressively 0.01)
+     (setq scroll-down-aggressively 0.01)
+     (setq auto-window-vscroll nil)
+
+     (setq mouse-wheel-progressive-speed 10)
+     (setq mouse-wheel-follow-mouse 't)
    #+end_src
 
 ** delete selection mode
