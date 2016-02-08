@@ -43,24 +43,6 @@
   (winner-mode 1))
 
 ;;----------------------------------------------------------------------
-;;; smooth-scrolling
-(require 'smooth-scroll)
-(smooth-scroll-mode t)
-
-;; (setq scroll-margin 1)
-(setq linum-delay t)
-;; (setq scroll-step 1) ;; scroll one line at a time
-(setq redisplay-dont-pause t)
-(setq scroll-conservatively 0) ;;cursor on the middle of the screen
-(setq scroll-up-aggressively 0.01)
-(setq scroll-down-aggressively 0.01)
-(setq auto-window-vscroll nil)
-;; (setq scroll-preserve-screen-position 1)
-;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 15))) ;; one line at a time
-;; (setq mouse-wheel-progressive-speed 10) ;; don't accelerate scrolling
-;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
-;;----------------------------------------------------------------------
 ;;; text zoom
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [(control ?+)] 'text-scale-increase)

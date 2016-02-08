@@ -2,8 +2,6 @@
 ;; ORG-MODE
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
-
-;; (add-to-list 'load-path "/usr/share/emacs/25.0.50/lisp/")
 (require 'org-mouse)
 
 ;; TODO: org -mode image zoom
