@@ -7,7 +7,8 @@
 
 ;;----------------------------------------------------------------------
 ;;; load main config via org
-(org-babel-load-file "~/.emacs.d/config.org")
+;; (load-file "~/.emacs.d/README.el")
+(add-hook 'after-init-hook (lambda () (org-babel-load-file "~/.emacs.d/README.org")))
 
 
 ;;======================================================================
