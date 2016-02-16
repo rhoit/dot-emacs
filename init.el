@@ -6,7 +6,7 @@
 
 ;;----------------------------------------------------------------------
 ;;; load main config via org
-(org-babel-load-file "~/.emacs.d/config.org")
+(org-babel-load-file "~/.emacs.d/README.org")
 
 ;;======================================================================
 ;;; EMACS AUTO GEN-STUFFS
