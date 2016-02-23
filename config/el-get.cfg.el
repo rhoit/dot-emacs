@@ -93,12 +93,6 @@
 ;;   (require 'auto-complete-auctex))
 
 ;;----------------------------------------------------------------------
-;; multiple cursor
-;; (when window-system
-;;   (require 'multiple-cursors)
-;;   (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
-
-;;----------------------------------------------------------------------
 ;; markdown mode
 (setq auto-mode-alist
       (cons '("\.md" . markdown-mode) auto-mode-alist))

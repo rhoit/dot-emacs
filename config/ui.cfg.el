@@ -76,19 +76,6 @@
   (interactive)
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 
-;;----------------------------------------------------------------------
-;;; unbind strange bindings
-(global-unset-key [(control prior)])
-(global-unset-key [(control next)])
-
-;;----------------------------------------------------------------------
-;;; other bindings
-(global-set-key [f5] '(lambda() (interactive) (load-file "~/.emacs.d/init.el")))
-(global-set-key [f6] '(lambda() (interactive)
-                        (toggle-truncate-lines)
-                        (fci-mode)))
-(global-set-key [f9] 'speedbar)
-
 ;;======================================================================
 ;;; currentline
 ;; http://stackoverflow.com/questions/10239037/emacs-hl-line-change-color-locally
