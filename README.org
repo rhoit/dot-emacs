@@ -151,6 +151,25 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     (load "~/.emacs.d/config/ui.cfg.el")
   #+end_src
 
+  these are kind of strange bindings for beginner and for me too, so
+  lets remove it
+
+  #+begin_src emacs-lisp
+    (global-unset-key [(control prior)])
+    (global-unset-key [(control next)])
+  #+end_src
+
+  I find these binding quite handful.
+
+  #+begin_src emacs-lisp
+    (global-set-key [(control f5)] '(lambda() (interactive)
+                                    (load-file "~/.emacs.d/init.el")))
+    (global-set-key [f6] '(lambda() (interactive)
+                          (toggle-truncate-lines)
+                          (fci-mode)))
+    (global-set-key [f9] 'speedbar)
+  #+end_src
+
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
 
    #+ATTR_HTML: title="tabbar-screenshot"
@@ -243,6 +262,18 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
      (global-unset-key (kbd "C-M-%"))
      (global-set-key (kbd "M-%") 'anzu-query-replace)
      (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+   #+end_src
+
+** [[https://github.com/magnars/multiple-cursors.el][multiple cursor]]
+
+   if [[https://www.sublimetext.com/][sublime]] can have multiple selections, *emacs* can too..
+
+   Here is [[https://youtu.be/jNa3axo40qM][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e13.html][ep13]].
+
+   #+begin_src emacs-lisp
+     (when window-system
+       (require 'multiple-cursors)
+       (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
    #+end_src
 
 ** goto-last-change

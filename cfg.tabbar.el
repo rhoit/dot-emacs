@@ -1,26 +1,6 @@
-;; - Better faces for tabs.
-;; (custom-set-faces
-;;  '(tabbar-default
-;;    ((t (:inherit variable-pitch :background "gray94" :foreground "gray25" :height 0.8))))
-;;  '(tabbar-highlight
-;;    ((t (:foreground "blue"))))
-;;  '(tabbar-selected
-;;    ((t (:inherit tabbar-default :background "gray95" :weight bold
-;; 				 :box '(:line-width 8 :color "white" :style released-button)
-;; 				 ))))
-;;  '(tabbar-unselected
-;;    ((t (:inherit tabbar-default :background "gray85" :foreground "gray30"
-;; 				 :box '(:line-width 1 :color "gray80" :style nil)
-;; 				 ))))
-;;  '(tabbar-separator
-;;    ((t (:background "gray50" :height 1.2)))
-;;    )
-;;  '(tabbar-button
-;;    (( t (:box nil))))
-;;  )
+;;======================================================================
+;; TABBAR configurations
 
-;;----------------------------------------------------------------------
-;; tabbar
 (add-to-list 'load-path  "~/.emacs.d/00testing/tabbar")
 (require 'tabbar)
 (tabbar-mode t)
