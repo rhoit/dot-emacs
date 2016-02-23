@@ -22,27 +22,6 @@
 ;;    (( t (:box nil))))
 ;;  )
 
-;;----------------------------------------------------------------------
-;; tabbar
-(add-to-list 'load-path  "~/.emacs.d/00testing/tabbar")
-(require 'tabbar)
-(tabbar-mode t)
-
-;;----------------------------------------------------------------------
-;; tabbar ruler
-;; https://github.com/mattfidler/tabbar-ruler.el
-;; (setq tabbar-ruler-global-ruler t)
-;; (setq tabbar-ruler-popup-menu t)
-;; (require 'tabbar-ruler)
-
-;; (setq tabbar-separator-value 0)
-;; (setq tabbar-ruler-fancy-current-tab-separator 'wave)
-;; (setq tabbar-ruler-fancy-tab-separator 'nil)
-;; (setq tabbar-ruler-fancy-hover-tab-separator 'rounded)
-(setq tabbar-ruler-style 'firefox)
-(load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
-
-
 ;--- From https://github.com/dholm/tabbar/blob/master/aquamacs-tabbar.el
 ;; you may redefine these:
 (defvar tabbar-key-binding-modifier-list '(meta)
