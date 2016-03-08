@@ -170,6 +170,15 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     (global-set-key [f9] 'speedbar)
   #+end_src
 
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
+
+   #+ATTR_HTML: title="modline-screenshot"
+   [[https://github.com/ryuslash/mode-icons][file:https://raw.githubusercontent.com/rhoit/mode-icons/dump/screenshots/screenshot01.png]]
+
+   #+begin_src emacs-lisp
+     (load "~/.emacs.d/config/modeline.cfg.el")
+   #+end_src
+
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
 
    #+ATTR_HTML: title="tabbar-screenshot"
@@ -194,15 +203,6 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    #+begin_src emacs-lisp
      (global-set-key [(control shift prior)] 'tabbar-backward-group)
      (global-set-key [(control shift next)] 'tabbar-forward-group)
-   #+end_src
-
-** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
-
-   #+ATTR_HTML: title="modline-screenshot"
-   [[https://github.com/ryuslash/mode-icons][file:https://raw.githubusercontent.com/rhoit/mode-icons/dump/screenshots/screenshot01.png]]
-
-   #+begin_src emacs-lisp
-     (load "~/.emacs.d/config/modeline.cfg.el")
    #+end_src
 
 ** smooth scroll
@@ -301,6 +301,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    #+end_src
 
 * programming
+
    #+begin_src emacs-lisp
      (setq-default comment-start "# ")
    #+end_src
@@ -425,6 +426,24 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
      (load "~/.emacs.d/config/org-mode.cfg.el")
      (load "~/.emacs.d/config/babel.cfg.el")
    #+end_src
+
+*** Minor mode
+
+    Org-mode is addictive, why not use it as minor-modes.
+
+    *outline*
+
+    #+begin_src emacs-lisp
+      (require 'outline)
+      (add-hook 'prog-mode-hook 'outline-minor-mode)
+    #+end_src
+
+    *outshine*
+
+    #+begin_src emacs-lisp
+      (require 'outshine)
+      (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+    #+end_src
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][word play]]
 
