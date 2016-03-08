@@ -369,7 +369,6 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
         (setq truncate-lines nil) ;; automatically becomes buffer local
         (set (make-local-variable 'truncate-partial-width-windows) nil)
         (toggle-truncate-lines)
-        (outline-minor-mode)
         (fci-mode))
       (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
     #+end_src
@@ -436,6 +435,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     #+begin_src emacs-lisp
       (require 'outline)
       (add-hook 'prog-mode-hook 'outline-minor-mode)
+      (add-hook 'compilation-mode-hook 'outline-minor-mode)
     #+end_src
 
     *outshine*
