@@ -19,7 +19,7 @@
                      ("\\.webm\\'" . "vlc %s")
                      ("\\.pdf\\'" . "evince %s")))))
 
-;; removing the C-j bind for goto-last-change, of el-get
+;; removing the C-j bind for goto-last-change
 (add-hook 'org-mode-hook
           '(lambda ()
              (define-key org-mode-map (kbd "C-j") nil)))

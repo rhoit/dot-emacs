@@ -1,9 +1,3 @@
-[submodule "repo/pkgbuild-mode"]
-	path = repo/pkgbuild-mode
-	url = https://github.com/juergenhoetzel/pkgbuild-mode
 [submodule "repo/sumblimity"]
 	path = repo/sumblimity
 	url = https://github.com/zk-phi/sublimity
-[submodule "el-get"]
-	path = el-get
-	url = https://github.com/dimitri/el-get

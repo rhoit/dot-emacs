@@ -6,7 +6,7 @@
 (make-face 'octicons)
 (set-face-attribute 'octicons nil
                     :family "octicons")
-(setq octicon-mark-github "  ")
+(setq octicon-mark-github " ")
 (setq octicon-rocket "")
 
 ;; mode icon stuff
@@ -17,10 +17,42 @@
 ;; temporary fix
 ;; (set-face-background 'which-func "gray40") ; move to customize face
 
-(defun powerline-simpler-vc-mode (s)
+;; * version control
+;;   TODO: move to modeline
+
+;;     (defun git-status-in-modeline()
+;;      (if (and vc-mode (string-match "^ Git" (substring-no-properties vc-mode)))
+;;            (git--update-all-state-marks)))
+;;     (add-hook 'find-file-hook 'git-status-in-modeline t)
+
+
+(defun powerline-simpler-vc-mode(s)
   (if s
-      (replace-regexp-in-string "Git[:-]" "" s)
+      (replace-regexp-in-string " Git[:-]" "" s)
     s))
+
+;; (:propertize s
+;;              face powerline-active1)
+;; (set-face-attribute s :foreground '"red")
+
+
+(defun vc-theme(&optional face pad)
+  (concat
+   ;; (powerline-raw octicon-mark-github face2)
+   ;; (powerline-raw `("-- " firemagit local-map;; face2)
+   ;;                  (:propertize
+   ;;                   help-echo "magit stuff")) face2)
+   (powerline-raw
+    (when (and (buffer-file-name (current-buffer)) vc-mode)
+      (if window-system
+          (format-mode-line '(vc-mode vc-mode))
+        (let ((backend (vc-backend (buffer-file-name (current-buffer)))))
+          (when backend
+            (format " %s %s"
+                    (char-to-string #xe0a0)
+                    (vc-working-revision (buffer-file-name (current-buffer)) backend))))))
+    face pad)))
+
 
 (setq which-func-format
       `(" "
@@ -85,9 +117,10 @@ serve much purpose on the mode-line."
              (rhs (list (powerline-raw global-mode-string nil 'r)
                         (when (vc-backend buffer-file-name)
                           (funcall separator-left nil face2))
+                        ;; (powerline-simpler-vc-mode (powerline-vc face2 'r))
                         (when (vc-backend buffer-file-name)
                           (powerline-raw octicon-mark-github face2))
-                        (powerline-simpler-vc-mode (powerline-vc face2 'r))
+                        (vc-theme face2 'r)
                         (when (vc-backend buffer-file-name)
                           (funcall separator-right face2 nil))
                         (powerline-raw " " nil)
@@ -103,45 +136,10 @@ serve much purpose on the mode-line."
                 (powerline-render rhs))
         )))))
 
-(defvar mode-line-cleaner-alist
-  `((auto-complete-mode . "")
-    ;; (yas-minor-mode . (get-mode-icon "YASnippet"))
-    ;; (yas-minor-mode . #("YASnippet" 0 9 (display (image :type xpm :file (mode-icons-get-icon-file "yas.xpm") :ascent center))))
-    ;; (yas-minor-mode . #(" YASnippet" 0 9 (display (image :type xpm :file "/home/rho/.emacs.d/00testing/mode-icons/icons/yas.xpm" :ascent center))))
-    ;; (auto-dim-other-buffers-mode . #("auto-dim-other-buffers" 0 22 (display (image :type xpm :file "~/.emacs.d/00testing/mode-icons/icons/dim.xpm" :ascent center))))
-    (yas-minor-mode . #( " yas" 0 4 (display (image :type xpm :file "~/.emacs.d/00testing/mode-icons/icons/yas.xpm" :ascent center))))
-    (hs-minor-mode . #(" hs" 0 3 (display (image :type xpm :file "/home/rho/.emacs.d/00testing/mode-icons/icons/hs.xpm" :ascent center))))
-    (outline-minor-mode . #(" Outline" 0 8 (display (image :type xpm :file "/home/rho/.emacs.d/00testing/mode-icons/icons/org.xpm" :ascent center))))
-    (auto-dim-other-buffers-mode . "")
-    (highline-mode . "")
-    (highlight-indentation-mode . "")
-    (highlight-indentation-current-column-mode . "")
-    (anzu-mode . "")
-    (markdown-mode . " ")
-    (smooth-scroll-mode . "")
-    (undo-tree-mode . ""))
-  "Alist for `clean-mode-line'.
-When you add a new element to the alist, keep in mind that you
-must pass the correct minor/major mode symbol and a string you
-want to use in the modeline *in lieu of* the original.")
-
-(defun clean-mode-line ()
-  (interactive)
-  (loop for cleaner in mode-line-cleaner-alist
-        do (let* ((mode (car cleaner))
-                  (mode-str (cdr cleaner))
-                  (old-mode-str (cdr (assq mode minor-mode-alist))))
-             (when old-mode-str
-               (setcar old-mode-str mode-str))
-             ;; major mode
-             (when (eq mode major-mode)
-               (setq mode-name mode-str)))))
-
 
 ;; modeline from spacmacs
-(add-to-list 'load-path  "~/.emacs.d/00testing/spaceline/")
-(require 'spaceline-config)
-;; (spaceline-spacemacs-theme)
+;; (add-to-list 'load-path  "~/.emacs.d/00testing/spaceline/")
+;; (require 'spaceline-config)
+;; ;; (spaceline-spacemacs-theme)
 
 (powerline-rho-theme)
-(add-hook 'after-change-major-mode-hook 'clean-mode-line)

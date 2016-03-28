@@ -102,6 +102,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
   #+begin_src emacs-lisp
     (add-to-list 'load-path "~/.emacs.d/el-get")
     (require 'el-get)
+    (setq el-get-git-shallow-clone 't)
     (el-get 'sync)
   #+end_src
 
@@ -109,38 +110,34 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    To replicate a package set for another emacs installation is
    explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
-   #+begin_src emacs-lisp
-     ;; `(setq my-packages ',(mapcar #'el-get-as-symbol (el-get-list-package-names-with-status "installed")))
-   #+end_src
+   you can list current installed package using.
 
-   this is the list of my current packages installed.
+   #+BEGIN_EXAMPLE
+     `(setq my-packages
+         ',(mapcar #'el-get-as-symbol
+               (el-get-list-package-names-with-status "installed")))
+   #+END_EXAMPLE
 
-   #+begin_src emacs-lisp
-     ;; (setq dim-packages
-     ;;       (append
-     ;; ;; list of packages we use straight from official recipes
-     ;;          '(ample-regexps anzu auto-complete
-     ;;          cl-lib ctable dash deferred ein
-     ;;          epc epl ess exec-path-from-shell f
-     ;;          fill-column-indicator flymake flymake-cursor fuzzy
-     ;;          git-modes goto-chg highlight-symbol highline jedi
-     ;;          json-mode json-reformat json-snatcher load-relative
-     ;;          loc-changes lua-mode magit markdown-mode moz-repl
-     ;;          multiple-cursors org-mode outorg outshine package
-     ;;          pkg-info popup popup-kill-ring pos-tip powerline
-     ;;          pylookup python python-environment rainbow-delimiters
-     ;;          recentf-ext request s smex smooth-scroll switch-window
-     ;;          tabbar undo-tree web-mode websocket
-     ;;          yasnippet)
-     ;;        (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources))))
-
-     ;; (el-get 'sync dim-packages)
-   #+end_src
-
-** [[https://github.com/rhoit/dot-emacs/blob/master/config/el-get.cfg.el][configs]]
+   this is the list of my current packages which installed.
 
    #+begin_src emacs-lisp
-     (load "~/.emacs.d/config/el-get.cfg.el")
+     (setq dim-packages
+            (append
+     ;; list of packages we use straight from official recipes
+               '(ample-regexps anzu auto-complete cl-lib ctable dash
+               deferred ein epc epl exec-path-from-shell f
+               fill-column-indicator flymake flymake-cursor fuzzy
+               git-modes goto-chg highlight-symbol highline jedi
+               json-mode json-reformat json-snatcher load-relative
+               loc-changes magit markdown-mode moz-repl
+               multiple-cursors outorg outshine package pkg-info popup
+               popup-kill-ring pos-tip powerline pylookup python
+               python-environment rainbow-delimiters recentf-ext
+               request s smex smooth-scroll switch-window tabbar
+               undo-tree web-mode websocket yasnippet)
+             (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name
+             el-get-sources))))
+     (el-get 'sync dim-packages)
    #+end_src
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
@@ -162,6 +159,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
   I find these binding quite handful.
 
   #+begin_src emacs-lisp
+    (require 'fill-column-indicator)
     (global-set-key [(control f5)] '(lambda() (interactive)
                                     (load-file "~/.emacs.d/init.el")))
     (global-set-key [f6] '(lambda() (interactive)
@@ -248,6 +246,14 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
            ido-use-virtual-buffers t
            ido-handle-duplicate-virtual-buffers 2
            ido-max-prospects 10)
+   #+end_src
+
+** M-x interface
+
+   #+begin_src emacs-lisp
+     (require 'smex)
+     (smex-initialize)
+     (global-set-key (kbd "M-x") 'smex)
    #+end_src
 
 ** anzu
@@ -365,6 +371,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 *** few hooks
     #+begin_src emacs-lisp
+      (require 'fill-column-indicator)
       (defun my-compilation-mode-hook ()
         (setq truncate-lines nil) ;; automatically becomes buffer local
         (set (make-local-variable 'truncate-partial-width-windows) nil)
@@ -379,6 +386,11 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
       (global-set-key (kbd "C-<f9>") 'ask-new-compile-command)
       (global-set-key (kbd "<f8>") 'toggle-compilation-buffer)
     #+end_src
+
+** rainbow delimiters
+   #+begin_src emacs-lisp
+     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+   #+end_src
 
 * modes
 ** C/C++
@@ -443,7 +455,39 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     #+begin_src emacs-lisp
       (require 'outshine)
       (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+      ;; (add-hook 'outline-minor-mode-hook
+      ;;          '(lambda ()
+      ;;             (define-key org-mode-map (kbd "C-j") nil)))
     #+end_src
+
+** dockerfile
+
+   #+begin_src emacs-lisp
+     (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+   #+end_src
+
+** json
+
+   #+begin_src emacs-lisp
+     (setq auto-mode-alist
+        (cons '("\.json$" . json-mode) auto-mode-alist))
+   #+end_src
+
+** markdown
+
+   #+begin_src emacs-lisp
+     (setq auto-mode-alist
+          (cons '("\.md" . markdown-mode) auto-mode-alist))
+   #+end_src
+** yasnippet
+
+   #+begin_src emacs-lisp
+     (when window-system
+       (require 'yasnippet)
+       (yas-reload-all)
+       (add-hook 'prog-mode-hook 'yas-minor-mode-on)
+       (add-hook 'org-mode-hook 'yas-minor-mode-on))
+   #+end_src
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][word play]]
 
