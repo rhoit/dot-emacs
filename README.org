@@ -124,17 +124,16 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
      (setq dim-packages
             (append
      ;; list of packages we use straight from official recipes
-               '(ample-regexps anzu auto-complete cl-lib ctable dash
+               '(ample-regexps auto-complete cl-lib ctable dash
                deferred ein epc epl exec-path-from-shell f
-               fill-column-indicator flymake flymake-cursor fuzzy
-               git-modes goto-chg highlight-symbol highline jedi
+               flymake flymake-cursor fuzzy
+               git-modes goto-chg jedi
                json-mode json-reformat json-snatcher load-relative
                loc-changes magit markdown-mode moz-repl
                multiple-cursors outorg outshine package pkg-info popup
-               popup-kill-ring pos-tip powerline pylookup python
-               python-environment rainbow-delimiters recentf-ext
-               request s smex smooth-scroll switch-window tabbar
-               undo-tree web-mode websocket yasnippet)
+               popup-kill-ring pos-tip pylookup python
+               python-environment recentf-ext
+               request s undo-tree web-mode websocket yasnippet)
              (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name
              el-get-sources))))
      (el-get 'sync dim-packages)
@@ -168,12 +167,31 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     (global-set-key [f9] 'speedbar)
   #+end_src
 
+** highlight current line
+
+   #+begin_src emacs-lisp
+     (el-get 'sync 'highline)
+     (require 'highline)
+
+     ;; (set-face-background 'highline-face "#111")
+     (set-face-background 'highline-face (shade-color 09))
+     (add-hook 'prog-mode-hook 'highline-mode-on)
+   #+end_src
+
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
 
    #+ATTR_HTML: title="modline-screenshot"
    [[https://github.com/ryuslash/mode-icons][file:https://raw.githubusercontent.com/rhoit/mode-icons/dump/screenshots/screenshot01.png]]
 
    #+begin_src emacs-lisp
+     ;; https://github.com/rhoit/mode-icons/
+     (load-file "~/.emacs.d/00testing/mode-icons/mode-icons.el")
+     ;; (el-get 'sync 'mode-icons)
+     ;; (require 'mode-icons)
+     (mode-icons-mode)
+
+     (el-get 'sync 'powerline)
+     (require 'powerline)
      (load "~/.emacs.d/config/modeline.cfg.el")
    #+end_src
 
@@ -208,6 +226,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    Unfortunately emacs scrolling is not smooth, its *2016* already.
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'smooth-scroll)
      (require 'smooth-scroll)
      (smooth-scroll-mode t)
 
@@ -251,6 +270,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 ** M-x interface
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'smex)
      (require 'smex)
      (smex-initialize)
      (global-set-key (kbd "M-x") 'smex)
@@ -262,6 +282,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'anzu)
      (require 'anzu)
      (global-anzu-mode +1)
      (global-unset-key (kbd "M-%"))
@@ -278,6 +299,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
    #+begin_src emacs-lisp
      (when window-system
+       (el-get 'sync 'multiple-cursors)
        (require 'multiple-cursors)
        (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
    #+end_src
@@ -291,6 +313,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    avaliable in all major repository by now.
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'goto-chg)
      (require 'goto-chg)
      (global-unset-key (kbd "C-j"))
      (global-set-key (kbd "C-j") 'goto-last-change)
@@ -302,6 +325,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    it.
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'switch-window)
      (require 'switch-window)
      (global-set-key (kbd "C-x o") 'switch-window)
    #+end_src
@@ -370,7 +394,9 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    #+end_src
 
 *** few hooks
+
     #+begin_src emacs-lisp
+      (el-get 'sync 'fill-column-indicator)
       (require 'fill-column-indicator)
       (defun my-compilation-mode-hook ()
         (setq truncate-lines nil) ;; automatically becomes buffer local
@@ -388,7 +414,9 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     #+end_src
 
 ** rainbow delimiters
+
    #+begin_src emacs-lisp
+     (el-get 'sync 'rainbow-delimiters)
      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
    #+end_src
 
@@ -463,6 +491,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 ** dockerfile
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'dockerfile-mode)
      (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
    #+end_src
 

@@ -89,16 +89,3 @@
                        (- (lsh x -8) intensity)
                      0))
                  (color-values (cdr (assoc 'background-color (frame-parameters)))))))
-
-;;----------------------------------------------------------------------
-;; Default hl
-;; (global-hl-line-mode t)
-
-;;----------------------------------------------------------------------
-;; highline mode
-(require 'highline)
-
-;; (set-face-background 'highline-face "#111")
-(set-face-background 'highline-face (shade-color 09))
-(add-hook 'prog-mode-hook 'highline-mode-on)
-

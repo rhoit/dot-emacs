@@ -8,6 +8,7 @@ _*
 ac-comphist.dat
 auto-save-list
 config.el
+el-get/
 elpa
 eshell/*
 ido.last

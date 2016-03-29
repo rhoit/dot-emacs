@@ -1,4 +1,3 @@
-(require 'powerline)
 (setq powerline-default-separator 'wave)
 
 ;; Make a face for the octicons font (must be installed on your system)
@@ -8,11 +7,6 @@
                     :family "octicons")
 (setq octicon-mark-github " ")
 (setq octicon-rocket "")
-
-;; mode icon stuff
-;; https://github.com/rhoit/mode-icons/
-(load-file "~/.emacs.d/00testing/mode-icons/mode-icons.el")
-(mode-icons-mode)
 
 ;; temporary fix
 ;; (set-face-background 'which-func "gray40") ; move to customize face
