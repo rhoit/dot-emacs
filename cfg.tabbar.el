@@ -1,9 +1,5 @@
-;;======================================================================
-;; TABBAR configurations
-
-(add-to-list 'load-path  "~/.emacs.d/00testing/tabbar")
-(require 'tabbar)
-(tabbar-mode t)
+;;----------------------------------------------------------------------
+;; tabbar configs
 
 ;; (setq tabbar-separator (quote (0.3)))
 ;; (setq tabbar-background-color "gray40")
@@ -21,8 +17,7 @@
 ;; (setq tabbar-ruler-fancy-current-tab-separator 'wave)
 ;; (setq tabbar-ruler-fancy-tab-separator 'nil)
 ;; (setq tabbar-ruler-fancy-hover-tab-separator 'rounded)
-(setq tabbar-ruler-style 'firefox)
-(load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
+
 
 (setq tabbar-buffer-groups-function
       (lambda ()
