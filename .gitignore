@@ -1,4 +1,5 @@
 .mc-lists.el
 README.el
+elpa/
 recentf
 session.*
