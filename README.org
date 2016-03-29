@@ -125,15 +125,13 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
             (append
      ;; list of packages we use straight from official recipes
                '(ample-regexps auto-complete cl-lib ctable dash
-               deferred ein epc epl exec-path-from-shell f
-               flymake flymake-cursor fuzzy
-               git-modes goto-chg jedi
-               json-mode json-reformat json-snatcher load-relative
-               loc-changes magit markdown-mode moz-repl
-               multiple-cursors outorg outshine package pkg-info popup
-               popup-kill-ring pos-tip pylookup python
-               python-environment recentf-ext
-               request s undo-tree web-mode websocket yasnippet)
+               deferred ein epc epl exec-path-from-shell f flymake
+               flymake-cursor fuzzy git-modes goto-chg jedi json-mode
+               json-reformat json-snatcher load-relative loc-changes
+               magit markdown-mode moz-repl multiple-cursors outorg
+               outshine package pkg-info popup popup-kill-ring pos-tip
+               pylookup python python-environment recentf-ext request
+               s undo-tree web-mode websocket yasnippet)
              (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name
              el-get-sources))))
      (el-get 'sync dim-packages)
@@ -159,6 +157,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
   #+begin_src emacs-lisp
     (require 'fill-column-indicator)
+    (global-set-key [M-f4] 'save-buffers-kill-terminal)
     (global-set-key [(control f5)] '(lambda() (interactive)
                                     (load-file "~/.emacs.d/init.el")))
     (global-set-key [f6] '(lambda() (interactive)
@@ -201,6 +200,14 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    [[https://github.com/mattfidler/tabbar-ruler.el][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
 
    #+begin_src emacs-lisp
+     ;; (add-to-list 'load-path  "~/.emacs.d/00testing/tabbar")
+     (require 'tabbar)
+     (tabbar-mode t)
+
+     (setq tabbar-ruler-style 'firefox)
+     (load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
+     ;; (require 'tabbar-ruler)
+
      (load "~/.emacs.d/config/tabbar.cfg.el")
      (global-set-key [f7] 'tabbar-mode)
    #+end_src
