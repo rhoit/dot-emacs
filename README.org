@@ -5,10 +5,12 @@
 #+OPTIONS: num:t
 #+STARTUP: overview
 
-*DISCLAIMER:* AUTHOR will _not_ be _responsible_ for the _harm_ cause
-by using this config.
+*DISCLAIMER:* :warning: AUTHOR will _not_ be _responsible_ for
+the :fire: _harm_ :fire: cause by using this config :bangbang:
 
-Its unlikely to harm just *MAKE SURE YOU HAVE THE BACKUP*
+Its unlikely to harm,
+
+but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
 
 * Intro
 
@@ -23,14 +25,13 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 ** Get it
 
    #+BEGIN_SRC bash
-     $ git clone --recursive https://github.com/rhoit/dot-emacs /path/to/dot-emacs
+     $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
    #+END_SRC
 
 ** How to build
 
-   *NOTE*: Build is kinda broken. Will fix it some day. Might need to
-   configure [[http://tapoueh.org/emacs/el-get.html][el-get]] yourself, its too much work to make the installer
-   (send me patch if you did).
+   =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
+   stuffs.
 
    #+BEGIN_SRC bash
      $ ./configure
@@ -39,17 +40,20 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    #+END_SRC
 
 ** Structure
+
    #+BEGIN_EXAMPLE
      dot-emacs
      ├── el-get                 # pacman
-     ├── config                 # custom config of packages
+     ├── config                 # config subsection
      │   ├── compile.cfg.el
      :   :
      │   └── tabbar.cfg.el
      ├── ...
      :
      ├── 00testing              # testing stuffs
-     └── snippets               # ya-snippet stuffs
+     └── snippets               # yasnippet stuffs
+         ├── fundamental-mode
+         :
          └── python-mode
    #+END_EXAMPLE
 
@@ -230,7 +234,8 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 ** smooth scroll
 
-   Unfortunately emacs scrolling is not smooth, its *2016* already.
+   Unfortunately emacs :barber: scrolling :barber: is not smooth, its
+   *2016* already.
 
    #+begin_src emacs-lisp
      (el-get 'sync 'smooth-scroll)
@@ -335,6 +340,19 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
      (el-get 'sync 'switch-window)
      (require 'switch-window)
      (global-set-key (kbd "C-x o") 'switch-window)
+   #+end_src
+
+** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
+
+   People have emotions and so do *emacs* 😂.
+
+   #+begin_src emacs-lisp
+     (el-get 'sync 'emojify)
+     (require 'emojify)
+
+     (add-hook 'org-mode-hook 'emojify-mode)
+     (add-hook 'markdown-mode-hook 'emojify-mode)
+     (add-hook 'git-commit-mode-hook 'emojify-mode)
    #+end_src
 
 * programming
@@ -444,6 +462,8 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 ** python
 
+   Welcome to flying circus :circus_tent:.
+
    #+begin_src emacs-lisp
      (setq-default py-indent-offset 4)
    #+end_src
@@ -471,6 +491,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/org-mode.cfg.el")
      (load "~/.emacs.d/config/babel.cfg.el")
+
    #+end_src
 
 *** Minor mode
@@ -496,6 +517,8 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     #+end_src
 
 ** dockerfile
+
+   Goodies for :whale: :whale: :whale:
 
    #+begin_src emacs-lisp
      (el-get 'sync 'dockerfile-mode)
@@ -554,7 +577,9 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 ** popup kill ring
 
-   only enable for =Shift + <insert>=
+   kill :skull: ring :ring:
+
+   Only enable for =Shift + <insert>=
 
    #+begin_src emacs-lisp
      (global-set-key [(shift insert)] 'repetitive-yanking)
@@ -562,12 +587,34 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 * Testing
 
-  This section contain modes (plug-in) which modified to *extrem* or
-  *buggy*. May still not be *available* in =el-get=.
+  This :construction: section :construction: contain modes (plug-in)
+  which modified to *extreme* or :bug: *buggy*. May still not be
+  *available* in =el-get=.
 
   #+begin_src emacs-lisp
     (add-to-list 'load-path "~/.emacs.d/00testing/")
   #+end_src
+
+** auto-complete [[https://github.com/syohex/emacs-ac-emoji][emoji]]
+
+   can't remember your emoji? this is the thing you need
+
+   *Note*: if you are using  company mode use [[https://github.com/dunn/company-emoji][company-emoji]]
+   requires [[https://zhm.github.io/symbola/][Symbola]] font, to be installed.
+
+   #+begin_src emacs-lisp
+     (add-to-list 'load-path "~/.emacs.d/00testing/emacs-ac-emoji/")
+     (require 'ac-emoji)
+
+     (add-hook 'org-mode-hook 'auto-complete-mode)
+     (add-hook 'org-mode-hook 'ac-emoji-setup)
+     (add-hook 'markdown-mode-hook 'ac-emoji-setup)
+     (add-hook 'git-commit-mode-hook 'ac-emoji-setup)
+
+     (set-fontset-font
+        t 'symbol
+          (font-spec :family "Symbola") nil 'prepend)
+   #+end_src
 
 ** window numbering
 
