@@ -132,10 +132,10 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
                deferred ein epc epl exec-path-from-shell f flymake
                flymake-cursor fuzzy git-modes goto-chg jedi json-mode
                json-reformat json-snatcher load-relative loc-changes
-               magit markdown-mode moz-repl multiple-cursors outorg
-               outshine package pkg-info popup popup-kill-ring pos-tip
-               pylookup python python-environment recentf-ext request
-               s undo-tree web-mode websocket yasnippet)
+               magit moz-repl multiple-cursors outorg outshine package
+               pkg-info popup popup-kill-ring pos-tip pylookup python
+               python-environment recentf-ext request s undo-tree
+               web-mode websocket yasnippet)
              (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name
              el-get-sources))))
      (el-get 'sync dim-packages)
@@ -534,10 +534,13 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 ** markdown
 
-   #+begin_src emacs-lisp
-     (setq auto-mode-alist
-          (cons '("\.md" . markdown-mode) auto-mode-alist))
-   #+end_src
+   disable because markdown creating problem to dockerfile-mode
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (el-get 'sync 'markdown-mode)
+     (add-to-list 'auto-mode-alist '("\.md" . markdown-mode))
+   #+END_SRC
+
 ** yasnippet
 
    #+begin_src emacs-lisp
