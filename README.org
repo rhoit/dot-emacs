@@ -162,9 +162,15 @@ but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
      (el-get 'sync 'highline)
      (require 'highline)
 
-     ;; (set-face-background 'highline-face "#111")
      (set-face-background 'highline-face (shade-color 09))
      (add-hook 'prog-mode-hook 'highline-mode-on)
+
+     ;; not using inbuild hl-line-mode i can't seem to figure out changing
+     ;; face for shade-color
+     ;; (global-hl-line-mode 1)
+     ;; (set-face-background 'hl-line "#3e4446")
+     ;; (set-face-foreground 'highlight nil)
+     ;; (set-face-attribute hl-line-face nil :underline nil)
    #+END_SRC
 
 ** custom undo action for GUI
