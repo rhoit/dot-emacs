@@ -43,6 +43,19 @@
       (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
     #+END_SRC
 
+** undo
+
+   @@html:<kbd>@@Ctrl@@html:</kbd>@@-@@html:<kbd>@@z@@html:</kbd>@@ is
+   synonyms to undo not here because its [[https://en.wikipedia.org/wiki/Substitute_character][suspend]] to background in 🐚
+   shell, Since *emacs* traces it roots from the *terminal*.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;; normal undo and redo
+     (global-set-key (kbd "C-z") 'undo-only)  ; unbind (suspend-frame)
+     (global-set-key (kbd "C-S-z") 'undo-tree-redo)
+   #+END_SRC
+
 ** yes-or-no
 
    yup thing are annoying 😤 here! avoid typing complete 'yes' and
