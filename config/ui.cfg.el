@@ -53,16 +53,6 @@
 								(- text-scale-mode-amount))
 							   (text-scale-mode -1)))
 
-;;----------------------------------------------------------------------
-;;; undo action for GUI
-
-(when window-system
-  (require 'undo-tree)
-  (global-undo-tree-mode 1)
-  (defalias 'redo 'undo-tree-redo)
-  (global-unset-key (kbd "C-z"))
-  (global-set-key (kbd "C-z") 'undo-only)
-  (global-set-key (kbd "C-S-z") 'redo))
 
 ;;----------------------------------------------------------------------
 ;;; bacwark kill like terminal
@@ -80,8 +70,9 @@
 ;;; currentline
 ;; http://stackoverflow.com/questions/10239037/emacs-hl-line-change-color-locally
 ;; only load after theme is done
+;; TODO make generic function
 (defun shade-color (intensity)
-  "print the #rgb color of the background, dimmed according to intensity"
+  "compute new intensity of #rgb with alpha value for background"
   (interactive "nIntensity of the shade : ")
   (apply 'format "#%02x%02x%02x"
          (mapcar (lambda (x)
