@@ -172,6 +172,9 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 ** highlight current line
 
+   Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
+   intensity of given color and alpha value.
+
    #+begin_src emacs-lisp
      (el-get 'sync 'highline)
      (require 'highline)
@@ -179,6 +182,19 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
      ;; (set-face-background 'highline-face "#111")
      (set-face-background 'highline-face (shade-color 09))
      (add-hook 'prog-mode-hook 'highline-mode-on)
+   #+end_src
+
+** custom undo action for GUI
+
+   #+begin_src emacs-lisp
+     (when window-system
+       (require 'undo-tree)
+       (global-undo-tree-mode 1)
+       (global-unset-key (kbd "C-/"))
+       (defalias 'redo 'undo-tree-redo)
+       (global-unset-key (kbd "C-z"))
+       (global-set-key (kbd "C-z") 'undo-only)
+       (global-set-key (kbd "C-S-z") 'redo))
    #+end_src
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
