@@ -17,6 +17,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
+ '(magit-diff-refine-hunk (quote all))
  '(safe-local-variable-values
    (quote
     ((eval outline-hide-sublevels 1)
