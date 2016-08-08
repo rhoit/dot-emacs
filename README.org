@@ -58,6 +58,23 @@
    #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
    #+END_SRC
+** undo
+*** undo-tree
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'undo-tree)
+
+      (setq undo-tree-visualizer-timestamps t)
+
+      (global-undo-tree-mode 1)
+      (global-unset-key (kbd "C-/"))
+
+      (defalias 'redo 'undo-tree-redo)
+      (global-unset-key (kbd "C-z"))
+      (global-set-key (kbd "C-z") 'undo-only)
+      (global-set-key (kbd "C-S-z") 'redo)
+    #+END_SRC
 
 ** search
 *** anzu
