@@ -155,6 +155,9 @@ but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
 
 ** highlight current line
 
+   Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
+   intensity of given color and alpha value.
+
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'highline)
      (require 'highline)
@@ -162,6 +165,19 @@ but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
      ;; (set-face-background 'highline-face "#111")
      (set-face-background 'highline-face (shade-color 09))
      (add-hook 'prog-mode-hook 'highline-mode-on)
+   #+END_SRC
+
+** custom undo action for GUI
+
+   #+BEGIN_SRC emacs-lisp
+     (when window-system
+       (require 'undo-tree)
+       (global-undo-tree-mode 1)
+       (global-unset-key (kbd "C-/"))
+       (defalias 'redo 'undo-tree-redo)
+       (global-unset-key (kbd "C-z"))
+       (global-set-key (kbd "C-z") 'undo-only)
+       (global-set-key (kbd "C-S-z") 'redo))
    #+END_SRC
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
