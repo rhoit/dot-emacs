@@ -518,6 +518,12 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     ;;  (load "~/.emacs.d/scripts/py-exec.el")
     #+end_src
 
+** lua
+
+   #+begin_src emacs-lisp
+     (setq lua-indent-level 4)
+   #+end_src
+
 ** web modes
 
    #+begin_src emacs-lisp
