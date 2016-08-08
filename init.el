@@ -29,6 +29,7 @@
  '(android-mode-sdk-dir "/opt/android")
  '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t)
+ '(magit-diff-refine-hunk (quote all))
  '(safe-local-variable-values
    (quote
     ((eval outline-hide-sublevels 1)

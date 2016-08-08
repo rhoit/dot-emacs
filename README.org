@@ -24,9 +24,9 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 ** Get it
 
-   #+BEGIN_SRC bash
+   #+BEGIN_EXAMPLE
      $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
-   #+END_SRC
+   #+END_EXAMPLE
 
 ** How to build
 
@@ -349,12 +349,13 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 ** switch windows
 
    It kinda has been stuck in my config for years, just addicted to
-   it.
+   it. Seems like this is by default now.
+
 
    #+begin_src emacs-lisp
-     (el-get 'sync 'switch-window)
-     (require 'switch-window)
-     (global-set-key (kbd "C-x o") 'switch-window)
+     ;; (el-get 'sync 'switch-window)
+     ;; (require 'switch-window)
+     ;; (global-set-key (kbd "C-x o") 'switch-window)
    #+end_src
 
 ** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
@@ -554,6 +555,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
      ;; disable because markdown creating problem to dockerfile-mode
      ;; (add-to-list 'auto-mode-alist '("\.md" . markdown-mode))
    #+end_src
+
 ** yasnippet
 
    #+begin_src emacs-lisp
@@ -722,3 +724,10 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
      ;; (setq xle-buffer-process-coding-system 'utf-8) (load-library
      ;; "/opt/xle/emacs/lfg-mode")
    #+end_src
+
+* __meta__
+
+  # Local Variables:
+  # buffer-read-only: t
+  # eval: (server-force-delete)
+  # End:
