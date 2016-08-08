@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: desc
+# contributor: rho
+# key: desc
+# --
+
+#+DESCRIPTION: ${1:description}
+$0
