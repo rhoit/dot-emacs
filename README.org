@@ -57,6 +57,35 @@
      (fset 'yes-or-no-p 'y-or-n-p)
    #+END_SRC
 
+** undo
+
+   @@html:<kbd>@@Ctrl@@html:</kbd>@@-@@html:<kbd>@@z@@html:</kbd>@@ is
+   synonyms to undo not here because its [[https://en.wikipedia.org/wiki/Substitute_character][suspend]] to background in 🐚
+   shell, Since *emacs* traces it roots from the *terminal*.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;; this is confusion
+     (global-unset-key (kbd "C-z"))  ; unbind (suspend-frame)
+   #+END_SRC
+
+*** undo-tree
+
+    [[http://www.dr-qubit.org/undo-tree.html][undo-tree]] preserves your undo chain and maintain undo branching.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'undo-tree)
+      (dim-minor-name 'undo-tree-mode "")
+
+      (global-undo-tree-mode 1)
+      (setq undo-tree-visualizer-timestamps t)
+
+      ;; normal undo and redo
+      (global-set-key (kbd "C-z") 'undo-only)
+      (global-set-key (kbd "C-S-z") 'undo-tree-redo)
+    #+END_SRC
+
 ** search
 *** anzu
 
