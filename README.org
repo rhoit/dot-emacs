@@ -170,6 +170,16 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     (global-set-key [f9] 'speedbar)
   #+end_src
 
+** shift mouse selection
+
+   We don't need *font dialog* options which is binded by default.
+   Since, font resize has been binded to =C mouse scroll= does it.
+
+   #+begin_src emacs-lisp
+     (global-unset-key [(shift down-mouse-1)])
+     (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
+   #+end_src
+
 ** highlight current line
 
    Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
