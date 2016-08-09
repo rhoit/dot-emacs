@@ -104,6 +104,18 @@
       (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
     #+END_SRC
 
+** selection
+
+   Some of the default behavior of *emacs* 💩 weird, text-selection is
+   on of them, some time its the 🌈 *WOW* 🦄 moment 🥳 and other time
+   its *WTF*.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;; replace selected text as expected
+     (delete-selection-mode 1)
+   #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
