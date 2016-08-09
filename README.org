@@ -94,6 +94,17 @@
       (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
     #+END_SRC
 
+** selection
+*** why-changing-fonts
+
+    We don't need *font dialog* options which is binded by default.
+    Since, font resize has been binded to =C mouse scroll= does it.
+
+    #+BEGIN_SRC emacs-lisp
+      (global-unset-key [(shift down-mouse-1)])
+      (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
+    #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
