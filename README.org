@@ -525,7 +525,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     ess-style executing /python/ script.
 
     #+begin_src emacs-lisp
-    ;;  (load "~/.emacs.d/scripts/py-exec.el")
+      (load "~/.emacs.d/scripts/py-exec.el")
     #+end_src
 
 ** lua
