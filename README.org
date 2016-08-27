@@ -540,6 +540,62 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
    ;;  (load "~/.emacs.d/config/html.cfg.el")
    #+end_src
 
+** eww/xwidget
+
+   eww "Emacs Web Wowser" is a web browser written entirely in
+   elisp avaliable since version 24.4
+
+   As much awesome it sounds you will be ridiculed if you try to show
+   of to normal users! :stuck_out_tongue_winking_eye:
+
+   As of version 25.1 *webkit* has been introduced although you have
+   enable it while compiling, it pretty :cool: feature too
+   have :sunglasses:.
+
+   config is based on [[https://www.reddit.com/r/emacs/comments/4srze9/watching_youtube_inside_emacs_25/][reddit]] post.
+
+   make these keys behave like normal browser
+
+   #+begin_src emacs-lisp
+     (add-hook 'xwidget-webkit-mode (lambda ()
+       (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
+       (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
+       (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
+       (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
+       (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
+       (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)))
+   #+end_src
+
+   Adapt webkit according to window configuration chagne automatically
+   without this hook, every time you change your window configuration,
+   you must press =a= to adapt webkit content to new window size.
+
+   #+begin_src emacs-lisp
+     (add-hook 'window-configuration-change-hook (lambda ()
+                    (when (equal major-mode 'xwidget-webkit-mode)
+                      (xwidget-webkit-adjust-size-dispatch))))
+   #+end_src
+
+   by default, xwidget reuses previous xwidget window, thus overriding
+   your current website, unless a prefix argument is supplied. This
+   function always opens a new website in a new window
+
+   #+begin_src emacs-lisp
+     (defun xwidget-browse-url-no-reuse (url &optional sessoin)
+       (interactive (progn
+                      (require 'browse-url)
+                      (browse-url-interactive-arg "xwidget-webkit URL: ")))
+       (xwidget-webkit-browse-url url t))
+   #+end_src
+
+   make xwidget default browser
+
+   #+begin_src emacs-lisp
+     (setq browse-url-browser-function (lambda (url session)
+                         (other-window 1)
+                         (xwidget-browse-url-no-reuse url)))
+   #+end_src
+
 ** Org
 
    #+begin_src emacs-lisp
