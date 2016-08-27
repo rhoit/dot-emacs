@@ -30,6 +30,7 @@
  '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t)
  '(magit-diff-refine-hunk (quote all))
+ '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
     ((eval outline-hide-sublevels 1)

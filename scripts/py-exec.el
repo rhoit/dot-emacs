@@ -30,7 +30,7 @@
     (if (re-search-forward "\n\n+[^\t ]+?" (point-max) t)
         (search-backward-regexp "[^\t\n ]\n")
       (end-of-buffer))
-    (end-of-line)
+    (forward-char 2)
     (return))
 
   ;; SECOND PART OF THE SCRIPT
