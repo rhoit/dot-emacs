@@ -6,7 +6,7 @@ README.el
 auto-save-list
 config.el
 el-get/
-elpa
+elpa/
 emojis/
 eshell/*
 ido.last
@@ -14,3 +14,4 @@ pydoc-info/*
 recentf
 session.*
 smex-items
+url/
