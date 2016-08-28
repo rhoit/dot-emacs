@@ -14,13 +14,14 @@ but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
 
 * Intro
 
-I've been using /emacs/ since of *2012*, and slowly config is grown
-from few lines to a full repository of /tweaks/, /hacks/ and few of my
-own /scripts/. This is the action I took to make config more verbose
-and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init.el][init.el]] been converted to org mode.
+  I've been using /emacs/ since of *2012*, and slowly config is grown
+  from few lines to a full repository of /tweaks/, /hacks/ and few of
+  my own /scripts/. This is the action I took to make config more
+  verbose and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init.el][init.el]] been converted to org
+  mode.
 
-#+ATTR_HTML: title="screenshot"
-[[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
+  #+ATTR_HTML: title="screenshot"
+  [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
 ** Get it
 
@@ -101,7 +102,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 
 * el-get
 
-  [[https://github.com/dimitri/el-get][el-get]] is the package manage, which is similar to *apt-get*.
+  [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
 
   #+begin_src emacs-lisp
     (add-to-list 'load-path "~/.emacs.d/el-get")
@@ -480,6 +481,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
     #+end_src
 
 *** bindings
+
     #+begin_src emacs-lisp
       (global-set-key (kbd "C-<f8>") 'save-and-compile-again)
       (global-set-key (kbd "C-<f9>") 'ask-new-compile-command)
@@ -784,6 +786,7 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 ** ansi-color
 
    Need to fix 265 color support.
+   This is what I meant [[https://camo.githubusercontent.com/67e508f03a93d4e9935e38ea201dff7cc32c0afd/68747470733a2f2f7261772e6769746875622e636f6d2f72686f69742f72686f69742e6769746875622e636f6d2f6d61737465722f73637265656e73686f74732f656d6163732d323536636f6c6f722e706e67][screenshot]] was produced using [[https://github.com/bekar/vt100_colors][code]].
 
    #+begin_src emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/00testing/colors")
@@ -815,8 +818,8 @@ and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init
 ** LFG mode
 
    #+begin_src emacs-lisp
-     ;; (setq xle-buffer-process-coding-system 'utf-8) (load-library
-     ;; "/opt/xle/emacs/lfg-mode")
+     ;; (setq xle-buffer-process-coding-system 'utf-8)
+     ;; (load-library "/opt/xle/emacs/lfg-mode")
    #+end_src
 
 * __meta__
