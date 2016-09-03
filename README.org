@@ -476,12 +476,14 @@ but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
      (load "~/.emacs.d/config/python.cfg.el")
    #+END_SRC
 
-*** [[https://github.com/rhoit/dot-emacs/blob/master/scripts/py-exec.el][py execution]]
+*** [[https://github.com/rhoit/py-exec][py execution]]
 
     ess-style executing /python/ script.
 
     #+BEGIN_SRC emacs-lisp
-    ;;  (load "~/.emacs.d/scripts/py-exec.el")
+      ;; (add-to-list 'load-path "~/.emacs.d/00testing/py-exec/")
+      ;; (require 'py-exec)
+      (load "~/.emacs.d/00testing/py-exec/py-exec.el")
     #+END_SRC
 
 ** Org
