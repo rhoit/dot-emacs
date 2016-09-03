@@ -449,6 +449,17 @@ but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
    #+END_SRC
 
+* WEB
+** browser-refresh
+
+   There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]] but nothing beats good
+   old way with *xdotool* hail *X11* for now! :joy:
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'browser-refresh)
+     (setq browser-refresh-default-browser 'firefox)
+   #+END_SRC
+
 * MODES
 ** C/C++
 
