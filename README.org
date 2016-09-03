@@ -711,6 +711,18 @@ but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
     (add-to-list 'load-path "~/.emacs.d/00testing/")
   #+end_src
 
+** browser-refresh
+
+   There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]] but nothing beats good
+   old way with *xdotool* hail *X11* for now! :joy:
+
+   #+begin_src emacs-lisp
+     (add-to-list 'load-path "~/.emacs.d/00testing/emacs-browser-refresh/")
+     (require 'browser-refresh)
+     (setq browser-refresh-default-browser 'firefox)
+   #+end_src
+
+
 ** auto-complete [[https://github.com/syohex/emacs-ac-emoji][emoji]]
 
    can't remember your emoji? this is the thing you need
