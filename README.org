@@ -12,8 +12,8 @@ Its unlikely to harm,
 
 but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
 
-*NOTE* some section are in testing should manually configure them,
-they don't work in fly.
+*NOTE*: Some section are in testing need manually intervention,
+it doesn't work out of the box.
 
 * Intro
 
@@ -126,7 +126,9 @@ they don't work in fly.
                (el-get-list-package-names-with-status "installed")))
    #+END_EXAMPLE
 
-   this is the list of my current packages which installed.
+   this is the same of current packages which are installed.
+
+   PS: list might be incomplete
 
    #+begin_src emacs-lisp
      (setq dim-packages
@@ -164,6 +166,7 @@ they don't work in fly.
   I find these binding quite handful.
 
   #+begin_src emacs-lisp
+    (el-get 'sync 'fill-column-indicator)
     (require 'fill-column-indicator)
     (global-set-key [M-f4] 'save-buffers-kill-terminal)
     (global-set-key [(control f5)] '(lambda() (interactive)
@@ -241,7 +244,7 @@ they don't work in fly.
      ;; (add-to-list 'load-path "~/.emacs.d/00testing/powerline-iconic-theme/")
      (load-file "~/.emacs.d/00testing/powerline-iconic-theme/iconic.el")
      (powerline-iconic-theme)
-     ;;; DID YOU GOT STUCK ABOVE? COMMENT 2 LINE ABOVE & UNCOMMENT NEXT
+     ;;; DID YOU GOT STUCK ABOVE? COMMENT 2 LINES ABOVE & UNCOMMENT NEXT LINE
      ;; (powerline-default-theme)
 
      ;;; modeline from spacmacs
@@ -257,6 +260,7 @@ they don't work in fly.
    [[https://github.com/mattfidler/tabbar-ruler.el][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'tabbar)
      (require 'tabbar)
      (tabbar-mode t)
 
@@ -447,6 +451,7 @@ they don't work in fly.
 ** highlight symbol
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'highlight-symbol)
      (require 'highlight-symbol)
      (global-set-key [(control f3)] 'highlight-symbol-at-point)
      (global-set-key [(shift f3)] 'highlight-symbol-next)
@@ -773,6 +778,8 @@ they don't work in fly.
 
    #+begin_src emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/00testing/indent/antonj/")
+     ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE & UNCOMMENT NEXT LINE
+     ;; (el-get 'sync 'highlight-indentation)
      (require 'highlight-indentation)
      (set-face-background 'highlight-indentation-face "olive drab")
      (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
@@ -814,6 +821,7 @@ they don't work in fly.
 
    #+begin_src emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/00testing/colors")
+     ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE
      (require 'ansi-color)
      (defun colorize-compilation-buffer ()
        (toggle-read-only)
