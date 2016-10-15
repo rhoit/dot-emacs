@@ -431,10 +431,10 @@ it doesn't work out of the box.
      (add-hook 'prog-mode-hook 'toggle-truncate-lines)
    #+end_src
 
-  #+begin_src emacs-lisp
-    (setq show-paren-style 'expression)
-    (show-paren-mode 1)
-  #+end_src
+   #+begin_src emacs-lisp
+     (setq show-paren-style 'expression)
+     (show-paren-mode 1)
+   #+end_src
 
 ** watch word
 
@@ -516,7 +516,7 @@ it doesn't work out of the box.
    http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
 
    #+begin_src emacs-lisp
-     (setq c++-tab-always-indent t)
+     (setq c-tab-always-indent t)
      (setq c-basic-offset 4)
      (setq c-indent-level 4)
      (require 'cc-mode)
@@ -533,8 +533,37 @@ it doesn't work out of the box.
      (setq-default py-indent-offset 4)
    #+end_src
 
+
+*** [[http://tkf.github.io/emacs-jedi/][jedi]]
+
    #+begin_src emacs-lisp
-     (load "~/.emacs.d/config/python.cfg.el")
+     (autoload 'jedi:setup "jedi" nil t)
+     (add-hook 'python-mode-hook 'jedi:setup)
+     (setq jedi:complete-on-dot t) ; optional
+     ;; (setq jedi:setup-keys t) ; optional
+   #+end_src
+
+
+*** python-info-look
+
+    shortcut "[C-h S]"
+
+    #+begin_src emacs-lisp
+      ;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
+      ;; (require 'pydoc-info)
+      ;; (require 'info-look)
+    #+end_src
+
+*** pdb
+
+    #+begin_src emacs-lisp
+      ;; (setq pdb-path '/usr/lib/python2.4/pdb.py
+      ;; gud-pdb-command-name (symbol-name pdb-path))
+
+      ;; (defadvice pdb (before gud-query-cmdline activate) "Provide a
+      ;; better default command line when called interactively."
+      ;; (interactive (list (gud-query-cmdline pdb-path
+      ;; (file-name-nondirectory buffer-file-name)))))
    #+end_src
 
 *** [[https://github.com/rhoit/py-exec][py execution]]
@@ -728,15 +757,23 @@ it doesn't work out of the box.
 
 ** browser-refresh
 
-   There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]] but nothing beats good
-   old way with *xdotool* hail *X11* for now! :joy:
+   There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]], [[https://github.com/skeeto/impatient-mode][impatient-mode]] but
+   nothing beats good old way with *xdotool* hail *X11* for now! :joy:
 
    #+begin_src emacs-lisp
-     (add-to-list 'load-path "~/.emacs.d/00testing/emacs-browser-refresh/")
-     (require 'browser-refresh)
-     (setq browser-refresh-default-browser 'firefox)
+     ;; (add-to-list 'load-path "~/.emacs.d/00testing/emacs-browser-refresh/")
+     ;; (require 'browser-refresh)
+     ;; (setq browser-refresh-default-browser 'firefox)
    #+end_src
 
+   above thingi comment, lets do Makefile!
+
+   #+BEGIN_EXAMPLE
+     WINDOW=$(shell xdotool search --onlyvisible --class chromium)
+     run:
+     	xdotool key --window ${WINDOW} 'F5'
+    	xdotool windowactivate ${WINDOW}
+   #+END_EXAMPLE
 
 ** auto-complete [[https://github.com/syohex/emacs-ac-emoji][emoji]]
 
