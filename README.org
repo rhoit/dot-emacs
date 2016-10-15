@@ -456,7 +456,14 @@ it doesn't work out of the box.
      (global-set-key [(control f3)] 'highlight-symbol-at-point)
      (global-set-key [(shift f3)] 'highlight-symbol-next)
      (global-set-key [(shift f2)] 'highlight-symbol-prev)
-     (global-set-key [(control f2)] 'highlight-symbol-query-replace)
+
+     (global-unset-key (kbd "<C-down-mouse-1>"))
+     (global-set-key (kbd "<C-down-mouse-1>")
+                (lambda (event)
+                  (interactive "e")
+                  (save-excursion
+                    (goto-char (posn-point (event-start event)))
+                    (highlight-symbol-at-point))))
    #+end_src
 
 ** trailing white-spaces
@@ -508,6 +515,25 @@ it doesn't work out of the box.
    #+begin_src emacs-lisp
      (el-get 'sync 'rainbow-delimiters)
      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+   #+end_src
+
+** ggtags
+
+   code navigation
+
+   https://github.com/leoliu/ggtags
+
+   install ggtags as mention in the repo
+
+   #+begin_src emacs-lisp
+     (add-hook 'c-mode-common-hook
+               (lambda ()
+                 (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                   (ggtags-mode 1))))
+
+     (add-hook 'python-mode-hook 'ggtags-mode)
+
+     (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
    #+end_src
 
 * modes
