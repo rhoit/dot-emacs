@@ -488,8 +488,16 @@ it doesn't work out of the box.
      (setq c-tab-always-indent t)
      (setq c-basic-offset 4)
      (setq c-indent-level 4)
+   #+end_src
+
+   styling
+
+   https://www.emacswiki.org/emacs/IndentingC
+
+   #+begin_src emacs-lisp
      (require 'cc-mode)
      (c-set-offset 'substatement-open 0)
+     (c-set-offset 'arglist-intro '+)
      (add-hook 'c-mode-common-hook '(lambda() (c-toggle-hungry-state 1)))
      (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
    #+END_SRC
