@@ -203,6 +203,18 @@
      (setq c-indent-level 4)
    #+END_SRC
 
+   styling
+
+   https://www.emacswiki.org/emacs/IndentingC
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'cc-mode)
+     (c-set-offset 'substatement-open 0)
+     (c-set-offset 'arglist-intro '+)
+     (add-hook 'c-mode-common-hook '(lambda() (c-toggle-hungry-state 1)))
+     (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+   #+END_SRC
+
 ** dockerfile
 
    Goodies for 🐳 🐳 🐳
