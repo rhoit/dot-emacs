@@ -181,6 +181,17 @@
     (setq-default py-indent-offset 4)
   #+END_SRC
 
+** jedi
+
+   [[http://tkf.github.io/emacs-jedi/]]
+
+   #+BEGIN_SRC emacs-lisp
+     (autoload 'jedi:setup "jedi" nil t)
+     (add-hook 'python-mode-hook 'jedi:setup)
+     (setq jedi:complete-on-dot t) ; optional
+     ;; (setq jedi:setup-keys t) ; optional
+   #+END_SRC
+
 * MODES
 ** C/C++
 
