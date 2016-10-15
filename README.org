@@ -461,13 +461,23 @@ it doesn't work out of the box.
 * WEB
 ** browser-refresh
 
-   There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]] but nothing beats good
-   old way with *xdotool* hail *X11* for now! :joy:
+   There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]], [[https://github.com/skeeto/impatient-mode][impatient-mode]] but
+   nothing beats good old way with *xdotool* hail *X11* for now! :joy:
 
    #+BEGIN_SRC emacs-lisp :tangle no
      (require 'browser-refresh)
      (setq browser-refresh-default-browser 'firefox)
    #+END_SRC
+
+   above thingi comment, lets do Makefile!
+
+   #+BEGIN_EXAMPLE
+     WINDOW=$(shell xdotool search --onlyvisible --class chromium)
+     run:
+     	xdotool key --window ${WINDOW} 'F5'
+    	xdotool windowactivate ${WINDOW}
+   #+END_EXAMPLE
+
 
 * MODES
 ** C/C++
@@ -475,7 +485,7 @@ it doesn't work out of the box.
    http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
 
    #+BEGIN_SRC emacs-lisp
-     (setq c++-tab-always-indent t)
+     (setq c-tab-always-indent t)
      (setq c-basic-offset 4)
      (setq c-indent-level 4)
      (require 'cc-mode)
@@ -492,8 +502,35 @@ it doesn't work out of the box.
      (setq-default py-indent-offset 4)
    #+END_SRC
 
+*** [[http://tkf.github.io/emacs-jedi/][jedi]]
+
    #+BEGIN_SRC emacs-lisp
-     (load "~/.emacs.d/config/python.cfg.el")
+     (autoload 'jedi:setup "jedi" nil t)
+     (add-hook 'python-mode-hook 'jedi:setup)
+     (setq jedi:complete-on-dot t) ; optional
+     ;; (setq jedi:setup-keys t) ; optional
+   #+END_SRC
+
+*** python-info-look
+
+    shortcut "[C-h S]"
+
+    #+BEGIN_SRC emacs-lisp
+      ;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
+      ;; (require 'pydoc-info)
+      ;; (require 'info-look)
+    #+END_SRC
+
+*** pdb
+
+    #+BEGIN_SRC emacs-lisp
+      ;; (setq pdb-path '/usr/lib/python2.4/pdb.py
+      ;; gud-pdb-command-name (symbol-name pdb-path))
+
+      ;; (defadvice pdb (before gud-query-cmdline activate) "Provide a
+      ;; better default command line when called interactively."
+      ;; (interactive (list (gud-query-cmdline pdb-path
+      ;; (file-name-nondirectory buffer-file-name)))))
    #+END_SRC
 
 *** [[https://github.com/rhoit/py-exec][py execution]]
