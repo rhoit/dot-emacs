@@ -404,7 +404,14 @@ it doesn't work out of the box.
      (global-set-key [(control f3)] 'highlight-symbol-at-point)
      (global-set-key [(shift f3)] 'highlight-symbol-next)
      (global-set-key [(shift f2)] 'highlight-symbol-prev)
-     (global-set-key [(control f2)] 'highlight-symbol-query-replace)
+
+     (global-unset-key (kbd "<C-down-mouse-1>"))
+     (global-set-key (kbd "<C-down-mouse-1>")
+                (lambda (event)
+                  (interactive "e")
+                  (save-excursion
+                    (goto-char (posn-point (event-start event)))
+                    (highlight-symbol-at-point))))
    #+END_SRC
 
 ** trailing white-spaces
