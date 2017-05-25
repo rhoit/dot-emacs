@@ -616,6 +616,13 @@ it doesn't work out of the box.
      (setq lua-indent-level 4)
    #+end_src
 
+** kotlin
+
+   #+begin_src emacs-lisp
+     (setq default-tab-width 4)
+   #+end_src
+
+
 ** web modes
 
    #+begin_src emacs-lisp
