@@ -539,12 +539,12 @@ it doesn't work out of the box.
    install ggtags as mention in the repo
 
    #+begin_src emacs-lisp
-     (add-hook 'c-mode-common-hook
-               (lambda ()
-                 (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                   (ggtags-mode 1))))
+     ;; (add-hook 'c-mode-common-hook
+     ;;          (lambda ()
+     ;;            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+     ;;              (ggtags-mode 1))))
 
-     (add-hook 'python-mode-hook 'ggtags-mode)
+     ;; (add-hook 'python-mode-hook 'ggtags-mode)
 
      (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
    #+end_src
