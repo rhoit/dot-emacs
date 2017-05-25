@@ -293,6 +293,46 @@ it doesn't work out of the box.
      (global-set-key [(control shift prior)] 'tabbar-backward-group)
      (global-set-key [(control shift next)] 'tabbar-forward-group)
    #+end_src
+** mini-buffer
+*** Interactively Do Things
+
+    ido-mode
+
+    *NOTE*: I prefer helm.
+
+    #+begin_src emacs-lisp
+      ;; (ido-mode t)
+      ;; (setq ido-enable-prefix nil
+      ;;      ido-enable-flex-matching t ;; enable fuzzy matching
+      ;;      ido-auto-merge-work-directories-length nil
+      ;;      ido-create-new-buffer 'always
+      ;;      ido-use-filename-at-point 'guess
+      ;;      ido-use-virtual-buffers t
+      ;;      ido-handle-duplicate-virtual-buffers 2
+      ;;      ido-max-prospects 10)
+    #+end_src
+
+*** M-x interface
+
+**** smex
+
+     #+begin_src emacs-lisp
+       ;; (el-get 'sync 'smex)
+       ;; (require 'smex)
+       ;; (smex-initialize)
+       ;; (global-set-key (kbd "M-x") 'smex)
+     #+end_src
+
+**** helm
+
+     https://github.com/emacs-helm/helm
+
+     #+begin_src emacs-lisp
+       (require 'helm)
+       (global-set-key (kbd "M-x") 'helm-M-x)
+       (global-set-key (kbd "C-x C-f") 'helm-find-files)
+       (helm-mode 1)
+     #+end_src
 
 ** smooth scroll
 
@@ -321,33 +361,6 @@ it doesn't work out of the box.
 
    #+begin_src emacs-lisp
      (delete-selection-mode 1)
-   #+end_src
-
-** Interactively Do Things
-
-   ido-mode
-
-   #+begin_src emacs-lisp
-     (ido-mode t)
-     ;;(ido-ubiquitous t)
-     (setq ido-enable-prefix nil
-           ido-enable-flex-matching t ;; enable fuzzy matching
-           ido-auto-merge-work-directories-length nil
-           ido-create-new-buffer 'always
-           ido-use-filename-at-point 'guess
-           ;; ido-default-file-method 'select-window
-           ido-use-virtual-buffers t
-           ido-handle-duplicate-virtual-buffers 2
-           ido-max-prospects 10)
-   #+end_src
-
-** M-x interface
-
-   #+begin_src emacs-lisp
-     (el-get 'sync 'smex)
-     (require 'smex)
-     (smex-initialize)
-     (global-set-key (kbd "M-x") 'smex)
    #+end_src
 
 ** anzu
