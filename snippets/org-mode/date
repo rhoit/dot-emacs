@@ -3,4 +3,4 @@
 # contributor: rho
 # key: date
 # --
-#+DATE: `(format-time-string "%A, %b %d %Y" (current-time))`
+#+DATE: `(format-time-string "%Y %b %d, %A" (current-time))`
