@@ -105,6 +105,22 @@
       (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
     #+END_SRC
 
+** mini-buffer
+*** helm
+
+    Although [[https://github.com/emacs-helm/helm][helm]] features are from the another league, I have not
+    gone beyond the minibuffer. It took me while to get hang of it,
+    one of reasons might be constant flickering creation of helm
+    temporary popup windows 🪟 which I don't like.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'helm)
+      (global-set-key (kbd "M-x") 'helm-M-x)
+      (global-set-key (kbd "C-x C-f") 'helm-find-files)
+      (helm-mode 1)
+    #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
