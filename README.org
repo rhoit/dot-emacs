@@ -271,6 +271,19 @@ it doesn't work out of the box.
      (global-set-key [(control shift next)] 'tabbar-forward-group)
    #+END_SRC
 
+** mini-buffer
+*** M-x interface
+**** helm
+
+     https://github.com/emacs-helm/helm
+
+     #+BEGIN_SRC emacs-lisp
+       (require 'helm)
+       (global-set-key (kbd "M-x") 'helm-M-x)
+       (global-set-key (kbd "C-x C-f") 'helm-find-files)
+       (helm-mode 1)
+     #+END_SRC
+
 ** smooth scroll
 
    Unfortunately emacs :barber: scrolling :barber: is not smooth, its
