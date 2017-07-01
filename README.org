@@ -697,15 +697,67 @@ it doesn't work out of the box.
 
 ** org-mode
 
-   #+begin_src emacs-lisp
-     (load "~/.emacs.d/config/org-mode.cfg.el")
-     (load "~/.emacs.d/config/babel.cfg.el")
+   This might be one of the most important modes of emacs which make
+   the emacs distinct from every other editor. You should definately
+   checkout org-mode. Like the emacs config it has become humongous.
 
-   #+end_src
+*** keyboard
 
-*** Minor mode
+    removing the C-j bind for goto-last-change
 
-    Org-mode is addictive, why not use it as minor-modes.
+    #+begin_src emacs-lisp
+      (add-hook 'org-mode-hook
+          '(lambda ()
+             (define-key org-mode-map (kbd "C-j") nil)))
+    #+end_src
+
+*** enable mouse
+
+    #+begin_src emacs-lisp
+      (require 'org-mouse)
+    #+end_src
+
+*** auto-fill text
+
+    #+begin_src emacs-lisp
+      (add-hook 'org-mode-hook 'turn-on-auto-fill)
+    #+end_src
+
+*** babel
+
+    active Babel languages
+
+    #+begin_src emacs-lisp
+      (org-babel-do-load-languages 'org-babel-load-languages
+         '((sh . t)
+          (python . t)))
+    #+end_src
+
+*** default applications
+
+    Its most :disappointed: disappointing when application opens
+    doesn't open in your favorite application, but org-mode has it
+    covered :sob:.
+
+    #+begin_src emacs-lisp
+      (add-hook 'org-mode-hook
+                '(lambda ()
+                   (setq org-file-apps
+                         '((auto-mode . emacs)
+                           ("\\.jpg\\'" . "eog %s")
+                           ("\\.png\\'" . "eog %s")
+                           ("\\.gif\\'" . "eog %s")
+                           ("\\.mkv\\'" . "mplayer %s")
+                           ("\\.mp4\\'" . "vlc %s")
+                           ("\\.webm\\'" . "mplayer %s")
+                           ("\\.pdf\\'" . "evince %s")))))
+    #+end_src
+
+*** minor-mode
+
+    *org-mode* can be addictive, someone have missed a lot and created
+    these awesome modes. Now we can use them minor-modes too inside
+    comments.
 
     *outline*
 

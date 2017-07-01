@@ -1,28 +1,9 @@
 ;;======================================================================
 ;; ORG-MODE
 
-(add-hook 'org-mode-hook 'turn-on-auto-fill)
-(require 'org-mouse)
 
 ;; TODO: org -mode image zoom
 ;; (setq org-image-actual-width 800)
-
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (setq org-file-apps
-                   '((auto-mode . emacs)
-                     ("\\.jpg\\'" . "eog %s")
-                     ("\\.png\\'" . "eog %s")
-                     ("\\.gif\\'" . "eog %s")
-                     ("\\.mkv\\'" . "vlc %s")
-                     ("\\.mp4\\'" . "vlc %s")
-                     ("\\.webm\\'" . "vlc %s")
-                     ("\\.pdf\\'" . "evince %s")))))
-
-;; removing the C-j bind for goto-last-change
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (define-key org-mode-map (kbd "C-j") nil)))
 
 ;;----------------------------------------------------------------------
 ;; Sort list by checkbox type
