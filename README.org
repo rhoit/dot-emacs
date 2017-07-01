@@ -26,13 +26,13 @@ it doesn't work out of the box.
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
-** Get it
+** getting it
 
    #+BEGIN_EXAMPLE
      $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
    #+END_EXAMPLE
 
-** How to build
+** how to build
 
    =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
    stuffs.
@@ -43,7 +43,7 @@ it doesn't work out of the box.
      $ make install
    #+END_SRC
 
-** Structure
+** structure
 
    #+BEGIN_EXAMPLE
      dot-emacs
@@ -64,8 +64,8 @@ it doesn't work out of the box.
 * emacs core
 ** emacs server
 
-   Stop opening *emacs* for each file. Set default open application
-   using =emacsclient -n -a=emacs [FILE]=.
+   Stop :no_entry_sign: opening *emacs* for each file. Set default open
+   application using =emacsclient -n -a=emacs [FILE]=.
 
    #+begin_src emacs-lisp
      (require 'server)
@@ -91,7 +91,9 @@ it doesn't work out of the box.
      (setq make-backup-files nil)
    #+end_src
 
-** avoid typing complete 'yes' and 'no
+** alias yes-or-no
+
+   avoid typing complete 'yes' and 'no'
 
    #+begin_src emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
@@ -177,7 +179,7 @@ it doesn't work out of the box.
     (global-set-key [f9] 'speedbar)
   #+end_src
 
-** shift mouse selection
+** shift-mouse selection
 
    We don't need *font dialog* options which is binded by default.
    Since, font resize has been binded to =C mouse scroll= does it.
@@ -207,7 +209,11 @@ it doesn't work out of the box.
      ;; (set-face-attribute hl-line-face nil :underline nil)
    #+end_src
 
-** custom undo action for GUI
+** undo keybinds
+
+   let keep things *simple* :see_no_evil: :hear_no_evil: :speak_no_evil:
+
+   addition to the emacs bindings these few thing must have thing.
 
    #+begin_src emacs-lisp
      (when window-system
@@ -246,12 +252,6 @@ it doesn't work out of the box.
      (powerline-iconic-theme)
      ;;; DID YOU GOT STUCK ABOVE? COMMENT 2 LINES ABOVE & UNCOMMENT NEXT LINE
      ;; (powerline-default-theme)
-
-     ;;; modeline from spacmacs
-     ;;; https://github.com/TheBB/spaceline
-     ;; (add-to-list 'load-path  "~/.emacs.d/00testing/spaceline/")
-     ;; (require 'spaceline-config)
-     ;; (spaceline-spacemacs-theme)
    #+end_src
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
@@ -263,7 +263,6 @@ it doesn't work out of the box.
      (el-get 'sync 'tabbar)
      (require 'tabbar)
      (tabbar-mode t)
-
 
      ;;; tabbar-ruler directly from repo, for experiments
      ;;; https://github.com/mattfidler/tabbar-ruler.el
@@ -278,7 +277,7 @@ it doesn't work out of the box.
      (global-set-key [f7] 'tabbar-mode)
    #+end_src
 
-   bind them as modern GUI system.
+   bind them as modern :lollipop: GUI system.
 
    #+begin_src emacs-lisp
      (define-key global-map [(control tab)] 'tabbar-forward)
@@ -357,7 +356,7 @@ it doesn't work out of the box.
 
 ** delete selection mode
 
-   Default behavious of emacs weird, I wish this was *default*.
+   Default behavious of emacs :shit: weird, I wish this was *default*.
 
    #+begin_src emacs-lisp
      (delete-selection-mode 1)
@@ -410,7 +409,6 @@ it doesn't work out of the box.
 
    It kinda has been stuck in my config for years, just addicted to
    it. Seems like this is by default now.
-
 
    #+begin_src emacs-lisp
      ;; (el-get 'sync 'switch-window)
@@ -635,7 +633,6 @@ it doesn't work out of the box.
      (setq default-tab-width 4)
    #+end_src
 
-
 ** web modes
 
    #+begin_src emacs-lisp
@@ -698,7 +695,7 @@ it doesn't work out of the box.
      ;;                    (xwidget-browse-url-no-reuse url)))
    #+end_src
 
-** Org
+** org-mode
 
    #+begin_src emacs-lisp
      (load "~/.emacs.d/config/org-mode.cfg.el")
@@ -723,9 +720,6 @@ it doesn't work out of the box.
     #+begin_src emacs-lisp
       (require 'outshine)
       (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
-      ;; (add-hook 'outline-minor-mode-hook
-      ;;          '(lambda ()
-      ;;             (define-key org-mode-map (kbd "C-j") nil)))
     #+end_src
 
 ** dockerfile
@@ -878,6 +872,7 @@ it doesn't work out of the box.
      (add-hook 'prog-mode-hook 'highlight-indentation-mode)
      (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
    #+end_src
+
 ** hideshowvis mode
 
    http://www.emacswiki.org/emacs/download/hideshowvis.el
