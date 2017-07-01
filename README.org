@@ -26,13 +26,13 @@ it doesn't work out of the box.
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
-** Get it
+** getting it
 
    #+BEGIN_EXAMPLE
      $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
    #+END_EXAMPLE
 
-** How to build
+** how to build
 
    =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
    stuffs.
@@ -43,7 +43,7 @@ it doesn't work out of the box.
      $ make install
    #+END_SRC
 
-** Structure
+** structure
 
    #+BEGIN_EXAMPLE
      dot-emacs
@@ -64,8 +64,8 @@ it doesn't work out of the box.
 * CORE
 ** emacs server
 
-   Stop opening *emacs* for each file. Set default open application
-   using =emacsclient -n -a=emacs [FILE]=.
+   Stop :no_entry_sign: opening *emacs* for each file. Set default open
+   application using =emacsclient -n -a=emacs [FILE]=.
 
    #+BEGIN_SRC emacs-lisp
      (require 'server)
@@ -91,7 +91,9 @@ it doesn't work out of the box.
      (setq make-backup-files nil)
    #+END_SRC
 
-** avoid typing complete 'yes' and 'no
+** alias yes-or-no
+
+   avoid typing complete 'yes' and 'no'
 
    #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
@@ -156,7 +158,7 @@ it doesn't work out of the box.
     (global-set-key [f9] 'speedbar)
   #+END_SRC
 
-** shift mouse selection
+** shift-mouse selection
 
    We don't need *font dialog* options which is binded by default.
    Since, font resize has been binded to =C mouse scroll= does it.
@@ -186,7 +188,11 @@ it doesn't work out of the box.
      ;; (set-face-attribute hl-line-face nil :underline nil)
    #+END_SRC
 
-** custom undo action for GUI
+** undo keybinds
+
+   let keep things *simple* :see_no_evil: :hear_no_evil: :speak_no_evil:
+
+   addition to the emacs bindings these few thing must have thing.
 
    #+BEGIN_SRC emacs-lisp
      (when window-system
@@ -225,12 +231,6 @@ it doesn't work out of the box.
      (powerline-iconic-theme)
      ;;; DID YOU GOT STUCK ABOVE? COMMENT 2 LINES ABOVE & UNCOMMENT NEXT LINE
      ;; (powerline-default-theme)
-
-     ;;; modeline from spacmacs
-     ;;; https://github.com/TheBB/spaceline
-     ;; (add-to-list 'load-path  "~/.emacs.d/00testing/spaceline/")
-     ;; (require 'spaceline-config)
-     ;; (spaceline-spacemacs-theme)
    #+END_SRC
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
@@ -255,7 +255,7 @@ it doesn't work out of the box.
      (global-set-key [f7] 'tabbar-mode)
    #+END_SRC
 
-   bind them as modern GUI system.
+   bind them as modern :lollipop: GUI system.
 
    #+BEGIN_SRC emacs-lisp
      (define-key global-map [(control tab)] 'tabbar-forward)
@@ -307,7 +307,7 @@ it doesn't work out of the box.
 
 ** delete selection mode
 
-   Default behavious of emacs weird, I wish this was *default*.
+   Default behavious of emacs :shit: weird, I wish this was *default*.
 
    #+BEGIN_SRC emacs-lisp
      (delete-selection-mode 1)
@@ -571,7 +571,7 @@ it doesn't work out of the box.
       (load "~/.emacs.d/00testing/py-exec/py-exec.el")
     #+END_SRC
 
-** Org
+** ORG-MODE
 
    #+BEGIN_SRC emacs-lisp
      (load "~/.emacs.d/config/org-mode.cfg.el")
@@ -595,9 +595,6 @@ it doesn't work out of the box.
     #+BEGIN_SRC emacs-lisp
       (require 'outshine)
       (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
-      ;; (add-hook 'outline-minor-mode-hook
-      ;;          '(lambda ()
-      ;;             (define-key org-mode-map (kbd "C-j") nil)))
     #+END_SRC
 
 ** dockerfile
