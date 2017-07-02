@@ -200,6 +200,12 @@
     	xdotool windowactivate ${WINDOW}
    #+END_EXAMPLE
 
+* ORG-MODE
+
+  [[https://orgmode.org/][org-mode]] introduces to the you to different world, which makes it
+  distinct. All but one complain is it throws the normal convention
+  out of the window (just remember *emacs* has worst defaults 😉)!
+
 * MODES
 ** c-lang
 
