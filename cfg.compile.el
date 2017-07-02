@@ -23,7 +23,6 @@
 
 ;; automatically save buffer when ask for compilation
 ;; http://stackoverflow.com/questions/2062492/save-and-compile-automatically
-
 (setq compilation-ask-about-save nil)
 
 (defvar modeline-timer)
@@ -71,8 +70,10 @@
         )
     (progn
 	  (modeline-set-color "OrangeRed")
-	  (when open-compilation-buffer-flag
-        (open-compilation-buffer))))
+	  (if open-compilation-buffer-flag
+	      (open-compilation-buffer)
+	      (modeline-delayed-clean)
+	      )))
 
   ;; (setq current-frame (car (car (cdr (current-frame-configuration)))))
   ;; (select-frame-set-input-focus current-frame)
@@ -85,54 +86,53 @@
 (defadvice recompile (around compile/save-window-excursion first () activate)
   (save-window-excursion ad-do-it))
 
+
 (defun recompile-if-not-in-progress ()
   (let ((buffer (compilation-find-buffer)))
     (unless (get-buffer-process buffer)
-      (recompile)))
-  )
+      (recompile))))
+
 
 (defun interrupt-compilation ()
+  (interactive)
   (setq compilation-exit-message-function 'nil)
   (ignore-errors
-    (progn (process-kill-without-query
-            (get-buffer-process (get-buffer "*compilation*")))
-           (modeline-set-color "DeepSkyBlue")))
-
-                                        ;  (condition-case nil
-                                        ;      (process-kill-without-query
-                                        ;       (get-buffer-process (get-buffer "*compilation*")))
-                                        ;    (error (modeline-set-color "DeepSkyBlue")))
-  )
+    (progn (delete-process "*compilation*")
+  	   (modeline-set-color "DeepSkyBlue")
+  	   (message "previous compilation aborted!")
+  	   (sit-for 1.5)
+  	   )))
 
 
 (defun interrupt-and-recompile ()
   "Interrupt old compilation, if any, and recompile."
   (interactive)
-  (interrupt-compilation)
+  (ignore-errors (interrupt-compilation))
   (recompile))
+
 
 (setq compilation-last-buffer nil)
 (defun compile-again ()
   "Run the same compile as the last time.
-    If there was no last time, or there is a prefix argument, this acts like
-      M-x compile."
+   If there was no last time, or there is a prefix argument, this acts like
+     M-x compile."
   (interactive)
 
   (setq compilation-process-setup-function
-        (lambda() (progn (modeline-cancel-timer)
-                         (setq compilation-exit-message-function 'compilation-exit-hook)
-                         (modeline-set-color "LightBlue"))))
+        (lambda()
+          (progn (modeline-cancel-timer)
+                 (setq compilation-exit-message-function 'compilation-exit-hook)
+                 (modeline-set-color "LightBlue"))))
 
   (if compilation-last-buffer
       (progn
-                                        ;	 (condition-case nil
-                                        ;	     (set-buffer compilation-last-buffer)
-                                        ;	   (error 'ask-new-compile-command))
+        ;; (condition-case nil
+        ;; (set-buffer compilation-last-buffer)
+        ;; (error 'ask-new-compile-command))
         (modeline-cancel-timer)
-        (interrupt-and-recompile)
-        )
-    (call-interactively 'compile)
-    ))
+        (interrupt-and-recompile))
+    (call-interactively 'compile)))
+
 
 (defun save-and-compile-again ()
   (interactive)
@@ -140,30 +140,26 @@
   (setq open-compilation-buffer-flag t)
   (compile-again))
 
+
 (defun ask-new-compile-command ()
   (interactive)
   (setq compilation-last-buffer nil)
   (save-and-compile-again))
 
+
 (defun open-compilation-buffer()
   (interactive)
   (display-buffer "*compilation*"))
+
 
 (defun toggle-compilation-buffer()
   (interactive)
   (if (get-buffer-window "*compilation*")
       (delete-windows-on "*compilation*")
-    (display-buffer "*compilation*"))
-  ;; (modeline-delayed-clean)
-  )
-
-;; (defun open-compilation-buffer()
-;;   (interactive)
-;;   (display-buffer "*compilation*")
-;;   (modeline-delayed-clean)
-;;   )
+    (display-buffer "*compilation*")))
 
 
+;; -- compile-on-save minor mode ---
 (define-minor-mode compile-on-save-mode
   "Minor mode to automatically compile whenever the current buffer is
   saved. When there is ongoing compilation, nothing happens."
@@ -173,8 +169,19 @@
              (add-hook 'after-save-hook 'activate-compile-on-save nil t))
     (kill-local-variable 'after-save-hook)))
 
+
 (defun activate-compile-on-save()
   (interactive)
   (message "Compiling after saving...")
   (setq open-compilation-buffer-flag nil)
   (compile-again))
+
+
+; colors in compilation buffer
+; http://stackoverflow.com/questions/13397737/ansi-coloring-in-compilation-mode
+(ignore-errors
+  (require 'ansi-color)
+  (defun my-colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))

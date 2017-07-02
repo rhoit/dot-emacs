@@ -30,6 +30,9 @@
  '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t)
  '(magit-diff-refine-hunk (quote all))
+ '(package-selected-packages
+   (quote
+    (kotlin-mode ranger arduino-mode flycheck-pyflakes mode-icons)))
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
@@ -57,4 +60,7 @@
  '(markdown-header-face-5 ((t (:height 1.1 :weight bold))) t)
  '(markdown-header-face-6 ((t (:weight bold))) t)
  '(show-paren-match ((t (:inverse-video t))))
+ '(tabbar-default ((t (:background "#444444" :foreground "white"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :background "gray20" :foreground "white" :box nil :weight bold :height 100 :width normal :family "Sans Serif"))))
+ '(tabbar-unselected-modified ((t (:inherit tabbar-unselected :background "#444444" :foreground "#f6f3e8" :box nil :weight bold :height 100 :width normal :family "Sans Serif"))))
  '(which-func ((t (:background "gray40")))))
