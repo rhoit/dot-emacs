@@ -18,6 +18,10 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(magit-diff-refine-hunk (quote all))
+ '(package-selected-packages
+   (quote
+    (kotlin-mode ranger arduino-mode flycheck-pyflakes mode-icons)))
+ '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
     ((eval outline-hide-sublevels 1)
