@@ -508,6 +508,85 @@ it doesn't work out of the box.
     	xdotool windowactivate ${WINDOW}
    #+END_EXAMPLE
 
+* ORG-MODE
+
+  This might be one of the most important modes of emacs which make
+  the emacs distinct from every other editor. You should definately
+  checkout org-mode. Like the emacs config it has become humongous.
+
+** keyboard
+
+   removing the C-j bind for goto-last-change
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'org-mode-hook
+         '(lambda ()
+            (define-key org-mode-map (kbd "C-j") nil)))
+   #+END_SRC
+
+** enable mouse
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'python-mode-hook 'lambda ()
+        (require 'org-mouse))
+   #+END_SRC
+
+** auto-fill text
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'org-mode-hook 'turn-on-auto-fill)
+   #+END_SRC
+
+** babel
+
+   active Babel languages
+
+   #+BEGIN_SRC emacs-lisp
+     (org-babel-do-load-languages 'org-babel-load-languages
+        '((sh . t)
+         (python . t)))
+   #+END_SRC
+
+** default applications
+
+   Its most :disappointed: disappointing when application opens
+   doesn't open in your favorite application, but org-mode has it
+   covered :sob:.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'org-mode-hook
+               '(lambda ()
+                  (setq org-file-apps
+                        '((auto-mode . emacs)
+                          ("\\.jpg\\'" . "eog %s")
+                          ("\\.png\\'" . "eog %s")
+                          ("\\.gif\\'" . "eog %s")
+                          ("\\.mkv\\'" . "mplayer %s")
+                          ("\\.mp4\\'" . "vlc %s")
+                          ("\\.webm\\'" . "mplayer %s")
+                          ("\\.pdf\\'" . "evince %s")))))
+   #+END_SRC
+
+** minor-mode
+
+   *org-mode* can be addictive, someone have missed a lot and created
+   these awesome modes. Now we can use them minor-modes too inside
+   comments.
+
+   *outline*
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'outline)
+     (add-hook 'prog-mode-hook 'outline-minor-mode)
+     (add-hook 'compilation-mode-hook 'outline-minor-mode)
+   #+END_SRC
+
+   *outshine*
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'outshine)
+     (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+   #+END_SRC
 
 * MODES
 ** C/C++
@@ -579,85 +658,6 @@ it doesn't work out of the box.
       ;; (add-to-list 'load-path "~/.emacs.d/00testing/py-exec/")
       ;; (require 'py-exec)
       (load "~/.emacs.d/00testing/py-exec/py-exec.el")
-    #+END_SRC
-
-** ORG-MODE
-
-   This might be one of the most important modes of emacs which make
-   the emacs distinct from every other editor. You should definately
-   checkout org-mode. Like the emacs config it has become humongous.
-
-*** keyboard
-
-    removing the C-j bind for goto-last-change
-
-    #+BEGIN_SRC emacs-lisp
-      (add-hook 'org-mode-hook
-          '(lambda ()
-             (define-key org-mode-map (kbd "C-j") nil)))
-    #+END_SRC
-
-*** enable mouse
-
-    #+BEGIN_SRC emacs-lisp
-      (require 'org-mouse)
-    #+END_SRC
-
-*** auto-fill text
-
-    #+BEGIN_SRC emacs-lisp
-      (add-hook 'org-mode-hook 'turn-on-auto-fill)
-    #+END_SRC
-
-*** babel
-
-    active Babel languages
-
-    #+BEGIN_SRC emacs-lisp
-      (org-babel-do-load-languages 'org-babel-load-languages
-         '((sh . t)
-          (python . t)))
-    #+END_SRC
-
-*** default applications
-
-    Its most :disappointed: disappointing when application opens
-    doesn't open in your favorite application, but org-mode has it
-    covered :sob:.
-
-    #+BEGIN_SRC emacs-lisp
-      (add-hook 'org-mode-hook
-                '(lambda ()
-                   (setq org-file-apps
-                         '((auto-mode . emacs)
-                           ("\\.jpg\\'" . "eog %s")
-                           ("\\.png\\'" . "eog %s")
-                           ("\\.gif\\'" . "eog %s")
-                           ("\\.mkv\\'" . "mplayer %s")
-                           ("\\.mp4\\'" . "vlc %s")
-                           ("\\.webm\\'" . "mplayer %s")
-                           ("\\.pdf\\'" . "evince %s")))))
-    #+END_SRC
-
-*** minor-mode
-
-    *org-mode* can be addictive, someone have missed a lot and created
-    these awesome modes. Now we can use them minor-modes too inside
-    comments.
-
-    *outline*
-
-    #+BEGIN_SRC emacs-lisp
-      (require 'outline)
-      (add-hook 'prog-mode-hook 'outline-minor-mode)
-      (add-hook 'compilation-mode-hook 'outline-minor-mode)
-    #+END_SRC
-
-    *outshine*
-
-    #+BEGIN_SRC emacs-lisp
-      (require 'outshine)
-      (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
     #+END_SRC
 
 ** dockerfile
