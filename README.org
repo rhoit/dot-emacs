@@ -62,6 +62,16 @@ it doesn't work out of the box.
    #+END_EXAMPLE
 
 * CORE
+** emacs garbage collector
+
+   I hoped this works but, haven't seen much difference.
+
+   based on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] post
+
+   #+BEGIN_SRC emacs-lisp
+     (setq gc-cons-threshold 104857600)
+   #+END_SRC
+
 ** emacs server
 
    Stop :no_entry_sign: opening *emacs* for each file. Set default open
