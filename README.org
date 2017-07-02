@@ -746,7 +746,7 @@ it doesn't work out of the box.
 
    also avalible in *el-get*.
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
      (require 'window-numbering)
      (window-numbering-mode)
@@ -769,20 +769,6 @@ it doesn't work out of the box.
 
      (add-hook 'prog-mode-hook 'highlight-indentation-mode)
      (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
-   #+END_SRC
-
-** hideshowvis mode
-
-   http://www.emacswiki.org/emacs/download/hideshowvis.el
-
-   #+BEGIN_SRC emacs-lisp
-     (autoload 'hideshowvis-enable "hideshowvis")
-     (autoload 'hideshowvis-minor-mode
-       "hideshowvis"
-       "Will indicate regions foldable with hideshow in the fringe."
-       'interactive)
-
-     (add-hook 'python-mode-hook 'hideshowvis-enable)
    #+END_SRC
 
 ** auto-dim-buffer

@@ -24,6 +24,10 @@
  '(grep-command "grep --color -nH -r -e ")
  '(inhibit-startup-screen t)
  '(magit-diff-refine-hunk (quote all))
+ '(package-selected-packages
+   (quote
+    (kotlin-mode ranger arduino-mode flycheck-pyflakes mode-icons)))
+ '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
     ((eval outline-hide-sublevels 1)
