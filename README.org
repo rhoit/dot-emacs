@@ -208,6 +208,57 @@
      ;; (setq jedi:setup-keys t) ; optional
    #+END_SRC
 
+* ORG-MODE
+
+  removing the C-j bind for [[goto-last-change]]
+
+  #+BEGIN_SRC emacs-lisp
+    (add-hook
+     'org-mode-hook
+     '(lambda()
+        (define-key org-mode-map (kbd "C-j") nil)))
+  #+END_SRC
+
+** enable mouse
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'org-mode-hook 'lambda() (require 'org-mouse))
+   #+END_SRC
+
+** babel
+
+   active Babel languages
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-export-use-babel nil)
+
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '(
+        (sh . t)
+        (python . t)))
+   #+END_SRC
+
+** default applications
+
+   Its most 😞 disappointing when application opens doesn't open in
+   your favorite application, but org-mode has it covered 😭.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook
+      'org-mode-hook
+      '(lambda()
+         (setq org-file-apps
+               '((auto-mode . emacs)
+                 ("\\.jpg\\'" . "eog %s")
+                 ("\\.png\\'" . "eog %s")
+                 ("\\.gif\\'" . "eog %s")
+                 ("\\.mkv\\'" . "mplayer %s")
+                 ("\\.mp4\\'" . "vlc %s")
+                 ("\\.webm\\'" . "mplayer %s")
+                 ("\\.pdf\\'" . "evince %s")))))
+   #+END_SRC
+
 * MODES
 ** C/C++
 
