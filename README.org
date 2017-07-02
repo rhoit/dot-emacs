@@ -855,7 +855,7 @@ it doesn't work out of the box.
      (global-set-key [(shift insert)] 'repetitive-yanking)
    #+end_src
 
-* Testing
+* testing
 
   This :construction: section :construction: contain modes (plug-in)
   which modified to *extreme* or :bug: *buggy*. May still not be
@@ -870,13 +870,7 @@ it doesn't work out of the box.
    There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]], [[https://github.com/skeeto/impatient-mode][impatient-mode]] but
    nothing beats good old way with *xdotool* hail *X11* for now! :joy:
 
-   #+begin_src emacs-lisp
-     ;; (add-to-list 'load-path "~/.emacs.d/00testing/emacs-browser-refresh/")
-     ;; (require 'browser-refresh)
-     ;; (setq browser-refresh-default-browser 'firefox)
-   #+end_src
-
-   above thingi comment, lets do Makefile!
+   lets do Makefile!
 
    #+BEGIN_EXAMPLE
      WINDOW=$(shell xdotool search --onlyvisible --class chromium)
@@ -911,9 +905,9 @@ it doesn't work out of the box.
    also avalible in *el-get*.
 
    #+begin_src emacs-lisp
-     (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
-     (require 'window-numbering)
-     (window-numbering-mode)
+     ;; (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
+     ;; (require 'window-numbering)
+     ;; (window-numbering-mode)
    #+end_src
 
 ** highlight indentation
@@ -940,13 +934,13 @@ it doesn't work out of the box.
    http://www.emacswiki.org/emacs/download/hideshowvis.el
 
    #+begin_src emacs-lisp
-     (autoload 'hideshowvis-enable "hideshowvis")
-     (autoload 'hideshowvis-minor-mode
-       "hideshowvis"
-       "Will indicate regions foldable with hideshow in the fringe."
-       'interactive)
+     ;; (autoload 'hideshowvis-enable "hideshowvis")
+     ;; (autoload 'hideshowvis-minor-mode
+     ;;  "hideshowvis"
+     ;;  "Will indicate regions foldable with hideshow in the fringe."
+     ;;  'interactive)
 
-     (add-hook 'python-mode-hook 'hideshowvis-enable)
+     ;; (add-hook 'python-mode-hook 'hideshowvis-enable)
    #+end_src
 
 ** auto-dim-buffer
