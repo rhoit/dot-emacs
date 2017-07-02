@@ -188,6 +188,54 @@
     	xdotool windowactivate ${WINDOW}
    #+END_EXAMPLE
 
+* ORG-MODE
+
+  removing the C-j bind for [[goto-last-change]]
+
+  #+HEADER: :results silent
+  #+BEGIN_SRC emacs-lisp
+    (add-hook
+     'org-mode-hook
+     '(lambda()
+        (define-key org-mode-map (kbd "C-j") nil)))
+  #+END_SRC
+
+** babel
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '(
+        (C . t)
+        (js . t)
+        (python . t)
+        (sh . t)
+        (sql . t)
+        ))
+   #+END_SRC
+
+** open-with-defaults
+
+   Its most 😞 disappointing when application opens doesn't open in
+   your favorite application, but org-mode has it covered 😭.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook
+      'org-mode-hook
+      '(lambda()
+         (setq org-file-apps
+               '((auto-mode . emacs)
+                 ("\\.jpg\\'" . "eog %s")
+                 ("\\.png\\'" . "eog %s")
+                 ("\\.gif\\'" . "eog %s")
+                 ("\\.mkv\\'" . "mplayer %s")
+                 ("\\.mp4\\'" . "vlc %s")
+                 ("\\.webm\\'" . "mplayer %s")
+                 ("\\.pdf\\'" . "evince %s")))))
+   #+END_SRC
+
 * MODES
 ** c-lang
 
