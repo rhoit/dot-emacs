@@ -26,7 +26,7 @@
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
    (quote
-    (kotlin-mode ranger arduino-mode flycheck-pyflakes mode-icons)))
+    (nlinum kotlin-mode ranger arduino-mode flycheck-pyflakes mode-icons)))
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
