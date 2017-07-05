@@ -180,26 +180,6 @@ it doesn't work out of the box.
      (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
    #+end_src
 
-** highlight current line
-
-   Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
-   intensity of given color and alpha value.
-
-   #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'highline)
-     (require 'highline)
-
-     (set-face-background 'highline-face (shade-color 09))
-     (add-hook 'prog-mode-hook 'highline-mode-on)
-
-     ;; not using inbuild hl-line-mode i can't seem to figure out changing
-     ;; face for shade-color
-     ;; (global-hl-line-mode 1)
-     ;; (set-face-background 'hl-line "#3e4446")
-     ;; (set-face-foreground 'highlight nil)
-     ;; (set-face-attribute hl-line-face nil :underline nil)
-   #+END_SRC
-
 ** undo keybinds
 
    let keep things *simple* :see_no_evil: :hear_no_evil: :speak_no_evil:
@@ -378,17 +358,41 @@ it doesn't work out of the box.
      ;; (global-set-key (kbd "C-x o") 'switch-window)
    #+END_SRC
 
-** [[http://www.emacswiki.org/LineNumbers][line number]]
+** [[https://www.emacswiki.org/emacs/LineNumbers][line number]]
 
    Using elpa for this, only load after init, but not sure this is
    working properly or new update has fixed it.
 
+   currently using basic.
+
    #+begin_src emacs-lisp
-     (add-hook 'after-init-hook
-        (lambda ()
-           (setq nlinum-delay t)
-           (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
-        ))
+     (global-linum-mode)
+     ;;(add-hook 'after-init-hook
+     ;;   (lambda ()
+     ;;      (require 'nlinum)
+     ;;     (setq nlinum-delay t)
+     ;;      (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
+     ;;   ))
+   #+end_src
+
+** highlight current line
+
+   Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
+   intensity of given color and alpha value.
+
+   #+begin_src emacs-lisp
+     (el-get 'sync 'highline)
+     (require 'highline)
+
+     (set-face-background 'highline-face (shade-color 09))
+     (add-hook 'prog-mode-hook 'highline-mode-on)
+
+     ;; not using inbuild hl-line-mode i can't seem to figure out changing
+     ;; face for shade-color
+     ;; (global-hl-line-mode 1)
+     ;; (set-face-background 'hl-line "#3e4446")
+     ;; (set-face-foreground 'highlight nil)
+     ;; (set-face-attribute hl-line-face nil :underline nil)
    #+end_src
 
 ** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
