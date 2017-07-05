@@ -118,6 +118,8 @@ it doesn't work out of the box.
 * el-get
 
   [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
+  It has been while (after =emacs 24=) emacs got its own package
+  manager, thinking of swiching.
 
   #+begin_src emacs-lisp
     (add-to-list 'load-path "~/.emacs.d/el-get")
@@ -127,6 +129,7 @@ it doesn't work out of the box.
   #+end_src
 
 ** my packages
+
    To replicate a package set for another emacs installation is
    explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
@@ -137,27 +140,6 @@ it doesn't work out of the box.
          ',(mapcar #'el-get-as-symbol
                (el-get-list-package-names-with-status "installed")))
    #+END_EXAMPLE
-
-   this is the same of current packages which are installed.
-
-   PS: list might be incomplete
-
-   #+begin_src emacs-lisp
-     (setq dim-packages
-            (append
-     ;; list of packages we use straight from official recipes
-               '(ample-regexps auto-complete cl-lib ctable dash
-               deferred ein epc epl exec-path-from-shell f flymake
-               flymake-cursor fuzzy git-modes goto-chg jedi json-mode
-               json-reformat json-snatcher load-relative loc-changes
-               magit moz-repl multiple-cursors outorg outshine package
-               pkg-info popup popup-kill-ring pos-tip pylookup python
-               python-environment recentf-ext request s undo-tree
-               web-mode websocket yasnippet)
-             (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name
-             el-get-sources))))
-     (el-get 'sync dim-packages)
-   #+end_src
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
 
@@ -226,6 +208,7 @@ it doesn't work out of the box.
    addition to the emacs bindings these few thing must have thing.
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'undo-tree)
      (when window-system
        (require 'undo-tree)
        (global-undo-tree-mode 1)
@@ -337,6 +320,7 @@ it doesn't work out of the box.
      https://github.com/emacs-helm/helm
 
      #+begin_src emacs-lisp
+       (el-get 'sync 'helm)
        (require 'helm)
        (global-set-key (kbd "M-x") 'helm-M-x)
        (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -394,8 +378,8 @@ it doesn't work out of the box.
    Here is [[https://youtu.be/jNa3axo40qM][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e13.html][ep13]].
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'multiple-cursors)
      (when window-system
-       (el-get 'sync 'multiple-cursors)
        (require 'multiple-cursors)
        (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
    #+end_src
@@ -426,17 +410,32 @@ it doesn't work out of the box.
      ;; (global-set-key (kbd "C-x o") 'switch-window)
    #+end_src
 
+** [[http://www.emacswiki.org/LineNumbers][line number]]
+
+   Using elpa for this, only load after init, but not sure this is
+   working properly or new update has fixed it.
+
+   #+begin_src emacs-lisp
+     (add-hook 'after-init-hook
+        (lambda ()
+           (setq nlinum-delay t)
+           (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
+        ))
+   #+end_src
+
 ** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
 
    People have emotions and so do *emacs* 😂.
 
-   #+begin_src emacs-lisp
-     (el-get 'sync 'emojify)
-     (require 'emojify)
+   Currently running into problem with this, will fixit later. :'(
 
-     (add-hook 'org-mode-hook 'emojify-mode)
-     (add-hook 'markdown-mode-hook 'emojify-mode)
-     (add-hook 'git-commit-mode-hook 'emojify-mode)
+   #+begin_src emacs-lisp
+     ;; (el-get 'sync 'emojify)
+     ;; (require 'emojify)
+
+     ;; (add-hook 'org-mode-hook 'emojify-mode)
+     ;; (add-hook 'markdown-mode-hook 'emojify-mode)
+     ;; (add-hook 'git-commit-mode-hook 'emojify-mode)
    #+end_src
 
 * programming
@@ -531,11 +530,54 @@ it doesn't work out of the box.
       (global-set-key (kbd "<f8>") 'toggle-compilation-buffer)
     #+end_src
 
+** ansi-color
+
+   Need to fix 265-color support, has been such for a long
+   time, since we very few work on teminal colors it might
+   not be fixed anytime sooner.
+
+   This is what I meant [[https://camo.githubusercontent.com/67e508f03a93d4e9935e38ea201dff7cc32c0afd/68747470733a2f2f7261772e6769746875622e636f6d2f72686f69742f72686f69742e6769746875622e636f6d2f6d61737465722f73637265656e73686f74732f656d6163732d323536636f6c6f722e706e67][screenshot]] was produced using [[https://github.com/bekar/vt100_colors][code]].
+
+   #+begin_src emacs-lisp
+     (require 'ansi-color)
+     (defun colorize-compilation-buffer ()
+       (toggle-read-only)
+       (ansi-color-apply-on-region (point-min) (point-max))
+       (toggle-read-only))
+     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+   #+end_src
+
+** highlight indentation
+
+   Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
+   compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
+   using the main repo now!
+
+   other color: "#aaeeba"
+
+   #+begin_src emacs-lisp
+     (el-get 'sync 'highlight-indentation)
+     (require 'highlight-indentation)
+     (set-face-background 'highlight-indentation-face "olive drab")
+     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
+     (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+     (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+   #+end_src
+
 ** rainbow delimiters
 
    #+begin_src emacs-lisp
      (el-get 'sync 'rainbow-delimiters)
      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+   #+end_src
+
+** magit
+
+   its amazing but magit and yes its magic!
+
+   #+begin_src emacs-lisp
+     (el-get 'sync 'magit)
    #+end_src
 
 ** ggtags
@@ -581,8 +623,10 @@ it doesn't work out of the box.
 
 ** auto-fill text
 
+   currently having problem with this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue.
+
    #+begin_src emacs-lisp
-     (add-hook 'org-mode-hook 'turn-on-auto-fill)
+     ;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
    #+end_src
 
 ** babel
@@ -632,6 +676,7 @@ it doesn't work out of the box.
    *outshine*
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'outshine)
      (require 'outshine)
      (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
    #+end_src
@@ -811,6 +856,7 @@ it doesn't work out of the box.
 ** yasnippet
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'yasnippet)
      (when window-system
        (require 'yasnippet)
        (yas-reload-all)
@@ -852,6 +898,9 @@ it doesn't work out of the box.
    Only enable for =Shift + <insert>=
 
    #+begin_src emacs-lisp
+     (el-get 'sync 'popup-kill-ring)
+     (setq repetitive_yank_region_point 0) ;; 0 doesn't exist min is 1
+     (require 'popup-kill-ring)
      (global-set-key [(shift insert)] 'repetitive-yanking)
    #+end_src
 
@@ -887,17 +936,17 @@ it doesn't work out of the box.
    requires [[https://zhm.github.io/symbola/][Symbola]] font, to be installed.
 
    #+begin_src emacs-lisp
-     (add-to-list 'load-path "~/.emacs.d/00testing/emacs-ac-emoji/")
-     (require 'ac-emoji)
+     ;; (add-to-list 'load-path "~/.emacs.d/00testing/emacs-ac-emoji/")
+     ;; (require 'ac-emoji)
 
-     (add-hook 'org-mode-hook 'auto-complete-mode)
-     (add-hook 'org-mode-hook 'ac-emoji-setup)
-     (add-hook 'markdown-mode-hook 'ac-emoji-setup)
-     (add-hook 'git-commit-mode-hook 'ac-emoji-setup)
+     ;; (add-hook 'org-mode-hook 'auto-complete-mode)
+     ;; (add-hook 'org-mode-hook 'ac-emoji-setup)
+     ;; (add-hook 'markdown-mode-hook 'ac-emoji-setup)
+     ;; (add-hook 'git-commit-mode-hook 'ac-emoji-setup)
 
-     (set-fontset-font
-        t 'symbol
-          (font-spec :family "Symbola") nil 'prepend)
+     ;; (set-fontset-font
+     ;;   t 'symbol
+     ;;     (font-spec :family "Symbola") nil 'prepend)
    #+end_src
 
 ** window numbering
@@ -908,25 +957,6 @@ it doesn't work out of the box.
      ;; (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
      ;; (require 'window-numbering)
      ;; (window-numbering-mode)
-   #+end_src
-
-** highlight indentation
-
-   Using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
-   compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]]
-
-   other color: "#aaeeba"
-
-   #+begin_src emacs-lisp
-     (add-to-list 'load-path "~/.emacs.d/00testing/indent/antonj/")
-     ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE & UNCOMMENT NEXT LINE
-     ;; (el-get 'sync 'highlight-indentation)
-     (require 'highlight-indentation)
-     (set-face-background 'highlight-indentation-face "olive drab")
-     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-
-     (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-     (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
    #+end_src
 
 ** hideshowvis mode
@@ -954,32 +984,6 @@ it doesn't work out of the box.
        (add-hook 'after-init-hook (lambda ()
                                     (when (fboundp 'auto-dim-other-buffers-mode)
                                       (auto-dim-other-buffers-mode t)))))
-   #+end_src
-
-** ansi-color
-
-   Need to fix 265 color support.
-   This is what I meant [[https://camo.githubusercontent.com/67e508f03a93d4e9935e38ea201dff7cc32c0afd/68747470733a2f2f7261772e6769746875622e636f6d2f72686f69742f72686f69742e6769746875622e636f6d2f6d61737465722f73637265656e73686f74732f656d6163732d323536636f6c6f722e706e67][screenshot]] was produced using [[https://github.com/bekar/vt100_colors][code]].
-
-   #+begin_src emacs-lisp
-     (add-to-list 'load-path "~/.emacs.d/00testing/colors")
-     ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE
-     (require 'ansi-color)
-     (defun colorize-compilation-buffer ()
-       (toggle-read-only)
-       (ansi-color-apply-on-region (point-min) (point-max))
-       (toggle-read-only))
-     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-   #+end_src
-
-** line number
-   http://www.emacswiki.org/LineNumbers
-   http://elpa.gnu.org/packages/nlinum-1.1.el
-
-   #+begin_src emacs-lisp
-     (require 'nlinum)
-     (setq nlinum-delay t)
-     (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
    #+end_src
 
 ** isend-mode
