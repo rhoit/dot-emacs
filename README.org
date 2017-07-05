@@ -49,6 +49,26 @@
        (server-start))
    #+END_SRC
 
+** pacman
+
+   There are many 📦 package managers for *emacs*, ranging from simple
+   scripts to download files from [[https://www.emacswiki.org][EmacsWiki]] to full-featured package
+   management solutions like [[https://github.com/raxod502/straight.el][straight.el]], these are few I have used
+
+*** el-get
+
+    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
+
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'load-path "~/.emacs.d/el-get")
+      (require 'el-get)
+      (setq el-get-git-shallow-clone 't)
+      (el-get 'sync)
+    #+END_SRC
+
+    To replicate a package set for another emacs installation is
+    explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
+
 * UI
 ** search
 *** anzu
