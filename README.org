@@ -55,6 +55,18 @@
    scripts to download files from [[https://www.emacswiki.org][EmacsWiki]] to full-featured package
    management solutions like [[https://github.com/raxod502/straight.el][straight.el]], these are few I have used
 
+*** package.el
+
+    Add package other sources
+
+    #+BEGIN_SRC emacs-lisp
+      (package-initialize)
+      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+    #+END_SRC
+
+    Use =M-x package-refresh-contents= to reload the list of packages
+    after adding these for the first time.
+
 *** el-get
 
     [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
