@@ -115,6 +115,18 @@ it doesn't work out of the box.
      ;; (recentf-mode nil)
    #+end_src
 
+** package.el
+
+   Add package other sources
+
+   #+BEGIN_SRC emacs-lisp
+     (package-initialize)
+     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+   #+END_SRC
+
+   Use =M-x package-refresh-contents= to reload the list of packages
+   after adding these for the first time.
+
 * el-get
 
   [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
