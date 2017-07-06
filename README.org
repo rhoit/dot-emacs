@@ -121,7 +121,6 @@ it doesn't work out of the box.
    Add package other sources
 
    #+BEGIN_SRC emacs-lisp
-     (package-initialize)
      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
    #+END_SRC
 
@@ -374,19 +373,12 @@ it doesn't work out of the box.
 
 ** [[https://www.emacswiki.org/emacs/LineNumbers][line number]]
 
-   Using elpa for this, only load after init, but not sure this is
-   working properly or new update has fixed it.
-
-   currently using basic.
+   Using elpa for this, only load after init, this is working properly.
 
    #+begin_src emacs-lisp
-     (global-linum-mode)
-     ;;(add-hook 'after-init-hook
-     ;;   (lambda ()
-     ;;      (require 'nlinum)
-     ;;     (setq nlinum-delay t)
-     ;;      (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
-     ;;   ))
+     (require 'nlinum)
+     (setq nlinum-delay t)
+     (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
    #+end_src
 
 ** highlight current line
