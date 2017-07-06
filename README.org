@@ -60,7 +60,6 @@
     Add package other sources
 
     #+BEGIN_SRC emacs-lisp
-      (package-initialize)
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
     #+END_SRC
 
