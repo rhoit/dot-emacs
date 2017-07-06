@@ -204,6 +204,7 @@ it doesn't work out of the box.
      (when window-system
        (require 'undo-tree)
        (global-undo-tree-mode 1)
+       (setq undo-tree-visualizer-timestamps t)
        (global-unset-key (kbd "C-/"))
        (defalias 'redo 'undo-tree-redo)
        (global-unset-key (kbd "C-z"))
