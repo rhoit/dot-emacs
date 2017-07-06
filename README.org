@@ -116,17 +116,30 @@ it doesn't work out of the box.
    #+END_SRC
 
 * PACMAN
+** package.el
 
-  [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
-  It has been while (after =emacs 24=) emacs got its own package
-  manager, thinking of swiching.
+   Add package other sources
 
-  #+BEGIN_SRC emacs-lisp
-    (add-to-list 'load-path "~/.emacs.d/el-get")
-    (require 'el-get)
-    (setq el-get-git-shallow-clone 't)
-    (el-get 'sync)
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (package-initialize)
+     (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+   #+END_SRC
+
+   Use =M-x package-refresh-contents= to reload the list of packages
+   after adding these for the first time.
+
+** el-get
+
+   [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. It
+   has been while (after =emacs 24=) emacs got its own package
+   manager, thinking of swiching.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "~/.emacs.d/el-get")
+     (require 'el-get)
+     (setq el-get-git-shallow-clone 't)
+     (el-get 'sync)
+   #+END_SRC
 
 ** my packages
 
