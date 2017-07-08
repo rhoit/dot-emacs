@@ -131,7 +131,7 @@ it doesn't work out of the box.
 
    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. It
    has been while (after =emacs 24=) emacs got its own package
-   manager, thinking of swiching.
+   manager, thinking of switching.
 
    #+BEGIN_SRC emacs-lisp
      (add-to-list 'load-path "~/.emacs.d/el-get")
@@ -152,6 +152,11 @@ it doesn't work out of the box.
          ',(mapcar #'el-get-as-symbol
                (el-get-list-package-names-with-status "installed")))
    #+END_EXAMPLE
+
+   Might be wondering why there isn't any package *listed* here, coz I
+   have broken down list into parts where its needed, you will see
+   =(el-get 'sync '<package-name>)= if its requried before its
+   configuration.
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
 
@@ -373,7 +378,11 @@ it doesn't work out of the box.
 
 ** [[https://www.emacswiki.org/emacs/LineNumbers][line number]]
 
-   Using elpa for this, only load after init, this is working properly.
+   Using ELPA here, this is was hard to get working properly with
+   ELPA, load sequence, still don't know how its working now.
+
+   seem =nlinum= has also change a lot, but didn't have time to
+   explore.
 
    #+begin_src emacs-lisp
      (require 'nlinum)
@@ -612,6 +621,7 @@ it doesn't work out of the box.
    active Babel languages
 
    #+BEGIN_SRC emacs-lisp
+     (setq org-export-use-babel nil)
      (org-babel-do-load-languages 'org-babel-load-languages
         '((sh . t)
          (python . t)))
