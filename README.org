@@ -418,6 +418,16 @@ it doesn't work out of the box.
    #+begin_src emacs-lisp
      (require 'nlinum)
      (setq nlinum-delay t)
+
+     ;; Preset `nlinum-format' for minimum width.
+     (defun my-nlinum-mode-hook ()
+       (when nlinum-mode
+         (setq-local nlinum-format
+                     (concat "%" (number-to-string
+                                  ;; Guesstimate number of buffer lines.
+                                  (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
+                             "d"))))
+     (add-hook 'nlinum-mode-hook #'my-nlinum-mode-hook)
      (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
    #+end_src
 
@@ -617,7 +627,7 @@ it doesn't work out of the box.
      ;; (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
    #+end_src
 
-* org-mode
+* [[http://orgmode.org/org.html][org-mode]]
 
   This might be one of the most important modes of emacs which make
   the emacs distinct from every other editor. You should definately
