@@ -608,6 +608,14 @@ it doesn't work out of the box.
      (el-get 'sync 'magit)
    #+end_src
 
+*** magithub
+
+    yet to be tested
+
+    #+begin_src emacs-lisp
+      ;;(el-get 'sync 'magitub)
+    #+end_src
+
 ** ggtags
 
    code navigation
