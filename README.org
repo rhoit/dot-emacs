@@ -17,11 +17,42 @@ it doesn't work out of the box.
 
 * INTRO
 
-  I've been using /emacs/ since of *2012*, and slowly config is grown
-  from few lines to a full repository of /tweaks/, /hacks/ and few of
-  my own /scripts/. This is the action I took to make config more
-  verbose and friendly for everyone, [[https://github.com/rhoit/dot-emacs/blob/master/init.el][init.el]] been converted to org
-  mode.
+  I've been using /emacs/ since *2012*, It has been the love and hate
+  story since day one, In summary *emacs rocks but rocks are not so
+  pretty*, and here you are looking at not so *pretty* side.
+
+
+  #+BEGIN_EXAMPLE
+    FYI for beginners "emacs vanilla is a lie"
+  #+END_EXAMPLE
+
+  It began with *single-file* =~/.emacs= with some random snippets
+  from web. It soon grew into huge of /tweaks/ and /hacks/, and some
+  /scripts/ of my own. It was not long *emacs* couldn't fit with my
+  other [[https://github.com/rhoit/my-config][config]], because frequency of changes and roll-backs. And
+  *emacs* got its own *.git* repository, soon bulky *single-file*
+  config was broken down into separate modules with long list of
+  *cherry-picked* plugin with their own repository with version
+  controls. There was even the time I used *system package manager* to
+  manage them but it was too much work.
+
+  Its difficult to maintain config, I have added and removed the
+  packages over and over again and I still do. There have been times,
+  when I just froze the update until its not supported by system. The
+  major problem was the unmaintainability of these plugin versions
+  each time I updated something. I didn't knew about =package.el=
+  existance until it was listed in *What's new in emacs24*.
+
+  #+BEGIN_EXAMPLE
+    emacs 24 got its own package manager
+  #+END_EXAMPLE
+
+  Thankfully the =el-get= was there with the familiarity =apt-get=,
+  which could not only make the life easier but also discover new
+  packages. This config is mostly based on =el-get= and with few
+  =ELPA= and =MELPA=. After few outlandish rodeos, this has been the
+  most sane approach I found, to convert [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] =org= file,
+  which made verbose easy to handle.
 
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
