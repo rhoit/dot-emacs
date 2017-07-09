@@ -11,6 +11,33 @@
 
 
 * INTRO
+
+  I've been using /emacs/ since *2012*, It has been the love and hate
+  story since day one, In summary *emacs rocks but 🪨 rocks are not so
+  pretty*, and here you are looking at not so *pretty* side.
+
+  #+BEGIN_EXAMPLE
+    FYI "emacs vanilla is a lie"
+  #+END_EXAMPLE
+
+** about
+
+   Customization began with *single-file* =~/.emacs= with few settings
+   and some random *snippets*. Didn't took long to become monster. It
+   loved to *cherry-picked* 🍒 packages literally form anywhere, I was
+   like why don't you *apt-get*.
+
+   It was becoming difficult maintaining 📦 packages manually,
+   tracking workable dependencies and freezing 🧊 versions. And came
+   =package.el=, which I noticed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]] using
+   *emacs25*. also [[https://www.emacswiki.org/emacs/el-get][el-get]] existed, and now =package.el= was official
+   too. I can't seem to [[https://github.com/dimitri/el-get/issues/1468][choose]] one, and great can use both.
+
+   Yet, I could barely remember *Why I removed that package, what
+   happen?*, *git-whatchanged* would have told me more if it was a
+   *code*. To =org= organize was most sane thing till now
+   [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-bable-tangle).
+
 ** structure
 
    #+BEGIN_EXAMPLE
