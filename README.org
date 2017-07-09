@@ -628,6 +628,20 @@ it doesn't work out of the box.
    #+END_SRC
 
 * WEB
+** web-mode
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'web-mode)
+     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+     (add-to-list 'auto-mode-alist '("\\.djhtml?\\'" . web-mode))
+
+     (setq web-mode-enable-block-face t)
+     (setq web-mode-enable-current-column-highlight t)
+
+     ;; ya-snippet completion for web-mode
+     (add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
+   #+END_SRC
+
 ** browser-refresh
 
    There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]], [[https://github.com/skeeto/impatient-mode][impatient-mode]] but
