@@ -93,6 +93,27 @@ it doesn't work out of the box.
    #+END_EXAMPLE
 
 * CORE
+** benchmarking
+
+   install benchmark-init from el-get and put below code top of your
+   config.
+
+   #+BEGIN_SRC emacs-lisp
+     ;;(let ((benchmark-init.el "~/.emacs.d/el-get/benchmark-init/benchmark-init.el"))
+     ;; (when (file-exists-p benchmark-init.el)
+     ;;    (load benchmark-init.el)))
+   #+END_SRC
+
+   then once your emacs started, run:
+
+   =M-x benchmark-init/show-durations-tree=
+
+   To check your package load time do
+
+   #+BEGIN_EXAMPLE
+     M-x emacs-init-time
+   #+END_EXAMPLE
+
 ** emacs garbage collector
 
    I hoped this works but, haven't seen much difference.
