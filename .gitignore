@@ -1,3 +1,4 @@
+*.elc
 *~
 .mc-lists.el
 00testing/*
