@@ -318,6 +318,21 @@
      (setq-default py-indent-offset 4)
    #+END_SRC
 
+*** jedi
+
+    [[http://tkf.github.io/emacs-jedi/]]
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (autoload 'jedi:setup "jedi" nil t)
+      (add-hook 'python-mode-hook 'jedi:setup)
+      (setq jedi:complete-on-dot t) ; optional
+
+      (setq jedi:environment-virtualenv "python -m venv")
+
+      (setq jedi:setup-keys t) ; optional
+    #+END_SRC
+
 * META :noexport:
 
   # Local Variables:
