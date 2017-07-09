@@ -790,7 +790,6 @@ it doesn't work out of the box.
      ;; (setq jedi:setup-keys t) ; optional
    #+end_src
 
-
 *** python-info-look
 
     shortcut "[C-h S]"
@@ -818,9 +817,10 @@ it doesn't work out of the box.
     ess-style executing /python/ script.
 
     #+begin_src emacs-lisp
-      ;; (add-to-list 'load-path "~/.emacs.d/00testing/py-exec/")
-      ;; (require 'py-exec)
-      (load "~/.emacs.d/00testing/py-exec/py-exec.el")
+      (add-to-list 'load-path "~/.emacs.d/00testing/py-exec/")
+      (require 'py-exec)
+      (add-hook 'python-mode-hook
+           (lambda () (local-set-key (kbd "<C-return>") 'py-execution)))
     #+end_src
 
 ** lua
@@ -955,9 +955,7 @@ it doesn't work out of the box.
      (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
    #+end_src
 
-** sort words
-
-   http://www.emacswiki.org/emacs/SortWords
+** [[http://www.emacswiki.org/emacs/SortWords][sort words]]
 
 ** popup kill ring
 
@@ -996,7 +994,7 @@ it doesn't work out of the box.
     	xdotool windowactivate ${WINDOW}
    #+END_EXAMPLE
 
-** auto-complete [[https://github.com/syohex/emacs-ac-emoji][emoji]]
+** auto-complete: [[https://github.com/syohex/emacs-ac-emoji][emoji]]
 
    can't remember your emoji? this is the thing you need
 
