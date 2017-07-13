@@ -510,12 +510,12 @@ it doesn't work out of the box.
    Currently running into problem with this, will fixit later. :'(
 
    #+begin_src emacs-lisp
-     ;; (el-get 'sync 'emojify)
-     ;; (require 'emojify)
+ (el-get 'sync 'emojify)
+	 (require 'emojify)
 
-     ;; (add-hook 'org-mode-hook 'emojify-mode)
-     ;; (add-hook 'markdown-mode-hook 'emojify-mode)
-     ;; (add-hook 'git-commit-mode-hook 'emojify-mode)
+	 (add-hook 'org-mode-hook 'emojify-mode)
+	 (add-hook 'markdown-mode-hook 'emojify-mode)
+	 (add-hook 'git-commit-mode-hook 'emojify-mode)
    #+end_src
 
 * programming
