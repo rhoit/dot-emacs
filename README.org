@@ -542,7 +542,9 @@ it doesn't work out of the box.
                     (highlight-symbol-at-point))))
    #+END_SRC
 
-** trailing white-spaces
+** white-spaces terminator
+
+   Just remove all those pesky trailing spaces before saving.
 
    #+BEGIN_SRC emacs-lisp
      (defun nuke_traling ()
@@ -553,6 +555,8 @@ it doesn't work out of the box.
     #+END_SRC
 
 ** indentation
+
+   Sorry [[http://silicon-valley.wikia.com/wiki/Richard_Hendrix][Richard]] no tabs here!
 
    #+BEGIN_SRC emacs-lisp
      (setq-default indent-tabs-mode nil)
