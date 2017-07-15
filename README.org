@@ -236,7 +236,6 @@ it doesn't work out of the box.
     (global-set-key [f6] '(lambda() (interactive)
                           (toggle-truncate-lines)
                           (fci-mode)))
-    (global-set-key [f9] 'speedbar)
   #+end_src
 
 ** shift-mouse selection
@@ -419,6 +418,16 @@ it doesn't work out of the box.
      (global-set-key (kbd "M-%") 'anzu-query-replace)
      (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
    #+end_src
+
+** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
+
+   I prefer speedbar outside the frame, for without separate frame see
+   [[https://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]].
+
+   #+BEGIN_SRC emacs-lisp
+     (setq speedbar-show-unknown-files t)
+     (global-set-key [f9] 'speedbar)
+   #+END_SRC
 
 ** [[https://github.com/magnars/multiple-cursors.el][multiple cursor]]
 
