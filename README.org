@@ -23,16 +23,16 @@ it doesn't work out of the box.
 
 
   #+BEGIN_EXAMPLE
-    FYI for beginners "emacs vanilla is a lie"
+    FYI "emacs vanilla is a lie"
   #+END_EXAMPLE
 
   It began with *single-file* =~/.emacs= with some random snippets
-  from web. It soon grew into huge of /tweaks/ and /hacks/, and some
-  /scripts/ of my own. It was not long *emacs* couldn't fit with my
-  other [[https://github.com/rhoit/my-config][config]], because frequency of changes and roll-backs. And
-  *emacs* got its own *.git* repository, soon bulky *single-file*
-  config was broken down into separate modules with long list of
-  *cherry-picked* plugin with their own repository with version
+  from web. It soon grew into huge of /tweaks/ and /hacks/, with some
+  /scripts/ of my own. The frequency of changes and roll-backs were so
+  high it was'nt long *emacs* couldn't fit beside my other [[https://github.com/rhoit/my-config][config]].
+  And *emacs* got its own *.git* repository, soon bulky *single-file*
+  ran config was broken down into separate modules with long list of
+  *cherry-picked* plugin with their own repository and version
   controls. There was even the time I used *system package manager* to
   manage them but it was too much work.
 
@@ -41,11 +41,7 @@ it doesn't work out of the box.
   when I just froze the update until its not supported by system. The
   major problem was the unmaintainability of these plugin versions
   each time I updated something. I didn't knew about =package.el=
-  existance until it was listed in *What's new in emacs24*.
-
-  #+BEGIN_EXAMPLE
-    emacs 24 got its own package manager
-  #+END_EXAMPLE
+  existance until it was listed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]].
 
   Thankfully the =el-get= was there with the familiarity =apt-get=,
   which could not only make the life easier but also discover new
@@ -146,7 +142,7 @@ it doesn't work out of the box.
      (prefer-coding-system 'utf-8)
    #+END_SRC
 
-** backup configuration
+** backup
 
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
@@ -631,10 +627,6 @@ it doesn't work out of the box.
 ** magit
 
    its amazing but magit and yes its magic!
-
-   #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'magit)
-   #+END_SRC
 
 * WEB
 ** web-mode
