@@ -6,4 +6,5 @@ README.el
 elpa/
 recentf
 session.*
+tramp
 url/
