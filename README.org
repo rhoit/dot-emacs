@@ -554,6 +554,14 @@ it doesn't work out of the box.
      (add-hook 'prog-mode-hook 'nuke_traling)
     #+END_SRC
 
+    sometime its still pesky.
+
+    #+BEGIN_SRC emacs-lisp
+      (el-get 'sync 'highlight-indentation)
+      (require 'hungry-delete)
+      (global-hungry-delete-mode)
+    #+END_SRC
+
 ** indentation
 
    Sorry [[http://silicon-valley.wikia.com/wiki/Richard_Hendrix][Richard]] no tabs here!
