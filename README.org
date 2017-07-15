@@ -575,17 +575,21 @@ it doesn't work out of the box.
                     (highlight-symbol-at-point))))
    #+end_src
 
-** trailing white-spaces
+** white-spaces terminator
 
-   #+begin_src emacs-lisp
+   Just remove all those pesky trailing spaces before saving.
+
+   #+BEGIN_SRC emacs-lisp
      (defun nuke_traling ()
        (add-hook 'write-file-hooks 'delete-trailing-whitespace)
        (add-hook 'before-save-hooks 'whitespace-cleanup))
 
      (add-hook 'prog-mode-hook 'nuke_traling)
-    #+end_src
+    #+END_SRC
 
 ** indentation
+
+   Sorry [[http://silicon-valley.wikia.com/wiki/Richard_Hendrix][Richard]] no tabs here!
 
    #+begin_src emacs-lisp
      (setq-default indent-tabs-mode nil)
