@@ -496,20 +496,21 @@ it doesn't work out of the box.
 
 * PROGRAMMING
 
+  some of the basic things provide by emacs internal packages.
+
+  #+BEGIN_SRC emacs-lisp
+    (setq show-paren-style 'expression)
+    (show-paren-mode 1)
+
+    (add-hook 'prog-mode-hook 'subword-mode) ;; camelCase is subword
+    (add-hook 'prog-mode-hook 'which-function-mode)
+    (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+  #+END_SRC
+
+** default comment string
+
    #+BEGIN_SRC emacs-lisp
      (setq-default comment-start "# ")
-   #+END_SRC
-
-** internal packages
-
-   #+BEGIN_SRC emacs-lisp
-     (add-hook 'prog-mode-hook 'which-function-mode)
-     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
-   #+END_SRC
-
-   #+BEGIN_SRC emacs-lisp
-     (setq show-paren-style 'expression)
-     (show-paren-mode 1)
    #+END_SRC
 
 ** watch word
