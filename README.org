@@ -157,6 +157,23 @@
       (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
     #+END_SRC
 
+** cursor
+*** multiple-cursor
+
+    If [[https://www.sublimetext.com/][sublime]] can have [[https://github.com/magnars/multiple-cursors.el][multiple]] cursor, *emacs* can too.
+
+    Here is 📹 [[https://youtu.be/jNa3axo40qM][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e13.html][ep13]].
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'multiple-cursors)
+      (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+
+      (global-set-key (kbd "C-S-<mouse-4>") 'mc/mark-previous-like-this)
+      (global-set-key (kbd "C-S-<mouse-5>") 'mc/mark-next-like-this)
+      (global-set-key (kbd "C-S-<mouse-2>") 'mc/mark-all-like-this)
+    #+END_SRC
+
 ** selection
 *** why-changing-fonts
 
