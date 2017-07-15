@@ -528,21 +528,22 @@ it doesn't work out of the box.
 
 * programming
 
-   #+begin_src emacs-lisp
+  some of the basic things provide by emacs internal packages.
+
+  #+BEGIN_SRC emacs-lisp
+    (setq show-paren-style 'expression)
+    (show-paren-mode 1)
+
+    (add-hook 'prog-mode-hook 'subword-mode) ;; camelCase is subword
+    (add-hook 'prog-mode-hook 'which-function-mode)
+    (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+  #+END_SRC
+
+** default comment string
+
+   #+BEGIN_SRC emacs-lisp
      (setq-default comment-start "# ")
-   #+end_src
-
-** internal packages
-
-   #+begin_src emacs-lisp
-     (add-hook 'prog-mode-hook 'which-function-mode)
-     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
-   #+end_src
-
-   #+begin_src emacs-lisp
-     (setq show-paren-style 'expression)
-     (show-paren-mode 1)
-   #+end_src
+   #+END_SRC
 
 ** watch word
 
