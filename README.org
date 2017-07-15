@@ -135,6 +135,16 @@
      (fset 'yes-or-no-p 'y-or-n-p)
    #+END_SRC
 
+** update-buffer
+
+   A fancy :bowtie: way of saying any change in file (yup not using
+   same editor, duh!) will magically 🎩 appear in editor.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-auto-revert-mode)
+     ;;(setq auto-revert-verbose nil)
+   #+END_SRC
+
 ** undo
 *** undo-tree
 
