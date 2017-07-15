@@ -152,6 +152,13 @@ it doesn't work out of the box.
      (setq make-backup-files nil)
    #+END_SRC
 
+** update buffer
+
+   #+BEGIN_SRC emacs-lisp
+     (global-auto-revert-mode)
+     ;;(setq auto-revert-verbose nil)
+   #+END_SRC
+
 ** alias yes-or-no
 
    avoid typing complete 'yes' and 'no'
