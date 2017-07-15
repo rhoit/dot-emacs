@@ -112,12 +112,15 @@ it doesn't work out of the box.
 
 ** emacs garbage collector
 
-   I hoped this works but, haven't seen much difference.
+   based on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] post.
 
-   based on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] post
+   I hoped this works but, haven't seen much difference, but if chrome
+   just eats entire 4 GB of RAM :rage1: for no reason why not emacs,
+   FYI your java based IDE will just eat up more than *200 Mb* to
+   start.
 
    #+BEGIN_SRC emacs-lisp
-     (setq gc-cons-threshold 104857600)
+     (setq gc-cons-threshold 209715200)
    #+END_SRC
 
 ** emacs server
