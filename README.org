@@ -472,12 +472,12 @@ it doesn't work out of the box.
    Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
    intensity of given color and alpha value.
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'highline)
      (require 'highline)
 
      (set-face-background 'highline-face (shade-color 09))
-     (add-hook 'prog-mode-hook 'highline-mode-on)
+     (global-highline-mode 1)
 
      ;; not using inbuild hl-line-mode i can't seem to figure out changing
      ;; face for shade-color
@@ -485,7 +485,16 @@ it doesn't work out of the box.
      ;; (set-face-background 'hl-line "#3e4446")
      ;; (set-face-foreground 'highlight nil)
      ;; (set-face-attribute hl-line-face nil :underline nil)
-   #+end_src
+   #+END_SRC
+
+   even though there is the *highline-mode*, *beacon-mode* is much
+   cooler, give a try.
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'beacon)
+     (require 'beacon)
+     (beacon-mode t)
+   #+END_SRC
 
 ** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
 
