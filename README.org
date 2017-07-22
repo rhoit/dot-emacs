@@ -545,10 +545,7 @@ it doesn't work out of the box.
    #+BEGIN_SRC emacs-lisp
      (when window-system
        (require 'auto-dim-other-buffers)
-       (add-hook 'after-init-hook (
-         lambda ()
-          (when (fboundp 'auto-dim-other-buffers-mode)
-             (auto-dim-other-buffers-mode t)))))
+       (auto-dim-other-buffers-mode t))
    #+END_SRC
 
 ** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
