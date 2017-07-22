@@ -507,6 +507,16 @@ it doesn't work out of the box.
      (beacon-mode t)
    #+END_SRC
 
+** [[https://github.com/mina86/auto-dim-other-buffers.el][auto-dim-other-buffer]]
+
+   package is only avaliable in MELPA
+
+   #+BEGIN_SRC emacs-lisp
+     (when window-system
+       (require 'auto-dim-other-buffers)
+       (auto-dim-other-buffers-mode t))
+   #+END_SRC
+
 ** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
 
    People have emotions and so do *emacs* 😂.
