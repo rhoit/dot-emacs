@@ -405,6 +405,17 @@ it doesn't work out of the box.
      (global-set-key [f9] 'speedbar)
    #+END_SRC
 
+** [[https://github.com/joodland/bm][bookmark]]
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'bm)
+     (require 'bm)
+     (setq bm-marker 'bm-marker-left)
+     (global-set-key (kbd "<left-fringe> <mouse-5>") 'bm-next-mouse)
+     (global-set-key (kbd "<left-fringe> <mouse-4>") 'bm-previous-mouse)
+     (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
+   #+END_SRC
+
 ** [[https://github.com/magnars/multiple-cursors.el][multiple cursor]]
 
    if [[https://www.sublimetext.com/][sublime]] can have multiple selections, *emacs* can too..
