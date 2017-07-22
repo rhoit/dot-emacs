@@ -213,6 +213,18 @@
       (helm-mode 1)
     #+END_SRC
 
+** [[https://github.com/joodland/bm][bookmark]]
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'bm)
+     (setq bm-marker 'bm-marker-left)
+
+     (global-set-key (kbd "<left-fringe> <mouse-5>") 'bm-next-mouse)
+     (global-set-key (kbd "<left-fringe> <mouse-4>") 'bm-previous-mouse)
+     (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
+   #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
