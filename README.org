@@ -920,8 +920,10 @@ it doesn't work out of the box.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'web-mode)
-     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+     (add-to-list 'auto-mode-alist '("\\.html?\\'"   . web-mode))
      (add-to-list 'auto-mode-alist '("\\.djhtml?\\'" . web-mode))
+     (add-to-list 'auto-mode-alist '("\\.js$"        . web-mode))
+     (add-to-list 'auto-mode-alist '("\\.css$"       . web-mode))
 
      (setq web-mode-enable-block-face t)
      (setq web-mode-enable-current-column-highlight t)
