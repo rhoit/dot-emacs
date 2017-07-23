@@ -780,12 +780,18 @@ it doesn't work out of the box.
 
    active Babel languages
 
-   #+begin_src emacs-lisp
+   *NOTE*: running in to problem recently sh is now shell, or will
+   cause =ob-sh= not found *error*.
+
+   *NOTE*: Currently babel code execution doesn't work haven't found
+   the work around yet.
+
+   #+BEGIN_SRC emacs-lisp
      (setq org-export-use-babel nil)
      (org-babel-do-load-languages 'org-babel-load-languages
-        '((sh . t)
+        '((shell . t)
          (python . t)))
-   #+end_src
+   #+END_SRC
 
 ** default applications
 
