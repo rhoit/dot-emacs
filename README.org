@@ -362,7 +362,6 @@ it doesn't work out of the box.
      (smooth-scroll-mode t)
 
      (setq linum-delay t)
-     (setq redisplay-dont-pause t)
      (setq scroll-conservatively 0) ;; cursor on the middle of the screen
      (setq scroll-up-aggressively 0.01)
      (setq scroll-down-aggressively 0.01)
@@ -647,9 +646,9 @@ it doesn't work out of the box.
    #+begin_src emacs-lisp
      (require 'ansi-color)
      (defun colorize-compilation-buffer ()
-       (toggle-read-only)
+       (read-only-mode)
        (ansi-color-apply-on-region (point-min) (point-max))
-       (toggle-read-only))
+       (read-only-mode))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
    #+end_src
 
