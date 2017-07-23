@@ -505,6 +505,7 @@ it doesn't work out of the box.
      (el-get 'sync 'beacon)
      (require 'beacon)
      (beacon-mode t)
+
    #+END_SRC
 
 ** [[https://github.com/mina86/auto-dim-other-buffers.el][auto-dim-other-buffer]]
@@ -594,9 +595,9 @@ it doesn't work out of the box.
     sometime its still pesky.
 
     #+BEGIN_SRC emacs-lisp
-      (el-get 'sync 'highlight-indentation)
+      (el-get 'sync 'hungry-delete)
       (require 'hungry-delete)
-      (global-hungry-delete-mode)
+      (add-hook 'prog-mode-hook 'hungry-delete-mode)
     #+END_SRC
 
 ** indentation
