@@ -392,7 +392,6 @@ it doesn't work out of the box.
      (smooth-scroll-mode t)
 
      (setq linum-delay t)
-     (setq redisplay-dont-pause t)
      (setq scroll-conservatively 0) ;; cursor on the middle of the screen
      (setq scroll-up-aggressively 0.01)
      (setq scroll-down-aggressively 0.01)
@@ -680,9 +679,9 @@ it doesn't work out of the box.
    #+begin_src emacs-lisp
      (require 'ansi-color)
      (defun colorize-compilation-buffer ()
-       (toggle-read-only)
+       (read-only-mode)
        (ansi-color-apply-on-region (point-min) (point-max))
-       (toggle-read-only))
+       (read-only-mode))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
    #+end_src
 
@@ -918,9 +917,9 @@ it doesn't work out of the box.
 
 ** kotlin
 
-   #+begin_src emacs-lisp
-     (setq default-tab-width 4)
-   #+end_src
+   #+BEGIN_SRC emacs-lisp
+     (setq tab-width 4)
+   #+END_SRC
 
 ** web
 
@@ -954,37 +953,37 @@ it doesn't work out of the box.
 
    make these keys behave like normal browser
 
-   #+begin_src emacs-lisp
-     (add-hook 'xwidget-webkit-mode (lambda ()
-       (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
-       (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
-       (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
-       (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
-       (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
-       (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)))
-   #+end_src
+   #+BEGIN_SRC emacs-lisp
+     ;;(add-hook 'xwidget-webkit-mode (lambda ()
+     ;;  (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
+     ;;  (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
+     ;;  (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
+     ;;  (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
+     ;;  (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
+     ;;  (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)))
+   #+END_SRC
 
    Adapt webkit according to window configuration chagne automatically
    without this hook, every time you change your window configuration,
    you must press =a= to adapt webkit content to new window size.
 
-   #+begin_src emacs-lisp
-     (add-hook 'window-configuration-change-hook (lambda ()
-                    (when (equal major-mode 'xwidget-webkit-mode)
-                      (xwidget-webkit-adjust-size-dispatch))))
-   #+end_src
+   #+BEGIN_SRC emacs-lisp
+     ;; (add-hook 'window-configuration-change-hook (lambda ()
+     ;;               (when (equal major-mode 'xwidget-webkit-mode)
+     ;;                 (xwidget-webkit-adjust-size-dispatch))))
+   #+END_SRC
 
    by default, xwidget reuses previous xwidget window, thus overriding
    your current website, unless a prefix argument is supplied. This
    function always opens a new website in a new window
 
-   #+begin_src emacs-lisp
-     (defun xwidget-browse-url-no-reuse (url &optional sessoin)
-       (interactive (progn
-                      (require 'browse-url)
-                      (browse-url-interactive-arg "xwidget-webkit URL: ")))
-       (xwidget-webkit-browse-url url t))
-   #+end_src
+   #+BEGIN_SRC emacs-lisp
+     ;; (defun xwidget-browse-url-no-reuse (url &optional sessoin)
+     ;;  (interactive (progn
+     ;;                 (require 'browse-url)
+     ;;                 (browse-url-interactive-arg "xwidget-webkit URL: ")))
+     ;;  (xwidget-webkit-browse-url url t))
+   #+END_SRC
 
    make xwidget default browser
 
