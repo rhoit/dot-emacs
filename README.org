@@ -340,46 +340,26 @@ it doesn't work out of the box.
      (global-set-key [(control shift next)] 'tabbar-forward-group)
    #+end_src
 ** mini-buffer
-*** Interactively Do Things
 
-    ido-mode
+   Although [[https://github.com/emacs-helm/helm][helm]] has coffer of full of features, I havn't gone beyond
+   the minibuffer. It took me while to get hang of helm, one of
+   reasons might be constant flikering creation of helm temporary
+   popup windows which I don't like.
 
-    *NOTE*: I prefer helm.
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'helm)
+     (require 'helm)
+     (global-set-key (kbd "M-x") 'helm-M-x)
+     (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
-    #+begin_src emacs-lisp
-      ;; (ido-mode t)
-      ;; (setq ido-enable-prefix nil
-      ;;      ido-enable-flex-matching t ;; enable fuzzy matching
-      ;;      ido-auto-merge-work-directories-length nil
-      ;;      ido-create-new-buffer 'always
-      ;;      ido-use-filename-at-point 'guess
-      ;;      ido-use-virtual-buffers t
-      ;;      ido-handle-duplicate-virtual-buffers 2
-      ;;      ido-max-prospects 10)
-    #+end_src
+     ;; terminal like tabs selection
+     (define-key helm-map (kbd "<tab>") 'helm-next-line)
+     (define-key helm-map (kbd "<backtab>") 'helm-previous-line)
 
-*** M-x interface
-
-**** smex
-
-     #+begin_src emacs-lisp
-       ;; (el-get 'sync 'smex)
-       ;; (require 'smex)
-       ;; (smex-initialize)
-       ;; (global-set-key (kbd "M-x") 'smex)
-     #+end_src
-
-**** helm
-
-     https://github.com/emacs-helm/helm
-
-     #+begin_src emacs-lisp
-       (el-get 'sync 'helm)
-       (require 'helm)
-       (global-set-key (kbd "M-x") 'helm-M-x)
-       (global-set-key (kbd "C-x C-f") 'helm-find-files)
-       (helm-mode 1)
-     #+end_src
+     ;; show command details
+     (define-key helm-map (kbd "<right>") 'helm-execute-persistent-action)
+     (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
+   #+END_SRC
 
 ** smooth scroll
 
