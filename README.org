@@ -210,7 +210,14 @@
       (require 'helm)
       (global-set-key (kbd "M-x") 'helm-M-x)
       (global-set-key (kbd "C-x C-f") 'helm-find-files)
-      (helm-mode 1)
+
+      ;;; terminal like tabs selection
+      (define-key helm-map (kbd "<tab>") 'helm-next-line)
+      (define-key helm-map (kbd "<backtab>") 'helm-previous-line)
+
+      ;;; show command details
+      (define-key helm-map (kbd "<right>") 'helm-execute-persistent-action)
+      (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
     #+END_SRC
 
 ** [[https://github.com/joodland/bm][bookmark]]
