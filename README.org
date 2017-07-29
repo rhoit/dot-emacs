@@ -339,17 +339,25 @@ it doesn't work out of the box.
    #+END_SRC
 
 ** mini-buffer
-*** M-x interface
-**** helm
 
-     https://github.com/emacs-helm/helm
+   Although [[https://github.com/emacs-helm/helm][helm]] has coffer of full of features, I havn't gone beyond
+   the minibuffer. It took me while to get hang of helm, one of
+   reasons might be constant flikering creation of helm temporary
+   popup windows which I don't like.
 
-     #+BEGIN_SRC emacs-lisp
-       (require 'helm)
-       (global-set-key (kbd "M-x") 'helm-M-x)
-       (global-set-key (kbd "C-x C-f") 'helm-find-files)
-       (helm-mode 1)
-     #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (require 'helm)
+     (global-set-key (kbd "M-x") 'helm-M-x)
+     (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+     ;; terminal like tabs selection
+     (define-key helm-map (kbd "<tab>") 'helm-next-line)
+     (define-key helm-map (kbd "<backtab>") 'helm-previous-line)
+
+     ;; show command details
+     (define-key helm-map (kbd "<right>") 'helm-execute-persistent-action)
+     (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
+   #+END_SRC
 
 ** smooth scroll
 
