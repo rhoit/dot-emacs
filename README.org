@@ -551,13 +551,18 @@ it doesn't work out of the box.
   some of the basic things provide by emacs internal packages.
 
   #+BEGIN_SRC emacs-lisp
-    (setq show-paren-style 'expression)
-    (show-paren-mode 1)
-
     (add-hook 'prog-mode-hook 'subword-mode) ;; camelCase is subword
     (add-hook 'prog-mode-hook 'which-function-mode)
     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
   #+END_SRC
+
+** match parenthesis
+
+   #+BEGIN_SRC emacs-lisp
+    (setq show-paren-style 'expression)
+    (setq show-paren-match '((t (:inverse-video t))))
+    (show-paren-mode 1)
+   #+END_SRC
 
 ** default comment string
 
