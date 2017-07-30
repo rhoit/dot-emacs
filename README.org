@@ -512,7 +512,10 @@ it doesn't work out of the box.
      (el-get 'sync 'beacon)
      (require 'beacon)
      (beacon-mode t)
-
+     (setq beacon-blink-delay '0.2)
+     (setq beacon-blink-when-focused 't)
+     (setq beacon-dont-blink-commands 'nil)
+     (setq beacon-push-mark '1)
    #+END_SRC
 
 ** [[https://github.com/mina86/auto-dim-other-buffers.el][auto-dim-other-buffer]]
