@@ -300,6 +300,16 @@
      (add-hook 'prog-mode-hook 'nuke-trailing)
    #+END_SRC
 
+   [[https://github.com/nflath/hungry-delete][hungry-delete]] mode is interesting but still its quirky, mapping it
+   to default *delete/backspace* will result typing your needed
+   white-spaces back again! So as the mode its *NO*, *NO*. Manually
+   toggling the mode just to delete few continous white spaces. Naah!
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'hungry-delete)
+     (global-set-key (kbd "S-<backspace>") 'hungry-delete-backward)
+   #+END_SRC
+
 * WEB
 ** web-mode
 
