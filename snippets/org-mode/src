@@ -2,6 +2,6 @@
 # name: src
 # key: src
 # --
-#+BEGIN_SRC ${1:language}
+#+BEGIN_SRC ${1:language} :results ${2:$$(yas-choose-value '("value" "output" "replace" "silent"))}
   $0
 #+END_SRC
