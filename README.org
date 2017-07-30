@@ -249,6 +249,21 @@
       (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
     #+END_SRC
 
+** white-spaces
+*** hungry-delete
+
+    [[https://github.com/nflath/hungry-delete][hungry-delete]] mode is interesting, but pretty 🤪 quirky. Mapping
+    it to the default *delete/backspace* keys means you'll just end up
+    typing your needed white-spaces back in again! So, as a permanent
+    default mode, it's a definite 🙅‍♂️ *NO*, *NO*. go lets give add
+    some modifiers.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'hungry-delete)
+      (global-set-key (kbd "S-<backspace>") 'hungry-delete-backward)
+    #+END_SRC
+
 * WEB
 ** html
 
