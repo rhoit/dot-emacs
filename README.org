@@ -605,15 +605,16 @@ it doesn't work out of the box.
        (add-hook 'before-save-hooks 'whitespace-cleanup))
 
      (add-hook 'prog-mode-hook 'nuke_traling)
-    #+END_SRC
+   #+END_SRC
 
-    sometime its still pesky.
+   *hungry delete* mode seems too be promising but still its pesky, to
+   use regulary.
 
-    #+BEGIN_SRC emacs-lisp
-      (el-get 'sync 'hungry-delete)
-      (require 'hungry-delete)
-      (add-hook 'prog-mode-hook 'hungry-delete-mode)
-    #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     ;; (el-get 'sync 'hungry-delete)
+     ;; (require 'hungry-delete)
+     ;; (add-hook 'prog-mode-hook 'hungry-delete-mode)
+   #+END_SRC
 
 ** indentation
 
