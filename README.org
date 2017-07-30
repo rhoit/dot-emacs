@@ -170,6 +170,24 @@
     #+END_SRC
 
 ** cursor
+*** beacon-mode
+
+    [[https://github.com/Malabarba/beacon][beacon]] gives extra feedback of cursor's position on big movement.
+    It can be understood better with this [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original
+    repository.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'beacon)
+
+      (setq beacon-blink-delay '0.2)
+      (setq beacon-blink-when-focused 't)
+      (setq beacon-dont-blink-commands 'nil)
+      (setq beacon-push-mark '1)
+
+      (dim-minor-name 'beacon-mode "")
+      (beacon-mode t)
+    #+END_SRC
+
 *** multiple-cursor
 
     If [[https://www.sublimetext.com/][sublime]] can have [[https://github.com/magnars/multiple-cursors.el][multiple]] cursor, *emacs* can too.
