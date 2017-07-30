@@ -505,8 +505,9 @@ it doesn't work out of the box.
      ;; (set-face-attribute hl-line-face nil :underline nil)
    #+END_SRC
 
-   Currently I'm enjoying *beacon-mode* is much cooler, give a try. I
-   haven't missed the *highline-mode* for a while now.
+   Currently I'm enjoying [[https://github.com/Malabarba/beacon][beacon-mode]] is much *cooler*, give a try,
+   here is the [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo. I haven't missed the
+   *highline-mode* for a while now.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'beacon)
