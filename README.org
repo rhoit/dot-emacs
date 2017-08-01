@@ -762,10 +762,11 @@ it doesn't work out of the box.
 
 ** auto-fill text
 
-   currently having problem with this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue.
+   currently having problem with *emacs 26* have reverted to *25* with
+   this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue.
 
    #+BEGIN_SRC emacs-lisp
-     ;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
+     (add-hook 'org-mode-hook 'turn-on-auto-fill)
    #+END_SRC
 
 ** babel
@@ -775,8 +776,9 @@ it doesn't work out of the box.
    *NOTE*: running in to problem recently sh is now shell, or will
    cause =ob-sh= not found *error*.
 
-   *NOTE*: Currently babel code execution doesn't work haven't found
-   the work around yet.
+   *NOTE*: Currently babel code execution doesn't work, haven't found
+   the work around yet, so downgraded emacs from *26* -> *25*,
+   couldn't track what was the last working snapshot.
 
    #+BEGIN_SRC emacs-lisp
      (setq org-export-use-babel nil)
