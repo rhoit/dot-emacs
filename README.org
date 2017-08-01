@@ -341,7 +341,7 @@ it doesn't work out of the box.
    #+end_src
 ** mini-buffer
 
-   Although [[https://github.com/emacs-helm/helm][helm]] has coffer of full of features, I havn't gone beyond
+   Although [[https://github.com/emacs-helm/helm][helm]] has coffer full with features, I havn't gone beyond
    the minibuffer. It took me while to get hang of helm, one of
    reasons might be constant flikering creation of helm temporary
    popup windows which I don't like.
@@ -613,12 +613,12 @@ it doesn't work out of the box.
      (add-hook 'prog-mode-hook 'nuke_traling)
    #+END_SRC
 
-   *hungry delete* mode seems too be promising but still its pesky, to
-   use regulary.
+   *hungry delete* mode seems too be promising but still its quirky,
+   to be use everytime, I only turn them on when needed.
 
    #+BEGIN_SRC emacs-lisp
-     ;; (el-get 'sync 'hungry-delete)
-     ;; (require 'hungry-delete)
+     (el-get 'sync 'hungry-delete)
+     (require 'hungry-delete)
      ;; (add-hook 'prog-mode-hook 'hungry-delete-mode)
    #+END_SRC
 
@@ -739,17 +739,20 @@ it doesn't work out of the box.
 
   This might be one of the most important modes of emacs which make
   the emacs distinct from every other editor. You should definately
-  checkout org-mode. Like the emacs config it has become humongous.
+  checkout *org-mode*. Like the emacs config it has out grown.
 
-** keyboard
+  removing pesky keybinds for consistancy.
 
-   removing the C-j bind for goto-last-change
-
-   #+begin_src emacs-lisp
-     (add-hook 'org-mode-hook
-         '(lambda ()
-            (define-key org-mode-map (kbd "C-j") nil)))
-   #+end_src
+  #+BEGIN_SRC emacs-lisp
+    (add-hook 'org-mode-hook
+        '(lambda ()
+           (define-key org-mode-map (kbd "C-j") nil) ;; used for goto-last-change
+           (define-key org-mode-map (kbd "S-<up>") nil) ;; text selection
+           (define-key org-mode-map (kbd "S-<down>") nil) ;; text selection
+           (define-key org-mode-map (kbd "S-<left>") nil) ;; text selection
+           (define-key org-mode-map (kbd "S-<right>") nil) ;; text selection
+           ))
+  #+END_SRC
 
 ** enable mouse
 
