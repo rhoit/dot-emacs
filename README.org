@@ -363,6 +363,20 @@
   distinct. All but one complain is it throws the normal convention
   out of the window (just remember *emacs* has worst defaults 😉)!
 
+** babel
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '(
+        (C . t)
+        (js . t)
+        (python . t)
+        (sql . t)
+        ))
+   #+END_SRC
+
 * MODES
 ** c-lang
 
