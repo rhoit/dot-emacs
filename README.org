@@ -235,6 +235,8 @@
 
 ** [[https://github.com/joodland/bm][bookmark]]
 
+   It has never been so much easy to bookmark 🔖!
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (require 'bm)
