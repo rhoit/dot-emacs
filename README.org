@@ -407,6 +407,15 @@
         (python . t)))
    #+END_SRC
 
+   - <2018-01-04> sh mode
+
+     Currently babel code execution doesn't work, haven't found the
+     work around yet, so downgraded emacs from *26* -> *25*, couldn't
+     track what was the last working snapshot.
+
+     running in to problem recently sh is now shell, or will cause
+     =ob-sh= not found *error*.
+
 ** default applications
 
    Its most 😞 disappointing when application opens doesn't open in
