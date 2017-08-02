@@ -438,6 +438,29 @@
                  ("\\.pdf\\'" . "evince %s")))))
    #+END_SRC
 
+** minor-mode
+
+   *org-mode* can be addictive, someone have missed a lot and created
+   these awesome modes. Now we can use them minor-modes too inside
+   comments.
+
+   org's *outline* with [[https://github.com/alphapapa/outshine][outshine]] extension.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'outshine)
+
+     (add-hook 'prog-mode-hook 'outline-minor-mode)
+     (add-hook 'compilation-mode-hook 'outline-minor-mode)
+
+     (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+     (add-hook 'outline-minor-mode-hook '(lambda()
+         (global-unset-key (kbd "<M-right>"))
+         (local-set-key (kbd "<M-right>") 'outline-promote)
+         (global-unset-key (kbd "<M-left>"))
+         (local-set-key (kbd "<M-left>") 'outline-demote)
+         (local-set-key (kbd "C-<iso-lefttab>") 'outshine-cycle-buffer)))
+   #+END_SRC
+
 * MODES
 ** C/C++
 
