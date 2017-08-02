@@ -425,7 +425,7 @@ it doesn't work out of the box.
      (el-get 'sync 'bm)
      (require 'bm)
      (setq bm-marker 'bm-marker-left)
-     (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
+     (global-set-key (kbd "<left-fringe> S-<mouse-1>") 'bm-toggle-mouse)
      (global-set-key (kbd "S-<mouse-5>") 'bm-next-mouse)
      (global-set-key (kbd "S-<mouse-4>") 'bm-previous-mouse)
    #+END_SRC
