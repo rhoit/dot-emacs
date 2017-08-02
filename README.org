@@ -820,21 +820,23 @@ it doesn't work out of the box.
    these awesome modes. Now we can use them minor-modes too inside
    comments.
 
-   *outline*
+   org's *outline* with [[https://github.com/alphapapa/outshine][outshine]] extention.
 
-   #+begin_src emacs-lisp
-     (require 'outline)
-     (add-hook 'prog-mode-hook 'outline-minor-mode)
-     (add-hook 'compilation-mode-hook 'outline-minor-mode)
-   #+end_src
-
-   *outshine*
-
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'outshine)
      (require 'outshine)
+
+     (add-hook 'prog-mode-hook 'outline-minor-mode)
+     (add-hook 'compilation-mode-hook 'outline-minor-mode)
+
      (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
-   #+end_src
+     (add-hook 'outline-minor-mode-hook '(lambda()
+         (global-unset-key (kbd "<M-right>"))
+         (local-set-key (kbd "<M-right>") 'outline-promote)
+         (global-unset-key (kbd "<M-left>"))
+         (local-set-key (kbd "<M-left>") 'outline-demote)
+         (local-set-key (kbd "<backtab>") 'outshine-cycle-buffer)))
+   #+END_SRC
 
 * modes
 ** C/C++
