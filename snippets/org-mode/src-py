@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src-py
+# key: py
+# --
+
+#+HEADER: :results output :eval no-export
+#+BEGIN_SRC python :exports both
+  $0
+#+END_SRC
