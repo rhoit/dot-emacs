@@ -250,6 +250,17 @@ it doesn't work out of the box.
                           (fci-mode)))
   #+END_SRC
 
+** Ctrl+c and Ctrl+v
+
+   Yup *Ctrl+c* and *Ctrl+v* might be weird, as so for laptop with
+   brain dead *fn-Up*, *fn-Down* for *PageUp* *PageDown*.
+
+   Beginners find *Ctrl+v* jump outlandish and sometime also for me.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key [(control v)] 'yank)
+   #+END_SRC
+
 ** shift-mouse selection
 
    We don't need *font dialog* options which is binded by default.
