@@ -242,6 +242,7 @@ it doesn't work out of the box.
   #+BEGIN_SRC emacs-lisp
     (require 'fill-column-indicator)
     (global-set-key [M-f4] 'save-buffers-kill-terminal)
+    (global-set-key (kbd "<f5>") 'redraw-display)
     (global-set-key [(control f5)] '(lambda() (interactive)
                                     (load-file "~/.emacs.d/init.el")))
     (global-set-key [f6] '(lambda() (interactive)
