@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: pysrc
+# key: pysrc
+# --
+#+BEGIN_SRC python :results output
+  $0
+#+END_SRC
