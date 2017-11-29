@@ -26,6 +26,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(grep-command "grep --exclude-dir={.git,venv,vendors} --color -nH -r -e ")
  '(inhibit-startup-screen t)
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
