@@ -31,7 +31,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(android-mode-sdk-dir "/opt/android")
- '(grep-command "grep --color -nH -r -e ")
+ '(grep-command "grep --exclude-dir={.git,venv,vendors} --color -nH -r -e ")
  '(inhibit-startup-screen t)
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
