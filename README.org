@@ -204,6 +204,17 @@
     #+END_SRC
 
 ** selection
+
+   Some of the default behavior of *emacs* 💩 weird, text-selection is
+   on of them, some time its the 🌈 *WOW* 🦄 moment 🥳 and other time
+   its *WTF*.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;; replace selected text as expected
+     (delete-selection-mode 1)
+   #+END_SRC
+
 *** why-changing-fonts
 
     We don't need *font dialog* options which is binded by default.
@@ -250,6 +261,20 @@
      (global-set-key (kbd "<left-fringe> <mouse-4>") 'bm-previous-mouse)
      (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
    #+END_SRC
+
+** killing-group
+
+   #+BEGIN_HTML
+     <p>In Emacs, <b>Killing</b> means 🔪 cut (maybe ✂️ were not
+     invented then!). <b>Yanking</b> paste text from the
+     <i>kill-ring</i> back into the <i>buffer</i>. The
+     <i>kill-ring</i> is 📋 clipboard for text snippets to used later,
+     which can access in cyclic ♻️ order.</p>
+
+     <p>Yanking with <kbd>C</kbd>-<kbd>y</kbd> and cycling through
+     using <kbd>M</kbd>-<kbd>y</kbd>, <kbd>M</kbd>-<kbd>y</kbd>,
+     <kbd>M</kbd>-<kbd>y</kbd> can be bit alarming.</p>
+   #+END_HTML
 
 * PROGRAMMING
 
