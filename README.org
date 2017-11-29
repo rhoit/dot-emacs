@@ -602,23 +602,26 @@ it doesn't work out of the box.
      (add-hook 'prog-mode-hook 'watch-words)
    #+end_src
 
-** highlight symbol
+** [[https://github.com/nschum/highlight-symbol.el][highlight symbol]]
 
-   #+begin_src emacs-lisp
-     (el-get 'sync 'highlight-symbol)
-     (require 'highlight-symbol)
-     (global-set-key [(control f3)] 'highlight-symbol-at-point)
-     (global-set-key [(shift f3)] 'highlight-symbol-next)
-     (global-set-key [(shift f2)] 'highlight-symbol-prev)
+   #+BEGIN_SRC emacs-lisp
+     (defun highlight-symbol-my-binds ()
+       (interactive)
+       (el-get 'sync 'highlight-symbol)
+       (require 'highlight-symbol)
+       (local-set-key [(control f3)] 'highlight-symbol-at-point)
+       (local-set-key [(shift f3)] 'highlight-symbol-next)
+       (local-set-key [(shift f2)] 'highlight-symbol-prev)
 
-     (global-unset-key (kbd "<C-down-mouse-1>"))
-     (global-set-key (kbd "<C-down-mouse-1>")
-                (lambda (event)
-                  (interactive "e")
-                  (save-excursion
-                    (goto-char (posn-point (event-start event)))
-                    (highlight-symbol-at-point))))
-   #+end_src
+       (local-unset-key (kbd "<C-down-mouse-1>"))
+       (local-set-key (kbd "<C-down-mouse-1>") (lambda (event)
+         (interactive "e")
+         (save-excursion
+           (goto-char (posn-point (event-start event)))
+           (highlight-symbol-at-point)))))
+
+     (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
+   #+END_SRC
 
 ** white-spaces terminator
 
