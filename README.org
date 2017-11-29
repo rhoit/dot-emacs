@@ -113,6 +113,14 @@
     explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
 * UX
+** sane-binding
+*** buffer-close
+
+    #+BEGIN_SRC emacs-lisp
+      ;;; since, C-x k <return> too much acrobat
+      (global-set-key [(control d)] 'kill-buffer)  ; same as terminal
+    #+END_SRC
+
 ** yes-or-no
 
    yup thing are annoying 😤 here! avoid typing complete 'yes' and
@@ -205,6 +213,22 @@
     #+END_SRC
 
 ** selection
+
+   Default behavior of *emacs* 💩 weird, I wish this was
+   *default*.
+
+   #+BEGIN_SRC emacs-lisp
+     (delete-selection-mode 1)
+   #+END_SRC
+
+   We don't need *font dialog* options which is binded by default.
+   Since, font resize has been binded to =C mouse scroll= does it.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-unset-key [(shift down-mouse-1)])
+     (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
+   #+END_SRC
+
 *** why-changing-fonts
 
     We don't need *font dialog* options which is binded by default.
@@ -251,6 +275,15 @@
      (global-set-key (kbd "<left-fringe> <mouse-4>") 'bm-previous-mouse)
      (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
    #+END_SRC
+
+** killing group
+*** paste
+
+    Beginners find *Ctrl+v* jump outlandish and sometime also for me.
+
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key [(control v)] 'yank)
+    #+END_SRC
 
 * PROGRAMMING
 
