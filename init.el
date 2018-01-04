@@ -36,7 +36,7 @@
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
    (quote
-    (flycheck-pyflakes mode-icons)))
+    (yasnippet nlinum)))
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote

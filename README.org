@@ -167,6 +167,17 @@ it doesn't work out of the box.
      (fset 'yes-or-no-p 'y-or-n-p)
    #+END_SRC
 
+** warn when opening files bigger than 1 MiB
+
+   Damn units, /kilobyte (kB) = 1000 bytes/ and /[[https://en.wikipedia.org/wiki/Kibibyte][kibibyte]] (KiB) = 1024
+   bytes/, kB defacto should be 1024, since digital systems worked in
+   binary units and interface don't show *kibi*, *mebi*,
+   *gibi*. Imagine getting HDD of *1 GB* and you get *0.931* GB.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq large-file-warning-threshold 1048576)
+   #+END_SRC
+
 ** recent files
 
    #+BEGIN_SRC emacs-lisp
@@ -249,6 +260,12 @@ it doesn't work out of the box.
                           (toggle-truncate-lines)
                           (fci-mode)))
   #+END_SRC
+
+** terminal style bindings
+
+   #+BEGIN_SRC emacs-lisp
+      (global-set-key [(control d)] 'kill-buffer)
+   #+END_SRC
 
 ** Ctrl+c and Ctrl+v
 
@@ -802,10 +819,12 @@ it doesn't work out of the box.
    the work around yet, so downgraded emacs from *26* -> *25*,
    couldn't track what was the last working snapshot.
 
+   *<2018-01-04>*: seems like its *sh* again haven't fully tested
+
    #+BEGIN_SRC emacs-lisp
      (setq org-export-use-babel nil)
      (org-babel-do-load-languages 'org-babel-load-languages
-        '((shell . t)
+        '((sh . t)
          (python . t)))
    #+END_SRC
 
@@ -882,6 +901,10 @@ it doesn't work out of the box.
 
    #+BEGIN_SRC emacs-lisp
      (setq-default py-indent-offset 4)
+     (add-hook 'python-mode-hook (
+         lambda ()
+         (local-set-key (kbd "C-<") 'python-indent-shift-left)
+         (local-set-key (kbd "C->") 'python-indent-shift-right)))
    #+END_SRC
 
 *** [[http://tkf.github.io/emacs-jedi/][jedi]]
@@ -953,13 +976,23 @@ it doesn't work out of the box.
 
 ** yasnippet
 
-   #+BEGIN_SRC emacs-lisp
+   currently using from ELPA
+
+   #+begin_src emacs-lisp
      (when window-system
        (require 'yasnippet)
        (yas-reload-all)
        (add-hook 'prog-mode-hook 'yas-minor-mode-on)
        (add-hook 'org-mode-hook 'yas-minor-mode-on))
    #+END_SRC
+
+   - <2018-01-04 Thu>
+
+     Something is wrong with el-get keeps showing.
+
+     #+BEGIN_EXAMPLE
+       Error (el-get): while installing yasnippet: el-get: git el-get could not build yasnippet [git submodule update --init -- snippets]
+     #+END_EXAMPLE
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][WORD PLAY]]
 
