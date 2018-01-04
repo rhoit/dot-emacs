@@ -277,6 +277,16 @@
       (global-set-key [(control v)] 'yank)
     #+END_SRC
 
+** layout
+
+   winner mode saving the window configure
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (when (fboundp 'winner-mode)
+         (winner-mode 1))
+   #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
