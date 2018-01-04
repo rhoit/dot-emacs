@@ -76,6 +76,25 @@
        (server-start))
    #+END_SRC
 
+** big files
+
+   Warn when opening files bigger than 1 MiB. yup *emacs* kitchen sink
+   can open 🌇 image, PDF but seriously 😵 ?
+
+   #+BEGIN_SRC emacs-lisp
+     (setq large-file-warning-threshold (* 1 1024 1024))
+   #+END_SRC
+
+   You might wonder why that random number!
+
+   | kilobyte (kB)  | 1000 bytes     |
+   | [[https://en.wikipedia.org/wiki/Kibibyte][kibibyte]] (KiB) | 1024 bytes, kB |
+
+   Since digital systems worked in binary, yet *defacto* is in base of
+   0x10, Still interface don't show *kibi*, *mebi*, *gibi*. I don't
+   think I'm only one who feel 😠 cheated getting HDD of *1 TB* and
+   you getting *0.931* TB.
+
 ** pacman
 
    There are many 📦 package managers for *emacs*, ranging from simple
