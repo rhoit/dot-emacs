@@ -36,7 +36,7 @@
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
    (quote
-    (yasnippet auto-dim-other-buffers ox-reveal nlinum kotlin-mode arduino-mode)))
+    (yasnippet auto-dim-other-buffers ox-reveal kotlin-mode arduino-mode)))
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
