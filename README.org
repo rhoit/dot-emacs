@@ -8,12 +8,10 @@
 *DISCLAIMER:* :warning: AUTHOR will _not_ be _responsible_ for
 the :fire: _harm_ :fire: cause by using this config :bangbang:
 
-Its unlikely to harm,
+*MAKE SURE YOU HAVE THE BACKUP* :monkey:
 
-but :dizzy_face: *MAKE SURE YOU HAVE THE BACKUP* :monkey:
-
-*NOTE*: Some section are in testing need manually intervention,
-it doesn't work out of the box.
+*BEWARE:* AUTHOR does'nt know much *elisp*, so it doesn't work out of
+the box, some section need manually interventions.
 
 * Intro
 
@@ -36,13 +34,13 @@ it doesn't work out of the box.
 
   I have added and removed the packages over and over again and I
   still do. There have been times, when I just froze the update until
-  its not supported by system. The major problem was the
-  un-maintainability of these plugin versions each time I updated
-  something. I didn't knew about =package.el= existence until it was
-  listed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]]. Thankfully the =el-get= was there
-  with the familiarity =apt-get=, which could not only make the life
-  easier but also discover new packages. This config is mostly based
-  on =el-get= and with few =ELPA= and =MELPA=.
+  it was supported. The major problem was the un-maintainability of
+  these plugin versions each time I updated something. I didn't knew
+  about =package.el= existence until it was listed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in
+  emacs24]]. Thankfully the =el-get= was there with the familiarity
+  =apt-get=, which could not only make the life easier but also
+  discover new packages. This config is mostly based on =el-get= and
+  with few =ELPA= and =MELPA=.
 
   Over the course of time, it has been less painful to maintain
   config, but I could barely remember *Why I removed that package,
@@ -184,8 +182,8 @@ it doesn't work out of the box.
 
    Since digital systems worked in binary, shouldn't the defacto be
    base of 2, Still interface don't show *kibi*, *mebi*, *gibi*. I
-   don't think I'm only one who feel cheated getting HDD of *1 GB* and
-   you getting *0.931* GB.
+   don't think I'm only one who feel cheated getting HDD of *1 TB* and
+   you getting *0.931* TB.
 
 ** recent files
 
