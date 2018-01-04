@@ -532,31 +532,36 @@ it doesn't work out of the box.
      ;; (global-set-key (kbd "C-x o") 'switch-window)
    #+END_SRC
 
-** [[https://www.emacswiki.org/emacs/LineNumbers][line number]]
+** line-number
 
-   Using ELPA here, this is was hard to get working properly with
-   ELPA, load sequence, still don't know how its working now.
+   Choosing differnt [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over 5 years, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
+   config actually got it right on that looks great, hopefully works
+   great too.
 
-   seem =nlinum= has also change a lot, but didn't have time to
-   explore.
+   #+BEGIN_SRC emacs-lisp
+     (require 'linum)
+     (require 'hlinum)
 
-   #+begin_src emacs-lisp
-     (require 'nlinum)
-     (setq nlinum-delay t)
+     (setq linum-format " %3d ")
 
-     ;; Preset `nlinum-format' for minimum width.
-     (defun my-nlinum-mode-hook ()
-       (when nlinum-mode
-         (setq-local nlinum-format
-                     (concat "%" (number-to-string
-                                  ;; Guesstimate number of buffer lines.
-                                  (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
-                             "d"))))
-     (add-hook 'nlinum-mode-hook #'my-nlinum-mode-hook)
-     (add-hook 'find-file-hook (lambda () (nlinum-mode 1)))
-   #+end_src
+     ;; highlight the current line number
+     (hlinum-activate)
+     (global-hl-line-mode 1)
+
+     ;; theme correction, it kinda sucks without this
+     ;; (set-face-background 'hl-line "#3e4446")
+     (set-face-foreground 'highlight nil)
+     (set-face-attribute hl-line-face nil :underline nil)
+
+     ;; after highlight currentline blink cursor is annoyance
+     (blink-cursor-mode -1)
+
+     (global-linum-mode)
+   #+END_SRC
 
 ** highlight current line
+
+   *NOTE*: Old method one I used, will clean up some day.
 
    Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
    intensity of given color and alpha value.
@@ -570,10 +575,6 @@ it doesn't work out of the box.
 
      ;; not using inbuild hl-line-mode i can't seem to figure out changing
      ;; face for shade-color
-     ;; (global-hl-line-mode 1)
-     ;; (set-face-background 'hl-line "#3e4446")
-     ;; (set-face-foreground 'highlight nil)
-     ;; (set-face-attribute hl-line-face nil :underline nil)
    #+END_SRC
 
    Currently I'm enjoying [[https://github.com/Malabarba/beacon][beacon-mode]] is much *cooler*, give a try,
