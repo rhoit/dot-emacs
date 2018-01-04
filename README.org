@@ -168,16 +168,24 @@ it doesn't work out of the box.
      (fset 'yes-or-no-p 'y-or-n-p)
    #+END_SRC
 
-** warn when opening files bigger than 1 MiB
+** who writes ~10k lines in single file?
 
-   Damn units, /kilobyte (kB) = 1000 bytes/ and /[[https://en.wikipedia.org/wiki/Kibibyte][kibibyte]] (KiB) = 1024
-   bytes/, kB defacto should be 1024, since digital systems worked in
-   binary units and interface don't show *kibi*, *mebi*,
-   *gibi*. Imagine getting HDD of *1 GB* and you get *0.931* GB.
+   Warn when opening files bigger than 1 MiB. yup emacs kitchen sink
+   can open image, pdf but seriously? in emacs...
 
    #+BEGIN_SRC emacs-lisp
      (setq large-file-warning-threshold 1048576)
    #+END_SRC
+
+   You might wonder why that random number!
+
+   | kilobyte (kB)  | 1000 bytes     |
+   | [[https://en.wikipedia.org/wiki/Kibibyte][kibibyte]] (KiB) | 1024 bytes, kB |
+
+   Since digital systems worked in binary, shouldn't the defacto be
+   base of 2, Still interface don't show *kibi*, *mebi*, *gibi*. I
+   don't think I'm only one who feel cheated getting HDD of *1 GB* and
+   you getting *0.931* GB.
 
 ** recent files
 
