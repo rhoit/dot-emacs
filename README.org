@@ -276,6 +276,16 @@
      <kbd>M</kbd>-<kbd>y</kbd> can be bit alarming.</p>
    #+END_HTML
 
+** layout
+
+   winner mode saving the window configure
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (when (fboundp 'winner-mode)
+         (winner-mode 1))
+   #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
