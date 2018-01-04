@@ -285,6 +285,19 @@
       (global-set-key [(control v)] 'yank)
     #+END_SRC
 
+*** drag
+
+    After using *org-mode* nothing is same, moving the section is one
+    of the feature you want to have every where. Although many do have
+    feature to drag a lines or the region. [[https://github.com/rejeep/drag-stuff.el][drag-stuff]] is great but its
+    default binding is conflicts with *org-mode*.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'drag-stuff)
+
+      (drag-stuff-define-keys)
+    #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
