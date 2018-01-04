@@ -1,6 +1,6 @@
-#+TITLE: dot-emacs
+#+TITLE: emacs diaries
 #+DATE: Sunday, Jan 17 2016
-#+DESCRIPTION: my emacs config!
+#+DESCRIPTION: my emacs config diaries!
 #+AUTHOR: rho
 #+OPTIONS: num:t
 #+STARTUP: overview
@@ -21,34 +21,35 @@ it doesn't work out of the box.
   story since day one, In summary *emacs rocks but rocks are not so
   pretty*, and here you are looking at not so *pretty* side.
 
-
   #+BEGIN_EXAMPLE
     FYI "emacs vanilla is a lie"
   #+END_EXAMPLE
 
-  It began with *single-file* =~/.emacs= with some random snippets
-  from web. It soon grew into huge of /tweaks/ and /hacks/, with some
-  /scripts/ of my own. The frequency of changes and roll-backs were so
-  high it wasn't long *emacs* couldn't fit beside my other [[https://github.com/rhoit/my-config][config]].
-  And *emacs* got its own *.git* repository, soon bulky *single-file*
-  ran config was broken down into separate modules with long list of
-  *cherry-picked* plugin with their own repository and version
-  controls. There was even the time I used *system package manager* to
-  manage them but it was too much work.
+  It began with *single-file* =~/.emacs= contaning some random web
+  snippets. Which soon grew into huge chaotic pile. *emacs* couldn't
+  fit beside my other [[https://github.com/rhoit/my-config][config]]s which let to own *.git*
+  repository. Searching through the haystack was so frustating I had
+  to break it down into separate modules. And not only that each of
+  *cherry-picked* plugin had their own repository and making matter
+  worst a different version control. There was even the time I used
+  *system package manager* to manage them but it was too much work.
 
-  Its difficult to maintain config, I have added and removed the
-  packages over and over again and I still do. There have been times,
-  when I just froze the update until its not supported by system. The
-  major problem was the un-maintainability of these plugin versions
-  each time I updated something. I didn't knew about =package.el=
-  existence until it was listed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]].
+  I have added and removed the packages over and over again and I
+  still do. There have been times, when I just froze the update until
+  its not supported by system. The major problem was the
+  un-maintainability of these plugin versions each time I updated
+  something. I didn't knew about =package.el= existence until it was
+  listed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]]. Thankfully the =el-get= was there
+  with the familiarity =apt-get=, which could not only make the life
+  easier but also discover new packages. This config is mostly based
+  on =el-get= and with few =ELPA= and =MELPA=.
 
-  Thankfully the =el-get= was there with the familiarity =apt-get=,
-  which could not only make the life easier but also discover new
-  packages. This config is mostly based on =el-get= and with few
-  =ELPA= and =MELPA=. After few outlandish rodeos, this has been the
-  most sane approach I found, to convert [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] =org= file,
-  which made verbose easy to handle.
+  Over the course of time, it has been less painful to maintain
+  config, but I could barely remember *Why I removed that package,
+  what happen?*, *git-log* could pin-point the particular change in
+  *code*, but this is *not a code*.  After few outlandish rodeos, this
+  has been the most sane approach, to convert [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] =org=
+  file, which made verbose easy to handle much like a +diary+ rants!
 
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
@@ -287,6 +288,32 @@ it doesn't work out of the box.
      (global-unset-key [(shift down-mouse-1)])
      (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
    #+end_src
+
+** drag
+
+   Its undeniable fact after using *org-mode* nothing is same, I have
+   always wanted to move section up and down in my code too,
+   *outline-mode* came close to parts, but setting comment header for
+   each section is bit impractical just for dragging.
+
+   After seeing [[https://github.com/prtx][@prtx]] using sublime, moving lines up and down, similar
+   to word transpose *M-t* in emacs, I also want to same, made my mind
+   to go though the hell once more to write the =elisp= again until i
+   was saved by [[https://github.com/rejeep/drag-stuff.el][drag-stuff]].
+
+   *<M-right/left>* bind seems redundant with *<C-right/left>* also it
+   doesn't work in terminal, replacing it hopefull will not create any
+   problem.
+
+   *BEWARE*: it breaks the *org-mode* don't enable it in org!
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'drag-stuff)
+     (require 'drag-stuff)
+     (drag-stuff-define-keys)
+     (add-hook 'prog-mode-hook '(lambda ()
+         (drag-stuff-mode 1)))
+   #+END_SRC
 
 ** undo keybinds
 
