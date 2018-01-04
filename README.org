@@ -144,6 +144,16 @@
       (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
     #+END_SRC
 
+** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
+
+   I prefer speedbar outside the frame, for without separate frame see
+   [[https://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]].
+
+   #+BEGIN_SRC emacs-lisp
+     (setq speedbar-show-unknown-files t)
+     (global-set-key [f9] 'speedbar)
+   #+END_SRC
+
 * UX
 ** sane-binding
 *** buffer-close
