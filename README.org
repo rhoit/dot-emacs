@@ -268,32 +268,55 @@ the box, some section need manually interventions.
                           (fci-mode)))
   #+END_SRC
 
-** terminal style bindings
+** sane key bindings
 
-   #+BEGIN_SRC emacs-lisp
-      (global-set-key [(control d)] 'kill-buffer)
-   #+END_SRC
-
-** Ctrl+c and Ctrl+v
-
-   Yup *Ctrl+c* and *Ctrl+v* might be weird, as so for laptop with
-   brain dead *fn-Up*, *fn-Down* for *PageUp* *PageDown*.
+   Although emacs key binding are logical and well thought, but some
+   of them just too much out dated, but nothing weirdness new 2010 to
+   present laptop *fn-Up/Down* for *PageUp/Down* and no *del* key! now
+   no escape and function well done mac!
 
    Beginners find *Ctrl+v* jump outlandish and sometime also for me.
 
    #+BEGIN_SRC emacs-lisp
      (global-set-key [(control v)] 'yank)
+
+     ;; since, C-x k <return> too much acrobat
+     (global-set-key [(control d)] 'kill-buffer) ;; same as terminal
    #+END_SRC
 
-** shift-mouse selection
+** undotree
+
+   *simplely* :see_no_evil: :hear_no_evil: :speak_no_evil:
+   addition to the emacs bindings these few thing must have thing.
+
+   #+begin_src emacs-lisp
+     (el-get 'sync 'undo-tree)
+     (when window-system
+       (require 'undo-tree)
+       (global-undo-tree-mode 1)
+       (setq undo-tree-visualizer-timestamps t)
+       (global-unset-key (kbd "C-/"))
+       (defalias 'redo 'undo-tree-redo)
+       (global-unset-key (kbd "C-z"))
+       (global-set-key (kbd "C-z") 'undo-only)
+       (global-set-key (kbd "C-S-z") 'redo))
+   #+end_src
+
+** text selection
+
+   Default behavious of emacs :shit: weird, I wish this was *default*.
+
+   #+BEGIN_SRC emacs-lisp
+     (delete-selection-mode 1)
+   #+END_SRC
 
    We don't need *font dialog* options which is binded by default.
    Since, font resize has been binded to =C mouse scroll= does it.
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      (global-unset-key [(shift down-mouse-1)])
      (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
-   #+end_src
+   #+END_SRC
 
 ** drag
 
@@ -317,28 +340,64 @@ the box, some section need manually interventions.
      (el-get 'sync 'drag-stuff)
      (require 'drag-stuff)
      (drag-stuff-define-keys)
-     (add-hook 'prog-mode-hook '(lambda ()
-         (drag-stuff-mode 1)))
+     (add-hook 'prog-mode-hook 'drag-stuff-mode)
    #+END_SRC
 
-** undo keybinds
+** smooth scroll
 
-   let keep things *simple* :see_no_evil: :hear_no_evil: :speak_no_evil:
-
-   addition to the emacs bindings these few thing must have thing.
+   Unfortunately emacs :barber: scrolling :barber: is not smooth.
 
    #+BEGIN_SRC emacs-lisp
-     (when window-system
-       (require 'undo-tree)
-       (global-undo-tree-mode 1)
-       (setq undo-tree-visualizer-timestamps t)
-       (global-unset-key (kbd "C-/"))
-       (defalias 'redo 'undo-tree-redo)
-       (global-unset-key (kbd "C-z"))
-       (global-set-key (kbd "C-z") 'undo-only)
-       (global-set-key (kbd "C-S-z") 'redo))
+     (require 'smooth-scroll)
+     (smooth-scroll-mode t)
+
+     (setq scroll-conservatively 0) ;; cursor on the middle of the screen
+     (setq scroll-up-aggressively 0.01)
+     (setq scroll-down-aggressively 0.01)
+     (setq auto-window-vscroll nil)
+
+     (setq mouse-wheel-progressive-speed 10)
+     (setq mouse-wheel-follow-mouse 't)
    #+END_SRC
 
+** line-number
+
+   Choosing differnt [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over 5 years, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
+   config actually got it right on that looks great, but *linum* give
+   lots of flicker, now experimenting with *nlinum*.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'nlinum)
+
+     (setq nlinum-delay t)
+     (setq nlinum-highlight-current-line t)
+     (setq nlinum-format " %3d ")
+
+     (add-hook 'prog-mode-hook 'nlinum-mode)
+     (add-hook 'org-mode-hook 'nlinum-mode)
+   #+END_SRC
+
+** cursor
+
+   [[https://github.com/Malabarba/beacon][beacon-mode]] can be understood better with this [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo.
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'beacon)
+     (require 'beacon)
+     (beacon-mode t)
+     (setq beacon-blink-delay '0.2)
+     (setq beacon-blink-when-focused 't)
+     (setq beacon-dont-blink-commands 'nil)
+     (setq beacon-push-mark '1)
+   #+END_SRC
+
+** inital screen
+
+   #+BEGIN_SRC emacs-lisp
+     (setq inhibit-startup-message t
+       initial-major-mode 'fundamental-mode
+       inhibit-splash-screen t)
+   #+END_SRC
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
 
    #+ATTR_HTML: title="modline-screenshot"
@@ -426,33 +485,6 @@ the box, some section need manually interventions.
      (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
    #+END_SRC
 
-** smooth scroll
-
-   Unfortunately emacs :barber: scrolling :barber: is not smooth, its
-   *2016* already.
-
-   #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'smooth-scroll)
-     (require 'smooth-scroll)
-     (smooth-scroll-mode t)
-
-     (setq scroll-conservatively 0) ;; cursor on the middle of the screen
-     (setq scroll-up-aggressively 0.01)
-     (setq scroll-down-aggressively 0.01)
-     (setq auto-window-vscroll nil)
-
-     (setq mouse-wheel-progressive-speed 10)
-     (setq mouse-wheel-follow-mouse 't)
-   #+END_SRC
-
-** delete selection mode
-
-   Default behavious of emacs :shit: weird, I wish this was *default*.
-
-   #+BEGIN_SRC emacs-lisp
-     (delete-selection-mode 1)
-   #+END_SRC
-
 ** anzu
 
    Highlight all search matches, most of the text editor does this
@@ -527,37 +559,6 @@ the box, some section need manually interventions.
      ;; (el-get 'sync 'switch-window)
      ;; (require 'switch-window)
      ;; (global-set-key (kbd "C-x o") 'switch-window)
-   #+END_SRC
-
-** line-number
-
-   Choosing differnt [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over 5 years, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
-   config actually got it right on that looks great, but *linum* give
-   lots of flicker, now experimenting with *nlinum*.
-
-   #+BEGIN_SRC emacs-lisp
-     (require 'nlinum)
-
-     (setq nlinum-delay t)
-     (setq nlinum-highlight-current-line t)
-     (setq nlinum-format " %3d ")
-
-     (add-hook 'prog-mode-hook 'nlinum-mode)
-     (add-hook 'org-mode-hook 'nlinum-mode)
-   #+END_SRC
-
-** [[https://github.com/Malabarba/beacon][beacon-mode]]
-
-   here is the [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo.
-
-   #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'beacon)
-     (require 'beacon)
-     (beacon-mode t)
-     (setq beacon-blink-delay '0.2)
-     (setq beacon-blink-when-focused 't)
-     (setq beacon-dont-blink-commands 'nil)
-     (setq beacon-push-mark '1)
    #+END_SRC
 
 ** [[https://github.com/mina86/auto-dim-other-buffers.el][auto-dim-other-buffer]]
@@ -886,13 +887,15 @@ the box, some section need manually interventions.
      (setq c-tab-always-indent t)
      (setq c-basic-offset 4)
      (setq c-indent-level 4)
-   #+end_src
+     (setq gdb-many-windows t)
+     (setq gdb-show-main t)
+   #+END_SRC
 
    styling
 
    https://www.emacswiki.org/emacs/IndentingC
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      (require 'cc-mode)
      (c-set-offset 'substatement-open 0)
      (c-set-offset 'arglist-intro '+)
