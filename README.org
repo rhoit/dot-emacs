@@ -438,7 +438,6 @@ the box, some section need manually interventions.
      (require 'smooth-scroll)
      (smooth-scroll-mode t)
 
-     (setq linum-delay t)
      (setq scroll-conservatively 0) ;; cursor on the middle of the screen
      (setq scroll-up-aggressively 0.01)
      (setq scroll-down-aggressively 0.01)
@@ -536,51 +535,23 @@ the box, some section need manually interventions.
 ** line-number
 
    Choosing differnt [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over 5 years, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
-   config actually got it right on that looks great, hopefully works
-   great too.
+   config actually got it right on that looks great, but *linum* give
+   lots of flicker, now experimenting with *nlinum*.
 
    #+BEGIN_SRC emacs-lisp
-     (require 'linum)
-     (require 'hlinum)
+     (require 'nlinum)
 
-     (setq linum-format " %3d ")
+     (setq nlinum-delay t)
+     (setq nlinum-highlight-current-line t)
+     (setq nlinum-format " %3d ")
 
-     ;; highlight the current line number
-     (hlinum-activate)
-     (global-hl-line-mode 1)
-
-     ;; theme correction, it kinda sucks without this
-     ;; (set-face-background 'hl-line "#3e4446")
-     (set-face-foreground 'highlight nil)
-     (set-face-attribute hl-line-face nil :underline nil)
-
-     ;; after highlight currentline blink cursor is annoyance
-     (blink-cursor-mode -1)
-
-     (global-linum-mode)
+     (add-hook 'prog-mode-hook 'nlinum-mode)
+     (add-hook 'org-mode-hook 'nlinum-mode)
    #+END_SRC
 
-** highlight current line
+** [[https://github.com/Malabarba/beacon][beacon-mode]]
 
-   *NOTE*: Old method one I used, will clean up some day.
-
-   Uses =shade-color= defined in [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][config/ui.cfg.el]] to compute new
-   intensity of given color and alpha value.
-
-   #+BEGIN_SRC emacs-lisp
-     ;;(el-get 'sync 'highline)
-     ;;(require 'highline)
-
-     ;;(set-face-background 'highline-face (shade-color 09))
-     ;;(global-highline-mode 1)
-
-     ;; not using inbuild hl-line-mode i can't seem to figure out changing
-     ;; face for shade-color
-   #+END_SRC
-
-   Currently I'm enjoying [[https://github.com/Malabarba/beacon][beacon-mode]] is much *cooler*, give a try,
-   here is the [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo. I haven't missed the
-   *highline-mode* for a while now.
+   here is the [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'beacon)
