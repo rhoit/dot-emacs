@@ -499,6 +499,14 @@
      (setq c-indent-level 4)
    #+END_SRC
 
+*** gdb
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq gdb-many-windows t)
+      (setq gdb-show-main t)
+    #+END_SRC
+
 ** python
 
    Welcome to flying circus 🎪.
