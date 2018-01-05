@@ -546,6 +546,8 @@
      (setq c-tab-always-indent t)
      (setq c-basic-offset 4)
      (setq c-indent-level 4)
+     (setq gdb-many-windows t)
+     (setq gdb-show-main t)
    #+END_SRC
 
    styling
