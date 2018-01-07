@@ -36,7 +36,7 @@
  '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
  '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
  '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
- '(linum ((t (:inherit (shadow default) :height 108))))
+ '(show-paren-match ((t (:inverse-video t))))
  '(tabbar-default ((t (:background "#444444" :foreground "white"))))
  '(tabbar-selected-modified ((t (:inherit tabbar-default :background "gray20" :foreground "white" :box nil :weight bold :height 100 :width normal :family "Sans Serif"))))
  '(tabbar-unselected-modified ((t (:inherit tabbar-unselected :background "#444444" :foreground "#f6f3e8" :box nil :weight bold :height 100 :width normal :family "Sans Serif"))))
