@@ -599,7 +599,7 @@ the box, some section need manually interventions.
 
    #+BEGIN_SRC emacs-lisp
     (setq show-paren-style 'expression)
-    (setq show-paren-match '((t (:inverse-video t))))
+    ;; (setq show-paren-match '((t (:inverse-video t)))) ;; this is not working using custom set face
     (show-paren-mode 1)
    #+END_SRC
 
