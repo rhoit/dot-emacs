@@ -23,31 +23,20 @@ the box, some section need manually interventions.
     FYI "emacs vanilla is a lie"
   #+END_EXAMPLE
 
-  It began with *single-file* =~/.emacs= contaning some random web
-  snippets. Which soon grew into huge chaotic pile. *emacs* couldn't
-  fit beside my other [[https://github.com/rhoit/my-config][config]]s which let to own *.git*
-  repository. Searching through the haystack was so frustating I had
-  to break it down into separate modules. And not only that each of
-  *cherry-picked* plugin had their own repository and making matter
-  worst a different version control. There was even the time I used
-  *system package manager* to manage them but it was too much work.
+  It began with *single-file* =~/.emacs= with some random snippets.
+  Didn't took long to become monster, CHAOTIC MONSTER. It loved to
+  *cherry-picked* plugin from different gardens (/not only git/) you
+  guessed it, why don't you *apt-get* so I thought.
 
-  I have added and removed the packages over and over again and I
-  still do. There have been times, when I just froze the update until
-  it was supported. The major problem was the un-maintainability of
-  these plugin versions each time I updated something. I didn't knew
-  about =package.el= existence until it was listed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in
-  emacs24]]. Thankfully the =el-get= was there with the familiarity
-  =apt-get=, which could not only make the life easier but also
-  discover new packages. This config is mostly based on =el-get= and
-  with few =ELPA= and =MELPA=.
+  Manually maintaining of was hard job, as suspend them just because
+  it newer one didn't work. And came =package.el=, which I noticed in
+  [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]] using *emacs25*. =el-get= was there, an now
+  =package.el= too. Still not which one will rule.
 
-  Over the course of time, it has been less painful to maintain
-  config, but I could barely remember *Why I removed that package,
-  what happen?*, *git-log* could pin-point the particular change in
-  *code*, but this is *not a code*.  After few outlandish rodeos, this
-  has been the most sane approach, to convert [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] =org=
-  file, which made verbose easy to handle much like a +diary+ rants!
+  Yet, I could barely remember *Why I removed that package, what
+  happen?*, *git-whatchanged* would have told me more if it was a
+  *code*. To =org= organize was most sane thing till now
+  [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified.
 
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
