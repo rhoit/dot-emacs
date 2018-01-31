@@ -329,6 +329,20 @@ the box, some section need manually interventions.
      (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
    #+END_SRC
 
+*** [[https://github.com/magnars/expand-region.el][expand region]]
+
+    Expand region increases the selected region by semantic
+    units.
+
+    Here is [[https://www.youtube.com/watch?v=_RvHz3vJ3kA][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e09.html][ep09]].
+
+    #+BEGIN_SRC emacs-lisp
+      (el-get 'sync 'expand-region)
+      (require 'expand-region)
+      (global-set-key (kbd "S-SPC") 'er/expand-region)
+      (global-set-key (kbd "C-S-SPC") 'er/contract-region)
+    #+END_SRC
+
 ** drag
 
    Its undeniable fact after using *org-mode* nothing is same, I have
