@@ -235,27 +235,25 @@ the box, some section need manually interventions.
     (load "~/.emacs.d/config/ui.cfg.el")
   #+END_SRC
 
-  these are kind of strange bindings for beginner and for me too, so
-  lets remove it
+** window
 
-  #+BEGIN_SRC emacs-lisp
-    (global-unset-key [(control prior)])
-    (global-unset-key [(control next)])
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     ;;; Window Size
+     (add-to-list 'default-frame-alist '(height . 39))
+     (add-to-list 'default-frame-alist '(width . 104))
+   #+END_SRC
 
-  I find these binding quite handful.
+   #+BEGIN_SRC emacs-lisp
+     (tool-bar-mode 0)
+     (menu-bar-mode 0)
+     (scroll-bar-mode 0)
+     (defun toggle-bars-view()
+       (interactive)
+       (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
+       (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1)))
+     (global-set-key [f12] 'toggle-bars-view)
+   #+END_SRC
 
-  #+BEGIN_SRC emacs-lisp
-    (el-get 'sync 'fill-column-indicator)
-    (require 'fill-column-indicator)
-    (global-set-key [M-f4] 'save-buffers-kill-terminal)
-    (global-set-key (kbd "<f5>") 'redraw-display)
-    (global-set-key [(control f5)] '(lambda() (interactive)
-                                    (load-file "~/.emacs.d/init.el")))
-    (global-set-key [f6] '(lambda() (interactive)
-                          (toggle-truncate-lines)
-                          (fci-mode)))
-  #+END_SRC
 
 ** sane key bindings
 
@@ -269,8 +267,32 @@ the box, some section need manually interventions.
    #+BEGIN_SRC emacs-lisp
      (global-set-key [(control v)] 'yank)
 
-     ;; since, C-x k <return> too much acrobat
+     ;;; since, C-x k <return> too much acrobat
      (global-set-key [(control d)] 'kill-buffer) ;; same as terminal
+
+     (global-set-key [M-f4] 'save-buffers-kill-terminal)
+   #+END_SRC
+
+   these are kind of strange bindings for beginner and for me too, so
+   lets remove it
+
+   #+BEGIN_SRC emacs-lisp
+     (global-unset-key [(control prior)])
+     (global-unset-key [(control next)])
+   #+END_SRC
+
+   I find these binding quite handful.
+
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'fill-column-indicator)
+     (require 'fill-column-indicator)
+
+     (global-set-key (kbd "<f5>") 'redraw-display)
+     (global-set-key [(control f5)] '(lambda() (interactive)
+                                     (load-file "~/.emacs.d/init.el")))
+     (global-set-key [f6] '(lambda() (interactive)
+                           (toggle-truncate-lines)
+                           (fci-mode)))
    #+END_SRC
 
 ** undotree
@@ -365,20 +387,6 @@ the box, some section need manually interventions.
 
      (add-hook 'prog-mode-hook 'nlinum-mode)
      (add-hook 'org-mode-hook 'nlinum-mode)
-   #+END_SRC
-
-** cursor
-
-   [[https://github.com/Malabarba/beacon][beacon-mode]] can be understood better with this [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo.
-
-   #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'beacon)
-     (require 'beacon)
-     (beacon-mode t)
-     (setq beacon-blink-delay '0.2)
-     (setq beacon-blink-when-focused 't)
-     (setq beacon-dont-blink-commands 'nil)
-     (setq beacon-push-mark '1)
    #+END_SRC
 
 ** inital screen
@@ -514,18 +522,32 @@ the box, some section need manually interventions.
      (global-set-key (kbd "S-<mouse-4>") 'bm-previous-mouse)
    #+END_SRC
 
-** [[https://github.com/magnars/multiple-cursors.el][multiple cursor]]
+** cursor
 
-   if [[https://www.sublimetext.com/][sublime]] can have multiple selections, *emacs* can too..
+   [[https://github.com/Malabarba/beacon][beacon-mode]] can be understood better with this [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo.
 
-   Here is [[https://youtu.be/jNa3axo40qM][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e13.html][ep13]].
+   #+BEGIN_SRC emacs-lisp
+     (el-get 'sync 'beacon)
+     (require 'beacon)
+     (beacon-mode t)
+     (setq beacon-blink-delay '0.2)
+     (setq beacon-blink-when-focused 't)
+     (setq beacon-dont-blink-commands 'nil)
+     (setq beacon-push-mark '1)
+   #+END_SRC
 
-   #+begin_src emacs-lisp
-     (el-get 'sync 'multiple-cursors)
-     (when window-system
-       (require 'multiple-cursors)
-       (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
-   #+end_src
+*** [[https://github.com/magnars/multiple-cursors.el][multiple cursor]]
+
+    if [[https://www.sublimetext.com/][sublime]] can have multiple selections, *emacs* can too..
+
+    Here is [[https://youtu.be/jNa3axo40qM][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e13.html][ep13]].
+
+    #+begin_src emacs-lisp
+      (el-get 'sync 'multiple-cursors)
+      (when window-system
+        (require 'multiple-cursors)
+        (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
+    #+end_src
 
 ** goto-last-change
 
