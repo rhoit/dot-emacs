@@ -380,6 +380,26 @@
      (setq tab-width 4)
    #+END_SRC
 
+*** highlight-indent-guides
+
+    After years using [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]] with performance issues
+    and shifting through multiple 🍴 fork and patches, I have moved to
+    [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]] has much better compatibility. Although I
+    hate default fill method.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq highlight-indent-guides-method 'character)
+      (setq highlight-indent-guides-character ?\┊)
+
+      (add-hook
+       'prog-mode-hook
+       '(lambda()
+          (require 'highlight-indent-guides)
+          (dim-minor-name 'highlight-indent-guides-mode "")
+          (highlight-indent-guides-mode)))
+    #+END_SRC
+
 ** parenthesis
 
    #+HEADER: :results silent
