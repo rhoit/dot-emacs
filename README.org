@@ -666,6 +666,24 @@ the box, some section need manually interventions.
      (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
    #+END_SRC
 
+*** highlight indentation
+
+    Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
+    compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
+    using the main repo now!
+
+    other color: "#aaeeba"
+
+    #+BEGIN_SRC emacs-lisp
+      (el-get 'sync 'highlight-indentation)
+      (require 'highlight-indentation)
+      (set-face-background 'highlight-indentation-face "olive drab")
+      (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
+      (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+      (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+    #+END_SRC
+
 ** white-spaces terminator
 
    Just remove all those pesky trailing spaces before saving.
@@ -738,24 +756,6 @@ the box, some section need manually interventions.
        (ansi-color-apply-on-region (point-min) (point-max))
        (read-only-mode))
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-   #+end_src
-
-** highlight indentation
-
-   Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
-   compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
-   using the main repo now!
-
-   other color: "#aaeeba"
-
-   #+begin_src emacs-lisp
-     (el-get 'sync 'highlight-indentation)
-     (require 'highlight-indentation)
-     (set-face-background 'highlight-indentation-face "olive drab")
-     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-
-     (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-     (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
    #+end_src
 
 ** rainbow delimiters
