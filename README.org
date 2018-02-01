@@ -409,6 +409,7 @@ the box, some section need manually interventions.
        initial-major-mode 'fundamental-mode
        inhibit-splash-screen t)
    #+END_SRC
+
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
 
    #+ATTR_HTML: title="modline-screenshot"
@@ -666,7 +667,7 @@ the box, some section need manually interventions.
      (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
    #+END_SRC
 
-*** highlight indentation
+*** highlight-indentation
 
     Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
     compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
@@ -674,7 +675,7 @@ the box, some section need manually interventions.
 
     other color: "#aaeeba"
 
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (el-get 'sync 'highlight-indentation)
       (require 'highlight-indentation)
       (set-face-background 'highlight-indentation-face "olive drab")
