@@ -52,7 +52,7 @@
  '(font-lock-comment-face ((t (:slant oblique))))
  '(font-lock-function-name-face ((t (:foreground "#cae682" :slant oblique :weight bold))))
  '(font-lock-keyword-face ((t (:foreground "cyan" :weight bold))))
- '(font-lock-string-face ((t (:foreground "gold2" :weight semi-light :family "Source Code Pro"))))
+ '(font-lock-string-face ((t (:foreground "gold2" :weight semi-light))))
  '(font-lock-variable-name-face ((t (:foreground "sandy brown"))))
  '(font-lock-warning-face ((t (:background "yellow1" :foreground "red1" :weight bold))))
  '(nlinum-current-line ((t (:inverse-video t))))
