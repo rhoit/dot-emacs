@@ -1,21 +1,8 @@
 ;;======================================================================
 ;; EMACS UI
 
-;;----------------------------------------------------------------------
-;;; Window Size
-(add-to-list 'default-frame-alist '(height . 39))
-(add-to-list 'default-frame-alist '(width . 104))
 
 ;;----------------------------------------------------------------------
-;;; UI entity
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(defun toggle-bars-view()
-  (interactive)
-  (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
-  (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1)))
-(global-set-key [f12] 'toggle-bars-view)
 
 ;;----------------------------------------------------------------------
 ;;; Buffer Naming

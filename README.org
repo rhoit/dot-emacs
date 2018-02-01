@@ -343,7 +343,6 @@ the box, some section need manually interventions.
       (global-set-key (kbd "C-S-SPC") 'er/contract-region)
     #+END_SRC
 
-
 ** drag-stuff
 
    Its undeniable fact after using *org-mode* nothing is same, I have
@@ -411,6 +410,7 @@ the box, some section need manually interventions.
        initial-major-mode 'fundamental-mode
        inhibit-splash-screen t)
    #+END_SRC
+
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
 
    #+ATTR_HTML: title="modline-screenshot"
@@ -672,7 +672,7 @@ the box, some section need manually interventions.
      (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
    #+END_SRC
 
-*** highlight indentation
+*** highlight-indentation
 
     Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
     compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
@@ -681,13 +681,13 @@ the box, some section need manually interventions.
     other color: "#aaeeba"
 
     #+BEGIN_SRC emacs-lisp
-      (el-get 'sync 'highlight-indentation)
-      (require 'highlight-indentation)
-      (set-face-background 'highlight-indentation-face "olive drab")
-      (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+      ;; (el-get 'sync 'highlight-indentation)
+      ;; (require 'highlight-indentation)
+      ;; (set-face-background 'highlight-indentation-face "olive drab")
+      ;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
 
-      (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-      (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+      ;; (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+      ;; (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
     #+END_SRC
 
 ** white-spaces terminator
