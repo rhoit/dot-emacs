@@ -7,7 +7,7 @@
 (setq tabbar-buffer-groups-function
       (lambda ()
 	(list (cond
-	       ((string-match "*magit" (buffer-name)) "Magit Buffers")
+	       ((string-match ".*magit.*" (buffer-name)) "Magit Buffers")
 	       ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs Buffers")
 	       ((eq major-mode 'dired-mode) "Dired")
 	       ((eq major-mode 'compilation-mode) "Compilation")
