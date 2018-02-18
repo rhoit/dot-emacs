@@ -727,6 +727,7 @@ the box, some section need manually interventions.
    #+BEGIN_SRC emacs-lisp
      (setq-default indent-tabs-mode nil)
      (setq-default tab-width 4)
+     (setq tab-width 4)
    #+END_SRC
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][complie]]
