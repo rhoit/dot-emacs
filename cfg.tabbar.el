@@ -1,24 +1,9 @@
 ;;----------------------------------------------------------------------
 ;; tabbar configs
 
-;; (setq tabbar-separator (quote (0.3)))
-;; (setq tabbar-background-color "gray40")
-;; (setq tabbar-cycle-scope (quote tabs))
-;; (setq tabbar-use-images t)
-
 ;;----------------------------------------------------------------------
 ;; tabbar rular
 ;; https://github.com/mattfidler/tabbar-ruler.el
-;; (setq tabbar-ruler-global-ruler t)
-;; (setq tabbar-ruler-popup-menu t)
-;; (require 'tabbar-ruler)
-
-;; (setq tabbar-separator-value 0)
-;; (setq tabbar-ruler-fancy-current-tab-separator 'wave)
-;; (setq tabbar-ruler-fancy-tab-separator 'nil)
-;; (setq tabbar-ruler-fancy-hover-tab-separator 'rounded)
-
-
 (setq tabbar-buffer-groups-function
       (lambda ()
 	(list (cond

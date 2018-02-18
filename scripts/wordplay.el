@@ -16,14 +16,15 @@
 
 
 ;;----------------------------------------------------------------------
-;; duplicate word
+;;; duplicate word
 (defun duplicate-current-word()
   (interactive)
   (beginning-of-sexp)
   (insert (word-at-point)))
 
+
 ;;----------------------------------------------------------------------
-;; additional copy function
+;;; additional copy function
 (defun kill-ring-save-current-line()
   "on point line copy"
   (interactive)
@@ -31,8 +32,9 @@
       (kill-ring-save (point) (mark))
     (kill-new (thing-at-point 'line))))
 
+
 ;;----------------------------------------------------------------------
-;; word-sort
+;;; word-sort
 ;; http://www.emacswiki.org/emacs/SortWords
 (defun sort-words (reverse beg end)
   "Sort words in region alphabetically, in REVERSE if negative.
@@ -47,8 +49,9 @@
   (interactive "*P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
+
 ;;----------------------------------------------------------------------
-;; popup kill ring
+;;; popup kill ring
 (defun repetitive-yanking()
   "yank and yank whats rest are in the kill ring"
   (interactive)
