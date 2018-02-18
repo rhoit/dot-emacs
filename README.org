@@ -634,6 +634,28 @@
      (add-hook 'org-mode-hook 'yas-minor-mode-on)
    #+END_SRC
 
+* WORDPLAY
+
+  collection of nifty scripts.
+
+** duplicate-current-line
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (defun duplicate-current-line()
+       (interactive)
+       (beginning-of-line nil)
+       (let ((b (point)))
+         (end-of-line nil)
+         (copy-region-as-kill b (point)))
+       (beginning-of-line 2)
+       (open-line 1)
+       (yank)
+       (back-to-indentation))
+
+     (global-set-key (kbd "C-`") 'duplicate-current-line)
+   #+END_SRC
+
 * META :noexport:
 
   # Local Variables:
