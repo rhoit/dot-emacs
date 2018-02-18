@@ -72,3 +72,44 @@
     (back-to-indentation)
     (when (= orig-point (point))
       (move-beginning-of-line 1))))
+
+
+;;----------------------------------------------------------------------
+;;; toggle lettercase
+;; By default, you can use M-c to change the case of a character at
+;; the cursor's position. This also jumps you to the end of the
+;; word. However it is far more useful to define a new function by
+;; adding the following code to your emacs config file. Once you have
+;; done this, M-c will cycle through "all lower case", "Initial
+;; Capitals", and "ALL CAPS" for the word at the cursor position, or
+;; the selected text if a region is highlighted.
+;; http://ergoemacs.org/emacs/modernization_upcase-word.html
+
+(defun toggle-letter-case ()
+  "Toggle the letter case of current word or text selection.
+   Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
+  (interactive)
+  (let (p1 p2 (deactivate-mark nil) (case-fold-search nil))
+    (if (region-active-p)
+        (setq p1 (region-beginning) p2 (region-end))
+      (let ((bds (bounds-of-thing-at-point 'word) ) )
+        (setq p1 (car bds) p2 (cdr bds)) ) )
+
+    (when (not (eq last-command this-command))
+      (save-excursion
+        (goto-char p1)
+        (cond
+          ((looking-at "[[:lower:]][[:lower:]]") (put this-command 'state "all lower"))
+          ((looking-at "[[:upper:]][[:upper:]]") (put this-command 'state "all caps") )
+          ((looking-at "[[:upper:]][[:lower:]]") (put this-command 'state "init caps") )
+          ((looking-at "[[:lower:]]") (put this-command 'state "all lower"))
+          ((looking-at "[[:upper:]]") (put this-command 'state "all caps") )
+          (t (put this-command 'state "all lower")))))
+
+    (cond
+      ((string= "all lower" (get this-command 'state))
+        (upcase-initials-region p1 p2) (put this-command 'state "init caps"))
+      ((string= "init caps" (get this-command 'state))
+        (upcase-region p1 p2) (put this-command 'state "all caps"))
+      ((string= "all caps" (get this-command 'state))
+        (downcase-region p1 p2) (put this-command 'state "all lower")))))

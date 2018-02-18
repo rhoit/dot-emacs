@@ -661,6 +661,20 @@
                  'smarter-move-beginning-of-line)
    #+END_SRC
 
+** [[http://ergoemacs.org/emacs/modernization_upcase-word.html][toggle lettercase]]
+
+   By default, you can use M-c to change the case of a character at
+   the cursor's position. This also jumps you to the end of the
+   word. However it is far more useful to define a new function by
+   adding the following code to your emacs config file. Once you have
+   done this, M-c will cycle through "all lower case", "Initial
+   Capitals", and "ALL CAPS" for the word at the cursor position, or
+   the selected text if a region is highlighted.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key "\M-c" 'toggle-letter-case)
+   #+END_SRC
+
 ** duplicate lines/words
 
    #+BEGIN_SRC emacs-lisp
