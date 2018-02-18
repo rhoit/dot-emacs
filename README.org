@@ -649,6 +649,18 @@
     (load "~/.emacs.d/scripts/wordplay.el")
   #+END_SRC
 
+** [[http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/][smarter move to beginning of line]]
+
+   Normally *C-a* will move your cursor to 0th column of the line,
+   this snippet takes consideration of the indentation, and for
+   default behaviour repeate the action which will toggle between the
+   first non-whitespace character and the =bol=.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key [remap move-beginning-of-line]
+                 'smarter-move-beginning-of-line)
+   #+END_SRC
+
 ** duplicate lines/words
 
    #+BEGIN_SRC emacs-lisp
