@@ -3,8 +3,6 @@
 
 
 ;;----------------------------------------------------------------------
-
-;;----------------------------------------------------------------------
 ;;; Buffer Naming
 ;; Sensible unique buffer names, *[ inbuilt: package ]*
 ;; by default in >= 24.4.1 else add =(require 'uniquify)=
