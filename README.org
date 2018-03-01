@@ -746,13 +746,16 @@ the box, some section need manually interventions.
      (add-hook 'prog-mode-hook 'nuke_trailing)
    #+END_SRC
 
-   *hungry delete* mode seems too be promising but still its quirky,
-   to be use everytime, I only turn them on when needed.
+   *hungry-delete* mode seems too be promising but still its quirky,
+   there is no way to control it, as you need to toggle for every use.
+   *smart-hungry-delete* might be way which has'nt yet made to *MELPA*
+   stable.
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'hungry-delete)
-     (require 'hungry-delete)
-     ;; (add-hook 'prog-mode-hook 'hungry-delete-mode)
+    (require 'smart-hungry-delete)
+    (smart-hungry-delete-add-default-hooks)
+    (global-set-key (kbd "S-<backspace>") 'smart-hungry-delete-backward-char)
+    (global-set-key (kbd "S-<delete>") 'smart-hungry-delete-forward-char)
    #+END_SRC
 
 ** indentation
