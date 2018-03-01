@@ -609,6 +609,22 @@
       (setq jedi:setup-keys t) ; optional
     #+END_SRC
 
+*** venv
+
+    Yes! we work on *virtual environment (venv)*, and we do love to
+    *source* them, who can't seems to get things strait especially in
+    *unix* systems.
+
+    In reality venv just switches executable, seriously loading *venv*
+    might be sane for *terminal* operation or running errands with
+    *pip*. but for running just execute directly form
+    =./venv/bin/python your.py=.
+
+    #+BEGIN_QUOTE
+      Damn don't try to solve artificial problems! so goes for idiotic
+      venv modes trying to find *venv* folder.
+    #+END_QUOTE
+
 * META :noexport:
 
   # Local Variables:
