@@ -995,13 +995,33 @@ the box, some section need manually interventions.
 
 *** [[http://tkf.github.io/emacs-jedi/][jedi]]
 
-   #+begin_src emacs-lisp
-     (el-get 'sync 'jedi)
-     (autoload 'jedi:setup "jedi" nil t)
-     (add-hook 'python-mode-hook 'jedi:setup)
-     (setq jedi:complete-on-dot t) ; optional
-     ;; (setq jedi:setup-keys t) ; optional
-   #+end_src
+    Since *python3.3* virtual environment can be created using =python
+    -m venv env= making *python-virtualenv* kinda obsolete, but create
+    the problem with jedi, will fix it some other day!
+
+    #+BEGIN_SRC emacs-lisp
+      ;; (el-get 'sync 'jedi)
+      ;; (autoload 'jedi:setup "jedi" nil t)
+      ;; (add-hook 'python-mode-hook 'jedi:setup)
+      ;; (setq jedi:complete-on-dot t) ; optional
+      ;; (setq jedi:environment-virtualenv "python -m venv")
+
+      ;; (setq jedi:setup-keys t) ; optional
+    #+END_SRC
+
+*** running at venv
+
+    Yes! we work on *virtual environment (venv)*, and we do love to
+    *source* them except some *anaconda* idiots, who can't seems to
+    get things strait espcially in *unix* systems.
+
+    In reality venv just switches executable, seriously loading *venv*
+    might be sane for *terminal* operation or runnig errands with
+    *pip*. but for running just execute directly form
+    =./venv/bin/python your.py=.
+
+    Damn don't try to solve artificial problems! so goes for idiotic
+    venv modes trying to find *venv* folder.
 
 *** python-info-look
 
