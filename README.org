@@ -191,13 +191,18 @@ the box, some section need manually interventions.
    Add package other sources
 
    #+BEGIN_SRC emacs-lisp
+     (require 'package) ;; after 24 its pre-loaded
      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+     (package-initialize)
    #+END_SRC
 
    Use =M-x package-refresh-contents= to reload the list of packages
    after adding these for the first time.
 
-** el-get
+   *<2018-03-01>* finally got the setting right, had been refreshing
+   it on every install.
+
+* el-get
 
    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. It
    has been while (after =emacs 24=) emacs got its own package
