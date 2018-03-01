@@ -443,6 +443,17 @@
      (global-set-key (kbd "S-<backspace>") 'hungry-delete-backward)
    #+END_SRC
 
+   There is the interesting outlook of [[https://github.com/hrehfeld/emacs-smart-hungry-delete/issues][smart-hungry-delete]].
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'smart-hungry-delete)
+     (smart-hungry-delete-add-default-hooks)
+     (global-set-key (kbd "<backspace>") 'smart-hungry-delete-backward-char)
+     ;; (global-set-key (kbd "<delete>") 'smart-hungry-delete-forward-char)
+     ;; (global-set-key (kbd "<delete>") '(lambda ()
+     ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
+   #+END_SRC
+
 * WEB
 ** web-mode
 
