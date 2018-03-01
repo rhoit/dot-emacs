@@ -28,10 +28,11 @@ the box, some section need manually interventions.
   *cherry-picked* plugin from different gardens (/not only git/) you
   guessed it, why don't you *apt-get* so I thought.
 
-  Manually maintaining of was hard job, as suspend them just because
-  it newer one didn't work. And came =package.el=, which I noticed in
-  [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]] using *emacs25*. =el-get= was there, an now
-  =package.el= too. Still not which one will rule.
+  Manually maintaining of was hard job, had too freeze them just
+  because it newer one didn't work. And came =package.el=, which I
+  noticed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]] using *emacs25*. [[https://www.emacswiki.org/emacs/el-get][el-get]] was there,
+  an now =package.el= was official too. I can't seem to [[https://github.com/dimitri/el-get/issues/1468][choose]] one,
+  and great can use both.
 
   Yet, I could barely remember *Why I removed that package, what
   happen?*, *git-whatchanged* would have told me more if it was a
@@ -43,6 +44,8 @@ the box, some section need manually interventions.
 
 ** getting it
 
+   oh! you wanna get my config! its super duper +easy+!
+
    #+BEGIN_EXAMPLE
      $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
    #+END_EXAMPLE
@@ -50,7 +53,7 @@ the box, some section need manually interventions.
 ** how to build
 
    =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
-   stuffs.
+   magical stuffs.
 
    #+BEGIN_SRC bash
      $ ./configure
@@ -59,6 +62,8 @@ the box, some section need manually interventions.
    #+END_SRC
 
 ** structure
+
+   This is the way do keep my things!
 
    #+BEGIN_EXAMPLE
      dot-emacs
@@ -108,7 +113,7 @@ the box, some section need manually interventions.
    start.
 
    #+BEGIN_SRC emacs-lisp
-     (setq gc-cons-threshold 209715200)
+     (setq gc-cons-threshold (* 100 1024 1024))
    #+END_SRC
 
 ** emacs server
@@ -315,19 +320,39 @@ the box, some section need manually interventions.
 
 ** text selection
 
-   Default behavious of emacs :shit: weird, I wish this was *default*.
+   Some of the default behavious of emacs :shit: weird, text selection
+   is on of them, some time its the *WOW* moment and other time its
+   *WTF*.
 
-   #+BEGIN_SRC emacs-lisp
-     (delete-selection-mode 1)
-   #+END_SRC
+*** replace selected text
 
-   We don't need *font dialog* options which is binded by default.
-   Since, font resize has been binded to =C mouse scroll= does it.
+    This is weird one when you expect selected text to be replaced,
+    you end up in mess, thankfully there is the inbuild mode to fix
+    this.
 
-   #+BEGIN_SRC emacs-lisp
-     (global-unset-key [(shift down-mouse-1)])
-     (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
-   #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      (delete-selection-mode 1)
+    #+END_SRC
+
+
+*** changing font
+
+    Hotkey for *font dialog* is kinda absurd, that to for changing
+    font-face, although for resize has *Ctrl* *mouse-scroll* might be
+    sensible option.
+
+    In the effort of not being weird *Shift* *mouse-primary-click* is
+    used in region/text selection =mouse-save-then-kill=.
+
+    #+BEGIN_SRC emacs-lisp
+      (global-unset-key [(shift down-mouse-1)])
+      (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
+    #+END_SRC
+
+    *so called wow moments*
+
+    as you think selecting selection, emacs binds the selection
+    keyboard free, when followed by *mouse-secondary-click*.
 
 *** [[https://github.com/magnars/expand-region.el][expand region]]
 
@@ -704,16 +729,16 @@ the box, some section need manually interventions.
       (setq highlight-indent-guides-character ?\┊)
     #+END_SRC
 
-** white-spaces terminator
+** white-spaces
 
    Just remove all those pesky trailing spaces before saving.
 
    #+BEGIN_SRC emacs-lisp
-     (defun nuke_traling ()
+     (defun nuke_trailing ()
        (add-hook 'write-file-hooks 'delete-trailing-whitespace)
        (add-hook 'before-save-hooks 'whitespace-cleanup))
 
-     (add-hook 'prog-mode-hook 'nuke_traling)
+     (add-hook 'prog-mode-hook 'nuke_trailing)
    #+END_SRC
 
    *hungry delete* mode seems too be promising but still its quirky,
@@ -803,6 +828,8 @@ the box, some section need manually interventions.
     #+end_src
 
 ** ggtags
+
+   https://superuser.com/questions/579847/is-there-emacs-plugins-to-do-sublime-like-completion-and-goto-anything
 
    code navigation, its disable because it make my emacs super slow.
 
