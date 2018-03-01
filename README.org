@@ -736,7 +736,15 @@ the box, some section need manually interventions.
 
 ** white-spaces
 
-   Just remove all those pesky trailing spaces before saving.
+   If you have working with non-emacs people sooner or later you might
+   face this problem, those pesky trailing spaces/tabs new lines at
+   *EOF*!
+
+   #+BEGIN_EXAMPLE
+     Phenomenal Cosmic Powers! Itty Bitty trailing spaces!
+   #+END_EXAMPLE
+
+   Seriously what kinda all crappy IDE's comming out.
 
    #+BEGIN_SRC emacs-lisp
      (defun nuke_trailing ()
@@ -757,6 +765,15 @@ the box, some section need manually interventions.
     (global-set-key (kbd "S-<backspace>") 'smart-hungry-delete-backward-char)
     (global-set-key (kbd "S-<delete>") 'smart-hungry-delete-forward-char)
    #+END_SRC
+
+   Of course emacs can add newline at *End Of File* just to make sure
+   *git* doesn't go crazy! for unchanged files. But don't enable it
+   let fancy IDE people wonder how to remove newline at EOF.
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (setq require-final-newline t)
+   #+END_SRC
+
 
 ** indentation
 
