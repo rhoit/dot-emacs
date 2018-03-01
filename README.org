@@ -253,30 +253,33 @@
 
 ** selection
 
-   Default behavior of *emacs* 💩 weird, I wish this was
-   *default*.
+   Some of the default behavior of *emacs* 💩 weird, text-selection is
+   on of them, some time its the 🌈 *WOW* 🦄 moment 🥳 and other time
+   its *WTF*.
 
    #+BEGIN_SRC emacs-lisp
      (delete-selection-mode 1)
    #+END_SRC
 
-   We don't need *font dialog* options which is binded by default.
-   Since, font resize has been binded to =C mouse scroll= does it.
-
-   #+BEGIN_SRC emacs-lisp
-     (global-unset-key [(shift down-mouse-1)])
-     (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
-   #+END_SRC
-
 *** why-changing-fonts
 
-    We don't need *font dialog* options which is binded by default.
-    Since, font resize has been binded to =C mouse scroll= does it.
+    Hotkey for *font dialog* is kinda absurd, that to for changing
+    font-face, although for resize has *Ctrl* *mouse-scroll* might be
+    sensible option.
+
+    In the effort of not being weird *Shift* *mouse-primary-click* is
+    used in region/text selection =mouse-save-then-kill=.
 
     #+BEGIN_SRC emacs-lisp
-      (global-unset-key [(shift down-mouse-1)])
+      (global-unset-key [(shift down-mouse-1)])  ; unbind (mouse-apperance-menu EVENT)
       (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
     #+END_SRC
+
+    *so called wow moments*
+
+    as you think selecting selection, emacs binds the selection
+    keyboard free, when followed by *mouse-secondary-click* if its not
+    in conflict.
 
 *** [[https://github.com/magnars/expand-region.el][expand region]]
 
