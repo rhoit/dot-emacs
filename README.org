@@ -509,6 +509,20 @@
      ;; (setq jedi:setup-keys t) ; optional
    #+END_SRC
 
+** venv
+
+   Yes! we work on *virtual environment (venv)*, and we do love to
+   *source* them except some 🐍 *anaconda* idiots, who can't seems to
+   get things strait espcially in *unix* systems.
+
+   In reality venv just switches executable, seriously loading *venv*
+   might be sane for *terminal* operation or runnig errands with
+   *pip*. but for running just execute directly form
+   =./venv/bin/python your.py=.
+
+   Damn don't try to solve artificial problems! so goes for idiotic
+   venv modes trying to find *venv* folder.
+
 ** py-exec
 
    [[https://github.com/rhoit/py-exec][py-exec]] is ess-style execution for /python/ script.
