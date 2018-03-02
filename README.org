@@ -567,7 +567,9 @@ the box, some section need manually interventions.
 
 ** cursor
 
-   [[https://github.com/Malabarba/beacon][beacon-mode]] can be understood better with this [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original repo.
+   [[https://github.com/Malabarba/beacon][beacon-mode]] gives extra feedback of cursor's position on big
+   movement. It can be understood better with this [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original
+   repo.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'beacon)
@@ -749,16 +751,25 @@ the box, some section need manually interventions.
      (add-hook 'prog-mode-hook 'nuke_trailing)
    #+END_SRC
 
-   *hungry-delete* mode seems too be promising but still its quirky,
-   there is no way to control it, as you need to toggle for every use.
-   *smart-hungry-delete* might be way which has'nt yet made to *MELPA*
-   stable.
+   [[https://github.com/nflath/hungry-delete][hungry-delete]] mode is intresting but still its quirky, mapping it
+   to default *delete/backspace* will result typing your needed
+   whitespaces back again! So as the mode its *NO, NO*. Manually
+   toggling the mode just to delete few continous white spaces. Naah!
+
+    #+BEGIN_SRC emacs-lisp
+      (el-get 'sync 'hungry-delete)
+      (require 'hungry-delete)
+      (global-set-key (kbd "S-<backspace>") 'hungry-delete-backward)
+    #+END_SRC
+
+   There is the intresting outlook of [[https://github.com/hrehfeld/emacs-smart-hungry-delete/issues][smart-hungry-delete]] which has'nt
+   yet made to *MELPA* stable.
 
    #+BEGIN_SRC emacs-lisp
     (require 'smart-hungry-delete)
     (smart-hungry-delete-add-default-hooks)
-    (global-set-key (kbd "S-<backspace>") 'smart-hungry-delete-backward-char)
-    (global-set-key (kbd "S-<delete>") 'smart-hungry-delete-forward-char)
+    (global-set-key (kbd "<backspace>") 'smart-hungry-delete-backward-char)
+    (global-set-key (kbd "<delete>") 'smart-hungry-delete-forward-char)
    #+END_SRC
 
    Of course emacs can add newline at *End Of File* just to make sure
