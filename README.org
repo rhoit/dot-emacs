@@ -10,8 +10,9 @@ the :fire: _harm_ :fire: cause by using this config :bangbang:
 
 *MAKE SURE YOU HAVE THE BACKUP* :monkey:
 
-*BEWARE:* AUTHOR does'nt know much *elisp*, so it doesn't work out of
-the box, some section need manually interventions.
+*BEWARE:* AUTHOR does'nt know much *elisp* and suffer from
+parenthesiophobia, but couldn't stop tinker around.
+
 
 * INTRO
 
@@ -44,7 +45,9 @@ the box, some section need manually interventions.
 
 ** getting it
 
-   oh! you wanna get my config! its super duper +easy+!
+   oh! you wanna get my config! its super duper +easy+! may be in
+   future I'm still +trying+ avoiding things just trying to get my
+   work done, so may not work out of the box.
 
    #+BEGIN_EXAMPLE
      $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
@@ -82,6 +85,19 @@ the box, some section need manually interventions.
    #+END_EXAMPLE
 
 * CORE
+** emacs garbage collector
+
+   based on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] post.
+
+   I hoped this works but, haven't seen much difference, but if chrome
+   just eats entire 4 GB of RAM :rage1: for no reason why not emacs,
+   FYI your java based IDE will just eat up more than *200 Mb* to
+   start.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq gc-cons-threshold (* 100 1024 1024))
+   #+END_SRC
+
 ** benchmarking
 
    install benchmark-init from el-get and put below code top of your
@@ -102,19 +118,6 @@ the box, some section need manually interventions.
    #+BEGIN_EXAMPLE
      M-x emacs-init-time
    #+END_EXAMPLE
-
-** emacs garbage collector
-
-   based on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] post.
-
-   I hoped this works but, haven't seen much difference, but if chrome
-   just eats entire 4 GB of RAM :rage1: for no reason why not emacs,
-   FYI your java based IDE will just eat up more than *200 Mb* to
-   start.
-
-   #+BEGIN_SRC emacs-lisp
-     (setq gc-cons-threshold (* 100 1024 1024))
-   #+END_SRC
 
 ** emacs server
 
@@ -235,12 +238,15 @@ the box, some section need manually interventions.
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
 
-  I'm baffled when people come up with config full keybinding, and for
-  each mode they add another. And mode to manage those binding. I'm
-  one of those who can't remember all those fancy keyboard *kungfu*.
-  And why do they generalize everyone uses same key layout and so call
-  most efficient *vi* binding, just locks me inside without the exit
-  door!
+  Emacs is often sarcastic called an OS, but its more of scratchpad
+  for *elisp*, with has been mistaken for the editor. Just 30+ years
+  focussed on editing features accumulation with barely any attention
+  to GUI, I'm baffled when people come up with config full keybinding,
+  and for each mode they add another. And mode to manage those
+  binding. I'm one of those who can't remember all those fancy
+  keyboard *kungfu*.  And why do they generalize everyone uses same
+  key layout and so call most efficient *vi* binding, just locks me
+  inside without the exit door!
 
   #+BEGIN_SRC emacs-lisp
     (load "~/.emacs.d/config/ui.cfg.el")
@@ -258,6 +264,7 @@ the box, some section need manually interventions.
      (tool-bar-mode 0)
      (menu-bar-mode 0)
      (scroll-bar-mode 0)
+
      (defun toggle-bars-view()
        (interactive)
        (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
@@ -307,8 +314,8 @@ the box, some section need manually interventions.
 
 ** undotree
 
-   *simplely* :see_no_evil: :hear_no_evil: :speak_no_evil:
-   addition to the emacs bindings these few thing must have thing.
+   *simply* :see_no_evil: :hear_no_evil: :speak_no_evil: addition to
+   the emacs bindings these few thing must have thing.
 
    #+begin_src emacs-lisp
      (el-get 'sync 'undo-tree)
@@ -527,9 +534,9 @@ the box, some section need manually interventions.
      (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
    #+END_SRC
 
-** anzu
+** search
 
-   Highlight all search matches, most of the text editor does this
+   *anzu* Highlight all search matches, most of the text editor does this
    why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
 
    #+BEGIN_SRC emacs-lisp
@@ -779,7 +786,6 @@ the box, some section need manually interventions.
    #+BEGIN_SRC emacs-lisp
      ;; (setq require-final-newline t)
    #+END_SRC
-
 
 ** indentation
 
