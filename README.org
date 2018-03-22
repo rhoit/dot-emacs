@@ -603,7 +603,11 @@ parenthesiophobia, but couldn't stop tinker around.
       (el-get 'sync 'multiple-cursors)
       (when window-system
         (require 'multiple-cursors)
-        (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
+        (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+
+        (global-set-key (kbd "C-S-<mouse-4>") 'mc/mark-previous-like-this)
+        (global-set-key (kbd "C-S-<mouse-5>") 'mc/mark-next-like-this)
+        (global-set-key (kbd "C-S-<mouse-2>") 'mc/mark-all-like-this))
     #+end_src
 
 ** goto-last-change
