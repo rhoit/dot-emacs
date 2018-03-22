@@ -140,6 +140,57 @@
      (setq inhibit-splash-screen t)
    #+END_SRC
 
+** tabbar
+
+   [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]] is something familiar to modern 🍭 GUI system, there is
+   still the gap, like key-bindings, close buttons and icons which is
+   which [[https://github.com/mattfidler/tabbar-ruler.el][tabbar-ruler]] tries to address.
+
+   #+ATTR_HTML: title="tabbar-screenshot"
+   [[https://github.com/mattfidler/tabbar-ruler.el][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'tabbar)
+     (tabbar-mode t)
+
+     (setq FILE-tabbar "~/.emacs.d/00-tests/tabbar-ruler/tabbar-ruler.el")
+     (if (file-exists-p FILE-tabbar)
+       (load-file FILE-tabbar)
+       (require 'tabbar-ruler))
+
+     (setq tabbar-ruler-style 'firefox)
+
+     (load "~/.emacs.d/cfg.tabbar.el")
+     (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
+   #+END_SRC
+
+   #+BEGIN_HTML
+     <p><code>scroll-right</code> and <code>scroll-right</code> seems
+     to be strange for beginner and for me too, if you don't believe
+     me try <kbd>C</kbd>-<kbd>PgUp</kbd> and
+     <kbd>C</kbd>-<kbd>PgUp</kbd> in vanilla 🍦 <b>emacs</b>, put it
+     to the good use <code>tab-forward</code> and
+     <code>tab-backward</code></p>
+   #+END_HTML
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (global-unset-key [(control prior)])  ; unbind (scroll-right)
+     (global-unset-key [(control next)])   ; unbind (scroll-left)
+
+     (define-key global-map [(control next)] 'tabbar-forward)
+     (define-key global-map [(control prior)] 'tabbar-backward)
+   #+END_SRC
+
+   Binding for the tab groups, some how I use lots of buffers.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key [(control shift prior)] 'tabbar-backward-group)
+     (global-set-key [(control shift next)] 'tabbar-forward-group)
+   #+END_SRC
+
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
 
    I prefer speedbar outside the frame, for without separate frame see
