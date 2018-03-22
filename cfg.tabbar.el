@@ -2,7 +2,7 @@
 ;; tabbar configs
 
 ;;----------------------------------------------------------------------
-;; tabbar rular
+;; tabbar ruler
 ;; https://github.com/mattfidler/tabbar-ruler.el
 (setq tabbar-buffer-groups-function
       (lambda ()
