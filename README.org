@@ -246,7 +246,7 @@ using this config :bangbang:
   these editor, even without touching :mouse2: pointing device, but
   really does it really need to be like this.
 
-  Fundamentally *emacs* is more over a scratchpad for *elisp*, with
+  Fundamentally *emacs* is more over a scratchpad for *elisp*, which
   has been mistaken for the editor. Just 30+ years focussed on editing
   features accumulation with barely any attention to GUI, I'm baffled
   when people come up with config full keybinding, and for each mode
@@ -261,11 +261,25 @@ using this config :bangbang:
 
 ** window
 
+   #+BEGIN_HTML
+     GNU Emacs has built-in support for fullscreen since version
+     24.4. New commands <code>toggle-frame-fullscreen</code> and
+     <code>toggle-frame-maximized</code>, bound to <kbd>F11</kbd> and
+     <kbd>M</kbd>-<kbd>f10</kbd>, respectively. But most window
+     manager in <b>linux</b> toggle's windows fullscreen with M-f11>,
+   #+END_HTML
+
    #+BEGIN_SRC emacs-lisp
+     ;; lets reserve it for something i.e realgud
+     (global-unset-key [f11])
+
      ;;; Window Size
      (add-to-list 'default-frame-alist '(height . 39))
      (add-to-list 'default-frame-alist '(width . 104))
    #+END_SRC
+
+   Its kinda distracting having toolbar, menu bar around, so lets hide
+   it and also set some handy key to toggle it.
 
    #+BEGIN_SRC emacs-lisp
      (tool-bar-mode 0)
@@ -295,14 +309,6 @@ using this config :bangbang:
      (global-set-key [(control d)] 'kill-buffer) ;; same as terminal
 
      (global-set-key [M-f4] 'save-buffers-kill-terminal)
-   #+END_SRC
-
-   these are kind of strange bindings for beginner and for me too, so
-   lets remove it
-
-   #+BEGIN_SRC emacs-lisp
-     (global-unset-key [(control prior)])
-     (global-unset-key [(control next)])
    #+END_SRC
 
    I find these binding quite handful.
@@ -352,7 +358,6 @@ using this config :bangbang:
     #+BEGIN_SRC emacs-lisp
       (delete-selection-mode 1)
     #+END_SRC
-
 
 *** changing font
 
@@ -484,6 +489,8 @@ using this config :bangbang:
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
 
+   Something from modern :lollipop: GUI system.
+
    #+ATTR_HTML: title="tabbar-screenshot"
    [[https://github.com/mattfidler/tabbar-ruler.el][file:https://raw.githubusercontent.com/rhoit/tabbar-ruler.el/dump/screenshots/01.png]]
 
@@ -508,9 +515,19 @@ using this config :bangbang:
      (global-unset-key (kbd "<C-down-mouse-1>"))
    #+END_SRC
 
-   bind them as modern :lollipop: GUI system.
+   #+BEGIN_HTML
+     <code>scroll-right</code> and <code>scroll-right</code> seems to
+     be strange for beginner and for me too, if you don't belive me
+     try <kbd>Ctrl</kbd>-<kbd>PgUp</kbd> and
+     <kbd>Ctrl</kbd>-<kbd>PgUp</kbd> in vanilla <b>emacs</b>, put it
+     to the good use <code>tab-forward</code> and
+     <code>tab-backword</code>
+   #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
+     (global-unset-key [(control prior)]) ;; default is set-to scroll-right
+     (global-unset-key [(control next)])  ;; default is set-to scroll-left
+
      (define-key global-map [(control next)] 'tabbar-forward)
      (define-key global-map [(control prior)] 'tabbar-backward)
    #+END_SRC
