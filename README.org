@@ -689,42 +689,37 @@ using this config :bangbang:
      (add-hook 'prog-mode-hook 'watch-words)
    #+END_SRC
 
-** [[https://github.com/nschum/highlight-symbol.el][highlight symbol]]
+*** [[https://github.com/nschum/highlight-symbol.el][highlight symbol]]
+
+    #+BEGIN_SRC emacs-lisp
+      (defun highlight-symbol-my-binds ()
+        (interactive)
+        (el-get 'sync 'highlight-symbol)
+        (require 'highlight-symbol)
+        (local-set-key [(control f3)] 'highlight-symbol-at-point)
+        (local-set-key [(shift f3)] 'highlight-symbol-next)
+        (local-set-key [(shift f2)] 'highlight-symbol-prev)
+
+        ;; by default its just for if tabbar config didn't run
+        (local-unset-key (kbd "<C-down-mouse-1>"))
+
+        (local-set-key (kbd "<C-down-mouse-1>") (lambda (event)
+          (interactive "e")
+          (save-excursion
+            (goto-char (posn-point (event-start event)))
+            (highlight-symbol-at-point)))))
+
+      (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
+    #+END_SRC
+
+** indentation
+
+   Sorry [[http://silicon-valley.wikia.com/wiki/Richard_Hendrix][Richard]] no tabs here!
 
    #+BEGIN_SRC emacs-lisp
-     (defun highlight-symbol-my-binds ()
-       (interactive)
-       (require 'highlight-symbol)
-       (local-set-key [(control f3)] 'highlight-symbol-at-point)
-       (local-set-key [(shift f3)] 'highlight-symbol-next)
-       (local-set-key [(shift f2)] 'highlight-symbol-prev)
-
-       (local-unset-key (kbd "<C-down-mouse-1>"))
-       (local-set-key (kbd "<C-down-mouse-1>") (lambda (event)
-         (interactive "e")
-         (save-excursion
-           (goto-char (posn-point (event-start event)))
-           (highlight-symbol-at-point)))))
-
-     (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
-   #+END_SRC
-
-** highlight-indentation
-
-   Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
-   compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
-   using the main repo now!
-
-   other color: "#aaeeba"
-
-   #+BEGIN_SRC emacs-lisp :tangle no
-     (el-get 'sync 'highlight-indentation)
-     (require 'highlight-indentation)
-     (set-face-background 'highlight-indentation-face "olive drab")
-     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-
-     (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-     (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+     (setq-default indent-tabs-mode nil)
+     (setq-default tab-width 4)
+     (setq tab-width 4)
    #+END_SRC
 
 *** [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]]
@@ -739,6 +734,26 @@ using this config :bangbang:
       (setq highlight-indent-guides-method 'character)
       (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
       (setq highlight-indent-guides-character ?\┊)
+    #+END_SRC
+
+*** highlight-indentation
+
+    *NOTE*: currently not using it
+
+    Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
+    compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
+    using the main repo now!
+
+    other color: "#aaeeba"
+
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (el-get 'sync 'highlight-indentation)
+      (require 'highlight-indentation)
+      (set-face-background 'highlight-indentation-face "olive drab")
+      (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
+      (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+      (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
     #+END_SRC
 
 ** white-spaces
@@ -788,16 +803,6 @@ using this config :bangbang:
 
    #+BEGIN_SRC emacs-lisp
      ;; (setq require-final-newline t)
-   #+END_SRC
-
-** indentation
-
-   Sorry [[http://silicon-valley.wikia.com/wiki/Richard_Hendrix][Richard]] no tabs here!
-
-   #+BEGIN_SRC emacs-lisp
-     (setq-default indent-tabs-mode nil)
-     (setq-default tab-width 4)
-     (setq tab-width 4)
    #+END_SRC
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][complie]]
