@@ -922,6 +922,26 @@ using this config :bangbang:
      ;; (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
    #+end_src
 
+** [[https://github.com/bbatsov/projectile][projectile]]
+
+   #+BEGIN_HTML
+     If your source consist of hundreds of line then don't be like me
+     use projectile mode.
+
+     ya <kbd>C</kbd>-<kbd>S</kbd>-<kbd>p</kbd> for select line
+     previous, just get along with it, have you tried it in
+     <b>chrome</b>, <b>sublime</b>, <b>vscode</b>?
+
+     and don't forget the <code>helm-projectile</code>.
+   #+END_HTML
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'projectile-mode-hook
+         (lambda()
+             (helm-projectile-on)
+             (global-set-key (kbd "C-S-p") 'helm-projectile-find-file)))
+   #+END_SRC
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
