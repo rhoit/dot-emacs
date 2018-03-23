@@ -5,13 +5,13 @@
 #+OPTIONS: num:t
 #+STARTUP: overview
 
-*DISCLAIMER:* :warning: AUTHOR will _not_ be _responsible_ for
-the :fire: _harm_ :fire: cause by using this config :bangbang:
+*DISCLAIMER:* :monkey: MAKE SURE YOU HAVE THE BACKUP :warning: AUTHOR
+will _not_ be _responsible_ for the :fire: _harm_ :fire: cause by
+using this config :bangbang:
 
-*MAKE SURE YOU HAVE THE BACKUP* :monkey:
 
 *BEWARE:* AUTHOR does'nt know much *elisp* and suffer from
-parenthesiophobia, but couldn't stop tinker around.
+*parenthesiophobia*, but couldn't stop tinker around.
 
 
 * INTRO
@@ -664,6 +664,9 @@ parenthesiophobia, but couldn't stop tinker around.
     (add-hook 'prog-mode-hook 'subword-mode) ;; camelCase is subword
     (add-hook 'prog-mode-hook 'which-function-mode)
     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+
+    ;; default comment string
+    (setq-default comment-start "# ")
   #+END_SRC
 
 ** match parenthesis
@@ -672,12 +675,6 @@ parenthesiophobia, but couldn't stop tinker around.
     (setq show-paren-style 'expression)
     ;; (setq show-paren-match '((t (:inverse-video t)))) ;; this is not working using custom set face
     (show-paren-mode 1)
-   #+END_SRC
-
-** default comment string
-
-   #+BEGIN_SRC emacs-lisp
-     (setq-default comment-start "# ")
    #+END_SRC
 
 ** watch word
@@ -712,23 +709,23 @@ parenthesiophobia, but couldn't stop tinker around.
      (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
    #+END_SRC
 
-*** highlight-indentation
+** highlight-indentation
 
-    Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
-    compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
-    using the main repo now!
+   Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
+   compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
+   using the main repo now!
 
-    other color: "#aaeeba"
+   other color: "#aaeeba"
 
-    #+BEGIN_SRC emacs-lisp :tangle no
-      (el-get 'sync 'highlight-indentation)
-      (require 'highlight-indentation)
-      (set-face-background 'highlight-indentation-face "olive drab")
-      (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (el-get 'sync 'highlight-indentation)
+     (require 'highlight-indentation)
+     (set-face-background 'highlight-indentation-face "olive drab")
+     (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
 
-      (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-      (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
-    #+END_SRC
+     (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+     (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+   #+END_SRC
 
 *** [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]]
 
