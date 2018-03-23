@@ -4,13 +4,13 @@
 ;;----------------------------------------------------------------------
 ;; tabbar ruler
 ;; https://github.com/mattfidler/tabbar-ruler.el
-(setq tabbar-buffer-groups-function
-      (lambda ()
+(setq tabbar-buffer-groups-function (lambda ()
 	(list (cond
-	       ((string-match ".*magit.*" (buffer-name)) "Magit Buffers")
-	       ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs Buffers")
+	       ((string-match ".*magit.*" (buffer-name)) "magit Buffers")
+	       ((string-match "*pdb.*" (buffer-name)) "pdb Buffers")
+	       ((string-match "*helm.*" (buffer-name)) "helm Buffers")
+	       ((string-equal "*" (substring (buffer-name) 0 1)) "emacs Buffers")
 	       ((eq major-mode 'dired-mode) "Dired")
-	       ((eq major-mode 'compilation-mode) "Compilation")
 	       (t "User Buffers")
 	       ))))
 
