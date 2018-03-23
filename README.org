@@ -228,6 +228,19 @@
    #+END_SRC
 
 * UX
+
+  Fundamentally *emacs* is more of an *elisp* scratchpad, which has
+  been mistaken for a 📝 *text-editor*. Just 30+ years of focus on
+  features accumulation with barely any attention to ✨ UI/UX. I can
+  understand the lack of mouse 🖱️ use when it started, but still, it
+  has been so reluctant to changes!
+
+  I'm baffled when people come up with ⌨️ keybinding for each mode and
+  mode to manage them again with keybindings. I'm one of those who
+  can't remember all those fancy keyboard *kungfu*. And why do they
+  generalize everyone uses same key layout and so call most efficient
+  *vi* binding, just 🔒 locks me inside without the exit🚪!
+
 ** yes-or-no
 
    yup thing are annoying 😤 here! avoid typing complete 'yes' and
