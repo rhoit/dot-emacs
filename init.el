@@ -40,7 +40,8 @@
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
-    ((eval outline-hide-sublevels 1)
+    ((eval projectile-mode t)
+     (eval outline-hide-sublevels 1)
      (lisp-mode . t)
      (eval server-force-delete)))))
 
