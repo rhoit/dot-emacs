@@ -237,15 +237,22 @@ using this config :bangbang:
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
 
-  Emacs is often sarcastic called an OS, but its more of scratchpad
-  for *elisp*, with has been mistaken for the editor. Just 30+ years
-  focussed on editing features accumulation with barely any attention
-  to GUI, I'm baffled when people come up with config full keybinding,
-  and for each mode they add another. And mode to manage those
-  binding. I'm one of those who can't remember all those fancy
-  keyboard *kungfu*.  And why do they generalize everyone uses same
-  key layout and so call most efficient *vi* binding, just locks me
-  inside without the exit door!
+  As of today, most people who use *vi* or *emacs* are [[https://github.com/fuqcool/atom-emacs-mode#deprecated][incapable]] of
+  using the other editor without using curse words :rage1:. Not
+  suprizinly normal people without prior knowledge any text editor are
+  pretty comfortable even *windows* notepad make much more sense than
+  *emacs* or *vi*. Yes you can pretty much do any *text foo* with
+  these editor, even without touching :mouse2: pointing device, but
+  really does it really need to be like this.
+
+  Fundamentally *emacs* is more over a scratchpad for *elisp*, with
+  has been mistaken for the editor. Just 30+ years focussed on editing
+  features accumulation with barely any attention to GUI, I'm baffled
+  when people come up with config full keybinding, and for each mode
+  they add another. And mode to manage those binding. I'm one of those
+  who can't remember all those fancy keyboard *kungfu*.  And why do
+  they generalize everyone uses same key layout and so call most
+  efficient *vi* binding, just locks me inside without the exit door!
 
   #+BEGIN_SRC emacs-lisp
     (load "~/.emacs.d/config/ui.cfg.el")
