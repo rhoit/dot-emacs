@@ -38,6 +38,20 @@
    *code*. To =org= organize was most sane thing till now
    [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-bable-tangle).
 
+** getting-it
+
+   🧨 *DISCLAIMER:* 🐒 MAKE SURE YOU HAVE THE BACKUP ⚠️ AUTHOR will
+   _not_ be _responsible_ for the 🔥 _harm_ 🔥 cause by using this
+   configuration.
+
+   Oh! you wanna use my config! its super duper +easy+ ! may be in
+   future I'm still +trying+ avoiding make the installer (literally
+   don't know how) and just trying to get by my work.
+
+   #+BEGIN_EXAMPLE
+     $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
+   #+END_EXAMPLE
+
 ** structure
 
    #+BEGIN_EXAMPLE
