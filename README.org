@@ -146,6 +146,19 @@
     explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
 * UI
+
+  As of today, most people who use *vi* or *emacs* are [[https://github.com/fuqcool/atom-emacs-mode#deprecated][incapable]] of
+  using the other editor without using curse words 😡. Not
+  surprisingly normal people without prior knowledge any text editor
+  are pretty comfortable even 🪟 *notepad* make much more sense than
+  *emacs* or *vi*. Yes you can pretty much do any *text foo* with
+  these editor, even without touching 🐁 pointing device, but really
+  does it really need to be like this.
+
+  #+BEGIN_SRC emacs-lisp
+    (load "~/.emacs.d/config/ui.cfg.el")
+  #+END_SRC
+
 ** initial-screen
 
    #+HEADER: :results silent
