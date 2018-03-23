@@ -897,6 +897,29 @@ parenthesiophobia, but couldn't stop tinker around.
      ;; (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
    #+end_src
 
+** debugger
+
+   Although I barely use *debugger*, lets say I'm more of =print()=
+   person, may be because I work much with =python= than
+   =C=. Nevertheless, a good IDE should have debugger, but emacs is
+   +TextEditor+ OS, and ships with *Grand Unified Debugger* (GUD), its
+   faily usable with terrible defaults and not to mention with more
+   key bindings.
+
+   #+BEGIN_SRC emacs-lisp
+     ;; unlike gdb, pdb is a inbuilt python module
+     (setq gud-pdb-command-name "python -m pdb")
+   #+END_SRC
+
+   GUD is great but [[https://github.com/realgud/realgud/][realgud]] much better, although you will miss
+   *gdb-multiple-windows* but it does'nt work with *pdb* to begin
+   with. If you ask why realgud here is some intresting [[https://github.com/realgud/realgud/blob/09431a4561921bece36a6083b6e27ac4dc82432d/realgud.el#L36-L47][rant]] from its
+   developer.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq realgud:pdb-command-name "python -m pdb")
+   #+END_SRC
+
 * [[http://orgmode.org/org.html][org-mode]]
 
   This might be one of the most important modes of emacs which make
@@ -1073,17 +1096,6 @@ parenthesiophobia, but couldn't stop tinker around.
       ;; (require 'info-look)
     #+end_src
 
-*** pdb
-
-    #+begin_src emacs-lisp
-      ;; (setq pdb-path '/usr/lib/python2.4/pdb.py
-      ;; gud-pdb-command-name (symbol-name pdb-path))
-
-      ;; (defadvice pdb (before gud-query-cmdline activate) "Provide a
-      ;; better default command line when called interactively."
-      ;; (interactive (list (gud-query-cmdline pdb-path
-      ;; (file-name-nondirectory buffer-file-name)))))
-   #+end_src
 
 *** [[https://github.com/rhoit/py-exec][py execution]]
 
