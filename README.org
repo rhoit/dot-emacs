@@ -537,6 +537,32 @@
      ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
    #+END_SRC
 
+** projectile
+
+   If your source consist of hundreds of line then don't be like me
+   use [[https://github.com/bbatsov/projectile][projectile]] mode like [[https://github.com/krazedkrish][@krazedkrish]].
+
+   #+BEGIN_HTML
+     <p>ya <kbd>C</kbd>-<kbd>S</kbd>-<kbd>p</kbd> for select line
+     previous, just get along with it, have you tried it in
+     <b>chrome</b>, <b>sublime</b>, <b>vscode</b>? and don't forget
+     the <code>helm-projectile</code>.</p>
+   #+END_HTML
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'projectile)
+
+     (projectile-global-mode)
+
+     (add-hook
+      'projectile-mode-hook
+      (lambda()
+        (helm-projectile-on)
+        (global-set-key (kbd "C-S-p") 'helm-projectile-find-file)
+        (global-set-key (kbd "C-S-t") 'projectile-find-tag)
+        (global-set-key (kbd "C-S-g") 'helm-projectile-grep)))
+   #+END_SRC
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
