@@ -388,8 +388,14 @@ using this config :bangbang:
     #+BEGIN_SRC emacs-lisp
       (el-get 'sync 'expand-region)
       (require 'expand-region)
-      (global-set-key (kbd "S-SPC") 'er/expand-region)
-      (global-set-key (kbd "C-S-SPC") 'er/contract-region)
+
+      (global-set-key (kbd "C-S-SPC") 'er/expand-region)
+      (global-set-key (kbd "C-SPC") '(lambda()
+          "set-mark when nothing is selected"
+          (interactive)
+          (if (use-region-p)
+              (er/contract-region 1)
+              (call-interactively 'set-mark-command))))
     #+END_SRC
 
 ** drag
