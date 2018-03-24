@@ -5,11 +5,6 @@
 #+OPTIONS: num:t
 #+STARTUP: overview
 
-*DISCLAIMER:* :monkey: MAKE SURE YOU HAVE THE BACKUP :warning: AUTHOR
-will _not_ be _responsible_ for the :fire: _harm_ :fire: cause by
-using this config :bangbang:
-
-
 *BEWARE:* AUTHOR does'nt know much *elisp* and suffer from
 *parenthesiophobia*, but couldn't stop tinker around.
 
@@ -44,6 +39,10 @@ using this config :bangbang:
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
 ** getting it
+
+   *DISCLAIMER:* :monkey: MAKE SURE YOU HAVE THE BACKUP :warning:
+   AUTHOR will _not_ be _responsible_ for the :fire: _harm_ :fire:
+   cause by using this config :bangbang:
 
    oh! you wanna get my config! its super duper +easy+! may be in
    future I'm still +trying+ avoiding things just trying to get my
@@ -85,7 +84,7 @@ using this config :bangbang:
    #+END_EXAMPLE
 
 * CORE
-** emacs garbage collector
+** garbage collector
 
    based on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] post.
 
@@ -266,7 +265,8 @@ using this config :bangbang:
      24.4. New commands <code>toggle-frame-fullscreen</code> and
      <code>toggle-frame-maximized</code>, bound to <kbd>F11</kbd> and
      <kbd>M</kbd>-<kbd>f10</kbd>, respectively. But most window
-     manager in <b>linux</b> toggle's windows fullscreen with M-f11>,
+     manager in <b>linux</b> toggle's windows fullscreen with
+     <kbd>M</kbd>-<kbd>f11</kbd>.
    #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
@@ -362,8 +362,8 @@ using this config :bangbang:
 *** changing font
 
     Hotkey for *font dialog* is kinda absurd, that to for changing
-    font-face, although for resize has *Ctrl* *mouse-scroll* might be
-    sensible option.
+    font-face, although for resize has :mouse2: *Ctrl* *mouse-scroll*
+    might be sensible option.
 
     In the effort of not being weird *Shift* *mouse-primary-click* is
     used in region/text selection =mouse-save-then-kill=.
