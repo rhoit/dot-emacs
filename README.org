@@ -52,6 +52,15 @@
      $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
    #+END_EXAMPLE
 
+** why this config?
+
+   There is absolutely no reason to use with this config, it would be
+   like first time :swimmer: swimmer, who mostly likely drown with an
+   unnecessary amount of effort. Although I'm great at underwater so
+   to say some what athletic underachievers. Working is overrated, but
+   learning isn't. May be it started for maintances and note keeping,
+   now its more of rants taking over the code! :sunglasses:
+
 ** how to build
 
    =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
@@ -62,6 +71,9 @@
      $ make
      $ make install
    #+END_SRC
+
+   what about other system's, best of luck don't forget to ping me if
+   you did it!
 
 ** structure
 
