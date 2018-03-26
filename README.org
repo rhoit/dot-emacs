@@ -52,6 +52,45 @@
      $ git clone https://github.com/rhoit/dot-emacs /path/to/dot-emacs
    #+END_EXAMPLE
 
+** why this config?
+
+   There is absolutely no reason for you to use this config, it would
+   be like first time :swimmer: swimmer, who mostly likely drown with
+   an unnecessary amount of effort. Although I'm great at underwater
+   so to say some what athletic *underachievers*.
+
+   Time and time again I learned *elisp* just to forget, endless
+   pondering and compromises, without out jotting things down, it
+   would be impossible to handle *emacs*. May be this started for
+   maintenance, now its more of rants taking over the config! 😎
+
+   If you ask, would I have started with other's config? I would
+   definitely say *YES*. But you should *understand* all-in-one
+   package emacs kit or distribution are like bringing 🔫 to the fist
+   fight. You might just use less than 5% of the bloat if you want to
+   change anything it pain of pealing though layers after layers to
+   find the actual problem. Yet you might want to try these first
+
+   - [[https://github.com/hlissner/doom-emacs][Doom Emacs]]
+   - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]
+   - [[https://github.com/seagle0128/.emacs.d][Centaur Emacs]]
+   - [[https://github.com/ergoemacs/ergoemacs-mode][ergoemacs-mode]]
+   - [[https://github.com/rdallasgray/graphene][Graphene]]
+   - [[https://github.com/magnars/.emacs.d][magnars emacs.d]]
+   - [[https://github.com/bodil/ohai-emacs][ohai-emacs]]
+   - [[https://github.com/bbatsov/prelude][Prelude]]
+   - [[https://github.com/raxod502/radian][Radian]]
+   - [[https://github.com/purcell/emacs.d][purcell emacs.d]]
+
+   And there configurations too.
+
+   - [[https://github.com/mattduck/dotfiles/blob/master/emacs.d.symlink/init.org][mattduck]]
+   - [[https://github.com/DiegoVicen/my-emacs][DiegoVicen]]
+   - [[https://github.com/stardiviner/emacs.d][stardiviner]]
+   - [[https://github.com/MatthewZMD/.emacs.d][M-EMACS]]
+   - [[https://github.com/farlado/dotemacs][Farlado’s Illiterate GNU Emacs]]
+   - [[https://blog.sumtypeofway.com/posts/emacs-config.html][Emacs is Agar for Brain Worms]]
+
 ** how to build
 
    =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
@@ -62,6 +101,9 @@
      $ make
      $ make install
    #+END_SRC
+
+   what about other system's, best of luck don't forget to ping me if
+   you did it!
 
 ** structure
 
