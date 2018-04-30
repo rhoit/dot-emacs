@@ -1251,8 +1251,12 @@
 
    Goodies for :whale: :whale: :whale:
 
+   *<2018-04-30>* dockerfile-mode seem to be missing =s= dependencies
+
    #+begin_src emacs-lisp
+     (el-get 'sync 's)
      (el-get 'sync 'dockerfile-mode)
+     (require 'dockerfile-mode)
      (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
    #+end_src
 
