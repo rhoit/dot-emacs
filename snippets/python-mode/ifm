@@ -1,4 +1,4 @@
-# name: if __name__ == '__main__': ...
+# name: ifmain
 # key: ifm
 # --
 if __name__ == '__main__':
