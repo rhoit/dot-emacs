@@ -662,10 +662,14 @@
         (C . t)
         (js . t)
         (python . t)
-        (sh . t)
+        (shell . t)
         (sql . t)
         ))
    #+END_SRC
+
+   - [2018-05-30 Wed]
+
+     26 is official again *sh* should be *shell*
 
    - [2018-01-04 Thu] sh mode
 
