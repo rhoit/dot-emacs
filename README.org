@@ -1056,12 +1056,13 @@
    the work around yet, so downgraded emacs from *26* -> *25*,
    couldn't track what was the last working snapshot.
 
+   *<2018-05-30>*: 26 is official again *sh* should be *shell*
    *<2018-01-04>*: seems like its *sh* again haven't fully tested
 
    #+BEGIN_SRC emacs-lisp
      (setq org-export-use-babel nil)
      (org-babel-do-load-languages 'org-babel-load-languages
-        '((sh . t)
+        '((shell . t)
          (python . t)))
    #+END_SRC
 
