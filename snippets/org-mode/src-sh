@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src-sh
+# key: sh
+# --
+
+#+HEADER: :results output :eval no-export
+#+BEGIN_SRC sh :exports both
+  $0
+#+END_SRC
