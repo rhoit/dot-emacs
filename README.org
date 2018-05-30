@@ -674,9 +674,14 @@
         (C . t)
         (js . t)
         (python . t)
+        (shell . t)
         (sql . t)
         ))
    #+END_SRC
+
+   - [2018-05-30 Wed]
+
+     v26 is official *sh* should be *shell*
 
 ** minor-mode
 
