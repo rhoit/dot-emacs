@@ -719,9 +719,13 @@
      (org-babel-do-load-languages
       'org-babel-load-languages
       '(
-        (sh . t)
+        (shell . t)
         (python . t)))
    #+END_SRC
+
+   - <2018-05-30>
+
+     26 is official again *sh* should be *shell*
 
    - <2018-01-04> sh mode
 
