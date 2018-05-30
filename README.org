@@ -316,8 +316,8 @@
      (global-unset-key [f11])
 
      ;;; Window Size
-     (add-to-list 'default-frame-alist '(height . 39))
-     (add-to-list 'default-frame-alist '(width . 104))
+     ;;(add-to-list 'default-frame-alist '(height . 39))
+     ;;(add-to-list 'default-frame-alist '(width . 104))
    #+END_SRC
 
    Its kinda distracting having toolbar, menu bar around, so lets hide
@@ -503,7 +503,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq inhibit-startup-message t
-       initial-major-mode 'fundamental-mode
+       ;; initial-major-mode 'fundamental-mode
        inhibit-splash-screen t)
    #+END_SRC
 
