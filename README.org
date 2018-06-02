@@ -305,10 +305,29 @@
 
 ** sane key bindings
 
-   Although emacs key binding are logical and well thought, but some
-   of them just too much out dated, but nothing weirdness new 2010 to
-   present laptop *fn-Up/Down* for *PageUp/Down* and no *del* key! now
-   no escape and function well done mac!
+   Although most of the *emacs* key binding are sill relevent till
+   this day. I can not stop to appreciation the *thought* and *design*
+   went on building it. But recent times things have escalated quickly
+   especially in laptop constantly changing the key layouts and All
+   thanks to *fn* key now there is one more meta key to offset.
+
+   It seem more of "think +different+ stupid" and other shouting
+   *stupidity is cool!*. And even seasoned *vi* users can't seems to
+   escape from it ever, well done mac!
+
+   #+BEGIN_VERSE
+     there is the *power* button near to backspace,
+     forcing you to type correctly or *power off* the machine!
+   #+END_VERSE
+
+   Not to mention missing *del* key, but some of them have decided del
+   should also do *backspace* although emacs its [[https://www.gnu.org/software/emacs/manual/html_node/emacs/DEL-Does-Not-Delete.html][confused]] and need our
+   help!
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; you might not need this
+     (normal-erase-is-backspace-mode 1)
+   #+END_SRC
 
    Beginners find *Ctrl+v* jump outlandish and sometime also for me.
 
