@@ -279,6 +279,25 @@
   generalize everyone uses same key layout and so call most efficient
   *vi* binding, just 🔒 locks me inside without the exit🚪!
 
+** oem
+
+   I don't understand why laptops 💻 OEM constantly change the key
+   layouts. But why perfectly good layout are replace by terrible
+   designs, Not to mention combining @@html:<kbd>@@ delete
+   @@html:</kbd>@@ and @@html:<kbd>@@ backspace @@html:</kbd>@@.
+
+   Some time you need to [[https://www.gnu.org/software/emacs/manual/html_node/emacs/DEL-Does-Not-Delete.html][explicitly]] say what to do.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;;; you might not need this
+     (normal-erase-is-backspace-mode 1)
+   #+END_SRC
+
+   It seem more of "think +different+ stupid" 🍎. And even seasoned
+   *vi* users can't seems to escape from it ever, (Esc is [[https://www.bbc.com/news/technology-50408649][back]]), and
+   copy 🐈 OEM does not know where to [[https://www.reddit.com/r/mildlyinfuriating/comments/by5fy4/backspace_and_delete_keys_next_to_power_button_on/][place]] *power* ⚡ button.
+
 ** yes-or-no
 
    yup thing are annoying 😤 here! avoid typing complete 'yes' and
