@@ -184,6 +184,23 @@
     To replicate a package set for another emacs installation is
     explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
+** troubleshooting
+
+   While troubleshooting I go though these procedure (may not be in
+   same ordering)
+
+   - hate myself when it happens
+   - *REMOVE* the damn plugin and *GET BACK TO WORK*
+   - *throw* ERROR MSG at google and try *catching* relevant pages
+   - may be waste few hrs with random *trials*
+   - set debug variable
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp :tangle no
+       (setq debug-on-error t)  ; modify with (toggle-debug-on-error)
+       ;; (setq debug-on-quit t)  ; C-g
+     #+END_SRC
+
 * UI
 
   As of today, most people who use *vi* or *emacs* are [[https://github.com/fuqcool/atom-emacs-mode#deprecated][incapable]] of
