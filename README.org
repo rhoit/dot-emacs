@@ -107,7 +107,11 @@
 
 ** structure
 
-   This is the way do keep my things!
+   #+BEGIN_EXAMPLE
+     Entropy is important but not here
+   #+END_EXAMPLE
+
+   This is the way, I keep my things have been same for many year now!
 
    #+BEGIN_EXAMPLE
      dot-emacs
@@ -125,6 +129,22 @@
          └── python-mode
    #+END_EXAMPLE
 
+** troubleshooting
+
+   While troubleshooting I go though these procedure (may not be in
+   same ordering)
+
+   - hate myself when it happens
+   - *REMOVE* the damn plugin and *GET BACK TO WORK*
+   - *throw* ERROR MSG at google and try *catching* relevant pages
+   - may be waste few hrs with random *trials*
+   - set debug variable
+
+     #+BEGIN_SRC emacs-lisp :tangle no
+       (setq debug-on-error 1)
+       (setq debug-on-quit t)  ;; C-g
+     #+END_SRC
+
 * CORE
 ** garbage collector
 
@@ -135,9 +155,13 @@
    FYI your java based IDE will just eat up more than *200 Mb* to
    start.
 
+   https://emacs.stackexchange.com/questions/34342/is-there-any-downside-to-setting-gc-cons-threshold-very-high-and-collecting-ga
+
    #+BEGIN_SRC emacs-lisp
      (setq gc-cons-threshold (* 100 1024 1024))
    #+END_SRC
+
+   <2018-03-26> finally understood why this wasn't working
 
 ** benchmarking
 
@@ -942,6 +966,9 @@
 
 ** rainbow delimiters
 
+   This mode is barely noticable at first glance but, if you live by
+   parenthesis it nice thing to have around.
+
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'rainbow-delimiters)
      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -949,7 +976,8 @@
 
 ** magit
 
-   its amazing but magit and yes its magic!
+   its amazing but magit and yes its magic! there is so much things it
+   which puts the other git tools in shame.
 
 ** [[https://github.com/bbatsov/projectile][projectile]]
 
@@ -1035,18 +1063,39 @@
   the emacs distinct from every other editor. You should definately
   checkout *org-mode*. Like the emacs config it has out grown.
 
-  removing pesky keybinds for consistency.
+** keybindings
 
-  #+BEGIN_SRC emacs-lisp
-    (add-hook 'org-mode-hook
-        '(lambda ()
-           (define-key org-mode-map (kbd "C-j") nil) ;; used for goto-last-change
-           (define-key org-mode-map (kbd "S-<up>") nil) ;; text selection
-           (define-key org-mode-map (kbd "S-<down>") nil) ;; text selection
-           (define-key org-mode-map (kbd "S-<left>") nil) ;; text selection
-           (define-key org-mode-map (kbd "S-<right>") nil) ;; text selection
-           ))
-  #+END_SRC
+   org-mode introduces to the different word and
+
+   all but one complain is its keybinding which throws the normal
+   convention out of the box (just bugging emacs hasn't be great on
+   defaults)
+
+   removing pesky keybinds for consistancy.
+   here is the map what I/normal user expect and reality.
+
+   TODO: to fill this up one day
+
+   |                   | normal       | emacs | org-mode |
+   |-------------------+--------------+-------+----------|
+   | S-<up>            | start-select |       |          |
+   | S-<down>          |              |       |          |
+   | S-<left>          |              |       |          |
+   | S-<right>         |              |       |          |
+   |                   |              |       |          |
+   | S-<tab>/<backtab> |              |       |          |
+
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'org-mode-hook
+         '(lambda ()
+            (define-key org-mode-map (kbd "C-j") nil) ;; used for goto-last-change
+            (define-key org-mode-map (kbd "S-<up>") nil) ;; text selection
+            (define-key org-mode-map (kbd "S-<down>") nil) ;; text selection
+            (define-key org-mode-map (kbd "S-<left>") nil) ;; text selection
+            (define-key org-mode-map (kbd "S-<right>") nil) ;; text selection
+            ))
+   #+END_SRC
 
 ** enable mouse
 
@@ -1316,6 +1365,8 @@
    #+END_SRC
 
 ** [[http://www.emacswiki.org/emacs/SortWords][sort words]]
+
+   yeah what happend here something broke!
 
 ** popup kill ring
 
