@@ -116,6 +116,22 @@
          └── python-mode
    #+END_EXAMPLE
 
+** troubleshooting
+
+   While troubleshooting I go though these procedure (may not be in
+   same ordering)
+
+   - hate myself when it happens
+   - *REMOVE* the damn plugin and *GET BACK TO WORK*
+   - *throw* ERROR MSG at google and try *catching* relevant pages
+   - may be waste few hrs with random *trials*
+   - set debug variable
+
+     #+BEGIN_SRC emacs-lisp :tangle no
+       (setq debug-on-error 1)
+       (setq debug-on-quit t)  ;; C-g
+     #+END_SRC
+
 * CORE
 ** server
 
