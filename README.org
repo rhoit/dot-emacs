@@ -809,6 +809,31 @@
          (local-set-key (kbd "C-<iso-lefttab>") 'outshine-cycle-buffer)))
    #+END_SRC
 
+** reveal.js
+
+   Making *power-point* is lame, and updating is the mess! there is
+   the thing call [[https://github.com/hakimel/reveal.js/][reveal.js ]] *The HTML Presentation Framework* which
+   lets you make *slides* in *browser but, its more of HTML than the
+   actual content, *org-reveal* take the next step generate the slides
+   from the org-file, isn't that neat!
+
+   #+BEGIN_SRC elisp
+     (el-get 'sync 'org-reveal)
+
+     ;; it breaks down some time
+     ;; (add-to-list 'load-path "~/.emacs.d/00testing/org-reveal/")
+     ;; (load-file "~/.emacs.d/00testing/org-reveal/org-reveal.el")
+     ;; (require 'ox-reveal)
+   #+END_SRC
+
+   - <2018-06-21 Thu>
+
+     [[https://github.com/yjwen/org-reveal][yjwen/org-reveal]] working again
+
+   - <2018-05-20 Sun>
+
+     [[https://github.com/yjwen/org-reveal][yjwen/org-reveal]] isn't working anymore
+
 * MODES
 ** C/C++
 
