@@ -756,6 +756,20 @@
          (local-set-key (kbd "C-<iso-lefttab>") 'outshine-cycle-buffer)))
    #+END_SRC
 
+** export
+*** reveal.js
+
+    Making *power-point* is lame, and updating is the mess! there is
+    the thing call [[https://github.com/hakimel/reveal.js/][reveal.js ]] *The HTML Presentation Framework* which
+    lets you make *slides* in *browser but, its more of HTML than the
+    actual content, *org-reveal* take the next step generate the slides
+    from the org-file, isn't that neat!
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (el-get 'sync 'org-reveal)
+    #+END_SRC
+
 * MODES
 ** c-lang
 
