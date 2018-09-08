@@ -231,7 +231,7 @@
 ** who writes ~10k lines in single file?
 
    Warn when opening files bigger than 1 MiB. yup emacs kitchen sink
-   can open image, pdf but seriously? in emacs...
+   can open image, PDF but seriously? in emacs...
 
    #+BEGIN_SRC emacs-lisp
      (setq large-file-warning-threshold 1048576)
@@ -312,7 +312,7 @@
   really does it really need to be like this.
 
   Fundamentally *emacs* is more over a scratchpad for *elisp*, which
-  has been mistaken for the editor. Just 30+ years focussed on editing
+  has been mistaken for the editor. Just 30+ years focused on editing
   features accumulation with barely any attention to GUI, I'm baffled
   when people come up with config full keybinding, and for each mode
   they add another. And mode to manage those binding. I'm one of those
@@ -327,11 +327,11 @@
 ** window
 
    #+BEGIN_HTML
-     GNU Emacs has built-in support for fullscreen since version
+     GNU Emacs has built-in support for full-screen since version
      24.4. New commands <code>toggle-frame-fullscreen</code> and
      <code>toggle-frame-maximized</code>, bound to <kbd>F11</kbd> and
      <kbd>M</kbd>-<kbd>f10</kbd>, respectively. But most window
-     manager in <b>linux</b> toggle's windows fullscreen with
+     manager in <b>linux</b> toggle's windows full-screen with
      <kbd>M</kbd>-<kbd>f11</kbd>.
    #+END_HTML
 
@@ -361,7 +361,7 @@
 
 ** sane key bindings
 
-   Although most of the *emacs* key binding are sill relevent till
+   Although most of the *emacs* key binding are sill relevant till
    this day. I can not stop to appreciation the *thought* and *design*
    went on building it. But recent times things have escalated quickly
    especially in laptop constantly changing the key layouts and All
@@ -430,14 +430,14 @@
 
 ** text selection
 
-   Some of the default behavious of emacs :shit: weird, text selection
+   Some of the default behaviors of emacs :shit: weird, text selection
    is on of them, some time its the *WOW* moment and other time its
    *WTF*.
 
 *** replace selected text
 
     This is weird one when you expect selected text to be replaced,
-    you end up in mess, thankfully there is the inbuild mode to fix
+    you end up in mess, thankfully there is the in-build mode to fix
     this.
 
     #+BEGIN_SRC emacs-lisp
@@ -496,7 +496,7 @@
    was saved by [[https://github.com/rejeep/drag-stuff.el][drag-stuff]].
 
    *<M-right/left>* bind seems redundant with *<C-right/left>* also it
-   doesn't work in terminal, replacing it hopefull will not create any
+   doesn't work in terminal, replacing it hopefully will not create any
    problem.
 
    *BEWARE*: it breaks the *org-mode* don't enable it in org!
@@ -527,7 +527,7 @@
 
 ** line-number
 
-   Choosing differnt [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over 5 years, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
+   Choosing different [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over 5 years, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
    config actually got it right on that looks great, but *linum* give
    lots of flicker, now experimenting with *nlinum*.
 
@@ -542,7 +542,7 @@
      (add-hook 'org-mode-hook 'nlinum-mode)
    #+END_SRC
 
-** inital screen
+** initial screen
 
    #+BEGIN_SRC emacs-lisp
      (setq inhibit-startup-message t
@@ -608,7 +608,7 @@
 
    #+BEGIN_HTML
      <code>scroll-right</code> and <code>scroll-right</code> seems to
-     be strange for beginner and for me too, if you don't belive me
+     be strange for beginner and for me too, if you don't believe me
      try <kbd>Ctrl</kbd>-<kbd>PgUp</kbd> and
      <kbd>Ctrl</kbd>-<kbd>PgUp</kbd> in vanilla <b>emacs</b>, put it
      to the good use <code>tab-forward</code> and
@@ -632,9 +632,9 @@
 
 ** mini-buffer
 
-   Although [[https://github.com/emacs-helm/helm][helm]] has coffer full with features, I havn't gone beyond
+   Although [[https://github.com/emacs-helm/helm][helm]] has coffer full with features, I haven't gone beyond
    the minibuffer. It took me while to get hang of helm, one of
-   reasons might be constant flikering creation of helm temporary
+   reasons might be constant flickering creation of helm temporary
    popup windows which I don't like.
 
    #+BEGIN_SRC emacs-lisp
@@ -727,7 +727,7 @@
    mini-map/ which is over rated, this is what you need.
 
    If you aren't using el-get here is the [[https://raw.github.com/emacsmirror/emacswiki.org/master/goto-last-change.el][source]], guessing it its
-   avaliable in all major repository by now.
+   available in all major repository by now.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'goto-chg)
@@ -749,7 +749,7 @@
 
 ** [[https://github.com/mina86/auto-dim-other-buffers.el][auto-dim-other-buffer]]
 
-   package is only avaliable in MELPA
+   package is only available in MELPA
 
    #+BEGIN_SRC emacs-lisp
      (when window-system
@@ -881,7 +881,7 @@
      Phenomenal Cosmic Powers! Itty Bitty trailing spaces!
    #+END_EXAMPLE
 
-   Seriously what kinda all crappy IDE's comming out.
+   Seriously what kinda all crappy IDE's coming out.
 
    #+BEGIN_SRC emacs-lisp
      (defun nuke_trailing ()
@@ -891,10 +891,10 @@
      (add-hook 'prog-mode-hook 'nuke_trailing)
    #+END_SRC
 
-   [[https://github.com/nflath/hungry-delete][hungry-delete]] mode is intresting but still its quirky, mapping it
+   [[https://github.com/nflath/hungry-delete][hungry-delete]] mode is interesting but still its quirky, mapping it
    to default *delete/backspace* will result typing your needed
    whitespaces back again! So as the mode its *NO, NO*. Manually
-   toggling the mode just to delete few continous white spaces. Naah!
+   toggling the mode just to delete few continuous white spaces. Naah!
 
     #+BEGIN_SRC emacs-lisp
       (el-get 'sync 'hungry-delete)
@@ -902,7 +902,7 @@
       (global-set-key (kbd "S-<backspace>") 'hungry-delete-backward)
     #+END_SRC
 
-   There is the intresting outlook of [[https://github.com/hrehfeld/emacs-smart-hungry-delete/issues][smart-hungry-delete]] which has'nt
+   There is the interesting outlook of [[https://github.com/hrehfeld/emacs-smart-hungry-delete/issues][smart-hungry-delete]] which has'nt
    yet made to *MELPA* stable.
 
    #+BEGIN_SRC emacs-lisp
@@ -920,7 +920,7 @@
      ;; (setq require-final-newline t)
    #+END_SRC
 
-** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][complie]]
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][compile]]
 
    #+BEGIN_SRC emacs-lisp
      (load "~/.emacs.d/config/compile.cfg.el")
@@ -950,7 +950,7 @@
 ** ansi-color
 
    Need to fix 265-color support, has been such for a long
-   time, since we very few work on teminal colors it might
+   time, since we very few work on terminal colors it might
    not be fixed anytime sooner.
 
    This is what I meant [[https://camo.githubusercontent.com/67e508f03a93d4e9935e38ea201dff7cc32c0afd/68747470733a2f2f7261772e6769746875622e636f6d2f72686f69742f72686f69742e6769746875622e636f6d2f6d61737465722f73637265656e73686f74732f656d6163732d323536636f6c6f722e706e67][screenshot]] was produced using [[https://github.com/bekar/vt100_colors][code]].
@@ -966,7 +966,7 @@
 
 ** rainbow delimiters
 
-   This mode is barely noticable at first glance but, if you live by
+   This mode is barely noticeable at first glance but, if you live by
    parenthesis it nice thing to have around.
 
    #+BEGIN_SRC emacs-lisp
@@ -1005,7 +1005,7 @@
    person, may be because I work much with =python= than
    =C=. Nevertheless, a good IDE should have debugger, but emacs is
    +TextEditor+ OS, and ships with *Grand Unified Debugger* (GUD), its
-   faily usable with terrible defaults and not to mention with more
+   fairly usable with terrible defaults and not to mention with more
    key bindings.
 
    #+BEGIN_SRC emacs-lisp
@@ -1015,7 +1015,7 @@
 
    GUD is great but [[https://github.com/realgud/realgud/][realgud]] much better, although you will miss
    *gdb-multiple-windows* but it does'nt work with *pdb* to begin
-   with. If you ask why realgud here is some intresting [[https://github.com/realgud/realgud/blob/09431a4561921bece36a6083b6e27ac4dc82432d/realgud.el#L36-L47][rant]] from its
+   with. If you ask why realgud here is some interesting [[https://github.com/realgud/realgud/blob/09431a4561921bece36a6083b6e27ac4dc82432d/realgud.el#L36-L47][rant]] from its
    developer.
 
    #+BEGIN_SRC emacs-lisp
@@ -1060,7 +1060,7 @@
 * ORG-MODE
 
   This might be one of the most important modes of emacs which make
-  the emacs distinct from every other editor. You should definately
+  the emacs distinct from every other editor. You should definitely
   checkout *org-mode*. Like the emacs config it has out grown.
 
 ** keybindings
@@ -1071,7 +1071,7 @@
    convention out of the box (just bugging emacs hasn't be great on
    defaults)
 
-   removing pesky keybinds for consistancy.
+   removing pesky keybinds for consistency.
    here is the map what I/normal user expect and reality.
 
    TODO: to fill this up one day
@@ -1160,7 +1160,7 @@
    these awesome modes. Now we can use them minor-modes too inside
    comments.
 
-   org's *outline* with [[https://github.com/alphapapa/outshine][outshine]] extention.
+   org's *outline* with [[https://github.com/alphapapa/outshine][outshine]] extension.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'outshine)
@@ -1260,10 +1260,10 @@
 
     Yes! we work on *virtual environment (venv)*, and we do love to
     *source* them except some *anaconda* idiots, who can't seems to
-    get things strait espcially in *unix* systems.
+    get things strait especially in *unix* systems.
 
     In reality venv just switches executable, seriously loading *venv*
-    might be sane for *terminal* operation or runnig errands with
+    might be sane for *terminal* operation or running errands with
     *pip*. but for running just execute directly form
     =./venv/bin/python your.py=.
 
@@ -1342,7 +1342,7 @@
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][WORD PLAY]]
 
-  Word play consist of collection of nify scripts.
+  Word play consist of collection of nifty scripts.
 
   #+BEGIN_SRC emacs-lisp
     (load "~/.emacs.d/scripts/wordplay.el")
@@ -1352,7 +1352,7 @@
 
    Normally *C-a* will move your cursor to 0th column of the line,
    this snippet takes consideration of the indentation, and for
-   default behaviour repeate the action which will toggle between the
+   default behavior "repeat the action" which will toggle between the
    first non-whitespace character and the =bol=.
 
    #+BEGIN_SRC emacs-lisp
@@ -1391,7 +1391,7 @@
 
 ** [[http://www.emacswiki.org/emacs/SortWords][sort words]]
 
-   yeah what happend here something broke!
+   yeah what happened here something broke!
 
 ** popup kill ring
 
