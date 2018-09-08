@@ -416,6 +416,7 @@
    its *WTF*.
 
    #+BEGIN_SRC emacs-lisp
+     ;;; doing expected things
      (delete-selection-mode 1)
    #+END_SRC
 
@@ -699,10 +700,10 @@
 
    Yes! we work on *virtual environment (venv)*, and we do love to
    *source* them except some 🐍 *anaconda* idiots, who can't seems to
-   get things strait espcially in *unix* systems.
+   get things strait especially in *unix* systems.
 
    In reality venv just switches executable, seriously loading *venv*
-   might be sane for *terminal* operation or runnig errands with
+   might be sane for *terminal* operation or running errands with
    *pip*. but for running just execute directly form
    =./venv/bin/python your.py=.
 
@@ -896,7 +897,7 @@
 
    Normally *C-a* will move your cursor to 0th column of the line,
    this snippet takes consideration of the indentation, and for
-   default behaviour repeate the action which will toggle between the
+   default behavior "repeat the action" which will toggle between the
    first non-whitespace character and the =bol=.
 
    #+BEGIN_SRC emacs-lisp
