@@ -54,12 +54,21 @@
 
 ** why this config?
 
-   There is absolutely no reason to use this config, it would be like
-   first time :swimmer: swimmer, who mostly likely drown with an
-   unnecessary amount of effort. Although I'm great at underwater so
-   to say some what athletic underachievers. Working is overrated, but
-   learning isn't. May be it started for maintenance and note keeping,
-   now its more of rants taking over the code! :sunglasses:
+   There is absolutely no reason for you to use this config, it would
+   be like first time :swimmer: swimmer, who mostly likely drown with
+   an unnecessary amount of effort. Although I'm great at underwater
+   so to say some what athletic *underachievers*.
+
+   If you ask, would I have started with other's config? I would
+   definitely say *YES*. But you should *understand* complete emacs
+   configs are overrated, its just the little things that make
+   experience so great!
+
+   Time and time again I learned *elisp* just to forget, endless
+   pondering and compromises, without out jotting things down, it
+   would be impossible to handle emacs. May be this started for
+   maintenance, now its more of rants taking over the
+   config! :sunglasses:
 
 ** how to build
 
