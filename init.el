@@ -36,7 +36,10 @@
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
    (quote
-    (yasnippet nlinum)))
+    (yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal arduino-mode)))
+ '(projectile-globally-ignored-directories
+   (quote
+    (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors")))
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
