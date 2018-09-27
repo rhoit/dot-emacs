@@ -613,6 +613,14 @@
      ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
    #+END_SRC
 
+** git
+
+   *git* is amazing but [[https://github.com/magit][magit]] is magic 🪄!
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+   #+END_SRC
+
 ** projectile
 
    If your source consist of hundreds of line then don't be like me
