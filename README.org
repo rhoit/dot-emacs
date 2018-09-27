@@ -649,6 +649,17 @@
      (setq realgud:pdb-command-name "python -m pdb")
    #+END_SRC
 
+* GIT
+
+** magit
+
+   *git* is amazing but [[https://github.com/magit][magit]] is magic 🪄!
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+   #+END_SRC
+
 * WEB
 ** web-mode
 
