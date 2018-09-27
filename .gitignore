@@ -10,6 +10,7 @@ el-get/
 elpa/
 emojis/
 eshell/*
+history
 ido.last
 pydoc-info/*
 recentf
