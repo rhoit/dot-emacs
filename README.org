@@ -656,6 +656,16 @@
      ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
    #+END_SRC
 
+* GIT
+
+  #+BEGIN_QUOTE
+    git - the stupid content tracker (but necessary! 😂)
+  #+END_QUOTE
+
+** magit
+
+   *git* is amazing ❤️, but [[https://magit.vc][magit]] is magic 🪄!
+
 * WEB
 ** html
 
