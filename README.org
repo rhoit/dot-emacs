@@ -641,6 +641,21 @@
      ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
    #+END_SRC
 
+* GIT
+
+  #+BEGIN_QUOTE
+    git - the stupid content tracker
+  #+END_QUOTE
+
+** magit
+
+   *git* is amazing but [[https://github.com/magit][magit]] is magic 🪄!
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+   #+END_SRC
+
 * WEB
 ** web-mode
 
