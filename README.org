@@ -979,6 +979,10 @@
    its amazing but magit and yes its magic! there is so much things it
    which puts the other git tools in shame.
 
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+   #+END_SRC
+
 ** [[https://github.com/bbatsov/projectile][projectile]]
 
    #+BEGIN_HTML
