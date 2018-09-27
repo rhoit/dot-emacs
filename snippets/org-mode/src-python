@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: src-python
+# key: python
+# --
+
+#+HEADER: :python ${1:$$(yas-choose-value '("/usr/bin/python" "./venv/bin/python"))}
+#+HEADER: :exports both :eval no-export
+#+BEGIN_SRC python :results output
+  $0
+#+END_SRC
