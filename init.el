@@ -31,12 +31,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(android-mode-sdk-dir "/opt/android")
+ '(custom-safe-themes
+   (quote
+    ("68b7d8301bf8121abb8a92bbe7c247fbc3e64a0adfdda534daefd18f18c44a55" default)))
  '(grep-command "grep --exclude-dir={.git,venv,vendors} --color -nH -r -e ")
  '(inhibit-startup-screen t)
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal arduino-mode)))
+    (yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors")))
