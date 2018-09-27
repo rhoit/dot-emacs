@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: src
 # key: src
+# alternative use '>s TAB' https://orgmode.org/org.html#Easy-templates
 # --
 #+BEGIN_SRC ${1:language} :results output
   $0
