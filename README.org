@@ -410,23 +410,29 @@
                            (fci-mode)))
    #+END_SRC
 
-** undotree
 
-   *simply* :see_no_evil: :hear_no_evil: :speak_no_evil: addition to
-   the emacs bindings these few thing must have thing.
 
-   #+begin_src emacs-lisp
-     (el-get 'sync 'undo-tree)
-     (when window-system
-       (require 'undo-tree)
-       (global-undo-tree-mode 1)
-       (setq undo-tree-visualizer-timestamps t)
-       (global-unset-key (kbd "C-/"))
-       (defalias 'redo 'undo-tree-redo)
-       (global-unset-key (kbd "C-z"))
-       (global-set-key (kbd "C-z") 'undo-only)
-       (global-set-key (kbd "C-S-z") 'redo))
-   #+end_src
+** undo
+
+   =C-z= is synomous to undo not for emacs these, may be this is much
+   needed thing!
+
+   there is the great package =undo tree=, addition to being fancy it
+   it not realiable and bring you in misery. :disappointed_relieved:
+
+   *BEWARE*: It fancy but not reliable, decided not to use
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (el-get 'sync 'undo-tree)
+     ;; (require 'undo-tree)
+     ;; (global-undo-tree-mode 1)
+     ;; (setq undo-tree-visualizer-timestamps t)
+     (global-unset-key (kbd "C-/"))
+     ;; (defalias 'redo 'undo-tree-redo)
+     (global-unset-key (kbd "C-z"))
+     (global-set-key (kbd "C-z") 'undo-only)
+     (global-set-key (kbd "C-S-z") 'redo)
+   #+END_SRC
 
 ** text selection
 
