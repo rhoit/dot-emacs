@@ -339,22 +339,35 @@
    #+END_SRC
 
 ** undo
+
+   @@html:<kbd>@@Ctrl@@html:</kbd>@@-@@html:<kbd>@@z@@html:</kbd>@@ is
+   synonyms to undo not here because its [[https://en.wikipedia.org/wiki/Substitute_character][suspend]] to background in 🐚
+   shell, Since *emacs* traces it roots from the *terminal*.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;;; this is confusion
+     (global-unset-key (kbd "C-z")) ; unbind (suspend-frame)
+   #+END_SRC
+
 *** undo-tree
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
       (require 'undo-tree)
-
-      (setq undo-tree-visualizer-timestamps t)
+      (dim-minor-name 'undo-tree-mode "")
 
       (global-undo-tree-mode 1)
-      (global-unset-key (kbd "C-/"))
+      (setq undo-tree-visualizer-timestamps t)
 
-      (defalias 'redo 'undo-tree-redo)
-      (global-unset-key (kbd "C-z"))
+      ;; normal undo and redo
       (global-set-key (kbd "C-z") 'undo-only)
-      (global-set-key (kbd "C-S-z") 'redo)
+      (global-set-key (kbd "C-S-z") 'undo-tree-redo)
     #+END_SRC
+
+    - <2018-11-20 Tue> having reliability issue
+
+      not using
 
 ** search
 *** anzu
