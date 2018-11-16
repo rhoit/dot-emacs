@@ -993,7 +993,7 @@
 
    #+BEGIN_HTML
      If your source consist of hundreds of line then don't be like me
-     use projectile mode.
+     use projectile mode like [[https://github.com/krazedkrish][@krazedkrish]].
 
      ya <kbd>C</kbd>-<kbd>S</kbd>-<kbd>p</kbd> for select line
      previous, just get along with it, have you tried it in
@@ -1006,7 +1006,16 @@
      (add-hook 'projectile-mode-hook
          (lambda()
              (helm-projectile-on)
-             (global-set-key (kbd "C-S-p") 'helm-projectile-find-file)))
+             (global-set-key (kbd "C-S-p") 'helm-projectile-find-file)
+             (global-set-key (kbd "C-S-g") 'helm-projectile-grep)))
+   #+END_SRC
+
+   #+BEGIN_HTML
+     using helm-projectile-grep <kbd>C</kbd>-<kbd>S</kbd>-<kbd>g</kbd>
+     is great of if you want to search a single thing!
+
+     for more than one <kbd>M</kbd>-<kbd>x</kbd> projectile-grep
+   #+END_HTML
    #+END_SRC
 
 ** debugger
