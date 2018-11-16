@@ -1001,6 +1001,12 @@
       ;;(el-get 'sync 'magitub)
     #+end_src
 
+*** [[https://github.com/alphapapa/magit-todos][magit-todos]]
+
+    This package has been todo for far too long and stil is.
+    Avaliable in elpa doesn't work well with el-get.
+    Hopeing I don't have to do it manually.
+
 ** ggtags
 
    https://superuser.com/questions/579847/is-there-emacs-plugins-to-do-sublime-like-completion-and-goto-anything
