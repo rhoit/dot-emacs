@@ -1347,6 +1347,14 @@
      (add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
    #+END_SRC
 
+** php
+
+   things you have to do for living
+
+   #+BEGIN_SRC emacs-lisp :results output
+     (add-hook 'php-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+   #+END_SRC
+
 ** eww/xwidget
 
    eww "Emacs Web Wowser" is a web browser written entirely in
