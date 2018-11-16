@@ -733,6 +733,28 @@
 
      v26 is official *sh* should be *shell*
 
+** open-with-defaults
+
+   Its most 😞 disappointing when application opens doesn't open in
+   your favorite application, but org-mode has it covered 😭.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook
+      'org-mode-hook
+      '(lambda()
+         (setq org-file-apps
+               '((auto-mode . emacs)
+                 ("\\.jpg\\'" . "eog %s")
+                 ("\\.svg\\'" . "eog %s")
+                 ("\\.png\\'" . "eog %s")
+                 ("\\.gif\\'" . "eog %s")
+                 ("\\.mkv\\'" . "mplayer %s")
+                 ("\\.mp4\\'" . "vlc %s")
+                 ("\\.webm\\'" . "mplayer %s")
+                 ("\\.pdf\\'" . "evince %s")))))
+   #+END_SRC
+
 ** minor-mode
 
    *org-mode* can be addictive, someone have missed a lot and created
