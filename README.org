@@ -991,10 +991,10 @@
 
 ** [[https://github.com/bbatsov/projectile][projectile]]
 
-   #+BEGIN_HTML
-     If your source consist of hundreds of line then don't be like me
-     use projectile mode like [[https://github.com/krazedkrish][@krazedkrish]].
+   If your source consist of hundreds of line then don't be like me
+   use projectile mode like [[https://github.com/krazedkrish][@krazedkrish]].
 
+   #+BEGIN_HTML
      ya <kbd>C</kbd>-<kbd>S</kbd>-<kbd>p</kbd> for select line
      previous, just get along with it, have you tried it in
      <b>chrome</b>, <b>sublime</b>, <b>vscode</b>?
