@@ -816,6 +816,20 @@
                  ("\\.pdf\\'" . "evince %s")))))
    #+END_SRC
 
+** latex
+
+   based on
+   [[https://emacs.stackexchange.com/questions/3387/how-to-enlarge-latex-fragments-in-org-mode-at-the-same-time-as-the-buffer-text][zoom latex fragments relative to buffer text]]
+
+   #+BEGIN_SRC emacs-lisp
+     (defun update-org-latex-fragments ()
+       (org-toggle-latex-fragment '(16))
+       (plist-put org-format-latex-options :scale text-scale-mode-amount)
+       (org-toggle-latex-fragment '(16)))
+
+     (add-hook 'text-scale-mode-hook 'update-org-latex-fragments)
+   #+END_SRC
+
 ** minor-mode
 
    *org-mode* can be addictive, someone have missed a lot and created
