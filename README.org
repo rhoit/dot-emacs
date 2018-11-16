@@ -1165,6 +1165,7 @@
                   (setq org-file-apps
                         '((auto-mode . emacs)
                           ("\\.jpg\\'" . "eog %s")
+                          ("\\.svg\\'" . "ristretto %s")
                           ("\\.png\\'" . "eog %s")
                           ("\\.gif\\'" . "eog %s")
                           ("\\.mkv\\'" . "mplayer %s")
