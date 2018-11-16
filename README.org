@@ -1234,6 +1234,7 @@
    #+END_SRC
 
    *<2018-06-21>* [[https://github.com/yjwen/org-reveal][yjwen/org-reveal]] working again
+
    *<2018-05-20>* [[https://github.com/yjwen/org-reveal][yjwen/org-reveal]] isn't working anymore
 
 * modes
@@ -1314,7 +1315,6 @@
       ;; (require 'info-look)
     #+end_src
 
-
 *** [[https://github.com/rhoit/py-exec][py execution]]
 
     ess-style executing /python/ script.
@@ -1338,7 +1338,6 @@
      (el-get 'sync 'web-mode)
      (add-to-list 'auto-mode-alist '("\\.html?\\'"   . web-mode))
      (add-to-list 'auto-mode-alist '("\\.djhtml?\\'" . web-mode))
-     (add-to-list 'auto-mode-alist '("\\.js$"        . web-mode))
      (add-to-list 'auto-mode-alist '("\\.css$"       . web-mode))
 
      (setq web-mode-enable-block-face t)
