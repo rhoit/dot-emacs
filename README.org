@@ -324,6 +324,26 @@
     (load "~/.emacs.d/config/ui.cfg.el")
   #+END_SRC
 
+** switch theme
+
+   Worst part of switching theme by loading is active theme is one
+   disabled befor loading the new one! this trick was stolen from
+   [[https://github.com/thapakazi][@thapakazi]].
+
+   #+BEGIN_SRC emacs-lisp
+     (defun switch-theme (theme)
+      "Disables any currently active themes and loads THEME."
+      ;; This interactive call is taken from `load-theme'
+      (interactive
+      (list
+      (intern (completing-read "Load custom theme: "
+      (mapc 'symbol-name
+      (custom-available-themes))))))
+      (let ((enabled-themes custom-enabled-themes))
+      (mapc #'disable-theme custom-enabled-themes)
+      (load-theme theme t)))
+   #+END_SRC
+
 ** window
 
    #+BEGIN_HTML
