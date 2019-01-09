@@ -1446,17 +1446,28 @@
 
    yeah what happened here something broke!
 
-** popup kill ring
+** killing group
 
-   kill :skull: ring :ring:
+   don't belive me, emacs has it under same name for *Killing and
+   yanking commands* ya killing means cut! my be :sissors: were not
+   invented then!
 
-   Only enable for =Shift + <insert>=
+*** popup kill ring
 
-   #+begin_src emacs-lisp
-     (setq repetitive_yank_region_point 0) ;; 0 doesn't exist min is 1
-     (require 'popup-kill-ring)
-     (global-set-key [(shift insert)] 'repetitive-yanking)
-   #+END_SRC
+    kill :skull: ring :ring:
+
+    #+BEGIN_HTML
+      Only enable for <kbd>S</kbd>-<kbd>insert</kbd>, you might say
+      why that! if you don't know <kbd>C</kbd>-<kbd>c</kbd> and
+      <kbd>C</kbd>-<kbd>v</kbd> is not only *copy-paste* binding
+      available that too also works in other *OS*.
+    #+END_HTML
+
+    #+BEGIN_SRC emacs-lisp
+      (setq repetitive_yank_region_point 0) ;; 0 doesn't exist min is 1
+      (require 'popup-kill-ring)
+      (global-set-key [(shift insert)] 'repetitive-yanking)
+    #+END_SRC
 
 * TESTING
 
