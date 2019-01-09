@@ -635,10 +635,9 @@
    #+BEGIN_HTML
      <code>scroll-right</code> and <code>scroll-right</code> seems to
      be strange for beginner and for me too, if you don't believe me
-     try <kbd>Ctrl</kbd>-<kbd>PgUp</kbd> and
-     <kbd>Ctrl</kbd>-<kbd>PgUp</kbd> in vanilla <b>emacs</b>, put it
-     to the good use <code>tab-forward</code> and
-     <code>tab-backword</code>
+     try <kbd>C</kbd>-<kbd>PgUp</kbd> and <kbd>C</kbd>-<kbd>PgUp</kbd>
+     in vanilla <b>emacs</b>, put it to the good use
+     <code>tab-forward</code> and <code>tab-backward</code>
    #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
