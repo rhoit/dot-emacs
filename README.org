@@ -384,20 +384,22 @@
    Although most of the *emacs* key binding are sill relevant till
    this day. I can not stop to appreciation the *thought* and *design*
    went on building it. But recent times things have escalated quickly
-   especially in laptop constantly changing the key layouts and All
-   thanks to *fn* key now there is one more meta key to offset.
+   especially in laptops manufactures constantly changing the key
+   layouts and All thanks to *fn* key now there is one more meta key
+   to offset.
 
    It seem more of "think +different+ stupid" and other shouting
    *stupidity is cool!*. And even seasoned *vi* users can't seems to
-   escape from it ever, well done mac!
+   escape from it ever, well done :apple:!
 
    #+BEGIN_VERSE
      there is the *power* button near to backspace,
      forcing you to type correctly or *power off* the machine!
    #+END_VERSE
 
-   Not to mention missing *del* key, but some of them have decided del
-   should also do *backspace* although emacs its [[https://www.gnu.org/software/emacs/manual/html_node/emacs/DEL-Does-Not-Delete.html][confused]] and need our
+   Not to mention missing @@html:<kbd>@@ delete @@html:</kbd>@@ key,
+   but some of them have decided del should also do @@html:<kbd>@@
+   backspace @@html:</kbd>@@ although emacs its [[https://www.gnu.org/software/emacs/manual/html_node/emacs/DEL-Does-Not-Delete.html][confused]] and need our
    help!
 
    #+BEGIN_SRC emacs-lisp
@@ -405,7 +407,10 @@
      (normal-erase-is-backspace-mode 1)
    #+END_SRC
 
-   Beginners find *Ctrl+v* jump outlandish and sometime also for me.
+   #+BEGIN_HTML
+     Beginners find <kbd>C</kbd>-<kbd>v</kbd> jump outlandish and
+     sometime also for me.
+   #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
      (global-set-key [(control v)] 'yank)
@@ -434,11 +439,13 @@
 
 ** undo
 
-   =C-z= is synomous to undo not for emacs these, may be this is much
-   needed thing!
+   #+BEGIN_HTML
+     <kbd>C</kbd>-<kbd>z</kbd> is synomous to undo not for emacs
+     these, may be this is much needed thing!
+   #+END_HTML
 
-   there is the great package =undo tree=, addition to being fancy it
-   it not realiable and bring you in misery. :disappointed_relieved:
+   there is the great package =undo-tree=, addition to being fancy it
+   it not reliable and bring you in misery. :disappointed_relieved:
 
    *BEWARE*: It fancy but not reliable, decided not to use
 
@@ -1447,9 +1454,8 @@
 
 ** killing group
 
-   don't belive me, emacs has it under same name for *Killing and
-   yanking commands* ya killing means cut! my be :sissors: were not
-   invented then!
+   Emacs has it under same name for *Killing and yanking commands* ya
+   killing means cut! my be :scissors: were not invented then!
 
 *** popup kill ring
 
