@@ -1384,12 +1384,12 @@
    of to normal users! :stuck_out_tongue_winking_eye:
 
    As of version 25.1 *webkit* has been introduced although you have
-   enable it while compiling, it pretty :cool: feature too
-   have :sunglasses:.
+   enable it while compiling (kinda ridiculous), it pretty :cool:
+   feature too have :sunglasses:.
 
-   config is based on [[https://www.reddit.com/r/emacs/comments/4srze9/watching_youtube_inside_emacs_25/][reddit]] post.
+   *NOTE*: me lazy, no compile, not using
 
-   make these keys behave like normal browser
+   config is based on [[https://www.reddit.com/r/emacs/comments/4srze9/watching_youtube_inside_emacs_25/][reddit]] post to make behave like normal browser
 
    #+BEGIN_SRC emacs-lisp
      ;;(add-hook 'xwidget-webkit-mode (lambda ()
