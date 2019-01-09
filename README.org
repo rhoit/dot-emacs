@@ -222,6 +222,28 @@
      (setq inhibit-splash-screen t)
    #+END_SRC
 
+** theme
+
+*** theme-switch
+
+    Worst part of switching theme by loading is active theme is one
+    disabled before loading the new one! this 🪄 trick was stolen from
+    [[https://github.com/thapakazi][@thapakazi]].
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defun theme-switch (theme)
+        "Disables any currently active themes and loads THEME."
+        ;; This interactive call is taken from `load-theme'
+        (interactive
+         (list (intern (completing-read "Load custom theme: "
+                                        (mapc 'symbol-name
+                                              (custom-available-themes))))))
+        (let ((enabled-themes custom-enabled-themes))
+          (mapc #'disable-theme custom-enabled-themes)
+          (load-theme theme t)))
+    #+END_SRC
+
 ** tabbar
 
    [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]] is something familiar to modern 🍭 GUI system, there is
