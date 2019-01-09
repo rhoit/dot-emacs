@@ -531,12 +531,42 @@
    #+END_SRC
 
 ** killing group
+
+   #+BEGIN_HTML
+     <p>In Emacs, <b>Killing</b> means 🔪 cut (maybe ✂️: were not
+     invented then!). <b>Yanking</b> paste text from the
+     <i>kill-ring</i> back into the <i>buffer</i>. The
+     <i>kill-ring</i> is 📋 clipboard for text snippets to used later,
+     which can access in cyclic ♻️ order.</p>
+
+     <p>Yanking with <kbd>C</kbd>-<kbd>y</kbd> and cycling through
+     using <kbd>M</kbd>-<kbd>y</kbd>, <kbd>M</kbd>-<kbd>y</kbd>,
+     <kbd>M</kbd>-<kbd>y</kbd> can be bit alarming.</p>
+   #+END_HTML
+
 *** paste
 
     Beginners find *Ctrl+v* jump outlandish and sometime also for me.
 
     #+BEGIN_SRC emacs-lisp
       (global-set-key [(control v)] 'yank)
+    #+END_SRC
+
+*** [[https://www.emacswiki.org/emacs/popup-kill-ring.el][popup kill ring]]
+
+    kill ☠️ ring 💍
+
+    #+BEGIN_HTML
+      <p>Only enable for <kbd>S</kbd>-<kbd>insert</kbd>, you might say
+      why that! if you don't know <kbd>C</kbd>-<kbd>c</kbd> and
+      <kbd>C</kbd>-<kbd>v</kbd> is not only *copy-paste* binding
+      available that too also works in other *OS*.</p>
+    #+END_HTML
+
+    #+BEGIN_SRC emacs-lisp
+      (setq repetitive_yank_region_point 0) ; 0 doesn't exist min is 1
+      (require 'popup-kill-ring)
+      (global-set-key [(shift insert)] 'repetitive-yanking)
     #+END_SRC
 
 *** drag
