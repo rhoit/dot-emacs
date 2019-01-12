@@ -236,6 +236,24 @@
           (load-theme theme t)))
     #+END_SRC
 
+** line-number
+
+   Choosing different [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over years now, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
+   config stood out the, but *linum* give lots of flicker, now
+   experimenting with *nlinum*.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'nlinum)
+
+     (setq nlinum-delay t)
+     (setq nlinum-highlight-current-line t)
+     (setq nlinum-format " %4d ")
+
+     (add-hook 'prog-mode-hook 'nlinum-mode)
+     (add-hook 'org-mode-hook 'nlinum-mode)
+   #+END_SRC
+
 ** initial-screen
 
    #+HEADER: :results silent
