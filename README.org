@@ -151,7 +151,7 @@
    based on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] post.
 
    I hoped this works but, haven't seen much difference, but if chrome
-   just eats entire 4 GB of RAM :rage1: for no reason why not emacs,
+   just eats entire 4 GB of RAM :rage1: for no reason why not *emacs*,
    FYI your java based IDE will just eat up more than *200 Mb* to
    start.
 
@@ -163,9 +163,9 @@
 
    <2018-03-26> finally understood why this wasn't working
 
-** benchmarking
+** bench-marking
 
-   install benchmark-init from el-get and put below code top of your
+   install =benchmark-init= from el-get and put below code top of your
    config.
 
    #+BEGIN_SRC emacs-lisp
@@ -179,14 +179,15 @@
    =M-x benchmark-init/show-durations-tree=
 
    To check your package load time do
+
    #+BEGIN_EXAMPLE
      M-x emacs-init-time
    #+END_EXAMPLE
 
 ** emacs server
 
-   Stop :no_entry_sign: opening *emacs* for each file. Set default open
-   application using =emacsclient -n -a=emacs [FILE]=.
+   Stop :no_entry_sign: opening *emacs* for each file. Set default
+   open application using =emacsclient -n -a=emacs [FILE]=.
 
    #+begin_src emacs-lisp
      (require 'server)
@@ -196,14 +197,16 @@
 
 ** encoding
 
-   #+begin_src emacs-lisp
+   every thing is Unicode, must be default by now.
+
+   #+BEGIN_SRC emacs-lisp
      (setq locale-coding-system 'utf-8)
      (set-language-environment 'utf-8)
      (set-terminal-coding-system 'utf-8)
      (set-keyboard-coding-system 'utf-8)
      (set-selection-coding-system 'utf-8)
      (prefer-coding-system 'utf-8)
-   #+end_src
+   #+END_SRC
 
 ** backup
 
@@ -329,7 +332,7 @@
    [[https://github.com/thapakazi][@thapakazi]].
 
    #+BEGIN_SRC emacs-lisp
-     (defun switch-theme (theme)
+     (defun switch-theme(theme)
       "Disables any currently active themes and loads THEME."
       ;; This interactive call is taken from `load-theme'
       (interactive
@@ -345,7 +348,7 @@
 ** window
 
    #+BEGIN_HTML
-     GNU Emacs has built-in support for full-screen since version
+     Emacs has built-in support for full-screen since version
      24.4. New commands <code>toggle-frame-fullscreen</code> and
      <code>toggle-frame-maximized</code>, bound to <kbd>F11</kbd> and
      <kbd>M</kbd>-<kbd>f10</kbd>, respectively. But most window
@@ -356,14 +359,11 @@
    #+BEGIN_SRC emacs-lisp
      ;; lets reserve it for something i.e realgud
      (global-unset-key [f11])
-
-     ;;; Window Size
-     ;;(add-to-list 'default-frame-alist '(height . 39))
-     ;;(add-to-list 'default-frame-alist '(width . 104))
    #+END_SRC
 
-   Its kinda distracting having toolbar, menu bar around, so lets hide
-   it and also set some handy key to toggle it.
+   Just a personal preference to not to have *tool-bar*, *menu-bar*,
+   and *scroll-bar*, take the *buffer* workspace, so lets hide it and
+   also set some handy key to toggle it.
 
    #+BEGIN_SRC emacs-lisp
      (tool-bar-mode 0)
@@ -496,8 +496,7 @@
 
 *** [[https://github.com/magnars/expand-region.el][expand region]]
 
-    Expand region increases the selected region by semantic
-    units.
+    Expand region increases the selected region by semantic units.
 
     Here is [[https://www.youtube.com/watch?v=_RvHz3vJ3kA][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e09.html][ep09]].
 
@@ -526,9 +525,12 @@
    to go though the hell once more to write the =elisp= again until i
    was saved by [[https://github.com/rejeep/drag-stuff.el][drag-stuff]].
 
-   *<M-right/left>* bind seems redundant with *<C-right/left>* also it
-   doesn't work in terminal, replacing it hopefully will not create any
-   problem.
+   #+BEGIN_HTML
+     <kbd>M</kbd>-<kbd>right</kbd>/<kbd>left</kbd> bind seems
+     redundant with <kbd>C</kbd>-<kbd>right</kbd>/<kbd>left</kbd> also
+     it doesn't work in terminal, replacing it hopefully will not
+     create any problem.
+   #+END_HTML
 
    *BEWARE*: it breaks the *org-mode* don't enable it in org!
 
@@ -541,7 +543,7 @@
 
 ** smooth scroll
 
-   Unfortunately emacs :barber: scrolling :barber: is not smooth.
+   Unfortunately *emacs* :barber: scrolling :barber: is not smooth.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'smooth-scroll)
@@ -559,9 +561,9 @@
 
 ** line-number
 
-   Choosing different [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over 5 years, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
-   config actually got it right on that looks great, but *linum* give
-   lots of flicker, now experimenting with *nlinum*.
+   Choosing different [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over years now, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
+   config stood out the, but *linum* give lots of flicker, now
+   experimenting with *nlinum*.
 
    #+BEGIN_SRC emacs-lisp
      (require 'nlinum)
@@ -686,8 +688,8 @@
 
 ** search
 
-   *anzu* Highlight all search matches, most of the text editor does this
-   why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
+   *anzu* Highlight all search matches, most of the text editor does
+   this why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
 
    #+begin_src emacs-lisp
      (el-get 'sync 'anzu)
@@ -731,11 +733,11 @@
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'beacon)
      (require 'beacon)
-     (beacon-mode t)
      (setq beacon-blink-delay '0.2)
      (setq beacon-blink-when-focused 't)
      (setq beacon-dont-blink-commands 'nil)
      (setq beacon-push-mark '1)
+     (beacon-mode t)
    #+END_SRC
 
 *** [[https://github.com/magnars/multiple-cursors.el][multiple cursor]]
@@ -744,7 +746,7 @@
 
     Here is [[https://youtu.be/jNa3axo40qM][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e13.html][ep13]].
 
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
       (el-get 'sync 'multiple-cursors)
       (when window-system
         (require 'multiple-cursors)
@@ -753,7 +755,7 @@
         (global-set-key (kbd "C-S-<mouse-4>") 'mc/mark-previous-like-this)
         (global-set-key (kbd "C-S-<mouse-5>") 'mc/mark-next-like-this)
         (global-set-key (kbd "C-S-<mouse-2>") 'mc/mark-all-like-this))
-    #+end_src
+    #+END_SRC
 
 ** goto-last-change
 
@@ -763,23 +765,12 @@
    If you aren't using el-get here is the [[https://raw.github.com/emacsmirror/emacswiki.org/master/goto-last-change.el][source]], guessing it its
    available in all major repository by now.
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'goto-chg)
      (require 'goto-chg)
      (global-unset-key (kbd "C-j"))
      (global-set-key (kbd "C-j") 'goto-last-change)
-   #+end_src
-
-** switch windows
-
-   It kinda has been stuck in my config for years, just addicted to
-   it. Seems like this is by default now.
-
-   #+begin_src emacs-lisp
-     ;; (el-get 'sync 'switch-window)
-     ;; (require 'switch-window)
-     ;; (global-set-key (kbd "C-x o") 'switch-window)
-   #+end_src
+   #+END_SRC
 
 ** [[https://github.com/mina86/auto-dim-other-buffers.el][auto-dim-other-buffer]]
 
@@ -797,18 +788,18 @@
 
    Currently running into problem with this, will fixit later. :'(
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      ;; (el-get 'sync 'emojify)
      ;; (require 'emojify)
 
      ;; (add-hook 'org-mode-hook 'emojify-mode)
      ;; (add-hook 'markdown-mode-hook 'emojify-mode)
      ;; (add-hook 'git-commit-mode-hook 'emojify-mode)
-   #+end_src
+   #+END_SRC
 
 * programming
 
-  some of the basic things provide by emacs internal packages.
+  some of the basic things provide by *emacs* internal packages.
 
   #+BEGIN_SRC emacs-lisp
     (add-hook 'prog-mode-hook 'subword-mode) ;; camelCase is subword
@@ -822,14 +813,13 @@
 ** match parenthesis
 
    #+BEGIN_SRC emacs-lisp
-    (setq show-paren-style 'expression)
-    ;; (setq show-paren-match '((t (:inverse-video t)))) ;; this is not working using custom set face
-    (show-paren-mode 1)
+     (setq show-paren-style 'expression)
+     (show-paren-mode 1)
    #+END_SRC
 
 ** watch word
 
-   #+begin_src emacs-lisp
+   #+BEGIN_SRC emacs-lisp
      (defun watch-words ()
        (interactive)
        (font-lock-add-keywords
@@ -837,7 +827,7 @@
                1 font-lock-warning-face t))))
 
      (add-hook 'prog-mode-hook 'watch-words)
-   #+end_src
+   #+END_SRC
 
 *** [[https://github.com/nschum/highlight-symbol.el][highlight symbol]]
 
