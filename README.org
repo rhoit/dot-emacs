@@ -244,6 +244,20 @@
           (load-theme theme t)))
     #+END_SRC
 
+** line-number
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'nlinum)
+
+     (setq nlinum-delay t)
+     (setq nlinum-highlight-current-line t)
+     (setq nlinum-format " %4d ")
+
+     (add-hook 'prog-mode-hook 'nlinum-mode)
+     (add-hook 'org-mode-hook 'nlinum-mode)
+   #+END_SRC
+
 ** tabbar
 
    [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]] is something familiar to modern 🍭 GUI system, there is
