@@ -174,7 +174,10 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
+      (add-to-list 'load-path "~/.emacs.d/elpa/")
+
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
       (package-initialize)
     #+END_SRC
 
