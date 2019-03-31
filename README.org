@@ -1162,10 +1162,15 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq org-export-use-babel nil)
-     (org-babel-do-load-languages 'org-babel-load-languages
-        '((shell . t)
-         (python . t)))
+     (org-babel-do-load-languages 'org-babel-load-languages '(
+     (shell . t)
+     (js . t)
+     (C . t)
+     (python . t)))
    #+END_SRC
+
+   switch the python location command set *Local Variables*
+   =org-babel-python-command: "/usr/bin/python2"=
 
 ** default applications
 
