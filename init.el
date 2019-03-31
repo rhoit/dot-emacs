@@ -34,7 +34,7 @@
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal)))
+    (auto-dim-other-buffers yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors")))
@@ -63,3 +63,4 @@
  '(tabbar-selected-modified ((t (:inherit tabbar-default :background "gray20" :foreground "white" :box nil :weight bold :height 100 :width normal :family "Sans Serif"))))
  '(tabbar-unselected-modified ((t (:inherit tabbar-unselected :background "#444444" :foreground "#f6f3e8" :box nil :weight bold :height 100 :width normal :family "Sans Serif"))))
  '(which-func ((t (:background "gray40")))))
+(put 'set-goal-column 'disabled nil)
