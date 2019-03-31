@@ -930,6 +930,16 @@
          (local-set-key (kbd "C-<iso-lefttab>") 'outshine-cycle-buffer)))
    #+END_SRC
 
+   for links you need [[https://github.com/tarsius/orglink][orglink]] is available in MELPA.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook
+      'prog-mode-hook
+      (lambda()
+        (orglink-mode)
+        (dim-minor-name 'orglink-mode "")))
+   #+END_SRC
+
 ** reveal.js
 
    Making *power-point* is lame, and updating is the mess! there is
