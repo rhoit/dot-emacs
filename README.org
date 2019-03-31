@@ -176,7 +176,10 @@
     Add package other sources
 
     #+BEGIN_SRC emacs-lisp
+      (require 'package) ;; after 24 its pre-loaded
+      (add-to-list 'load-path "~/.emacs.d/elpa/")
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+      (package-initialize)
     #+END_SRC
 
     Use =M-x package-refresh-contents= to reload the list of packages
@@ -184,7 +187,9 @@
 
 *** el-get
 
-    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
+    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. It
+    has been while emacs (after *24*) got its own package manager, but
+    recently I feel need to learn more.
 
     #+BEGIN_SRC emacs-lisp
       (add-to-list 'load-path "~/.emacs.d/el-get")
