@@ -1245,7 +1245,8 @@
    for links you need [[https://github.com/tarsius/orglink][orglink]] is available in MELPA.
 
    #+BEGIN_SRC emacs-lisp
-     (global-orglink-mode t)
+     ;;(global-orglink-mode t)
+     (add-hook 'prog-mode-hook 'orglink-mode)
    #+END_SRC
 
 ** reveal.js
