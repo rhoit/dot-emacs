@@ -3,6 +3,11 @@
 
 ;; debug on C-g; to point broken modules
 ;; (setq debug-on-quit t)
+;;----------------------------------------------------------------------
+;;; load main config via org
+;;(load-file "~/.emacs.d/README.el")
+(add-hook 'after-init-hook (lambda () (org-babel-load-file "~/.emacs.d/README.org")))
+
 
 ;;----------------------------------------------------------------------
 ;;; package.el
@@ -10,12 +15,9 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
-(add-to-list 'load-path "~/.emacs.d/elpa/")
-
-;;----------------------------------------------------------------------
-;;; load main config via org
-(add-hook 'after-init-hook (lambda () (org-babel-load-file "~/.emacs.d/README.org")))
+;; (package-initialize)
+;; (add-to-list 'load-path "~/.emacs.d/elpa/")
+;; (setq package-enable-at-startup nil) ;; let el-get load first
 
 
 ;;======================================================================
