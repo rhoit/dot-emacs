@@ -848,8 +848,13 @@
       'org-babel-load-languages
       '(
         (shell . t)
+        (js . t)
+        (C . t)
         (python . t)))
    #+END_SRC
+
+   switch the python location command set *Local Variables*
+   =org-babel-python-command: "/usr/bin/python2"=
 
    - <2018-05-30>
 
