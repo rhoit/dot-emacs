@@ -256,12 +256,13 @@
    #+END_SRC
 
 * PACMAN
-** package.el
+** ELPA
 
    Add package other sources
 
    #+BEGIN_SRC emacs-lisp
      (require 'package) ;; after 24 its pre-loaded
+     (add-to-list 'load-path "~/.emacs.d/elpa/")
      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
      (package-initialize)
    #+END_SRC
@@ -269,13 +270,15 @@
    Use =M-x package-refresh-contents= to reload the list of packages
    after adding these for the first time.
 
-   *<2018-03-01>* finally got the setting right, had been refreshing
-   it on every install.
+   - <2018-03-01>
 
-* el-get
+     finally got the setting right, had been refreshing it on every
+     install.
 
-   [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. It
-   has been while (after =emacs 24=) emacs got its own package
+** el-get
+
+   [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
+   It has been while (after =emacs 24=) emacs got its own package
    manager, thinking of switching.
 
    #+BEGIN_SRC emacs-lisp
@@ -285,23 +288,23 @@
      (el-get 'sync)
    #+END_SRC
 
-** my packages
+*** my packages
 
-   To replicate a package set for another emacs installation is
-   explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
+    To replicate a package set for another emacs installation is
+    explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
-   you can list current installed package using.
+    you can list current installed package using.
 
-   #+BEGIN_EXAMPLE
-     `(setq my-packages
-         ',(mapcar #'el-get-as-symbol
-               (el-get-list-package-names-with-status "installed")))
-   #+END_EXAMPLE
+    #+BEGIN_EXAMPLE
+      `(setq my-packages
+          ',(mapcar #'el-get-as-symbol
+                (el-get-list-package-names-with-status "installed")))
+    #+END_EXAMPLE
 
-   Might be wondering why there isn't any package *listed* here, coz I
-   have broken down list into parts where its needed, you will see
-   =(el-get 'sync '<package-name>)= if its required before its
-   configuration.
+    Might be wondering why there isn't any package *listed* here, coz I
+    have broken down list into parts where its needed, you will see
+    =(el-get 'sync '<package-name>)= if its required before its
+    configuration.
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
 
