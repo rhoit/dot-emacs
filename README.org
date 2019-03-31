@@ -753,6 +753,9 @@
      (setq web-mode-enable-block-face t)
      (setq web-mode-enable-current-column-highlight t)
 
+     ;; they don't descend from prog-mode
+     (add-hook 'web-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+
      ;; ya-snippet completion for web-mode
      (add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
    #+END_SRC
