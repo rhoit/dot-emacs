@@ -3,6 +3,7 @@
 
 ;; debug on C-g; to point broken modules
 ;; (setq debug-on-quit t)
+(setq debug-on-error t)
 
 
 ;;----------------------------------------------------------------------
