@@ -1049,6 +1049,15 @@
 
      for more than one <kbd>M</kbd>-<kbd>x</kbd> projectile-grep
    #+END_HTML
+
+** dired mode
+
+   facing trouble when in fresh copy of repo, will fix later
+
+   #+BEGIN_SRC emacs-lisp
+     ;;(add-hook 'prog-mode-hook '(lambda ()
+     ;;    (setq dired-omit-files
+     ;;        (concat dired-omit-files "\\|\\.git$\\|venv$"))))
    #+END_SRC
 
 ** debugger
