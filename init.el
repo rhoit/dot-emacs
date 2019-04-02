@@ -42,7 +42,7 @@
  '(magit-diff-refine-hunk (quote all))
  '(package-selected-packages
    (quote
-    (orglink auto-dim-other-buffers yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal)))
+    (magit-todos orglink auto-dim-other-buffers yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal)))
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors")))

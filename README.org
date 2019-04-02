@@ -1026,6 +1026,20 @@
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
+*** [[https://github.com/alphapapa/magit-todos][magit-todos]]
+
+    This package has been todo for far too long and finally using it.
+
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'magit-mode-hook 'magit-todos-mode)
+    #+END_SRC
+
+    <2019-03-31> finally fixed *ELPA* and el-get issues
+
+    <2018-08-22> Hoping I don't have to do it manually.
+
+    <2018-08-22> found the package!
+
 *** magithub
 
     yet to be tested, feeling lazy since caught with gitlab addiction.
@@ -1034,11 +1048,6 @@
       ;;(el-get 'sync 'magitub)
     #+end_src
 
-*** [[https://github.com/alphapapa/magit-todos][magit-todos]]
-
-    This package has been todo for far too long and stil is.
-    Avaliable in elpa doesn't work well with el-get.
-    Hopeing I don't have to do it manually.
 
 ** ggtags
 
