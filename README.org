@@ -1404,6 +1404,25 @@
      (add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
    #+END_SRC
 
+*** [[https://github.com/syohex/emacs-fontawesome][font-awesome mode]]
+
+    emacs package available on *MELPA* and *MELPA stable*
+
+    arch has font in official repo *community/ttf-font-awesome*
+
+    config stolen from [[https://github.com/jonnay/emagicians-starter-kit/blob/master/Programming-Web.org#prettify-fontawesome][jonnay]].
+
+    #+BEGIN_SRC emacs-lisp
+      ;; (require 'fontawesome)
+      ;; (add-hook 'web-mode-hook
+      ;;   (setq prettify-symbols-alist (mapcar (lambda (fa-cons)
+      ;;                                   (cons (concat "fa-" (car fa-cons))
+      ;;                                         (aref (cdr fa-cons) 0)))
+      ;;                                 fontawesome-alist)))
+    #+END_SRC
+
+    Have disable it for now, will check later.
+
 ** php
 
    things you have to do for living
