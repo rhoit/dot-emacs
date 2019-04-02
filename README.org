@@ -249,6 +249,18 @@
 
 ** line-number
 
+   As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
+   📦 packaged with *emacs*.
+
+   | year | emacs | package                          |
+   |------+-------+----------------------------------|
+   | 2009 |    23 | linum-mode                       |
+   | 2018 |    26 | global-display-line-numbers-mode |
+
+   I used multiple [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over years now, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
+   config stood out for me the, but *linum* give lots of flicker, now
+   using with *nlinum* which is quite good.
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (require 'nlinum)
