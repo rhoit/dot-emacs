@@ -1153,7 +1153,7 @@
    removing pesky keybinds for consistency.
    here is the map what I/normal user expect and reality.
 
-   TODO: to fill this up one day
+   # TODO: to fill this up one day
 
    |                   | normal       | emacs | org-mode |
    |-------------------+--------------+-------+----------|
