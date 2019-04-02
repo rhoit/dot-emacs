@@ -1034,19 +1034,19 @@
       (add-hook 'magit-mode-hook 'magit-todos-mode)
     #+END_SRC
 
-    <2019-03-31> finally fixed *ELPA* and el-get issues
+    <2019-03-31> finally fixed *ELPA* and *el-get* issues
 
-    <2018-08-22> Hoping I don't have to do it manually.
+    <2018-08-22> Hoping I don't have to do it manually
 
-    <2018-08-22> found the package!
+    <2018-08-21> found the package!
 
 *** magithub
 
     yet to be tested, feeling lazy since caught with gitlab addiction.
 
-    #+begin_src emacs-lisp
+    #+BEGIN_SRC emacs-lisp
       ;;(el-get 'sync 'magitub)
-    #+end_src
+    #+END_SRC
 
 
 ** ggtags
@@ -1148,7 +1148,7 @@
    removing pesky keybinds for consistency.
    here is the map what I/normal user expect and reality.
 
-   TODO: to fill this up one day
+   # TODO: to fill this up one day
 
    |                   | normal       | emacs | org-mode |
    |-------------------+--------------+-------+----------|
@@ -1430,7 +1430,7 @@
       ;;                                 fontawesome-alist)))
     #+END_SRC
 
-    Have disable it for now, will check later.
+    TODO: Have disable it for now, will check later.
 
 ** php
 
