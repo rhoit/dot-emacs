@@ -210,12 +210,17 @@
 
 ** backup
 
+   I don't really take, there is better things for that called git!
+
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
      (setq make-backup-files nil)
    #+END_SRC
 
 ** update buffer
+
+   A fancy :bowtie: way of saying any /change in file/ (yup not using
+   same editor, duh!)  will magically :tophat: appear in editor
 
    #+BEGIN_SRC emacs-lisp
      (global-auto-revert-mode)
@@ -224,7 +229,8 @@
 
 ** alias yes-or-no
 
-   avoid typing complete 'yes' and 'no'
+   yup thing are annoying :triumph: here! avoid typing complete 'yes'
+   and 'no'.
 
    #+BEGIN_SRC emacs-lisp
      (fset 'yes-or-no-p 'y-or-n-p)
@@ -256,6 +262,13 @@
    #+END_SRC
 
 * PACMAN
+
+  Its bit tricky to make both *ELPA* and *el-get* work together, but
+  after years of procrastination, some how this works, you should load
+  *el-get* first, but *emacs24+* loads =package.el= by default, thats
+  why put this magic line before loading *el-get* =(setq
+  package-enable-at-startup nil)=
+
 ** ELPA
 
    Add package other sources
@@ -570,8 +583,8 @@
    As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
    packaged with emacs.
 
-   2009, Emacs 23, linum-mode
-   2018-05, Emacs 26, global-display-line-numbers-mode
+   | 2009, Emacs 23 | linum-mode                       |
+   | 2018, Emacs 26 | global-display-line-numbers-mode |
 
    #+BEGIN_SRC emacs-lisp
      ;; (global-display-line-numbers-mode)
@@ -702,8 +715,8 @@
 
 ** search
 
-   *anzu* Highlight all search matches, most of the text editor does
-   this why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
+   [[https://github.com/syohex/emacs-anzu][anzu]] highlight all search matches, most of the text editor does
+   even [[https://github.com/osyo-manga/vim-anzu][vi]] this why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
 
    #+BEGIN_SRC emacs-lisp
      (el-get 'sync 'anzu)
@@ -724,6 +737,8 @@
      (setq speedbar-show-unknown-files t)
      (global-set-key [f9] 'speedbar)
    #+END_SRC
+
+   I have yet to figure out why it affects tabbar theme.
 
 ** [[https://github.com/joodland/bm][bookmark]]
 
