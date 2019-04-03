@@ -146,6 +146,16 @@
        (server-start))
    #+END_SRC
 
+** backup
+
+   I don't like mess every where, there is better things for that
+   called git!
+
+   #+BEGIN_SRC emacs-lisp
+     (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
+     (setq make-backup-files nil)
+   #+END_SRC
+
 ** big files
 
    Warn when opening files bigger than 1 MiB. yup *emacs* kitchen sink
@@ -186,6 +196,12 @@
     after adding these for the first time.
 
 *** el-get
+
+    Its bit tricky to make both *ELPA* and *el-get* work together, but
+    after years of procrastination, some how this works, you should
+    load *el-get* first, but *emacs24+* loads =package.el= by default,
+    thats why put this magic line before loading *el-get* =(setq
+    package-enable-at-startup nil)=
 
     [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. It
     has been while emacs (after *24*) got its own package manager, but
@@ -237,10 +253,12 @@
 ** line-number
 
    As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
-   packaged with emacs.
+   📦 packaged with *emacs*.
 
-   2009, Emacs 23, linum-mode
-   2018-05, Emacs 26, global-display-line-numbers-mode
+   | year | emacs | package                          |
+   |------+-------+----------------------------------|
+   | 2009 |    23 | linum-mode                       |
+   | 2018 |    26 | global-display-line-numbers-mode |
 
    #+BEGIN_SRC emacs-lisp
      ;; (global-display-line-numbers-mode)
