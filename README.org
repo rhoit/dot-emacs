@@ -146,6 +146,17 @@
        (server-start))
    #+END_SRC
 
+** backup
+
+   I don't like mess every where, there is better things for that
+   called git!
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
+     (setq make-backup-files nil)
+   #+END_SRC
+
 ** big files
 
    Warn when opening files bigger than 1 MiB. yup *emacs* kitchen sink
@@ -242,10 +253,12 @@
 ** line-number
 
    As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
-   packaged with emacs.
+   📦 packaged with *emacs*.
 
-   2009, Emacs 23, linum-mode
-   2018-05, Emacs 26, global-display-line-numbers-mode
+   | year | emacs | package                          |
+   |------+-------+----------------------------------|
+   | 2009 |    23 | linum-mode                       |
+   | 2018 |    26 | global-display-line-numbers-mode |
 
    #+BEGIN_SRC emacs-lisp
      ;; (global-display-line-numbers-mode)
