@@ -1071,6 +1071,7 @@
          (lambda()
              (helm-projectile-on)
              (global-set-key (kbd "C-S-p") 'helm-projectile-find-file)
+             (global-set-key (kbd "C-S-t") 'projectile-find-tag)
              (global-set-key (kbd "C-S-g") 'helm-projectile-grep)))
    #+END_SRC
 
