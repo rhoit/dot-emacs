@@ -1067,6 +1067,7 @@
    #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
+     (projectile-global-mode)
      (add-hook 'projectile-mode-hook
          (lambda()
              (helm-projectile-on)
@@ -1080,7 +1081,18 @@
      is great of if you want to search a single thing!
 
      for more than one <kbd>M</kbd>-<kbd>x</kbd> projectile-grep
+
+     you might want to ignore certain files and folders during search,
+     which can be done using <kbd>M</kbd>-<kbd>x</kbd>
+     customize-variable
    #+END_HTML
+
+   some of the variables
+
+   - projectile-globally-ignored-files
+   - projectile-globally-ignored-directories
+   - projectile-globally-ignored-file-suffixes
+   - projectile-globally-ignored-modes
 
 ** dired mode
 
