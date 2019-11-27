@@ -963,6 +963,25 @@
       venv modes trying to find *venv* folder.
     #+END_QUOTE
 
+** sql
+
+   Starting with version 21.4-a, [[https://www.emacswiki.org/emacs/SqlMode][sql-mode]] included with *emacs*.
+
+   It has interactive mode `M-x sql-product-interactive`
+
+*** upcase-sql-keywords
+
+    See also http://stackoverflow.com/q/22091936/324105
+
+    https://www.emacswiki.org/emacs/download/sql-upcase.el
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (when (require 'sql-upcase nil :noerror)
+        (add-hook 'sql-mode-hook 'sql-upcase-mode)
+        (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
+    #+END_SRC
+
 * META :noexport:
 
   # Local Variables:
