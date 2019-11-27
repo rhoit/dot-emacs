@@ -46,6 +46,7 @@
  '(projectile-globally-ignored-directories
    (quote
     (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors")))
+ '(projectile-globally-ignored-file-suffixes (quote ("db" "jpeg" "png" "jpg")))
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
    (quote
