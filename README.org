@@ -1233,6 +1233,7 @@
      (setq org-export-use-babel nil)
      (org-babel-do-load-languages 'org-babel-load-languages '(
      (shell . t)
+     (sql . t)
      (js . t)
      (C . t)
      (python . t)))
@@ -1416,12 +1417,28 @@
       (add-hook 'python-mode-hook
            (lambda () (local-set-key (kbd "<C-return>") 'py-execution)))
     #+end_src
+** sql
 
 ** lua
+   https://www.emacswiki.org/emacs/SqlMode
 
    #+begin_src emacs-lisp
      (setq lua-indent-level 4)
    #+end_src
+   Starting with version 21.4-a, sql-mode included with emacs
+
+*** Automatically upcase SQL keywords
+
+    https://www.emacswiki.org/emacs/download/sql-upcase.el
+
+    See also http://stackoverflow.com/q/22091936/324105
+
+    #+BEGIN_SRC emacs-lisp
+       (when (require 'sql-upcase nil :noerror)
+           (add-hook 'sql-mode-hook 'sql-upcase-mode)
+           (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
+    #+END_SRC
+
 
 ** web
 
