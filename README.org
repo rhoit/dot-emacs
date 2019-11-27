@@ -877,6 +877,7 @@
       'org-babel-load-languages
       '(
         (shell . t)
+        (sql . t)
         (js . t)
         (C . t)
         (python . t)))
@@ -1015,6 +1016,24 @@
      (add-hook 'c-mode-common-hook '(lambda() (c-toggle-hungry-state 1)))
      (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
    #+END_SRC
+
+** sql
+
+   https://www.emacswiki.org/emacs/SqlMode
+
+   Starting with version 21.4-a, sql-mode included with emacs
+
+*** Automatically upcase SQL keywords
+
+    https://www.emacswiki.org/emacs/download/sql-upcase.el
+
+    See also http://stackoverflow.com/q/22091936/324105
+
+    #+BEGIN_SRC emacs-lisp
+      (when (require 'sql-upcase nil :noerror)
+        (add-hook 'sql-mode-hook 'sql-upcase-mode)
+        (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
+    #+END_SRC
 
 ** dockerfile
 
