@@ -719,6 +719,29 @@
 
 ** white-spaces
 
+   If you have working with non-emacs people sooner or later you might
+   face this problem, those pesky trailing spaces/tabs.
+
+   #+BEGIN_EXAMPLE
+     Phenomenal Cosmic Powers! Itty Bitty trailing spaces!
+   #+END_EXAMPLE
+
+   Although end result might be same but it all shows in diff, ideally
+   there should be no empty lines at the beginning of a file, no empty
+   lines at the end of a file, no trailing whitespace, no mixture of
+   tabs and spaces, etc.
+
+   older =delete-trailing-whitespace= command, that simply deletes
+   trailing white-space.
+
+   =whitespace-cleanup= aware of the whitespace-style variable, used
+   by whitespace-mode.
+
+   different types of hooks
+
+   - write-file-hooks
+   - before-save-hooks
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (defun nuke-trailing ()
@@ -747,6 +770,17 @@
      ;; (global-set-key (kbd "<delete>") 'smart-hungry-delete-forward-char)
      ;; (global-set-key (kbd "<delete>") '(lambda ()
      ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
+   #+END_SRC
+
+   Of course emacs can add newline at *End Of File* just to make sure
+   *git* doesn't go crazy! for unchanged files. But don't enable it
+   let fancy IDE people wonder how to remove newline at EOF.
+
+   *CAUTION! BUT MOST OF WILL JUST MAKE MESS*
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;; (setq require-final-newline t)
    #+END_SRC
 
 * GIT
