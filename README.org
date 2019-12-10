@@ -698,6 +698,21 @@
       ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
     #+END_SRC
 
+*** trailing
+
+    Although the end result might be the same, it all shows in diffs.
+    Ideally, no empty lines at the end of a file, no trailing
+    white-space, no mixture of tabs and spaces 🧹.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defun nuke-trailing-whitespace ()
+        (add-hook 'before-save-hooks #'whitespace-cleanup)
+        (add-hook 'write-file-hooks #'delete-trailing-whitespace))
+
+      (add-hook 'prog-mode-hook #'nuke-trailing-whitespace)
+    #+END_SRC
+
 * GIT
 
   #+BEGIN_QUOTE
