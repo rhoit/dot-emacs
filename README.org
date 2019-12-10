@@ -968,10 +968,12 @@
 
    Of course emacs can add newline at *End Of File* just to make sure
    *git* doesn't go crazy! for unchanged files. But don't enable it
-   let fancy IDE people wonder how to remove newline at EOF.
+   let fancy IDE people wonder how to remove newline at EOF
+
+   *CAUTION! BUT MOST OF THEM DON'T CARE*
 
    #+BEGIN_SRC emacs-lisp
-     ;; (setq require-final-newline t)
+     (setq require-final-newline t)
    #+END_SRC
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][compile]]
