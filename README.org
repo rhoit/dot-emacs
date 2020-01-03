@@ -155,6 +155,8 @@
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
      (setq make-backup-files nil)
+     (setq auto-save-default nil)
+     (setq create-lockfiles nil)
    #+END_SRC
 
 ** big files
@@ -1009,9 +1011,7 @@
    actual content, *org-reveal* take the next step generate the slides
    from the org-file, isn't that neat!
 
-   #+BEGIN_SRC elisp
-     (el-get 'sync 'org-reveal)
-
+   #+BEGIN_SRC emacs-lisp
      ;; it breaks down some time
      ;; (add-to-list 'load-path "~/.emacs.d/00testing/org-reveal/")
      ;; (load-file "~/.emacs.d/00testing/org-reveal/org-reveal.el")
