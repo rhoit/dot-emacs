@@ -33,7 +33,7 @@
   Yet, I could barely remember *Why I removed that package, what
   happen?*, *git-whatchanged* would have told me more if it was a
   *code*. To =org= organize was most sane thing till now
-  [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified.
+  [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-bable-tangle).
 
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
@@ -161,8 +161,6 @@
      (setq gc-cons-threshold (* 100 1024 1024))
    #+END_SRC
 
-   <2018-03-26> finally understood why this wasn't working
-
 ** bench-marking
 
    install =benchmark-init= from el-get and put below code top of your
@@ -210,11 +208,14 @@
 
 ** backup
 
-   I don't really take, there is better things for that called git!
+   I don't like mess every where, there is better things for that
+   called git!
 
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
      (setq make-backup-files nil)
+     (setq auto-save-default nil)
+     (setq create-lockfiles nil)
    #+END_SRC
 
 ** update buffer
@@ -349,7 +350,7 @@
    [[https://github.com/thapakazi][@thapakazi]].
 
    #+BEGIN_SRC emacs-lisp
-     (defun switch-theme(theme)
+     (defun theme-switch(theme)
       "Disables any currently active themes and loads THEME."
       ;; This interactive call is taken from `load-theme'
       (interactive
@@ -1233,8 +1234,8 @@
    the work around yet, so downgraded emacs from *26* -> *25*,
    couldn't track what was the last working snapshot.
 
-   *<2018-05-30>*: 26 is official again *sh* should be *shell*
-   *<2018-01-04>*: seems like its *sh* again haven't fully tested
+   - *<2018-05-30>*: 26 is official again *sh* should be *shell*
+   - *<2018-01-04>*: seems like its *sh* again haven't fully tested
 
    #+BEGIN_SRC emacs-lisp
      (setq org-export-use-babel nil)
@@ -1323,8 +1324,8 @@
    actual content, *org-reveal* take the next step generate the slides
    from the org-file, isn't that neat!
 
-   #+BEGIN_SRC elisp
      (el-get 'sync 'org-reveal)
+   #+BEGIN_SRC emacs-lisp
 
      ;; it breaks down some time
      ;; (add-to-list 'load-path "~/.emacs.d/00testing/org-reveal/")
@@ -1457,7 +1458,7 @@
      (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
    #+END_SRC
 
-   *<2018-04-30>* dockerfile-mode seem to be missing =s= dependencies
+   - *<2018-04-30>* dockerfile-mode seem to be missing =s= dependencies
 
 ** json
 
@@ -1477,8 +1478,6 @@
 
 ** yasnippet
 
-   currently using from ELPA
-
    #+begin_src emacs-lisp
      (when window-system
        (require 'yasnippet)
@@ -1494,6 +1493,14 @@
      #+BEGIN_EXAMPLE
        Error (el-get): while installing yasnippet: el-get: git el-get could not build yasnippet [git submodule update --init -- snippets]
      #+END_EXAMPLE
+
+   - <2018-01-04 Thu>: Something is wrong with el-get keeps showing.
+
+     #+BEGIN_EXAMPLE
+       Error (el-get): while installing yasnippet: el-get: git el-get could not build yasnippet [git submodule update --init -- snippets]
+     #+END_EXAMPLE
+
+     currently using from ELPA
 
 * [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][WORD PLAY]]
 
