@@ -154,6 +154,8 @@
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist (quote ((".*" . "~/.cache/emacs_backup/"))))
      (setq make-backup-files nil)
+     (setq auto-save-default nil)
+     (setq create-lockfiles nil)
    #+END_SRC
 
 ** big files
