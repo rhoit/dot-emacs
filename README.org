@@ -307,6 +307,19 @@
       (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
     #+END_SRC
 
+    group tabs by buffer name
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq tabbar-buffer-groups-function (lambda ()
+        (list (cond
+          ((string-match ".*magit.*" (buffer-name)) "magit Buffers")
+          ((string-match "*helm.*" (buffer-name)) "helm Buffers")
+          ((string-equal "*" (substring (buffer-name) 0 1)) "emacs Buffers")
+          (t "User Buffers")
+      ))))
+    #+END_SRC
+
     #+BEGIN_HTML
       <p><code>scroll-right</code> and <code>scroll-right</code> seems
       to be strange for beginner and for me too, if you don't believe
