@@ -330,6 +330,21 @@
      (define-key global-map [(control prior)] 'tabbar-backward)
    #+END_SRC
 
+   grouping the tab by buffer name
+
+   #+BEGIN_SRC emacs-lisp
+     (setq tabbar-buffer-groups-function (lambda ()
+       (list (cond
+         ((string-match ".*magit.*" (buffer-name)) "magit Buffers")
+         ((string-match "TAGS" (buffer-name)) "ctags")
+         ((string-match "*pdb.*" (buffer-name)) "pdb Buffers")
+         ((string-match "*helm.*" (buffer-name)) "helm Buffers")
+         ((string-equal "*" (substring (buffer-name) 0 1)) "emacs Buffers")
+         ((eq major-mode 'dired-mode) "Dired")
+         (t "User Buffers")
+     ))))
+   #+END_SRC
+
    Binding for the tab groups, some how I use lots of buffers.
 
    #+BEGIN_SRC emacs-lisp
