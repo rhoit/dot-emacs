@@ -926,6 +926,16 @@
       (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
     #+END_SRC
 
+** folding
+
+   I had trouble using [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]], seems too be fixed now happy 2020!
+
+   #+BEGIN_src emacs-lisp
+     (add-hook 'prog-mode-hook 'hideshowvis-enable)
+   #+END_SRC
+
+   need to checkout [[https://github.com/gregsexton/origami.el][origimi]].
+
 ** white-spaces
 
    If you have working with non-emacs people sooner or later you might
