@@ -1366,6 +1366,24 @@
 
      [[https://github.com/yjwen/org-reveal][yjwen/org-reveal]] isn't working anymore
 
+** theme
+
+   #+BEGIN_SRC emacs-lisp
+     (set-face-attribute 'default nil :family "Andale Mono" )
+     (custom-set-faces
+       '(org-level-1 ((t (:family "Iosevka" :height 150))))
+       '(org-level-2 ((t (:family "Fira Mono for Powerline" :height 120))))
+
+       '(org-block-begin-line ((t (:foreground "#008EA1"))))
+       '(org-block ((t (:family "Source Code Pro" :background "#244"))))
+       '(org-block-end-line ((t (:foreground "#008EA1"))))
+
+       '(org-table ((t (:background "#244"))))
+       '(org-quote ((t (:foreground "#E6E6FA" :background "#244"))))
+       '(org-verse ((t (:foreground "#E6E6FA" :background "#244"))))
+     )
+   #+END_SRC
+
 * MODES
 ** C/C++
 
