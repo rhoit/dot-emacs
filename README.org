@@ -1263,7 +1263,6 @@
    - *<2018-01-04>*: seems like its *sh* again haven't fully tested
 
    #+BEGIN_SRC emacs-lisp
-     (setq org-export-use-babel nil)
      (org-babel-do-load-languages 'org-babel-load-languages '(
      (shell . t)
      (sql . t)
