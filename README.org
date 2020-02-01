@@ -922,8 +922,6 @@
    active Babel languages
 
    #+BEGIN_SRC emacs-lisp
-     (setq org-export-use-babel nil)
-
      (org-babel-do-load-languages
       'org-babel-load-languages
       '(
