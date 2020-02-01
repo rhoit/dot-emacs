@@ -346,7 +346,7 @@
 ** switch theme
 
    Worst part of switching theme by loading is active theme is one
-   disabled befor loading the new one! this trick was stolen from
+   disabled before loading the new one! this trick was stolen from
    [[https://github.com/thapakazi][@thapakazi]].
 
    #+BEGIN_SRC emacs-lisp
@@ -1241,12 +1241,12 @@
 
 ** auto-fill text
 
-   currently having problem with *emacs 26* have reverted to *25* with
-   this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue.
-
    #+BEGIN_SRC emacs-lisp
      (add-hook 'org-mode-hook 'turn-on-auto-fill)
    #+END_SRC
+
+   currently having problem with *emacs 26* have reverted to *25* with
+   this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue.
 
 ** babel
 
