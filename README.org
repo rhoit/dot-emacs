@@ -1024,12 +1024,15 @@
    actual content, *org-reveal* take the next step generate the slides
    from the org-file, isn't that neat!
 
+   [[https://gitlab.com/oer/org-re-reveal][org-re-reveal]] is the fork of [[https://github.com/yjwen/org-reveal][yjwen/org-reveal]] with enhancement
+
    #+BEGIN_SRC emacs-lisp
-     ;; it breaks down some time
-     ;; (add-to-list 'load-path "~/.emacs.d/00testing/org-reveal/")
-     ;; (load-file "~/.emacs.d/00testing/org-reveal/org-reveal.el")
-     ;; (require 'ox-reveal)
+     (require 'org-re-reveal)
    #+END_SRC
+
+   - <2020-02-05 Wed>
+
+     org-re-reveal trying
 
    - <2018-06-21 Thu>
 
