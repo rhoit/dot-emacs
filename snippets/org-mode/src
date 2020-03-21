@@ -3,6 +3,7 @@
 # key: src
 # alternative use '>s TAB' https://orgmode.org/org.html#Easy-templates
 # --
+#+HEADER: :exports both :eval no-export
 #+BEGIN_SRC ${1:language} :results output
   $0
 #+END_SRC

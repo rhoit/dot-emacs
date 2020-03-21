@@ -1,7 +1,8 @@
 # -*- mode: snippet -*-
 # name: pysrc
-# key: pysrc
+# key: py
 # --
+#+HEADER: :exports both :eval no-export
 #+BEGIN_SRC python :results output
   $0
 #+END_SRC
