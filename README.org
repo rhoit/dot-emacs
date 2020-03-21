@@ -963,6 +963,10 @@
         (js . t)
         (C . t)
         (python . t)))
+
+     (add-to-list 'org-babel-default-header-args
+                  '(:noweb . "yes")
+                  '(:eval . "no-export"))
    #+END_SRC
 
    switch the python location command set *Local Variables*
