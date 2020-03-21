@@ -892,6 +892,10 @@
         (shell . t)
         (sql . t)
         ))
+
+     (add-to-list 'org-babel-default-header-args
+                  '(:noweb . "yes")
+                  '(:eval . "no-export"))
    #+END_SRC
 
    - [2018-05-30 Wed]
