@@ -1255,12 +1255,16 @@
    - *<2018-01-04>*: seems like its *sh* again haven't fully tested
 
    #+BEGIN_SRC emacs-lisp
-     (org-babel-do-load-languages 'org-babel-load-languages '(
-     (shell . t)
-     (sql . t)
-     (js . t)
-     (C . t)
-     (python . t)))
+     (org-babel-do-load-languages 'org-babel-load-languages
+         '((shell . t)
+           (sql . t)
+           (js . t)
+           (C . t)
+           (python . t)))
+
+     (add-to-list 'org-babel-default-header-args
+         '(:noweb . "yes")
+         '(:eval . "no-export"))
    #+END_SRC
 
    switch the python location command set *Local Variables*
