@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: options
+# contributor: rho
+# key: opt
+# --
+#+OPTIONS: num:${1:$$(yas-choose-value '("t" "nil"))} toc:${2:$$(yas-choose-value '("nil" "1" "2" "3" "4" "5"))} H:${3:$$(yas-choose-value '("1" "2" "3" "4" "5")) html-postamble:${4:$$(yas-choose-value '("nil" "t"))} }
+$0
