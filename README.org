@@ -909,8 +909,8 @@
 ** venv
 
    Yes! we work on *virtual environment (venv)*, and we do love to
-   *source* them except some 🐍 *anaconda* idiots, who can't seems to
-   get things strait especially in *unix* systems.
+   *source* them, who can't seems to get things strait especially in
+   *unix* systems.
 
    In reality venv just switches executable, seriously loading *venv*
    might be sane for *terminal* operation or running errands with
