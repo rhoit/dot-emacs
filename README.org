@@ -265,11 +265,9 @@
 
 * PACMAN
 
-  Its bit tricky to make both *ELPA* and *el-get* work together, but
-  after years of procrastination, some how this works, you should load
-  *el-get* first, but *emacs24+* loads =package.el= by default, thats
-  why put this magic line before loading *el-get* =(setq
-  package-enable-at-startup nil)=
+  Its *2020*, it has been harder to maintain packages with two
+  managers. Finally decided to drop *el-get* in favor of build in
+  =package.el=.
 
 ** ELPA
 
@@ -292,15 +290,19 @@
 
 ** el-get
 
-   [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*.
-   It has been while (after =emacs 24=) emacs got its own package
-   manager, but recently I feel need to learn more.
+   [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. Not
+   using since starting of *2020*.
+
+   It has always bit tricky to make both *ELPA* and *el-get* work
+   together, loading *el-get* first, but *emacs24+* loads =package.el=
+   by default, thats why put this magic line before loading *el-get*
+   =(setq package-enable-at-startup nil)=.
 
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'load-path "~/.emacs.d/el-get")
-     (require 'el-get)
-     (setq el-get-git-shallow-clone 't)
-     (el-get 'sync)
+     ;;(add-to-list 'load-path "~/.emacs.d/el-get")
+     ;;(require 'el-get)
+     ;;(setq el-get-git-shallow-clone 't)
+     ;;(el-get 'sync)
    #+END_SRC
 
 *** my packages
@@ -441,7 +443,6 @@
    I find these binding quite handful.
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'fill-column-indicator)
      (require 'fill-column-indicator)
 
      (global-set-key (kbd "<f5>") 'redraw-display)
@@ -467,7 +468,6 @@
    *BEWARE*: It fancy but not reliable, decided not to use
 
    #+BEGIN_SRC emacs-lisp
-     ;; (el-get 'sync 'undo-tree)
      ;; (require 'undo-tree)
      ;; (global-undo-tree-mode 1)
      ;; (setq undo-tree-visualizer-timestamps t)
@@ -520,7 +520,6 @@
     Here is [[https://www.youtube.com/watch?v=_RvHz3vJ3kA][video]] from [[http://emacsrocks.com/][Emacs Rocks!]] about it in [[http://emacsrocks.com/e09.html][ep09]].
 
     #+BEGIN_SRC emacs-lisp
-      (el-get 'sync 'expand-region)
       (require 'expand-region)
 
       (global-set-key (kbd "C-S-SPC") 'er/expand-region)
@@ -554,7 +553,6 @@
    *BEWARE*: it breaks the *org-mode* don't enable it in org!
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'drag-stuff)
      (require 'drag-stuff)
      (drag-stuff-define-keys)
      (add-hook 'prog-mode-hook 'drag-stuff-mode)
@@ -632,7 +630,6 @@
      ;; (setq mode-icons-grayscale-transform nil)
      (mode-icons-mode)
 
-     (el-get 'sync 'powerline)
      (require 'powerline)
 
      ;;; https://github.com/rhoit/powerline-iconic-theme
@@ -736,7 +733,6 @@
    even [[https://github.com/osyo-manga/vim-anzu][vi]] this why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'anzu)
      (require 'anzu)
      (global-anzu-mode +1)
      (global-unset-key (kbd "M-%"))
@@ -762,7 +758,6 @@
    It has never been so much easy to bookmark!
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'bm)
      (require 'bm)
      (setq bm-marker 'bm-marker-left)
      (global-set-key (kbd "<left-fringe> S-<mouse-1>") 'bm-toggle-mouse)
@@ -777,7 +772,6 @@
    repo.
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'beacon)
      (require 'beacon)
      (setq beacon-blink-delay '0.2)
      (setq beacon-blink-when-focused 't)
@@ -811,7 +805,6 @@
    available in all major repository by now.
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'goto-chg)
      (require 'goto-chg)
      (global-unset-key (kbd "C-j"))
      (global-set-key (kbd "C-j") 'goto-last-change)
@@ -880,7 +873,6 @@
     #+BEGIN_SRC emacs-lisp
       (defun highlight-symbol-my-binds ()
         (interactive)
-        (el-get 'sync 'highlight-symbol)
         (require 'highlight-symbol)
         (local-set-key [(control f3)] 'highlight-symbol-at-point)
         (local-set-key [(shift f3)] 'highlight-symbol-next)
@@ -914,7 +906,6 @@
     hate default fill method.
 
     #+BEGIN_SRC emacs-lisp
-      (el-get 'sync 'highlight-indentation-guides)
       (require 'highlight-indent-guides)
 
       (setq highlight-indent-guides-method 'character)
@@ -946,10 +937,6 @@
 
    I had trouble using [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]], seems too be fixed now happy 2020!
 
-   #+BEGIN_src emacs-lisp
-     (add-hook 'prog-mode-hook 'hideshowvis-enable)
-   #+END_SRC
-
    need to checkout [[https://github.com/gregsexton/origami.el][origimi]].
 
 ** white-spaces
@@ -978,7 +965,6 @@
    toggling the mode just to delete few continuous white spaces. Naah!
 
     #+BEGIN_SRC emacs-lisp
-      (el-get 'sync 'hungry-delete)
       (require 'hungry-delete)
       (global-set-key (kbd "S-<backspace>") 'hungry-delete-backward)
     #+END_SRC
@@ -1012,7 +998,6 @@
 *** few hooks
 
     #+BEGIN_SRC emacs-lisp
-      (el-get 'sync 'fill-column-indicator)
       (require 'fill-column-indicator)
       (defun my-compilation-mode-hook ()
         (setq truncate-lines nil) ;; automatically becomes buffer local
@@ -1053,7 +1038,6 @@
    parenthesis it nice thing to have around.
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'rainbow-delimiters)
      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
    #+END_SRC
 
@@ -1319,7 +1303,6 @@
    org's *outline* with [[https://github.com/alphapapa/outshine][outshine]] extension.
 
    #+BEGIN_SRC emacs-lisp
-     (el-get 'sync 'outshine)
      (require 'outshine)
 
      (add-hook 'prog-mode-hook 'outline-minor-mode)
@@ -1496,13 +1479,9 @@
    Goodies for :whale: :whale: :whale:
 
    #+BEGIN_SRC emacs-lisp :tangle no
-     (el-get 'sync 's)
-     (el-get 'sync 'dockerfile-mode)
      (require 'dockerfile-mode)
      (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
    #+END_SRC
-
-   - *<2018-04-30>* dockerfile-mode seem to be missing =s= dependencies
 
 ** json
 
@@ -1516,7 +1495,6 @@
    disable because markdown creating problem to dockerfile-mode
 
    #+BEGIN_SRC emacs-lisp :tangle no
-     (el-get 'sync 'markdown-mode)
      (add-to-list 'auto-mode-alist '("\.md" . markdown-mode))
    #+END_SRC
 
