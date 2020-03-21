@@ -467,6 +467,12 @@
       (global-set-key (kbd "C-S-z") 'undo-tree-redo)
     #+END_SRC
 
+    - [2020-02-12 Wed] retrying undo-tree again!
+
+      There are moments when =undo-tree= [[http://www.dr-qubit.org/Lost_undo-tree_history.html][breaks down]] but, it has been
+      a while it hasn't or simply I haven't been working enough!
+      *COVID-19* 😷.
+
     - [2018-11-13 Tue] stopped using undo-tree
 
       full days work vanished 😱 thought undo would handle it 😥.
