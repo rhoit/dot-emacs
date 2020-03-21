@@ -1301,6 +1301,7 @@
      (add-hook 'text-scale-mode-hook 'update-org-latex-fragments)
    #+END_SRC
 
+   [[https://github.com/io12/org-fragtog][fragtog]] mode
 ** minor-mode
 
    *org-mode* can be addictive, someone have missed a lot and created
