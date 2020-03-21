@@ -38,6 +38,12 @@
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
+** about repo
+
+   - this is just a really opinionated configuration tracked in git.
+   - does'nt provide the any layer of abstraction.
+   - more of notes and rants why its so.
+
 ** getting it
 
    *DISCLAIMER:* :monkey: MAKE SURE YOU HAVE THE BACKUP :warning:
