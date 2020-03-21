@@ -184,6 +184,10 @@
    scripts to download files from [[https://www.emacswiki.org][EmacsWiki]] to full-featured package
    management solutions like [[https://github.com/raxod502/straight.el][straight.el]], these are few I have used
 
+   Its *2020*, it has been harder to maintain packages with two
+   managers. Finally decided to drop *el-get* in favor of build in
+   [[package.el]].
+
 *** package.el
 
     Add package other sources
@@ -199,6 +203,16 @@
     after adding these for the first time.
 
 *** el-get
+    :PROPERTIES:
+    :header-args: :tangle no
+    :END:
+
+    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. Not
+    using since starting of *2020*.
+
+    #+BEGIN_HTML
+      <details><summary>More</summary>
+    #+END_HTML
 
     Its bit tricky to make both *ELPA* and *el-get* work together, but
     after years of procrastination, some how this works, you should
@@ -216,6 +230,10 @@
 
     To replicate a package set for another emacs installation is
     explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
+
+    #+BEGIN_HTML
+      </details>
+    #+END_HTML
 
 * UI
 
