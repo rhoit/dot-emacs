@@ -1017,6 +1017,19 @@
    #+END_SRC
 
    [[https://github.com/io12/org-fragtog][fragtog]] mode
+
+** html export
+
+   #+BEGIN_SRC emacs-lisp
+     (setq
+         org-html-allow-name-attribute-in-anchors t
+         org-html-doctype "html5"
+         org-html-validation-link nil
+         org-html-checkbox-type 'html)
+   #+END_SRC
+
+   custom exporter for [[https://emacs.stackexchange.com/questions/55231/org-mode-export-html-add-name-attirbute-to-checkbox-input/55273#55273][checkbox]] as suggest by [[Name of the link][John Kitchin]].
+
 ** minor-mode
 
    *org-mode* can be addictive, someone have missed a lot and created
