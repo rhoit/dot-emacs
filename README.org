@@ -195,11 +195,17 @@
       (require 'package) ;; after 24 its pre-loaded
       (add-to-list 'load-path "~/.emacs.d/elpa/")
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+      (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
       (package-initialize)
     #+END_SRC
 
     Use =M-x package-refresh-contents= to reload the list of packages
     after adding these for the first time.
+
+    - <2020-02-02 Sun>
+
+      having troubles with org-version babel [[https://github.com/io12/org-fragtog/issues/1][support]]. using org
+      package-archives for latest stuff.
 
 *** el-get
     :PROPERTIES:
