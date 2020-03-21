@@ -245,7 +245,7 @@
    can open image, PDF but seriously? in emacs...
 
    #+BEGIN_SRC emacs-lisp
-     (setq large-file-warning-threshold 1048576)
+     (setq large-file-warning-threshold (* 1 1024 1024))
    #+END_SRC
 
    You might wonder why that random number!
@@ -1552,7 +1552,7 @@
    function always opens a new website in a new window
 
    #+BEGIN_SRC emacs-lisp
-     ;; (defun xwidget-browse-url-no-reuse (url &optional sessoin)
+     ;; (defun xwidget-browse-url-no-reuse (url &optional session)
      ;;  (interactive (progn
      ;;                 (require 'browse-url)
      ;;                 (browse-url-interactive-arg "xwidget-webkit URL: ")))
