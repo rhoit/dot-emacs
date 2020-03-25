@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: src-psql
+# key: psql
+# --
+
+#+HEADER: :cmdline --no-psqlrc :database postgres
+#+HEADER: :results output table :eval no-export
+#+BEGIN_SRC sql :engine postgresql :exports both
+  $0
+#+END_SRC
