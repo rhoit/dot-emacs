@@ -1078,7 +1078,14 @@
    [[https://gitlab.com/oer/org-re-reveal][org-re-reveal]] is the fork of [[https://github.com/yjwen/org-reveal][yjwen/org-reveal]] with enhancement
 
    #+BEGIN_SRC emacs-lisp
-     (require 'org-re-reveal)
+     (add-hook 'org-mode-hook '(lambda ()
+       (require 'org-re-reveal)))
+
+     (setq
+         org-re-reveal-root "~/Public/vendors/reveal.js"
+         org-re-reveal-extra-css "~/Public/vendors/reveal.js/override.css"
+         org-re-reveal-mathjax-url "~/Public/vendors/MathJax/es5/tex-mml-chtml.js"
+         org-re-reveal-theme "night")
    #+END_SRC
 
    - <2020-02-05 Wed>
