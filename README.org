@@ -465,7 +465,36 @@
                            (fci-mode)))
    #+END_SRC
 
+** text zoom
 
+   #+BEGIN_HTML
+     I still don't understand :unamused: why <a
+     href="https://www.emacswiki.org/emacs/SetFonts#ChangingFontSize">
+     vanilla emacs</a> prefix <kbd>C</kbd>-<kbd>x</kbd>= with
+     <kbd>C</kbd>-<kbd>-</kbd>, <kbd>C</kbd>-<kbd>=</kbd>,
+     <kbd>C</kbd>-<kbd>0</kbd>, mapping behavior similar to browser
+     might be helpful and have cohesive experience.
+   #+END_HTML
+
+   | zoom | keyboard         | keyboard + mouse         |
+   |------+------------------+--------------------------|
+   | in   | Ctrl + Shift + = | Ctrl + mouse-scroll-up   |
+   | out  | Ctrl + -         | Ctrl + mouse-scroll-down |
+   | 1x   |                  | Ctrl + 0                 |
+
+   these config are for the single buffer
+
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key [C-mouse-4] 'text-scale-increase)
+     (global-set-key [(control ?+)] 'text-scale-increase)
+     (global-set-key [C-mouse-5] 'text-scale-decrease)
+     (global-set-key [(control ?-)] 'text-scale-decrease)
+     (global-set-key (kbd "C-0") '(lambda ()
+         (interactive)
+		 (text-scale-adjust
+		 (- text-scale-mode-amount))
+		 (text-scale-mode -1)))
+   #+END_SRC
 
 ** undo
 
