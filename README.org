@@ -610,6 +610,34 @@
       (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
     #+END_SRC
 
+** text zoom
+
+   I still don't understand 😒 why *emacs* way of changing font [[https://www.emacswiki.org/emacs/SetFonts#ChangingFontSize][size]]
+   is weird. Mapping behavior similar to web-browser might be helpful
+   to have cohesive experience.
+
+   | zoom | keyboard         | keyboard + mouse         |
+   |------+------------------+--------------------------|
+   | in   | Ctrl + Shift + = | Ctrl + mouse-scroll-up   |
+   | out  | Ctrl + -         | Ctrl + mouse-scroll-down |
+   | 1x   |                  | Ctrl + 0                 |
+
+   These config are for the single buffer
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (global-set-key [C-mouse-4] 'text-scale-increase)
+     (global-set-key [(control ?+)] 'text-scale-increase)
+     (global-set-key [C-mouse-5] 'text-scale-decrease)
+     (global-set-key [(control ?-)] 'text-scale-decrease)
+     (global-set-key
+      (kbd "C-0")
+      (lambda()
+        (interactive)
+        (text-scale-adjust (- text-scale-mode-amount))
+        (text-scale-mode -1)))
+   #+END_SRC
+
 ** [[https://github.com/joodland/bm][bookmark]]
 
    It has never been so much easy to bookmark 🔖!
