@@ -465,12 +465,17 @@
                            (fci-mode)))
    #+END_SRC
 
+   #+BEGIN_SRC emacs-lisp
+     ;; listing buffer same as C-x C-b
+     (global-set-key (kbd "C-S-b") 'list-buffers)
+   #+END_SRC
+
 ** text zoom
 
    #+BEGIN_HTML
      I still don't understand :unamused: why <a
      href="https://www.emacswiki.org/emacs/SetFonts#ChangingFontSize">
-     vanilla emacs</a> prefix <kbd>C</kbd>-<kbd>x</kbd>= with
+     vanilla emacs</a> prefix <kbd>C</kbd>-<kbd>x</kbd> with
      <kbd>C</kbd>-<kbd>-</kbd>, <kbd>C</kbd>-<kbd>=</kbd>,
      <kbd>C</kbd>-<kbd>0</kbd>, mapping behavior similar to browser
      might be helpful and have cohesive experience.
@@ -625,8 +630,10 @@
    As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
    packaged with emacs.
 
-   | 2009, Emacs 23 | linum-mode                       |
-   | 2018, Emacs 26 | global-display-line-numbers-mode |
+   | year | emacs | package                          |
+   |------+-------+----------------------------------|
+   | 2009 |    23 | linum-mode                       |
+   | 2018 |    26 | global-display-line-numbers-mode |
 
    #+BEGIN_SRC emacs-lisp
      ;; (global-display-line-numbers-mode)
@@ -991,7 +998,21 @@
      Phenomenal Cosmic Powers! Itty Bitty trailing spaces!
    #+END_EXAMPLE
 
-   Seriously what kinda all crappy IDE's coming out.
+   Although end result might be same but it all shows in diff, ideally
+   there should be no empty lines at the beginning of a file, no empty
+   lines at the end of a file, no trailing whitespace, no mixture of
+   tabs and spaces, etc.
+
+   older =delete-trailing-whitespace= command, that simply deletes trailing
+   whitespace.
+
+   =whitespace-cleanup= aware of the whitespace-style variable, used
+   by whitespace-mode.
+
+   different types of hooks
+
+   - write-file-hooks
+   - before-save-hooks
 
    #+BEGIN_SRC emacs-lisp
      (defun nuke_trailing ()
@@ -1018,17 +1039,9 @@
     (require 'smart-hungry-delete)
     (smart-hungry-delete-add-default-hooks)
     (global-set-key (kbd "<backspace>") 'smart-hungry-delete-backward-char)
-    (global-set-key (kbd "<delete>") 'smart-hungry-delete-forward-char)
-   #+END_SRC
 
-   Of course emacs can add newline at *End Of File* just to make sure
-   *git* doesn't go crazy! for unchanged files. But don't enable it
-   let fancy IDE people wonder how to remove newline at EOF
-
-   *CAUTION! BUT MOST OF THEM DON'T CARE*
-
-   #+BEGIN_SRC emacs-lisp
-     (setq require-final-newline t)
+    ;;(global-set-key (kbd "<delete>") '(lambda ()
+    ;;  (if use-region-p '(smart-hungry-delete-forward-char) '(delete-char))))
    #+END_SRC
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][compile]]
@@ -1526,7 +1539,11 @@
 
    https://www.emacswiki.org/emacs/SqlMode
 
-   Starting with version 21.4-a, sql-mode included with emacs
+   Starting with version 21.4, sql-mode included with emacs
+
+   to start interactive mode
+
+   M-x sql-product-interactive
 
 *** Automatically upcase SQL keywords
 
