@@ -1127,6 +1127,17 @@
 
    It has interactive mode `M-x sql-product-interactive`
 
+*** indent
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq sqlind-basic-offset 4)
+    #+END_SRC
+
+    [[https://elpa.gnu.org/packages/sql-indent.html][sql-indent]] for auto indent
+
+    https://github.com/alex-hhh/emacs-sql-indent/blob/master/sql-indent.org
+
 *** upcase-sql-keywords
 
     See also http://stackoverflow.com/q/22091936/324105
