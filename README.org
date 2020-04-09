@@ -2,7 +2,7 @@
 #+DATE: Sunday, Jan 17 2016
 #+DESCRIPTION: my emacs config diaries!
 #+AUTHOR: rho
-#+OPTIONS: num:t
+#+OPTIONS: num:t toc:1
 #+STARTUP: overview
 
 
