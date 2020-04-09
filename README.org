@@ -1175,7 +1175,11 @@
 
    https://www.emacswiki.org/emacs/SqlMode
 
-   Starting with version 21.4-a, sql-mode included with emacs
+   Starting with version 21.4, sql-mode included with emacs
+
+   to start interactive mode
+
+   M-x sql-product-interactive
 
 *** Automatically upcase SQL keywords
 
