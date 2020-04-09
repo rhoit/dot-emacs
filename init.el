@@ -12,8 +12,6 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
-(setq package-enable-at-startup nil) ;; let el-get load first
-
 
 ;;----------------------------------------------------------------------
 ;;; load main config via org
