@@ -1485,6 +1485,16 @@
          (local-set-key (kbd "C->") 'python-indent-shift-right)))
    #+END_SRC
 
+*** docstring
+
+    [[https://github.com/glyph/python-docstring-mode/blob/master/README.md][python-docstring]] is a package that overrides fill-paragraph so it
+    is compatible with Python docstrings. It works for both sphinx-doc
+    and re Structured text formats.
+
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'python-mode-hook 'python-docstring-mode)
+    #+END_SRC
+
 *** [[http://tkf.github.io/emacs-jedi/][jedi]]
 
     Since *python3.3* virtual environment can be created using =python
