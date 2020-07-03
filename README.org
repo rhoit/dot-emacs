@@ -923,6 +923,16 @@
     (setq-default py-indent-offset 4)
   #+END_SRC
 
+** docstring
+
+   [[https://github.com/glyph/python-docstring-mode/blob/master/README.md][python-docstring]] is a package that overrides fill-paragraph so it
+   is compatible with Python docstrings. It works for both sphinx-doc
+   and re Structured text formats.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'python-mode-hook 'python-docstring-mode)
+   #+END_SRC
+
 ** jedi
 
    [[http://tkf.github.io/emacs-jedi/]]
