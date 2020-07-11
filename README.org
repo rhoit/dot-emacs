@@ -605,7 +605,7 @@
      (add-hook 'prog-mode-hook 'drag-stuff-mode)
    #+END_SRC
 
-** smooth scroll
+** scroll
 
    Unfortunately *emacs* :barber: scrolling :barber: is not smooth.
 
@@ -623,6 +623,15 @@
 
      (setq mouse-wheel-progressive-speed 10)
      (setq mouse-wheel-follow-mouse 't)
+   #+END_SRC
+
+   Similar to nano single line horizontal scroll was introduced in
+   emacs 26.1, which causes only the line where the cursor is
+   displayed to be horizontally scrolled when lines are truncated on
+   display and point moves outside the left or right window margin.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq auto-hscroll-mode 'current-line)
    #+END_SRC
 
 ** line-number
