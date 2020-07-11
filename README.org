@@ -272,6 +272,29 @@
          (load-theme theme t)))
    #+END_SRC
 
+** scroll
+
+   Unfortunately *emacs* 💈 [[https://www.emacswiki.org/emacs/SmoothScrolling][scrolling]] 💈 is not smooth, and riddled
+   with bugs, although =pixel-scroll-mode=, available since *v26*, there
+   are numerous scrolling options but it doesn't feel natural.
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'smooth-scroll)
+     (smooth-scroll-mode t)
+
+     ;; (setq scroll-conservatively 100000)
+     (setq scroll-conservatively 0) ;; cursor on the middle of the screen
+     ;; (setq scroll-preserve-screen-position 1)
+
+     (setq scroll-margin 0)
+     (setq scroll-up-aggressively 0.01)
+     (setq scroll-down-aggressively 0.01)
+     (setq auto-window-vscroll nil)
+
+     (setq mouse-wheel-progressive-speed 10)
+     (setq mouse-wheel-follow-mouse 't)
+   #+END_SRC
+
 ** line-number
 
    As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
