@@ -1317,8 +1317,10 @@
            (sql . t)
            (js . t)
            (C . t)
+           (ipython . t)  ;; install ob-ipython
            (python . t)))
 
+     ;; (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
      (add-to-list 'org-babel-default-header-args
          '(:noweb . "yes")
          '(:eval . "no-export"))
