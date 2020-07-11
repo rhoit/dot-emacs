@@ -1080,6 +1080,7 @@
                  ("\\.mkv\\'" . "mplayer %s")
                  ("\\.mp4\\'" . "vlc %s")
                  ("\\.webm\\'" . "mplayer %s")
+                 ("\\.html\\'" . "firefox %s")
                  ("\\.pdf\\'" . "evince %s")))))
    #+END_SRC
 
