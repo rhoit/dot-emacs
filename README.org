@@ -1346,6 +1346,7 @@
                           ("\\.gif\\'" . "eog %s")
                           ("\\.mkv\\'" . "mplayer %s")
                           ("\\.mp4\\'" . "vlc %s")
+                          ("\\.html\\'" . "firefox %s")
                           ("\\.webm\\'" . "mplayer %s")
                           ("\\.pdf\\'" . "evince %s")))))
    #+END_SRC
