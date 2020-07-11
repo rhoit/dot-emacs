@@ -498,14 +498,13 @@
 
     - <2020-02-12 Wed> retrying undo-tree again!
 
-      there are moments when =undo-tree= [[http://www.dr-qubit.org/Lost_undo-tree_history.html][breaks down]] but, it has been a
-      while it hasn't or simply I haven't been working enough!
-      *COVID-19* :mask:
+      there are moments when =undo-tree= [[http://www.dr-qubit.org/Lost_undo-tree_history.html][breaks down]] but, it has been
+      a while it hasn't or simply I haven't been working enough!
+      *COVID-19* 😷
 
     - <2018-11-13 Tue> stopped using undo-tree
 
-      full days work vanished :disappointed_relieved: thinking I would
-      undo would handle it.
+      full days work vanished 😥 thought undo would handle it.
 
 ** search
 *** anzu
