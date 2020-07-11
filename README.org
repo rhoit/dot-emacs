@@ -504,14 +504,16 @@
 ** undo
 
    #+BEGIN_HTML
-     <kbd>C</kbd>-<kbd>z</kbd> is synomous to undo not for emacs
-     these, may be this is much needed thing!
+     <p><kbd>C</kbd>-<kbd>z</kbd> is synomous to undo.</p>
    #+END_HTML
 
-   there is the great package =undo-tree=, addition to being fancy it
-   it not reliable and bring you in misery. :disappointed_relieved:
+   It simply not true for emacs. Although its understandable using in
+   terminal to suspend the process to bring back up later with *fg*,
+   for GUI it doesn't make any :unamused: sense having yet another way
+   to minimize window.
 
-   *BEWARE*: It fancy but not reliable, decided not to use
+   There is this great package called [[http://www.dr-qubit.org/undo-tree.html][undo-tree]] with preserve your
+   undo chain and maintain undo branching.
 
    #+BEGIN_SRC emacs-lisp
      (require 'undo-tree)
@@ -523,7 +525,16 @@
      (global-set-key (kbd "C-S-z") 'undo-tree-redo)
    #+END_SRC
 
-   - <2020-02-12> retry undo-tree
+   - <2020-02-12 Wed> retrying undo-tree again!
+
+     there are moments when =undo-tree= [[http://www.dr-qubit.org/Lost_undo-tree_history.html][breaks down]] but, it has been a
+     while it hasn't or simply I haven't been working enough!
+     *COVID-19* :mask:
+
+   - <2018-11-13 Tue> stopped using undo-tree
+
+     full days work vanished :disappointed_relieved: thinking I would
+     undo would handle it.
 
 ** text selection
 
