@@ -274,17 +274,28 @@
 
 * PACMAN
 
-  Its *2020*, it has been harder to maintain packages with two
-  managers. Finally decided to drop *el-get* in favor of build in
-  =package.el=.
+  It has been harder to maintain packages with two managers. Finally
+  decided to drop *el-get* in favor of build in =package.el=.
+
+  - <2020-02-02>
+
+    having troubles with org-version babel [[https://github.com/io12/org-fragtog/issues/1][support]].
+    using org package-archives for latest stuff.
+
+  - <2018-03-01>
+
+    finally got dual package setting right.
 
 ** ELPA
+
+   [[https://elpa.gnu.org/][Emacs Lisp Package Archive]] default package repository
 
    Add package other sources
 
    #+BEGIN_SRC emacs-lisp
      (require 'package) ;; after 24 its pre-loaded
      (add-to-list 'load-path "~/.config/emacs/elpa/")
+     (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
      (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
      (package-initialize)
@@ -292,6 +303,12 @@
 
    Use =M-x package-refresh-contents= to reload the list of packages
    after adding these for the first time.
+
+   #+BEGIN_HTML
+     Updating all packages is kinda strange chore type
+     <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
+     <b>Packages</b> buffer, and then type <kbd>U</kbd> <kbd>x</kbd>.
+   #+END_HTML
 
    - <2020-02-02 Sun>
 
