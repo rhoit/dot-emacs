@@ -39,6 +39,9 @@
    =org= organize was most sane thing till now =~/emacs.d/init.el= was
    orgified =(org-babel-load-file)=.
 
+   This config follow [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG convention]] for init files which was
+   introduced in [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][version 27.1]].
+
 ** getting-it
 
    🧨 *DISCLAIMER:* 🐒 MAKE SURE YOU HAVE THE BACKUP ⚠️ AUTHOR will
@@ -102,10 +105,10 @@
    This is the way, I keep my things have been same for many year now!
 
    #+BEGIN_EXAMPLE
-     dot-emacs
-     ├── el-get                 # pacman
+     ~/.config/emacs
+     ├── elpa                   # pacman
      ├── cfg.compile.el         # config subsection
-     :
+     :   :
      ├── ...
      :
      ├── 00testing              # testing stuffs
@@ -191,7 +194,7 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
-      (add-to-list 'load-path "~/.emacs.d/elpa/")
+      (add-to-list 'load-path "~/.config/emacs/elpa/")
 
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
       (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
