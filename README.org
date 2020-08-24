@@ -157,6 +157,12 @@
     Use =M-x package-refresh-contents= to reload the list of packages
     after adding these for the first time.
 
+    #+BEGIN_HTML
+      Updating all packages is kinda strange chore type
+      <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
+      <b>Packages</b> buffer, and then type <kbd>U</kbd> <kbd>x</kbd>.
+    #+END_HTML
+
     - [2020-02-02 Sun]
 
       having troubles with org-version babel [[https://github.com/io12/org-fragtog/issues/1][support]]. using org
