@@ -662,7 +662,7 @@
    display and point moves outside the left or right window margin.
 
    #+BEGIN_SRC emacs-lisp
-     (setq auto-hscroll-mode 'current-line)
+     ;; (setq auto-hscroll-mode 'current-line)
    #+END_SRC
 
 ** line-number
