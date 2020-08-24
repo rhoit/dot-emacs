@@ -38,6 +38,9 @@
    *code*. To =org= organize was most sane thing till now
    [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-babel-tangle).
 
+   This config follow [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG convention]] for init files which was
+   introduced in [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][version 27.1]].
+
 ** getting-it
 
    🧨 *DISCLAIMER:* 🐒 MAKE SURE YOU HAVE THE BACKUP ⚠️ AUTHOR will
@@ -101,8 +104,8 @@
    This is the way, I keep my things have been same for many year now!
 
    #+BEGIN_EXAMPLE
-     dot-emacs
-     ├── el-get                 # pacman
+     ~/.config/emacs
+     ├── elpa                   # pacman
      ├── config                 # config subsection
      │   ├── compile.cfg.el
      :   :
@@ -194,7 +197,7 @@
 
     #+BEGIN_SRC emacs-lisp
       (require 'package) ;; after 24 its pre-loaded
-      (add-to-list 'load-path "~/.emacs.d/elpa/")
+      (add-to-list 'load-path "~/.config/emacs/elpa/")
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
       (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
       (package-initialize)
@@ -252,7 +255,7 @@
   does it really need to be like this.
 
   #+BEGIN_SRC emacs-lisp
-    (load "~/.emacs.d/config/ui.cfg.el")
+    (load "~/.config/emacs/config/ui.cfg.el")
   #+END_SRC
 
 ** theme
@@ -351,14 +354,14 @@
      (require 'tabbar)
      (tabbar-mode t)
 
-     (setq FILE-tabbar "~/.emacs.d/00-tests/tabbar-ruler/tabbar-ruler.el")
+     (setq FILE-tabbar "~/.config/emacs/00-tests/tabbar-ruler/tabbar-ruler.el")
      (if (file-exists-p FILE-tabbar)
        (load-file FILE-tabbar)
        (require 'tabbar-ruler))
 
      (setq tabbar-ruler-style 'firefox)
 
-     (load "~/.emacs.d/cfg.tabbar.el")
+     (load "~/.config/emacs/config/cfg.tabbar.el")
      (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
    #+END_SRC
 
@@ -1258,7 +1261,7 @@
   [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][wordplay]] consist of collection of nifty scripts.
 
   #+BEGIN_SRC emacs-lisp
-    (load "~/.emacs.d/scripts/wordplay.el")
+    (load "~/.config/emacs/scripts/wordplay.el")
   #+END_SRC
 
 ** [[http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/][smarter move to beginning of line]]
@@ -1309,7 +1312,7 @@
   *available* in =el-get=.
 
   #+BEGIN_SRC emacs-lisp
-    (add-to-list 'load-path "~/.emacs.d/00testing/")
+    (add-to-list 'load-path "~/.config/emacs/00testing/")
   #+END_SRC
 
 ** ansi-color
@@ -1332,7 +1335,7 @@
 ** isend-mode
 
    #+BEGIN_SRC emacs-lisp
-     ;; (add-to-list 'load-path "~/.emacs.d/00testing/isend-mode/")
+     ;; (add-to-list 'load-path "~/.config/emacs/00testing/isend-mode/")
      ;; (require 'isend)
    #+END_SRC
 
