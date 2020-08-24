@@ -40,6 +40,9 @@
 
 ** about repo
 
+   This config follow [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG convention]] for init files which was
+   introduced in [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][version 27.1]].
+
    - this is just a really opinionated configuration tracked in git.
    - does'nt provide the any layer of abstraction.
    - more of notes and rants why its so.
@@ -120,8 +123,8 @@
    This is the way, I keep my things have been same for many year now!
 
    #+BEGIN_EXAMPLE
-     dot-emacs
-     ├── el-get                 # pacman
+     ~/.config/emacs -> dot-emacs
+     ├── elpa                   # pacman
      ├── config                 # config subsection
      │   ├── compile.cfg.el
      :   :
@@ -174,7 +177,7 @@
    config.
 
    #+BEGIN_SRC emacs-lisp
-     ;;(let ((benchmark-init.el "~/.emacs.d/el-get/benchmark-init/benchmark-init.el"))
+     ;;(let ((benchmark-init.el "~/.config/emacs/el-get/benchmark-init/benchmark-init.el"))
      ;; (when (file-exists-p benchmark-init.el)
      ;;    (load benchmark-init.el)))
    #+END_SRC
@@ -281,7 +284,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (require 'package) ;; after 24 its pre-loaded
-     (add-to-list 'load-path "~/.emacs.d/elpa/")
+     (add-to-list 'load-path "~/.config/emacs/elpa/")
      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
      (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
      (package-initialize)
@@ -311,7 +314,7 @@
    =(setq package-enable-at-startup nil)=.
 
    #+BEGIN_SRC emacs-lisp
-     ;;(add-to-list 'load-path "~/.emacs.d/el-get")
+     ;;(add-to-list 'load-path "~/.config/emacs/el-get")
      ;;(require 'el-get)
      ;;(setq el-get-git-shallow-clone 't)
      ;;(el-get 'sync)
@@ -355,7 +358,7 @@
   efficient *vi* binding, just locks me inside without the exit door!
 
   #+BEGIN_SRC emacs-lisp
-    (load "~/.emacs.d/config/ui.cfg.el")
+    (load "~/.config/emacs/config/ui.cfg.el")
   #+END_SRC
 
 ** switch theme
@@ -459,7 +462,7 @@
 
      (global-set-key (kbd "<f5>") 'redraw-display)
      (global-set-key [(control f5)] '(lambda() (interactive)
-                                     (load-file "~/.emacs.d/init.el")))
+                                     (load-file "~/.config/emacs/init.el")))
      (global-set-key [f6] '(lambda() (interactive)
                            (toggle-truncate-lines)
                            (fci-mode)))
@@ -690,7 +693,7 @@
    #+BEGIN_SRC emacs-lisp
      ;;; mode-icons directly from repo, for experiments
      ;;; https://github.com/ryuslash/mode-icons
-     (load-file "~/.emacs.d/00testing/mode-icons/mode-icons.el")
+     (load-file "~/.config/emacs/00testing/mode-icons/mode-icons.el")
      ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE & UNCOMMENT NEXT 2 LINES
      ;; (el-get 'sync 'mode-icons)
      ;; (require 'mode-icons)
@@ -702,8 +705,8 @@
      (require 'powerline)
 
      ;;; https://github.com/rhoit/powerline-iconic-theme
-     ;; (add-to-list 'load-path "~/.emacs.d/00testing/powerline-iconic-theme/")
-     (load-file "~/.emacs.d/00testing/powerline-iconic-theme/iconic.el")
+     ;; (add-to-list 'load-path "~/.config/emacs/00testing/powerline-iconic-theme/")
+     (load-file "~/.config/emacs/00testing/powerline-iconic-theme/iconic.el")
      (powerline-iconic-theme)
      ;;; DID YOU GOT STUCK ABOVE? COMMENT 2 LINES ABOVE & UNCOMMENT NEXT LINE
      ;; (powerline-default-theme)
@@ -722,14 +725,14 @@
 
      ;;; tabbar-ruler directly from repo, for experiments
      ;;; https://github.com/mattfidler/tabbar-ruler.el
-     (load-file "~/.emacs.d/00testing/tabbar-ruler/tabbar-ruler.el")
+     (load-file "~/.config/emacs/00testing/tabbar-ruler/tabbar-ruler.el")
      ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE & UNCOMMENT NEXT 2
      ;; (el-get 'sync 'tabbar-ruler)
      ;; (require 'tabbar-ruler)
 
      (setq tabbar-ruler-style 'firefox)
 
-     (load "~/.emacs.d/config/tabbar.cfg.el")
+     (load "~/.config/emacs/config/tabbar.cfg.el")
      (global-set-key [f7] 'tabbar-mode)
      (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
 
@@ -1067,7 +1070,7 @@
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][compile]]
 
    #+BEGIN_SRC emacs-lisp
-     (load "~/.emacs.d/config/compile.cfg.el")
+     (load "~/.config/emacs/config/compile.cfg.el")
    #+END_SRC
 
 *** few hooks
@@ -1552,7 +1555,7 @@
     shortcut "[C-h S]"
 
     #+BEGIN_SRC emacs-lisp
-      ;; (add-to-list 'load-path "~/.emacs.d/pydoc-info")
+      ;; (add-to-list 'load-path "~/.config/emacs/pydoc-info")
       ;; (require 'pydoc-info)
       ;; (require 'info-look)
     #+END_SRC
@@ -1562,11 +1565,11 @@
     ess-style executing /python/ script.
 
     #+BEGIN_SRC emacs-lisp
-      (add-to-list 'load-path "~/.emacs.d/00testing/py-exec/")
+      (add-to-list 'load-path "~/.config/emacs/00testing/py-exec/")
       (require 'py-exec)
       (add-hook 'python-mode-hook
            (lambda () (local-set-key (kbd "<C-return>") 'py-execution)))
-    #+end_src
+    #+END_SRC
 
 ** sql
 
@@ -1645,7 +1648,7 @@
   Word play consist of collection of nifty scripts.
 
   #+BEGIN_SRC emacs-lisp
-    (load "~/.emacs.d/scripts/wordplay.el")
+    (load "~/.config/emacs/scripts/wordplay.el")
   #+END_SRC
 
 ** [[http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/][smarter move to beginning of line]]
@@ -1722,7 +1725,7 @@
   *available* in =el-get=.
 
   #+BEGIN_SRC emacs-lisp
-    (add-to-list 'load-path "~/.emacs.d/00testing/")
+    (add-to-list 'load-path "~/.config/emacs/00testing/")
   #+END_SRC
 
 ** window numbering
@@ -1730,7 +1733,7 @@
    also avalible in *el-get*.
 
    #+BEGIN_SRC emacs-lisp :tangle no
-     (add-to-list 'load-path "~/.emacs.d/00testing/window-numbering/")
+     (add-to-list 'load-path "~/.config/emacs/00testing/window-numbering/")
      (require 'window-numbering)
      (window-numbering-mode)
    #+END_SRC
@@ -1738,7 +1741,7 @@
 ** isend-mode
 
    #+BEGIN_SRC emacs-lisp
-     ;; (add-to-list 'load-path "~/.emacs.d/00testing/isend-mode/")
+     ;; (add-to-list 'load-path "~/.config/emacs/00testing/isend-mode/")
      ;; (require 'isend)
    #+END_SRC
 

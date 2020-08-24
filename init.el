@@ -1,5 +1,5 @@
 ;;======================================================================
-;;; emacs config file for 28.0
+;;; emacs config file for 27.1
 ;;======================================================================
 
 (setq user-full-name "rho"
@@ -19,8 +19,8 @@
 
 ;;----------------------------------------------------------------------
 ;;; load main config via org
-;;(load-file "~/.emacs.d/README.el")
-(add-hook 'after-init-hook (lambda () (org-babel-load-file "~/.emacs.d/README.org")))
+;;(load-file "~/.config/emacs/README.el")
+(add-hook 'after-init-hook (lambda () (org-babel-load-file "~/.config/emacs/README.org")))
 
 
 ;;======================================================================
