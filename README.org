@@ -197,6 +197,7 @@
     #+BEGIN_SRC emacs-lisp
       (require 'package) ;; after 24 its pre-loaded
       (add-to-list 'load-path "~/.config/emacs/elpa/")
+      (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
       (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
       (package-initialize)
@@ -204,6 +205,12 @@
 
     Use =M-x package-refresh-contents= to reload the list of packages
     after adding these for the first time.
+
+    #+BEGIN_HTML
+      Updating all packages is kinda strange chore type
+      <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
+      <b>Packages</b> buffer, and then type <kbd>U</kbd> <kbd>x</kbd>.
+    #+END_HTML
 
     - <2020-02-02 Sun>
 
