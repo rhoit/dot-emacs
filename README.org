@@ -305,6 +305,16 @@
      (setq mouse-wheel-follow-mouse 't)
    #+END_SRC
 
+*** scroll-horizontal
+
+    Similar to *nano* single line horizontal scroll in *v26.1*
+    introduced new feature, which only current line with cursor to be
+    horizontally scrolled left or right window margin.
+
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (setq auto-hscroll-mode 'current-line)
+    #+END_SRC
+
 ** line-number
 
    As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
