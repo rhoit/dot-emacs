@@ -986,7 +986,7 @@
         (local-set-key [(shift f3)] 'highlight-symbol-next)
         (local-set-key [(ctrl f3)] 'highlight-symbol-query-replace)
 
-        (local-set-key (kbd "<C-down-mouse-1>") (lambda (event)
+        (local-set-key (kbd "<C-down-mouse-3>") (lambda (event)
           (interactive "e")
           (save-excursion
             (goto-char (posn-point (event-start event)))
