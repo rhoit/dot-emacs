@@ -19,22 +19,6 @@
     FYI "emacs vanilla is a lie"
   #+END_EXAMPLE
 
-  It began with *single-file* =~/.emacs= with some random snippets.
-  Didn't took long to become monster, CHAOTIC MONSTER. It loved to
-  *cherry-picked* plugin from different gardens (/not only git/) you
-  guessed it, why don't you *apt-get* so I thought.
-
-  Manually maintaining of was hard job, had too freeze them just
-  because it newer one didn't work. And came =package.el=, which I
-  noticed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]] using *emacs25*. [[https://www.emacswiki.org/emacs/el-get][el-get]] was there,
-  an now =package.el= was official too. I can't seem to [[https://github.com/dimitri/el-get/issues/1468][choose]] one,
-  and great can use both.
-
-  Yet, I could barely remember *Why I removed that package, what
-  happen?*, *git-whatchanged* would have told me more if it was a
-  *code*. To =org= organize was most sane thing till now
-  [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-bable-tangle).
-
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
@@ -46,6 +30,22 @@
    - highly opinionated configuration tracked in git
    - does'nt provide the any layer of abstraction
    - more of notes and rants why its so
+
+   It began with *single-file* =~/.emacs= with some random snippets.
+   Didn't took long to become monster, CHAOTIC MONSTER. It loved to
+   *cherry-picked* plugin from different gardens (/not only git/) you
+   guessed it, why don't you *apt-get* so I thought.
+
+   Manually maintaining of was hard job, had too freeze them just
+   because it newer one didn't work. And came =package.el=, which I
+   noticed in [[https://www.gnu.org/software/emacs/manual/html_node/efaq/New-in-Emacs-24.html][What's new in emacs24]] using *emacs25*. [[https://www.emacswiki.org/emacs/el-get][el-get]] was there,
+   an now =package.el= was official too. I can't seem to [[https://github.com/dimitri/el-get/issues/1468][choose]] one,
+   and great can use both.
+
+   Yet, I could barely remember *Why I removed that package, what
+   happen?*, *git-whatchanged* would have told me more if it was a
+   *code*. To =org= organize was most sane thing till now
+   [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-bable-tangle).
 
 ** getting it
 
