@@ -1020,6 +1020,39 @@
      ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
    #+END_SRC
 
+*** lsp-ui
+
+    This [[https://emacs-lsp.github.io/lsp-ui/][extension]] is for all the higher level UI modules of [[LSP]].
+
+    By default, *lsp-mode* automatically activates *lsp-ui* unless
+    =(setq lsp-auto-configure nil)=.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'lsp-ui)
+      (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+
+      (setq lsp-ui-sideline-enable nil
+            lsp-ui-sideline-show-code-actions t
+            lsp-ui-sideline-delay 0.05)
+
+      (setq lsp-ui-doc-enable t
+            lsp-ui-doc-position 'top
+            ;; lsp-ui-doc-border (face-foreground 'default))
+            lsp-ui-doc-use-childframe t
+            lsp-ui-doc-show-with-cursor nil
+            lsp-ui-doc-show-with-mouse t
+            lsp-ui-doc-include-signature t)
+
+      ;; doesn't seem to be working
+      (setq lsp-ui-flycheck-enable t
+            lsp-ui-flycheck-list-position 'right
+            lsp-ui-flycheck-live-reporting t)
+
+      (setq lsp-ui-peek-enable t
+            lsp-ui-peek-list-width 60
+            lsp-ui-peek-peek-height 25)
+    #+END_SRC
+
 * GIT
 
   #+BEGIN_QUOTE
