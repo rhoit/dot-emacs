@@ -9,7 +9,7 @@
 *parenthesiophobia*, but couldn't stop tinker around.
 
 
-* Intro
+* INTRO
 
   I've been using /emacs/ since *2012*, It has been the love and hate
   story since day one, In summary *emacs rocks but rocks are not so
@@ -154,7 +154,7 @@
        (setq debug-on-quit t)  ;; C-g
      #+END_SRC
 
-* emacs core
+* CORE
 ** garbage collector
 
    I don't really understand what its happening but here are some
@@ -272,7 +272,7 @@
      ;; (recentf-mode nil)
    #+END_SRC
 
-* pacman
+* PACMAN
 
   It has been harder to maintain packages with two managers. Finally
   decided to drop *el-get* in favor of build in =package.el=.
@@ -341,7 +341,7 @@
     =(el-get 'sync '<package-name>)= if its required before its
     configuration.
 
-* [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
+* UI/UX
 
   As of today, most people who use *vi* or *emacs* are [[https://github.com/fuqcool/atom-emacs-mode#deprecated][incapable]] of
   using the other editor without using curse words :rage1:. Not
@@ -912,7 +912,7 @@
      ;; (add-hook 'git-commit-mode-hook 'emojify-mode)
    #+END_SRC
 
-* programming
+* PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
 
@@ -1242,6 +1242,7 @@
      ;; (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
    #+END_SRC
 
+<<<<<<< HEAD
 * LSP
 
   [[https://langserver.org/][language server protocol]]
@@ -1271,11 +1272,11 @@
     need manually editing in path variable setting as =.a_posix()=
     until *17.2* is released
 
-* [[http://orgmode.org/org.html][org-mode]]
+* ORG-MODE
 
   This might be one of the most important modes of emacs which make
   the emacs distinct from every other editor. You should definitely
-  checkout *org-mode*. Like the emacs config it has out grown.
+  checkout [[http://orgmode.org/org.html][org-mode]]. Like the emacs config it has out grown.
 
 ** keybindings
 
@@ -1482,7 +1483,7 @@
      )
    #+END_SRC
 
-* modes
+* MODES
 ** C/C++
 
    http://www.gnu.org/software/emacs/manual/html_mono/ccmode.html
@@ -1750,9 +1751,9 @@
 
      currently using from ELPA
 
-* [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][word play]]
+* WORDPLAY
 
-  Word play consist of collection of nifty scripts.
+  [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][wordplay]] consist of collection of nifty scripts.
 
   #+begin_src emacs-lisp
     (load "~/.config/emacs/scripts/wordplay.el")
@@ -1826,7 +1827,7 @@
       (global-set-key [(shift insert)] 'repetitive-yanking)
     #+end_src
 
-* testing
+* TESTING
 
   This :construction: section :construction: contain modes (plug-in)
   which modified to *extreme* or :bug: *buggy*. May still not be
@@ -1904,7 +1905,7 @@
      ;; (load-library "/opt/xle/emacs/lfg-mode")
    #+end_src
 
-* __meta__
+* META :noexport:
 
   # Local Variables:
   # buffer-read-only: t
