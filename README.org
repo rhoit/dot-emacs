@@ -355,7 +355,7 @@
     =(el-get 'sync '<package-name>)= if its required before its
     configuration.
 
-* [[https://github.com/rhoit/dot-emacs/blob/master/config/ui.cfg.el][UI/UX]]
+* UI/UX
 
   As of today, most people who use *vi* or *emacs* are [[https://github.com/fuqcool/atom-emacs-mode#deprecated][incapable]] of
   using the other editor without using curse words :rage1:. Not
@@ -1305,7 +1305,7 @@
 
   This might be one of the most important modes of emacs which make
   the emacs distinct from every other editor. You should definitely
-  checkout *org-mode*. Like the emacs config it has out grown.
+  checkout [[http://orgmode.org/org.html][org-mode]]. Like the emacs config it has out grown.
 
 ** keybindings
 
@@ -1689,9 +1689,9 @@
 
      currently using from ELPA
 
-* [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][WORD PLAY]]
+* WORDPLAY
 
-  Word play consist of collection of nifty scripts.
+  [[https://github.com/rhoit/dot-emacs/blob/master/scripts/wordplay.el][wordplay]] consist of collection of nifty scripts.
 
   #+BEGIN_SRC emacs-lisp
     (load "~/.config/emacs/scripts/wordplay.el")
