@@ -1036,6 +1036,31 @@
      ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
    #+END_SRC
 
+*** lsp-ui
+
+    This is [[https://emacs-lsp.github.io/lsp-ui/][extension]] for all the higher level UI modules of [[LSP]], like
+    [[https://www.flycheck.org][flycheck]] support and code lenses.
+
+    By default, *lsp-mode* automatically activates *lsp-ui* unless
+    =(setq lsp-auto-configure nil)=.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'lsp-ui)
+
+      (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+      (setq lsp-ui-doc-enable t
+            lsp-ui-doc-use-childframe t
+            lsp-ui-doc-position 'top
+            lsp-ui-doc-include-signature t
+            lsp-ui-sideline-enable nil
+            lsp-ui-flycheck-enable t
+            lsp-ui-flycheck-list-position 'right
+            lsp-ui-flycheck-live-reporting t
+            lsp-ui-peek-enable t
+            lsp-ui-peek-list-width 60
+            lsp-ui-peek-peek-height 25)
+    #+END_SRC
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
