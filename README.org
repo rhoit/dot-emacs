@@ -1154,27 +1154,6 @@
       ;;(el-get 'sync 'magitub)
     #+END_SRC
 
-** ggtags
-
-   https://superuser.com/questions/579847/is-there-emacs-plugins-to-do-sublime-like-completion-and-goto-anything
-
-   code navigation, its disable because it make my emacs super slow.
-
-   https://github.com/leoliu/ggtags
-
-   install ggtags as mention in the repo
-
-   #+begin_src emacs-lisp
-     ;; (add-hook 'c-mode-common-hook
-     ;;          (lambda ()
-     ;;            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-     ;;              (ggtags-mode 1))))
-
-     ;; (add-hook 'python-mode-hook 'ggtags-mode)
-
-     ;; (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
-   #+end_src
-
 ** [[https://github.com/bbatsov/projectile][projectile]]
 
    If your source consist of hundreds of line then don't be like me
@@ -1248,6 +1227,49 @@
    #+BEGIN_SRC emacs-lisp
      (setq realgud:pdb-command-name "python -m pdb")
    #+END_SRC
+
+** [[https://github.com/leoliu/ggtags][ggtags]]
+
+   Using [[https://langserver.org/][language server protocol]] (LSP) since ggtags make my emacs
+   super slow, but sure why!
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (add-hook 'c-mode-common-hook
+     ;;          (lambda ()
+     ;;            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+     ;;              (ggtags-mode 1))))
+     ;; (add-hook 'python-mode-hook 'ggtags-mode)
+     ;; (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
+   #+END_SRC
+
+* LSP
+
+  [[https://langserver.org/][language server protocol]]
+
+  The *lsp* was proposed by Microsoft as a way for different editors
+  and development environments to share language analysis back-ends.
+
+  Install the *python-language-server* into your environment.
+
+  #+HEADER: :exports both :eval no-export
+  #+BEGIN_SRC sh :results output
+    pacman -S python-language-server
+
+    #if you want microsoft one
+    yaourt -S microsoft-python-language-server
+  #+END_SRC
+
+  =lsp-mode= depends upon =dash=, =dash-functional=, =f=, =ht=, =lv=,
+  =markdown-mode=, =s=, =spinner= package make sure they are updated.
+  #+BEGIN_SRC emacs-lisp
+    (require 'lsp-mode)
+    (add-hook 'python-mode-hook #'lsp)
+  #+END_SRC
+
+  - *<2020-08-25 Tue>* buggy python-jedi 17.0
+
+    need manually editing in path variable setting as =.a_posix()=
+    until *17.2* is released
 
 * [[http://orgmode.org/org.html][org-mode]]
 
