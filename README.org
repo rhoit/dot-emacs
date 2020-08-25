@@ -969,16 +969,18 @@
 
 *** [[https://github.com/nschum/highlight-symbol.el][highlight symbol]]
 
+    Beyond the syntax color, ability to highlight add clear
+    perspective during programming, such as use of different variables
+    in the file.
+
     #+BEGIN_SRC emacs-lisp
       (defun highlight-symbol-my-binds ()
         (interactive)
         (require 'highlight-symbol)
-        (local-set-key [(control f3)] 'highlight-symbol-at-point)
-        (local-set-key [(shift f3)] 'highlight-symbol-next)
+        (local-set-key [(shift f1)] 'highlight-symbol-at-point)
         (local-set-key [(shift f2)] 'highlight-symbol-prev)
-
-        ;; by default its just for if tabbar config didn't run
-        (local-unset-key (kbd "<C-down-mouse-1>"))
+        (local-set-key [(shift f3)] 'highlight-symbol-next)
+        (local-set-key [(ctrl f3)] 'highlight-symbol-query-replace)
 
         (local-set-key (kbd "<C-down-mouse-1>") (lambda (event)
           (interactive "e")
