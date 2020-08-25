@@ -882,6 +882,28 @@
      ;; (setq require-final-newline t)
    #+END_SRC
 
+** LSP
+
+   📡 [[https://langserver.org/][Language Server Protocol]] (LSP) is a JSON-RPC protocol to
+   delegate language-aware features (such as completion, diagnostics,
+   and go-to-definition) to a shared server process using a generic
+   LSP client. 📄 The current [[https://microsoft.github.io/language-server-protocol/specifications/specification-current/][specification]] was proposed by Microsoft
+   as a way for different editors and development environments to
+   share the same language analysis back-ends. 🔍 If you’d like to
+   learn more about how it works under the hood, check out this
+   [[https://microsoft.github.io/language-server-protocol/overviews/lsp/overview/][post]].
+
+   #+BEGIN_QUOTE
+     [[https://emacs-lsp.github.io/lsp-mode/][lsp-mode]] aims to provide IDE-like experience by providing optional
+     integration with the most popular Emacs packages like company,
+     flycheck and projectile.
+   #+END_QUOTE
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'lsp-mode)
+   #+END_SRC
+
 * GIT
 
   #+BEGIN_QUOTE
