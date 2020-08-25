@@ -102,8 +102,8 @@
 
 ** how to build
 
-   =configure= :construction_worker: , pulls down the [[https://github.com/dimitri/el-get][el-get]], and
-   magical stuffs.
+   =configure= :construction_worker:, this magical stuffs use to work
+   once upon a time, but I'm not sure now
 
    #+BEGIN_SRC bash
      $ ./configure
