@@ -378,6 +378,92 @@
     (load "~/.config/emacs/config/ui.cfg.el")
   #+END_SRC
 
+** sane key bindings
+
+   #+BEGIN_HTML
+     When new function like <code>toggle-frame-fullscreen</code>
+     (<kbd>F11</kbd>) and <code>toggle-frame-maximized</code>
+     (<kbd>M</kbd>-<kbd>F11</kbd>) keeps popping in recent version
+     <i>24.4</i>, lets me to think <b>emacs</b> hasn't given up on
+     being <b>Operating System</b>.
+   #+END_HTML
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; full-screen since 24.4
+     ;; handled via window manager
+     ;; lets reserve it for something i.e realgud
+     (global-unset-key [f11])
+   #+END_SRC
+
+   Although most of the *emacs* key binding are sill relevant till
+   this day. I can not stop to appreciation the *thought* and *design*
+   went on building it, but :mouse2: mouse binding are terrible.
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; global-menu
+     ;; redundent with f10 and gtk-menu
+     (global-unset-key [(control down-mouse-3)])
+
+     ;;; buffer menu
+     ;; yet useful but utterly misplaced, using tabbar
+     (global-unset-key [(control down-mouse-1)])
+   #+END_SRC
+
+   In this day and age certain function are arcane (may be [[https://xkcd.com/1172/][someone]]
+   uses it) but its not for me. And yet again emacs people :hocho:
+   kill and yank, when beginners try to *paste* with @@html:<kbd>@@ C
+   @@html:</kbd>@@ - @@html:<kbd>@@ v @@html:</kbd>@@ scroll-up
+   outlandishly make me think this is main reason of :disappointed:
+   poor adoption, when will *emacs* grow and fix it.
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; scroll-up-command
+     ;; just past it for once
+     (global-set-key [(control v)] 'yank)
+
+     ;; compose-mail
+     ;;; emacs is terrible mail client
+     (global-unset-key (kbd "C-x m")) ;; unset mail-compose bindings
+   #+END_SRC
+
+   Things have escalated quickly especially in laptops manufactures
+   constantly changing the key layouts and All thanks to *fn* key now
+   there is one more meta key to offset. Why perfectly good layout are
+   replace by terrible designs, Not to mention missing @@html:<kbd>@@
+   delete @@html:</kbd>@@ key, but some of them have decided del
+   should also do @@html:<kbd>@@ backspace @@html:</kbd>@@ although
+   emacs its [[https://www.gnu.org/software/emacs/manual/html_node/emacs/DEL-Does-Not-Delete.html][confused]] and need our help here!
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; you might not need this
+     (normal-erase-is-backspace-mode 1)
+   #+END_SRC
+
+   It seem more of "think +different+ stupid" and other shouting
+   *stupidity is cool!*. And even seasoned *vi* users can't seems to
+   escape from it ever, well done :apple:! (but, seem like its Esc is
+   [[https://www.bbc.com/news/technology-50408649][back]]), and copy :cat2: not able to figure out where to place the
+   *power* button.
+
+   Other miscellaneous quite handful binding.
+
+   #+BEGIN_SRC emacs-lisp
+     ;; listing buffer same as C-x C-b
+     (global-set-key (kbd "C-S-b") 'list-buffers)
+
+     ;; since, C-x k <return> too much acrobat
+     (global-set-key [(control d)] 'kill-buffer) ;; same as terminal
+
+     (require 'fill-column-indicator)
+
+     (global-set-key (kbd "<f5>") 'redraw-display)
+     (global-set-key [(control f5)] '(lambda() (interactive)
+                                     (load-file "~/.config/emacs/init.el")))
+     (global-set-key [f6] '(lambda() (interactive)
+                           (toggle-truncate-lines)
+                           (fci-mode)))
+   #+END_SRC
+
 ** switch theme
 
    Worst part of switching theme by loading is active theme is one
@@ -400,20 +486,6 @@
 
 ** window
 
-   #+BEGIN_HTML
-     Emacs has built-in support for full-screen since version
-     24.4. New commands <code>toggle-frame-fullscreen</code> and
-     <code>toggle-frame-maximized</code>, bound to <kbd>F11</kbd> and
-     <kbd>M</kbd>-<kbd>f10</kbd>, respectively. But most window
-     manager in <b>linux</b> toggle's windows full-screen with
-     <kbd>M</kbd>-<kbd>f11</kbd>.
-   #+END_HTML
-
-   #+BEGIN_SRC emacs-lisp
-     ;; lets reserve it for something i.e realgud
-     (global-unset-key [f11])
-   #+END_SRC
-
    Just a personal preference to not to have *tool-bar*, *menu-bar*,
    and *scroll-bar*, take the *buffer* workspace, so lets hide it and
    also set some handy key to toggle it.
@@ -428,66 +500,6 @@
        (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
        (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1)))
      (global-set-key [f12] 'toggle-bars-view)
-   #+END_SRC
-
-** sane key bindings
-
-   Although most of the *emacs* key binding are sill relevant till
-   this day. I can not stop to appreciation the *thought* and *design*
-   went on building it. But recent times things have escalated quickly
-   especially in laptops manufactures constantly changing the key
-   layouts and All thanks to *fn* key now there is one more meta key
-   to offset.
-
-   It seem more of "think +different+ stupid" and other shouting
-   *stupidity is cool!*. And even seasoned *vi* users can't seems to
-   escape from it ever, well done :apple:!
-
-   #+BEGIN_VERSE
-     there is the *power* button near to backspace,
-     forcing you to type correctly or *power off* the machine!
-   #+END_VERSE
-
-   Not to mention missing @@html:<kbd>@@ delete @@html:</kbd>@@ key,
-   but some of them have decided del should also do @@html:<kbd>@@
-   backspace @@html:</kbd>@@ although emacs its [[https://www.gnu.org/software/emacs/manual/html_node/emacs/DEL-Does-Not-Delete.html][confused]] and need our
-   help!
-
-   #+BEGIN_SRC emacs-lisp
-     ;;; you might not need this
-     (normal-erase-is-backspace-mode 1)
-   #+END_SRC
-
-   #+BEGIN_HTML
-     Beginners find <kbd>C</kbd>-<kbd>v</kbd> jump outlandish and
-     sometime also for me.
-   #+END_HTML
-
-   #+BEGIN_SRC emacs-lisp
-     (global-set-key [(control v)] 'yank)
-
-     ;;; since, C-x k <return> too much acrobat
-     (global-set-key [(control d)] 'kill-buffer) ;; same as terminal
-
-     (global-set-key [M-f4] 'save-buffers-kill-terminal)
-   #+END_SRC
-
-   I find these binding quite handful.
-
-   #+BEGIN_SRC emacs-lisp
-     (require 'fill-column-indicator)
-
-     (global-set-key (kbd "<f5>") 'redraw-display)
-     (global-set-key [(control f5)] '(lambda() (interactive)
-                                     (load-file "~/.config/emacs/init.el")))
-     (global-set-key [f6] '(lambda() (interactive)
-                           (toggle-truncate-lines)
-                           (fci-mode)))
-   #+END_SRC
-
-   #+BEGIN_SRC emacs-lisp
-     ;; listing buffer same as C-x C-b
-     (global-set-key (kbd "C-S-b") 'list-buffers)
    #+END_SRC
 
 ** text zoom
@@ -752,9 +764,6 @@
      (load "~/.config/emacs/config/tabbar.cfg.el")
      (global-set-key [f7] 'tabbar-mode)
      (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
-
-     ;; unbind <C-mouse-1>
-     (global-unset-key (kbd "<C-down-mouse-1>"))
    #+END_SRC
 
    #+BEGIN_HTML
