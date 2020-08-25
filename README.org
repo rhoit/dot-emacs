@@ -1164,10 +1164,11 @@
 
 *** [[https://github.com/alphapapa/magit-todos][magit-todos]]
 
-    This package has been todo for far too long and finally using it.
+    I had the performance issue with this package, yet to be explored
+    again some time in the future.
 
     #+BEGIN_SRC emacs-lisp
-      (add-hook 'magit-mode-hook 'magit-todos-mode)
+      ;; (add-hook 'magit-mode-hook 'magit-todos-mode)
     #+END_SRC
 
     - <2019-03-31>
