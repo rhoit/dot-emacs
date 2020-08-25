@@ -1235,6 +1235,35 @@
      (setq realgud:pdb-command-name "python -m pdb")
    #+END_SRC
 
+* LSP
+
+  [[https://langserver.org/][language server protocol]]
+
+  The *lsp* was proposed by Microsoft as a way for different editors
+  and development environments to share language analysis back-ends.
+
+  Install the *python-language-server* into your environment.
+
+  #+HEADER: :exports both :eval no-export
+  #+BEGIN_SRC sh :results output
+    pacman -S python-language-server
+
+    #if you want microsoft one
+    yaourt -S microsoft-python-language-server
+  #+END_SRC
+
+  =lsp-mode= depends upon =dash=, =dash-functional=, =f=, =ht=, =lv=,
+  =markdown-mode=, =s=, =spinner= package make sure they are updated.
+  #+BEGIN_SRC emacs-lisp
+    (require 'lsp-mode)
+    (add-hook 'python-mode-hook #'lsp)
+  #+END_SRC
+
+  - <2020-08-25 Tue> buggy python-jedi 17.0
+
+    need manually editing in path variable setting as =.a_posix()=
+    until *17.2* is released
+
 * WEB
 ** web-mode
 
