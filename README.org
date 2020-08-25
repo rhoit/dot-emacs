@@ -22,6 +22,10 @@
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
+  #+BEGIN_HTML
+    <details><summary>More</summary>
+  #+END_HTML
+
 ** about repo
 
    This config follow [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG convention]] for init files which was
