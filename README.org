@@ -459,12 +459,99 @@
      (normal-erase-is-backspace-mode 1)
    #+END_SRC
 
+   It seem more of "think +different+ stupid" 🍎. And even seasoned
+   *vi* users can't seems to escape from it ever, (Esc is [[https://www.bbc.com/news/technology-50408649][back]]), and
+   copy 🐈 OEM does not know where to [[https://www.reddit.com/r/mildlyinfuriating/comments/by5fy4/backspace_and_delete_keys_next_to_power_button_on/][place]] *power* ⚡ button.
+
 ** sane-binding
+
+   Although most of the *emacs* key binding are sill relevant till
+   this day. I can not stop to appreciation the *thought* and *design*
+   went on building it, but 🐁 mouse binding are terrible.
+
+   #+BEGIN_SRC emacs-lisp
+     ;; redundent with f10 and gtk-menu
+     (global-unset-key [(control down-mouse-3)]) ; unbind (global-menu)
+
+     ;; M-C-t opens terminals
+     (global-unset-key (kbd "C-M-t")) ; unbind (transpose-sexps)
+
+     (global-unset-key [(control down-mouse-3)]) ; unbind (global-menu)
+
+     ;; yet useful but utterly misplaced, using tabbar
+     (global-unset-key [(control down-mouse-1)]) ; unbind (buffer-menu)
+
+     ;; emacs is terrible mail client
+     (global-unset-key (kbd "C-x m")) ;; unbind (compose-mail)
+
+     ;; it dosn't make sense
+     (global-unset-key (kbd "M-o")) ;; unbind (facemenu-mode)
+   #+END_SRC
+
+*** word-wrap
+
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key [f6] 'toggle-truncate-lines)
+    #+END_SRC
+
+*** fullscreen
+
+    #+BEGIN_HTML
+      When new function like <code>toggle-frame-fullscreen</code>
+      (<kbd>F11</kbd>) and <code>toggle-frame-maximized</code>
+      (<kbd>M</kbd>-<kbd>F11</kbd>) keeps popping in recent version
+      <i>24.4</i>, lets me to think <b>emacs</b> hasn't given up on
+      being <b>Operating System</b>.
+    #+END_HTML
+
+    #+BEGIN_SRC emacs-lisp
+      ;;; full-screen since 24.4
+      ;; handled via window manager
+      ;; lets reserve it for something i.e realgud
+      (global-unset-key [f11])
+    #+END_SRC
+
 *** buffer-close
 
     #+BEGIN_SRC emacs-lisp
-      ;;; since, C-x k <return> too much acrobat
-      (global-set-key [(control d)] 'kill-buffer)  ; same as terminal
+     ;;; since, C-x k <return> too much acrobat
+     (global-set-key [(control d)] 'kill-buffer)  ; same as terminal
+    #+END_SRC
+
+*** window
+
+    Just a personal preference to not to have tool-bar, menu-bar, and
+    scroll-bar, take the buffer workspace, so lets hide it and also set
+    some handy key to toggle it.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun toggle-bars-view()
+        (interactive)
+        (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
+        (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1)))
+      (global-set-key [f12] 'toggle-bars-view)
+    #+END_SRC
+
+*** helpful
+
+    #+BEGIN_SRC emacs-lisp
+      ;;; bacwark kill like terminal
+      (global-unset-key (kbd "C-w"))
+      (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
+
+      ;; listing buffer same as C-x C-b
+      (global-set-key (kbd "C-S-b") 'list-buffers)
+
+      ;; since, C-x k <return> too much acrobat
+      (global-set-key [(control d)] 'kill-buffer) ; same as terminal
+
+      (global-set-key (kbd "<f5>") 'redraw-display)
+      (global-set-key [(shift f5)] '(lambda()
+        (interactive)
+        (load-file "~/.config/emacs/init.el")))
+      (global-set-key [(control f5)] '(lambda()
+        (interactive)
+        (find-file "~/.config/emacs/README.org")))
     #+END_SRC
 
 ** yes-or-no
@@ -711,9 +798,14 @@
 *** paste
 
     Beginners find *Ctrl+v* jump outlandish and sometime also for me.
+    In this day and age certain function are arcane (may be [[https://xkcd.com/1172/][someone]]
+    uses it) but its not for me. When beginners try to *paste* with
+    @@html:<kbd>@@C@@html:</kbd>@@-@@html:<kbd>@@v@@html:</kbd>@@
+    scroll-up outlandishly make me think this is main reason of 😞
+    poor adoption, when will *emacs* have better default.
 
     #+BEGIN_SRC emacs-lisp
-      (global-set-key [(control v)] 'yank)
+      (global-set-key [(control v)] 'yank) ; unbind (scroll-up-command)
     #+END_SRC
 
 *** [[https://www.emacswiki.org/emacs/popup-kill-ring.el][popup kill ring]]
