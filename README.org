@@ -43,9 +43,9 @@
    This config follow [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG convention]] for init files which was
    introduced in [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][version 27.1]].
 
-   - this is just a really opinionated configuration tracked in git.
-   - does'nt provide the any layer of abstraction.
-   - more of notes and rants why its so.
+   - highly opinionated configuration tracked in git
+   - does'nt provide the any layer of abstraction
+   - more of notes and rants why its so
 
 ** getting it
 
@@ -274,8 +274,9 @@
 
 * PACMAN
 
-  It has been harder to maintain packages with two managers. Finally
-  decided to drop *el-get* in favor of build in =package.el=.
+  It has been harder to maintain :package: packages with two
+  managers. Finally decided to drop *el-get* in favor of build in
+  =package.el=.
 
   - <2020-02-02>
 
