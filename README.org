@@ -903,6 +903,31 @@
      ;; (setq require-final-newline t)
    #+END_SRC
 
+** LSP
+
+   [[https://langserver.org/][Language Server Protocol]] is a JSON-RPC protocol to delegate
+   language aware features to a common server process using generic
+   LSP client. The current lsp [[https://microsoft.github.io/language-server-protocol/specifications/specification-current/][specifications]] was proposed by
+   Microsoft as a way for different editors and development
+   environments to share language analysis back-ends. If you’d like to
+   read more about the inner workings, consider this [[ https://microsoft.github.io/language-server-protocol/overviews/lsp/overview/][post]].
+
+   #+BEGIN_QUOTE
+     [[https://emacs-lsp.github.io/lsp-mode/][lsp-mode]] aims to provide IDE-like experience by providing optional
+     integration with the most popular Emacs packages like company,
+     flycheck and projectile.
+   #+END_QUOTE
+
+   #+BEGIN_HTML
+      <p>The proper way to start lsp-mode is using
+      <kbd>M</kbd>-<kbd>x</kbd> lsp </p>
+   #+END_HTML
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'lsp-mode)
+     ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
+   #+END_SRC
+
 * GIT
 
   #+BEGIN_QUOTE
