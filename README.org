@@ -1036,7 +1036,12 @@
 
 ** folding
 
-   I had trouble using [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]], seems too be fixed now happy 2020!
+   I had trouble using [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]] for long time, seems too be fixed
+   now happy 2020!
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'prog-mode-hook 'hideshowvis-minor-mode)
+   #+END_SRC
 
    need to checkout [[https://github.com/gregsexton/origami.el][origimi]].
 
