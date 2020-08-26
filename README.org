@@ -1441,6 +1441,9 @@
 
 ** yasnippet
 
+   [[https://github.com/joaotavora/yasnippet][yasnippet]] is template system for emacs, snippet collection in
+   distributed separately as =yasnippet-snippet=.
+
    #+BEGIN_SRC emacs-lisp
      (require 'yasnippet)
      (yas-reload-all)
