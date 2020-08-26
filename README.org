@@ -1713,31 +1713,17 @@
      (add-to-list 'auto-mode-alist '("\.md" . markdown-mode))
    #+END_SRC
 
-** yasnippet
+** [[https://github.com/joaotavora/yasnippet][yasnippet]]
 
-   #+begin_src emacs-lisp
-     (when window-system
-       (require 'yasnippet)
-       (yas-reload-all)
-       (add-hook 'prog-mode-hook 'yas-minor-mode-on)
-       (add-hook 'org-mode-hook 'yas-minor-mode-on))
+   YASnippet is template system for emacs, snippet collection in
+   distributed separately as =yasnippet-snippet=.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'yasnippet)
+     (yas-reload-all)
+     (add-hook 'prog-mode-hook 'yas-minor-mode-on)
+     (add-hook 'org-mode-hook 'yas-minor-mode-on)
    #+END_SRC
-
-   - <2018-01-04 Thu>
-
-     Something is wrong with el-get keeps showing.
-
-     #+BEGIN_EXAMPLE
-       Error (el-get): while installing yasnippet: el-get: git el-get could not build yasnippet [git submodule update --init -- snippets]
-     #+END_EXAMPLE
-
-   - <2018-01-04 Thu>: Something is wrong with el-get keeps showing.
-
-     #+BEGIN_EXAMPLE
-       Error (el-get): while installing yasnippet: el-get: git el-get could not build yasnippet [git submodule update --init -- snippets]
-     #+END_EXAMPLE
-
-     currently using from ELPA
 
 * WORDPLAY
 
