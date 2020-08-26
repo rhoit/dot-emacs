@@ -208,9 +208,10 @@
     after adding these for the first time.
 
     #+BEGIN_HTML
-      Updating all packages is kinda strange chore type
+      <p>Updating all packages is kinda strange chore type
       <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
-      <b>Packages</b> buffer, and then type <kbd>U</kbd> <kbd>x</kbd>.
+      <b>Packages</b> buffer, and then type <kbd>U</kbd>
+      <kbd>x</kbd>.</p>
     #+END_HTML
 
     - <2020-02-02 Sun>
