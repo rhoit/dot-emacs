@@ -352,6 +352,32 @@
      (setq inhibit-splash-screen t)
    #+END_SRC
 
+** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
+
+   #+ATTR_HTML: title="modline-screenshot"
+   [[https://github.com/ryuslash/mode-icons][file:https://raw.githubusercontent.com/rhoit/mode-icons/dump/screenshots/screenshot01.png]]
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; mode-icons directly from repo, for experiments
+     ;;; https://github.com/ryuslash/mode-icons
+     (setq FILE-mode-icon "~/.config/emacs/00testing/mode-icons/mode-icons.el")
+     (if (file-exists-p FILE-mode-icon)
+       (load-file FILE-mode-icon)
+       (require 'mode-icons))
+
+     (mode-icons-mode)
+
+     (require 'powerline)
+
+     ;;; https://github.com/rhoit/powerline-iconic-theme
+     (setq FILE-iconic "~/.config/emacs/00testing/powerline-iconic-theme/iconic.el")
+     (if (file-exists-p FILE-iconic)
+       (progn
+         (load-file FILE-iconic)
+         (powerline-iconic-theme))
+       (powerline-default-theme))
+   #+END_SRC
+
 ** tabbar
 
    [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]] is something familiar to modern 🍭 GUI system, there is
