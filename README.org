@@ -746,7 +746,7 @@
      ;; (powerline-default-theme)
    #+END_SRC
 
-** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]]
+** [[https://github.com/mattfidler/tabbar-ruler.el][tabbar]]
 
    Something from modern :lollipop: GUI system.
 
@@ -757,12 +757,10 @@
      (require 'tabbar)
      (tabbar-mode t)
 
-     ;;; tabbar-ruler directly from repo, for experiments
-     ;;; https://github.com/mattfidler/tabbar-ruler.el
-     (load-file "~/.config/emacs/00testing/tabbar-ruler/tabbar-ruler.el")
-     ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE & UNCOMMENT NEXT 2
-     ;; (el-get 'sync 'tabbar-ruler)
-     ;; (require 'tabbar-ruler)
+     (setq FILE-tabbar "~/.config/emacs/00testing/tabbar-ruler/tabbar-ruler.el")
+     (if (file-exists-p FILE-tabbar)
+       (load-file FILE-tabbar)
+       (require 'tabbar-ruler))
 
      (setq tabbar-ruler-style 'firefox)
 
