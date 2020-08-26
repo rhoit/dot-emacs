@@ -207,9 +207,10 @@
     after adding these for the first time.
 
     #+BEGIN_HTML
-      Updating all packages is kinda strange chore type
+      <p>Updating all packages is kinda strange chore type
       <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
-      <b>Packages</b> buffer, and then type <kbd>U</kbd> <kbd>x</kbd>.
+      <b>Packages</b> buffer, and then type <kbd>U</kbd>
+      <kbd>x</kbd>.</p>
     #+END_HTML
 
     - <2020-02-02 Sun>
@@ -531,11 +532,11 @@
 *** fullscreen
 
     #+BEGIN_HTML
-      When new function like <code>toggle-frame-fullscreen</code>
+      <p>When new function like <code>toggle-frame-fullscreen</code>
       (<kbd>F11</kbd>) and <code>toggle-frame-maximized</code>
       (<kbd>M</kbd>-<kbd>F11</kbd>) keeps popping in recent version
       <i>24.4</i>, lets me to think <b>emacs</b> hasn't given up on
-      being <b>Operating System</b>.
+      being <b>Operating System</b>.</p>
     #+END_HTML
 
     #+BEGIN_SRC emacs-lisp
