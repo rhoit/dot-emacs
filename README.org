@@ -310,9 +310,10 @@
    after adding these for the first time.
 
    #+BEGIN_HTML
-     Updating all packages is kinda strange chore type
+     <p>Updating all packages is kinda strange chore type
      <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
-     <b>Packages</b> buffer, and then type <kbd>U</kbd> <kbd>x</kbd>.
+     <b>Packages</b> buffer, and then type <kbd>U</kbd>
+     <kbd>x</kbd>.</p>
    #+END_HTML
 
    - <2020-02-02 Sun>
@@ -386,11 +387,11 @@
 ** sane key bindings
 
    #+BEGIN_HTML
-     When new function like <code>toggle-frame-fullscreen</code>
+     <p>When new function like <code>toggle-frame-fullscreen</code>
      (<kbd>F11</kbd>) and <code>toggle-frame-maximized</code>
      (<kbd>M</kbd>-<kbd>F11</kbd>) keeps popping in recent version
      <i>24.4</i>, lets me to think <b>emacs</b> hasn't given up on
-     being <b>Operating System</b>.
+     being <b>Operating System</b>.</p>
    #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
@@ -510,12 +511,12 @@
 ** text zoom
 
    #+BEGIN_HTML
-     I still don't understand :unamused: why <a
+     <p>I still don't understand :unamused: why <a
      href="https://www.emacswiki.org/emacs/SetFonts#ChangingFontSize">
      vanilla emacs</a> prefix <kbd>C</kbd>-<kbd>x</kbd> with
      <kbd>C</kbd>-<kbd>-</kbd>, <kbd>C</kbd>-<kbd>=</kbd>,
      <kbd>C</kbd>-<kbd>0</kbd>, mapping behavior similar to browser
-     might be helpful and have cohesive experience.
+     might be helpful and have cohesive experience.</p>
    #+END_HTML
 
    | zoom | keyboard         | keyboard + mouse         |
@@ -639,10 +640,10 @@
    was saved by [[https://github.com/rejeep/drag-stuff.el][drag-stuff]].
 
    #+BEGIN_HTML
-     <kbd>M</kbd>-<kbd>right</kbd>/<kbd>left</kbd> bind seems
+     <p><kbd>M</kbd>-<kbd>right</kbd>/<kbd>left</kbd> bind seems
      redundant with <kbd>C</kbd>-<kbd>right</kbd>/<kbd>left</kbd> also
      it doesn't work in terminal, replacing it hopefully will not
-     create any problem.
+     create any problem.</p>
    #+END_HTML
 
    *BEWARE*: it breaks the *org-mode* don't enable it in org!
@@ -769,12 +770,14 @@
    #+END_SRC
 
    #+BEGIN_HTML
-     <code>scroll-right</code> and <code>scroll-right</code> seems to
-     be strange for beginner and for me too, if you don't believe me
-     try <kbd>C</kbd>-<kbd>PgUp</kbd> and <kbd>C</kbd>-<kbd>PgUp</kbd>
-     in vanilla <b>emacs</b>, put it to the good use
-     <code>tab-forward</code> and <code>tab-backward</code>
+     <p><code>scroll-right</code> and <code>scroll-right</code> seems
+     to be strange for beginner and for me too, if you don't believe
+     me try <kbd>C</kbd>-<kbd>PgUp</kbd> and
+     <kbd>C</kbd>-<kbd>PgUp</kbd> in vanilla <b>emacs</b>, put it to
+     the good use <code>tab-forward</code> and
+     <code>tab-backward</code></p>
    #+END_HTML
+
 
    #+BEGIN_SRC emacs-lisp
      (global-unset-key [(control prior)]) ;; default is set-to scroll-right
@@ -1186,11 +1189,11 @@
    use projectile mode like [[https://github.com/krazedkrish][@krazedkrish]].
 
    #+BEGIN_HTML
-     ya <kbd>C</kbd>-<kbd>S</kbd>-<kbd>p</kbd> for select line
+     <p>ya <kbd>C</kbd>-<kbd>S</kbd>-<kbd>p</kbd> for select line
      previous, just get along with it, have you tried it in
      <b>chrome</b>, <b>sublime</b>, <b>vscode</b>?
-
-     and don't forget the <code>helm-projectile</code>.
+     and don't forget the
+     <code>helm-projectile</code>. </p>
    #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
@@ -1204,14 +1207,16 @@
    #+END_SRC
 
    #+BEGIN_HTML
-     using helm-projectile-grep <kbd>C</kbd>-<kbd>S</kbd>-<kbd>g</kbd>
-     is great of if you want to search a single thing!
+     <p>using helm-projectile-grep
+     <kbd>C</kbd>-<kbd>S</kbd>-<kbd>g</kbd> is great of if you want to
+     search a single thing!</p>
 
-     for more than one <kbd>M</kbd>-<kbd>x</kbd> projectile-grep
+     <p>for more than one <kbd>M</kbd>-<kbd>x</kbd>
+     projectile-grep</p>
 
-     you might want to ignore certain files and folders during search,
-     which can be done using <kbd>M</kbd>-<kbd>x</kbd>
-     customize-variable
+     <p>you might want to ignore certain files and folders during
+     search, which can be done using <kbd>M</kbd>-<kbd>x</kbd>
+     customize-variable</p>
    #+END_HTML
 
    some of the variables
@@ -1797,10 +1802,10 @@
     kill :skull: ring :ring:
 
     #+BEGIN_HTML
-      Only enable for <kbd>S</kbd>-<kbd>insert</kbd>, you might say
+      <p>Only enable for <kbd>S</kbd>-<kbd>insert</kbd>, you might say
       why that! if you don't know <kbd>C</kbd>-<kbd>c</kbd> and
       <kbd>C</kbd>-<kbd>v</kbd> is not only *copy-paste* binding
-      available that too also works in other *OS*.
+      available that too also works in other *OS*.</p>
     #+END_HTML
 
     #+BEGIN_SRC emacs-lisp
