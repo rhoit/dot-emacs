@@ -1342,6 +1342,19 @@
         (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
     #+END_SRC
 
+** yasnippet
+
+   [[https://github.com/joaotavora/yasnippet][yasnippet]] is template system for emacs, snippet collection in
+   distributed separately as =yasnippet-snippet=.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'yasnippet)
+     (yas-reload-all)
+     (add-hook 'prog-mode-hook 'yas-minor-mode-on)
+     (add-hook 'org-mode-hook 'yas-minor-mode-on)
+   #+END_SRC
+
 * META :noexport:
 
   # Local Variables:
