@@ -727,23 +727,22 @@
    #+BEGIN_SRC emacs-lisp
      ;;; mode-icons directly from repo, for experiments
      ;;; https://github.com/ryuslash/mode-icons
-     (load-file "~/.config/emacs/00testing/mode-icons/mode-icons.el")
-     ;;; DID YOU GOT STUCK ABOVE? COMMENT LINE ABOVE & UNCOMMENT NEXT 2 LINES
-     ;; (el-get 'sync 'mode-icons)
-     ;; (require 'mode-icons)
-     ;; (setq mode-icons-desaturate-inactive nil)
-     ;; (setq mode-icons-desaturate-active nil)
-     ;; (setq mode-icons-grayscale-transform nil)
+     (setq FILE-mode-icon "~/.config/emacs/00testing/mode-icons/mode-icons.el")
+     (if (file-exists-p FILE-mode-icon)
+       (load-file FILE-mode-icon)
+       (require 'mode-icons))
+
      (mode-icons-mode)
 
      (require 'powerline)
 
      ;;; https://github.com/rhoit/powerline-iconic-theme
-     ;; (add-to-list 'load-path "~/.config/emacs/00testing/powerline-iconic-theme/")
-     (load-file "~/.config/emacs/00testing/powerline-iconic-theme/iconic.el")
-     (powerline-iconic-theme)
-     ;;; DID YOU GOT STUCK ABOVE? COMMENT 2 LINES ABOVE & UNCOMMENT NEXT LINE
-     ;; (powerline-default-theme)
+     (setq FILE-iconic "~/.config/emacs/00testing/powerline-iconic-theme/iconic.el")
+     (if (file-exists-p FILE-iconic)
+       (progn
+         (load-file FILE-iconic)
+         (powerline-iconic-theme))
+       (powerline-default-theme))
    #+END_SRC
 
 ** [[https://github.com/mattfidler/tabbar-ruler.el][tabbar]]
