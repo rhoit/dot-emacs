@@ -1217,7 +1217,7 @@
         (sql . t)
         (js . t)
         (C . t)
-        ;; (ipython . t)  ;; install ob-ipython
+        ;; (ipython . t)  ; uses cl, install ob-ipython
         (python . t)))
 
      ;; (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
