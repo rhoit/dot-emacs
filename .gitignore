@@ -1,6 +1,7 @@
 *.bak
 *.elc
 *~
+.lsp-session*
 .mc-lists.el
 .python-environments/
 00testing/*
@@ -15,9 +16,11 @@ emojis/
 eshell/*
 history
 ido.last
+projectile-bookmarks.eld
 pydoc-info/*
 recentf
 session.*
 smex-items
 tramp
+transient/
 url/
