@@ -534,9 +534,9 @@
      (global-set-key [(control ?-)] 'text-scale-decrease)
      (global-set-key (kbd "C-0") '(lambda ()
          (interactive)
-		 (text-scale-adjust
-		 (- text-scale-mode-amount))
-		 (text-scale-mode -1)))
+         (text-scale-adjust
+         (- text-scale-mode-amount))
+         (text-scale-mode -1)))
    #+END_SRC
 
 ** undo
@@ -791,15 +791,15 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq tabbar-buffer-groups-function (lambda ()
-	   (list (cond
-	     ((string-match ".*magit.*" (buffer-name)) "magit Buffers")
-	     ((string-match "TAGS" (buffer-name)) "ctags")
-	     ((string-match "*pdb.*" (buffer-name)) "pdb Buffers")
-	     ((string-match "*helm.*" (buffer-name)) "helm Buffers")
-	     ((string-equal "*" (substring (buffer-name) 0 1)) "emacs Buffers")
-	     ((eq major-mode 'dired-mode) "Dired")
-	     (t "User Buffers")
-	 ))))
+       (list (cond
+         ((string-match ".*magit.*" (buffer-name)) "magit Buffers")
+         ((string-match "TAGS" (buffer-name)) "ctags")
+         ((string-match "*pdb.*" (buffer-name)) "pdb Buffers")
+         ((string-match "*helm.*" (buffer-name)) "helm Buffers")
+         ((string-equal "*" (substring (buffer-name) 0 1)) "emacs Buffers")
+         ((eq major-mode 'dired-mode) "Dired")
+         (t "User Buffers")
+     ))))
    #+END_SRC
 
    Binding for the tab groups, some how I use lots of buffers.
