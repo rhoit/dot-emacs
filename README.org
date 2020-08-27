@@ -277,6 +277,13 @@
     (load "~/.config/emacs/config/ui.cfg.el")
   #+END_SRC
 
+** early-init
+
+   Version [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][27.1]] introduces [[https://github.com/rhoit/dot-emacs/blob/master/early-init.el][~/emacs.d/early-init.el]], which is run
+   before [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]], before package and UI initialization
+   happens. Themes and UI components can be setup here, which finally
+   solves flickering UI.
+
 ** theme-switch
 
    Worst part of switching theme by loading is active theme is one
