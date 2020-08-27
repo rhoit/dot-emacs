@@ -895,8 +895,23 @@
 
 ** comments
 
+   Yet again, bad default for *emacs* 😳 the /key-binding/ does not
+   toggle comment on the line, may be its because of :neckbeard: who
+   /always wrote the perfect code/, only needed comment to add *GPL*!
+
+   #+BEGIN_EXAMPLE
+     But, Our code is SELF DOCUMENTED! 😎
+   #+END_EXAMPLE
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
+     ;;; comment whole line
+     (defun comment-indent()
+       "custom over-ride comment-indent to comment whole line"
+      (interactive)
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+
+     ;;; default comment string
      (setq-default comment-start "# ")
    #+END_SRC
 
