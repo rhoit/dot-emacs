@@ -1050,6 +1050,27 @@
                (concat dired-omit-files "\\|\\.git$\\|venv$"))))
    #+END_SRC
 
+** [[https://github.com/leoliu/ggtags][ggtags]]
+
+   Using [[https://langserver.org/][language server protocol]] (LSP) since, ggtags make my emacs
+   super slow, but not sure why!
+
+   #+BEGIN_HTML
+     <details><summary>More</summary>
+   #+END_HTML
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (add-hook 'c-mode-common-hook (lambda ()
+         (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+             (ggtags-mode 1))))
+     (add-hook 'python-mode-hook 'ggtags-mode)
+     (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
+   #+END_SRC
+
+   #+BEGIN_HTML
+     </details>
+   #+END_HTML
+
 ** LSP
 
    [[https://langserver.org/][Language Server Protocol]] is a JSON-RPC protocol to delegate
