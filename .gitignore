@@ -6,4 +6,5 @@ elpa/
 recentf
 session.*
 tramp
+transient/
 url/
