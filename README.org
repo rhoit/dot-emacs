@@ -180,26 +180,18 @@
          gc-cons-percentage 0.1))
    #+END_SRC
 
-** bench-marking
+** load-time
 
-   install =benchmark-init= from el-get and put below code top of your
-   config.
+   Show emacs-init-time at startup
 
    #+BEGIN_SRC emacs-lisp
-     ;;(let ((benchmark-init.el "~/.config/emacs/el-get/benchmark-init/benchmark-init.el"))
-     ;; (when (file-exists-p benchmark-init.el)
-     ;;    (load benchmark-init.el)))
+     (add-hook 'emacs-startup-hook (lambda ()
+         (message (concat "conf-init-time: " (emacs-init-time) (format " gc: %d" gcs-done)))))
    #+END_SRC
 
-   then once your emacs started, run:
+   for comprehensive bench-marking install =benchmark-init=
 
    =M-x benchmark-init/show-durations-tree=
-
-   To check your package load time do
-
-   #+BEGIN_EXAMPLE
-     M-x emacs-init-time
-   #+END_EXAMPLE
 
 ** emacs server
 
