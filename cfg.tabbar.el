@@ -23,14 +23,14 @@
   (intern (format "tabbar-select-tab-%s" index)))
 
 
-(eval-when-compile (require 'cl))
+;; (eval-when-compile (require 'cl-lib))
 (defun tabbar-define-access-keys (&optional modifiers keys)
   "Set tab access keys for `tabbar-mode'.
    MODIFIERS as in `tabbar-key-binding-modifier-list', and
    KEYS defines the elements to use for `tabbar-key-binding-keys'."
   (if modifiers (setq tabbar-key-binding-modifier-list modifiers))
   (if keys (setq tabbar-key-binding-keys keys))
-  (loop for keys in tabbar-key-binding-keys
+  (cl-loop for keys in tabbar-key-binding-keys
 	for ni from 1 to 10 do
 	(let ((name (tabbar-key-command ni)))
 	  (eval `(defun ,name ()
@@ -40,7 +40,7 @@
 	  ;; store label in property of command name symbol
 	  (put name 'label
 	       (format "%c" (car keys)))
-	  (loop for key in keys do
+	  (cl-loop for key in keys do
 		(define-key tabbar-mode-map
 		  (vector (append
 			   tabbar-key-binding-modifier-list
