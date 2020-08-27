@@ -136,6 +136,19 @@
      #+END_SRC
 
 * CORE
+** load-time
+
+   Show emacs-init-time at startup
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'emacs-startup-hook (lambda ()
+         (message (concat "conf-init-time: " (emacs-init-time) (format " gc: %d" gcs-done)))))
+   #+END_SRC
+
+   for comprehensive bench-marking install =benchmark-init=
+
+   =M-x benchmark-init/show-durations-tree=
+
 ** server
 
    Stop ⛔ opening *emacs* for each file. Set default open application
