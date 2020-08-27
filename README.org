@@ -381,6 +381,13 @@
     (load "~/.config/emacs/config/ui.cfg.el")
   #+END_SRC
 
+** early-init
+
+   Version [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][27.1]] introduces [[https://github.com/rhoit/dot-emacs/blob/master/early-init.el][~/emacs.d/early-init.el]], which is run
+   before [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]], before package and UI initialization
+   happens. Themes and UI components can be setup here, which finally
+   solves flickering UI.
+
 ** sane key bindings
 
    #+BEGIN_HTML
@@ -494,10 +501,6 @@
    also set some handy key to toggle it.
 
    #+BEGIN_SRC emacs-lisp
-     (tool-bar-mode 0)
-     (menu-bar-mode 0)
-     (scroll-bar-mode 0)
-
      (defun toggle-bars-view()
        (interactive)
        (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
