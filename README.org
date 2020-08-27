@@ -22,9 +22,6 @@
   #+ATTR_HTML: title="screenshot"
   [[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
 
-  #+BEGIN_HTML
-    <details><summary>More</summary>
-  #+END_HTML
 
 ** about repo
 
@@ -328,6 +325,10 @@
    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. Not
    using since starting of *2020*.
 
+   #+BEGIN_HTML
+     <details><summary>More</summary>
+   #+END_HTML
+
    It has always bit tricky to make both *ELPA* and *el-get* work
    together, loading *el-get* first, but *emacs24+* loads =package.el=
    by default, thats why put this magic line before loading *el-get*
@@ -340,23 +341,25 @@
      ;;(el-get 'sync)
    #+END_SRC
 
-*** my packages
+   To replicate a package set for another emacs installation is
+   explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
-    To replicate a package set for another emacs installation is
-    explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
+   you can list current installed package using.
 
-    you can list current installed package using.
+   #+BEGIN_EXAMPLE
+     `(setq my-packages
+         ',(mapcar #'el-get-as-symbol
+               (el-get-list-package-names-with-status "installed")))
+   #+END_EXAMPLE
 
-    #+BEGIN_EXAMPLE
-      `(setq my-packages
-          ',(mapcar #'el-get-as-symbol
-                (el-get-list-package-names-with-status "installed")))
-    #+END_EXAMPLE
+   Might be wondering why there isn't any package *listed* here, coz I
+   have broken down list into parts where its needed, you will see
+   =(el-get 'sync '<package-name>)= if its required before its
+   configuration.
 
-    Might be wondering why there isn't any package *listed* here, coz I
-    have broken down list into parts where its needed, you will see
-    =(el-get 'sync '<package-name>)= if its required before its
-    configuration.
+   #+BEGIN_HTML
+     </details>
+   #+END_HTML
 
 * UI/UX
 
@@ -1040,7 +1043,11 @@
 
 *** highlight-indentation
 
-    *NOTE*: currently not using it
+    currently not using it
+
+    #+BEGIN_HTML
+      <details><summary>More</summary>
+    #+END_HTML
 
     Was using [[https://github.com/localredhead][localreadhead]] fork of [[https://github.com/antonj/Highlight-Indentation-for-Emacs][highlight indentation]], for *web-mode*
     compatibility. See yasnippet issue [[https://github.com/capitaomorte/yasnippet/issues/396][#396]], but not its merge into the main repo
@@ -1057,6 +1064,10 @@
       (add-hook 'prog-mode-hook 'highlight-indentation-mode)
       (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
     #+END_SRC
+
+    #+BEGIN_HTML
+      </details>
+    #+END_HTML
 
 ** folding
 
@@ -1279,6 +1290,27 @@
    #+BEGIN_SRC emacs-lisp
      (setq realgud:pdb-command-name "python -m pdb")
    #+END_SRC
+
+** [[https://github.com/leoliu/ggtags][ggtags]]
+
+   Using [[https://langserver.org/][language server protocol]] (LSP) since ggtags make my emacs
+   super slow, but sure why!
+
+   #+BEGIN_HTML
+     <details><summary>More</summary>
+   #+END_HTML
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (add-hook 'c-mode-common-hook (lambda ()
+         (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+             (ggtags-mode 1))))
+     (add-hook 'python-mode-hook 'ggtags-mode)
+     (global-set-key (kbd "<C-double-mouse-1>") 'ggtags-find-tag-mouse)
+   #+END_SRC
+
+   #+BEGIN_HTML
+     </details>
+   #+END_HTML
 
 * LSP
 
