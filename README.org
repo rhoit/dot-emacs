@@ -947,10 +947,30 @@
     (add-hook 'prog-mode-hook 'subword-mode) ;; camelCase is subword
     (add-hook 'prog-mode-hook 'which-function-mode)
     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
-
-    ;; default comment string
-    (setq-default comment-start "# ")
   #+END_SRC
+
+** comments
+
+   Its weird :flushed: the default /key-bind/ action of *emacs* is not
+   toggle comment of the line, may be its because of :neckbeard: who
+   /always wrote the perfect code/, only needed comment to add *GPL*!
+
+   #+BEGIN_EXAMPLE
+     But, Our code is SELF DOCUMENTED!
+   #+END_EXAMPLE
+
+   So Lets change it! :sunglasses:
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; comment whole line
+     (defun comment-indent()
+       "custom over-ride comment-indent to comment whole line"
+      (interactive)
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+
+     ;; default comment string
+     (setq-default comment-start "# ")
+   #+END_SRC
 
 ** match parenthesis
 
