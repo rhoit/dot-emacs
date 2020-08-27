@@ -165,13 +165,18 @@
    /chatter/ over the years on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] and [[https://emacs.stackexchange.com/questions/34342/is-there-any-downside-to-setting-gc-cons-threshold-very-high-and-collecting-ga][stackexchange]]. Original
    motivation was let the *emacs* use more RAM, if java based IDE can
    eat up more than *200 Mb* :rage1: to get started. Don't gc during
-   startup to save time! so says [[https://github.com/hlissner/doom-emacs][doom-emacs]]!
+   startup to save time! so says [[https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#how-does-doom-start-up-so-quickly][hlissner/doom-emacs]]!
 
    #+BEGIN_SRC emacs-lisp
      ;; stolen from doom-emacs
+     ;; suppress gc temporarily
+     (setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
+       gc-cons-percentage 0.6)
+
+     ;; restore gc
      (add-hook 'emacs-startup-hook
        (lambda ()
-         (setq gc-cons-threshold (* 100 1024 1024))
+         (setq gc-cons-threshold (* 64 1024 1024)) ; 64 MB
          gc-cons-percentage 0.1))
    #+END_SRC
 
