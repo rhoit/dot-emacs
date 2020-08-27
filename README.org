@@ -1036,7 +1036,7 @@
    #+BEGIN_SRC emacs-lisp
      (require 'projectile)
 
-     (projectile-global-mode)
+     (projectile-mode +1)
 
      (add-hook
       'projectile-mode-hook
