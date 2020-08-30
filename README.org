@@ -9,6 +9,9 @@
 *BEWARE:* AUTHOR does'nt know much *elisp* and suffer from
 *parenthesiophobia*, but couldn't stop tinker around.
 
+#+ATTR_HTML: title="screenshot"
+[[https://www.google.com][file:https://raw.githubusercontent.com/rhoit/dot-emacs/dump/screenshot/screenshot02.png]]
+
 
 * INTRO
 
@@ -19,6 +22,33 @@
   #+BEGIN_EXAMPLE
     FYI "emacs vanilla is a lie"
   #+END_EXAMPLE
+
+  *Emacs* is relics of the past, have a criminal [[http://www.manuelmagic.me/manuelsweb/resources/Geek/Text-editors/text_editors.pdf][learning curve]] 🌀 are
+  cursed with the worst *UI* known to mankind with most unpleasing to
+  looks I mean it's a real dumpster 💩. It is not necessary to know
+  how to use *emacs* in order to be unhappy 😩, but it helps. I have
+  been constant search for the alternative over the years, non has
+  come closer than *vscode* capture the same imagination constant
+  improvement like in [[https://slate.com/technology/2014/05/oldest-software-rivalry-emacs-and-vi-two-text-editors-used-by-programmers.html][editor wars]].
+
+  My nearly a decade long journey with *emacs* is nothing compared to
+  age of the application which predates me and also the one of the
+  longest lived application programs of all time. Yet to become
+  obsolete, which is still ongoing development since 1976. Flexibility
+  of altering its interface and behavior without going though original
+  source has let to creation of surplus features by generation of
+  users 🤓 (programmers). There has been some of 💫 indispensable
+  tools which are yet to be match modern word processors.
+
+  It might be difficult for me to abandon the *emacs* although its
+  prized features would be replicated soon some day. Over the years I
+  constantly hear about [[https://lwn.net/Articles/819452/][Making Emacs popular again]] but its unlikely to
+  happen again since entry barrier is too high. The *vscode* with
+  built with the most popular language possess significant development
+  advantage, unlike *emacs* built with *lisp*. Yet this repository
+  itself stands as a testament about developers relation with text
+  editor, which mean switching to new editor will need significant
+  investment of time, not to mention [[https://en.wikipedia.org/wiki/IKEA_effect][IKEA effect]].
 
 ** about
 
@@ -38,8 +68,14 @@
    *code*. To =org= organize was most sane thing till now
    [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-bable-tangle).
 
-   This config follow [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG convention]] for init files which was
-   introduced in [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][version 27.1]].
+   In summary its,
+
+   - highly opinionated configuration tracked in git
+   - does'nt provide the any layer of abstraction
+   - more of notes and rants and reason to do so
+
+   Since, version [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][27.1]] *emacs* supported [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG]] convention every thing
+   can be in =~/.config/emacs=
 
 ** getting-it
 
@@ -230,6 +266,19 @@
 
       having troubles with org-version babel [[https://github.com/io12/org-fragtog/issues/1][support]]. using org
       package-archives for latest stuff.
+
+*** why-no-use-package
+
+    #+BEGIN_EXAMPLE
+      The use-package macro allows you to isolate package configuration
+      both performance-oriented and, well, tidy.
+    #+END_EXAMPLE
+
+    But My packages are already organized using *org-mode* and the
+    current init time is below /0.5 s/ given by =emacs-init-time=
+    within /2.0 s/ in total or Just I don't use tons of package.
+
+    Or change my [[https://github.com/rhoit/dot-emacs/issues/new][mind]]!
 
 *** el-get
     :PROPERTIES:
