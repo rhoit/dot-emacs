@@ -989,6 +989,32 @@
       (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
     #+END_SRC
 
+** projects
+*** projectile
+
+    If your source consist of hundreds of line then don't be like me
+    use [[https://github.com/bbatsov/projectile][projectile]] mode like [[https://github.com/krazedkrish][@krazedkrish]].
+
+    #+BEGIN_HTML
+      <p>ya <kbd>C</kbd>-<kbd>S</kbd>-<kbd>p</kbd> for select line
+      previous, just get along with it, have you tried it in
+      <b>chrome</b>, <b>sublime</b>, <b>vscode</b>? and don't forget
+      the <code>helm-projectile</code>.</p>
+    #+END_HTML
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'projectile)
+      (projectile-mode +1)
+
+      (require 'helm-projectile)
+      (helm-projectile-on)
+
+      (global-set-key (kbd "C-S-p") 'helm-projectile-find-file)
+      (global-set-key (kbd "C-S-t") 'projectile-find-tag)
+      (global-set-key (kbd "C-S-g") 'helm-projectile-grep)
+    #+END_SRC
+
 ** white-spaces
 
    If you have working with non-emacs people sooner or later you might
