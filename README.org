@@ -998,9 +998,10 @@
   some of the basic things provide by *emacs* internal packages.
 
   #+BEGIN_SRC emacs-lisp
-    (add-hook 'prog-mode-hook 'subword-mode) ;; camelCase is subword
-    (add-hook 'prog-mode-hook 'which-function-mode)
-    (add-hook 'prog-mode-hook 'toggle-truncate-lines)
+    (add-hook 'prog-mode-hook (lambda ()
+      (subword-mode +1) ; camelCase is subword
+      (which-function-mode +1)
+      (toggle-truncate-lines +1)))
   #+END_SRC
 
 ** comments
