@@ -868,6 +868,9 @@
      (global-set-key (kbd "M-x") 'helm-M-x)
      (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
+     ;; i need arrow keys
+     (customize-set-variable 'helm-ff-lynx-style-map t)
+
      ;; terminal like tabs selection
      (define-key helm-map (kbd "<tab>") 'helm-next-line)
      (define-key helm-map (kbd "<backtab>") 'helm-previous-line)
@@ -876,6 +879,10 @@
      (define-key helm-map (kbd "<right>") 'helm-execute-persistent-action)
      (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
    #+END_SRC
+
+   - <2020-08-31 Mon>
+
+     lynx style navigation [[https://github.com/emacs-helm/helm/issues/2175][fix]]
 
 ** search
 
