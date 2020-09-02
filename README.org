@@ -886,16 +886,49 @@
 
 ** search
 
+   #+BEGIN_HTML
+     <p>If you can yank (paste) in search, why to add to kill-ring (copy)
+     just select the text and hit <kbd>C</kbd>-<kbd>s</kbd>!</p>
+   #+END_HTML
+
+   In addition there is the whole section in [[https://www.emacswiki.org/emacs/SearchAtPoint][wiki]] about search at
+   point.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'isearch-mode-hook (lambda ()
+       "Use region as the isearch text."
+       (when mark-active
+         (let ((region (funcall region-extract-function nil)))
+           (deactivate-mark)
+           (isearch-push-state)
+           (isearch-yank-string region)))))
+   #+END_SRC
+
    [[https://github.com/syohex/emacs-anzu][anzu]] highlight all search matches, most of the text editor does
    even [[https://github.com/osyo-manga/vim-anzu][vi]] this why not emacs. Here is the [[https://raw.githubusercontent.com/syohex/emacs-anzu/master/image/anzu.gif][gify]] from original repo.
 
    #+BEGIN_SRC emacs-lisp
      (require 'anzu)
      (global-anzu-mode +1)
-     (global-unset-key (kbd "M-%"))
-     (global-unset-key (kbd "C-M-%"))
      (global-set-key (kbd "M-%") 'anzu-query-replace)
      (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+   #+END_SRC
+
+   [[https://github.com/nschum/highlight-symbol.el][highlight symbol]] Beyond the syntax color, ability to highlight add
+   clear perspective during programming, such as use of different
+   variables in the file.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'highlight-symbol)
+     (global-set-key (kbd "C-S-r") 'highlight-symbol-prev)
+     (global-set-key (kbd "C-S-s") 'highlight-symbol-next)
+     (global-set-key [(shift f3)] 'highlight-symbol-at-point)
+     (global-set-key [(ctrl f3)] 'highlight-symbol-query-replace)
+     (global-set-key (kbd "<C-down-mouse-3>") (lambda (event)
+       (interactive "e")
+       (save-excursion
+         (goto-char (posn-point (event-start event)))
+         (highlight-symbol-at-point))))
    #+END_SRC
 
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
@@ -1045,30 +1078,6 @@
 
      (add-hook 'prog-mode-hook 'watch-words)
    #+END_SRC
-
-*** [[https://github.com/nschum/highlight-symbol.el][highlight symbol]]
-
-    Beyond the syntax color, ability to highlight add clear
-    perspective during programming, such as use of different variables
-    in the file.
-
-    #+BEGIN_SRC emacs-lisp
-      (defun highlight-symbol-my-binds ()
-        (interactive)
-        (require 'highlight-symbol)
-        (local-set-key [(shift f1)] 'highlight-symbol-at-point)
-        (local-set-key [(shift f2)] 'highlight-symbol-prev)
-        (local-set-key [(shift f3)] 'highlight-symbol-next)
-        (local-set-key [(ctrl f3)] 'highlight-symbol-query-replace)
-
-        (local-set-key (kbd "<C-down-mouse-3>") (lambda (event)
-          (interactive "e")
-          (save-excursion
-            (goto-char (posn-point (event-start event)))
-            (highlight-symbol-at-point)))))
-
-      (add-hook 'prog-mode-hook 'highlight-symbol-my-binds)
-    #+END_SRC
 
 ** indentation
 
