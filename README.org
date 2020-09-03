@@ -1345,8 +1345,8 @@
 
 ** [[https://github.com/leoliu/ggtags][ggtags]]
 
-   Using [[https://langserver.org/][language server protocol]] (LSP) since ggtags make my emacs
-   super slow, but sure why!
+   Using [[https://langserver.org/][language server protocol]] (LSP) since, ggtags make my emacs
+   super slow, but not sure why!
 
    #+BEGIN_HTML
      <details><summary>More</summary>
@@ -1390,6 +1390,14 @@
 
 ** language
 *** python
+
+    #+HEADER: :exports both :eval no-export
+    #+BEGIN_SRC sh :results output
+      pacman -S python-language-server
+
+      #if you want microsoft one
+      yaourt -S microsoft-python-language-server
+    #+END_SRC
 
     #+BEGIN_SRC emacs-lisp
       (add-hook 'python-mode-hook #'lsp)
@@ -1547,23 +1555,22 @@
 ** default applications
 
    Its most :disappointed: disappointing when application opens
-   doesn't open in your favorite application, but org-mode has it
-   covered :sob:.
+   doesn't open in your favorite application, not sure if emacs uses
+   XDG mime :sob:.
 
    #+BEGIN_SRC emacs-lisp
      (add-hook 'org-mode-hook
-               '(lambda ()
-                  (setq org-file-apps
-                        '((auto-mode . emacs)
-                          ("\\.jpg\\'" . "eog %s")
-                          ("\\.svg\\'" . "ristretto %s")
-                          ("\\.png\\'" . "eog %s")
-                          ("\\.gif\\'" . "eog %s")
-                          ("\\.mkv\\'" . "mplayer %s")
-                          ("\\.mp4\\'" . "vlc %s")
-                          ("\\.html\\'" . "firefox %s")
-                          ("\\.webm\\'" . "mplayer %s")
-                          ("\\.pdf\\'" . "evince %s")))))
+       '(lambda ()
+         (setq org-file-apps '((auto-mode . emacs)
+           ("\\.jpg\\'" . "eog %s")
+           ("\\.svg\\'" . "ristretto %s")
+           ("\\.png\\'" . "eog %s")
+           ("\\.gif\\'" . "eog %s")
+           ("\\.mkv\\'" . "mplayer %s")
+           ("\\.mp4\\'" . "vlc %s")
+           ("\\.html\\'" . "firefox %s")
+           ("\\.webm\\'" . "mplayer %s")
+           ("\\.pdf\\'" . "evince %s")))))
    #+END_SRC
 
 ** latex
@@ -1768,8 +1775,8 @@
     #+BEGIN_SRC emacs-lisp
       (add-to-list 'load-path "~/.config/emacs/00testing/py-exec/")
       (require 'py-exec)
-      (add-hook 'python-mode-hook
-           (lambda () (local-set-key (kbd "<C-return>") 'py-execution)))
+      (add-hook 'python-mode-hook (lambda()
+        (local-set-key (kbd "<C-return>") 'py-execution)))
     #+END_SRC
 
 ** sql
