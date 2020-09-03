@@ -1361,20 +1361,21 @@
 
 * ORG-MODE
 
+  [[https://orgmode.org/][org-mode]] introduces to the you to different world, which makes it
+  distinct. All but one complain is it throws the normal convention
+  out of the window (just remember *emacs* has worst defaults)!
+
   removing the C-j bind for [[goto-last-change]]
 
   #+BEGIN_SRC emacs-lisp
     (add-hook
      'org-mode-hook
-     '(lambda()
-        (define-key org-mode-map (kbd "C-j") nil)))
+     (lambda () ; used for (goto-last-change)
+       (define-key org-mode-map (kbd "C-j") nil)))
+
+    (setq org-support-shift-select t) ; enable text-selection when possible
+    (add-hook 'org-mode-hook 'lambda() (require 'org-mouse))
   #+END_SRC
-
-** enable mouse
-
-   #+BEGIN_SRC emacs-lisp
-     (add-hook 'org-mode-hook 'lambda() (require 'org-mouse))
-   #+END_SRC
 
 ** babel
 
