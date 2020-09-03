@@ -1244,6 +1244,12 @@
   distinct. All but one complain is it throws the normal convention
   out of the window (just remember *emacs* has worst defaults 😉)!
 
+  #+HEADER: :results silent
+  #+BEGIN_SRC emacs-lisp
+    (setq org-support-shift-select t)  ; enable text-selection when possible
+    (add-hook 'org-mode-hook 'lambda() (require 'org-mouse))
+  #+END_SRC
+
 ** babel
 
    #+HEADER: :results silent
