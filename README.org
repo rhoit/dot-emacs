@@ -1472,36 +1472,14 @@
 
 ** keybindings
 
-   org-mode introduces to the different word and
-
-   all but one complain is its keybinding which throws the normal
-   convention out of the box (just bugging emacs hasn't be great on
-   defaults)
-
-   removing pesky keybinds for consistency.
-   here is the map what I/normal user expect and reality.
-
-   # TODO: to fill this up one day
-
-   |                   | normal       | emacs | org-mode |
-   |-------------------+--------------+-------+----------|
-   | S-<up>            | start-select |       |          |
-   | S-<down>          |              |       |          |
-   | S-<left>          |              |       |          |
-   | S-<right>         |              |       |          |
-   |                   |              |       |          |
-   | S-<tab>/<backtab> |              |       |          |
-
+   org-mode introduces to the you to different world all but one
+   complain is its keybinding which throws the normal convention out
+   of the box (just *emacs* has worst defaults)!
 
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'org-mode-hook
-         '(lambda ()
-            (define-key org-mode-map (kbd "C-j") nil) ;; used for goto-last-change
-            (define-key org-mode-map (kbd "S-<up>") nil) ;; text selection
-            (define-key org-mode-map (kbd "S-<down>") nil) ;; text selection
-            (define-key org-mode-map (kbd "S-<left>") nil) ;; text selection
-            (define-key org-mode-map (kbd "S-<right>") nil) ;; text selection
-            ))
+     (setq org-support-shift-select t) ; enable text-selection when possible
+     (add-hook 'org-mode-hook (lambda ()
+        (define-key org-mode-map (kbd "C-j") nil))) ; used for (goto-last-change)
    #+END_SRC
 
 ** enable mouse
