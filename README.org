@@ -444,10 +444,8 @@
    #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
-     ;;; full-screen since 24.4
-     ;; handled via window manager
-     ;; lets reserve it for something i.e realgud
-     (global-unset-key [f11])
+     ;; handled via window manager lets reserve i.e realgud
+     (global-unset-key [f11]) ; unbind (toggle-frame-fullscreen)
    #+END_SRC
 
    Although most of the *emacs* key binding are sill relevant till
@@ -455,13 +453,11 @@
    went on building it, but :mouse2: mouse binding are terrible.
 
    #+BEGIN_SRC emacs-lisp
-     ;;; global-menu
      ;; redundent with f10 and gtk-menu
-     (global-unset-key [(control down-mouse-3)])
+     (global-unset-key [(control down-mouse-3)]) ; unbind (global-menu)
 
-     ;;; buffer menu
      ;; yet useful but utterly misplaced, using tabbar
-     (global-unset-key [(control down-mouse-1)])
+     (global-unset-key [(control down-mouse-1)]) ; unbind (buffer-menu)
    #+END_SRC
 
    In this day and age certain function are arcane (may be [[https://xkcd.com/1172/][someone]]
@@ -472,13 +468,11 @@
    poor adoption, when will *emacs* grow and fix it.
 
    #+BEGIN_SRC emacs-lisp
-     ;;; scroll-up-command
-     ;; just past it for once
-     (global-set-key [(control v)] 'yank)
+     ;; just paste it for once
+     (global-set-key [(control v)] 'yank) ; unbind (scroll-up-command)
 
-     ;; compose-mail
-     ;;; emacs is terrible mail client
-     (global-unset-key (kbd "C-x m")) ;; unset mail-compose bindings
+     ;; emacs is terrible mail client
+     (global-unset-key (kbd "C-x m")) ;; unbind (compose-mail)
    #+END_SRC
 
    Things have escalated quickly especially in laptops manufactures
@@ -507,16 +501,17 @@
      (global-set-key (kbd "C-S-b") 'list-buffers)
 
      ;; since, C-x k <return> too much acrobat
-     (global-set-key [(control d)] 'kill-buffer) ;; same as terminal
+     (global-set-key [(control d)] 'kill-buffer) ; same as terminal
 
      (require 'fill-column-indicator)
 
      (global-set-key (kbd "<f5>") 'redraw-display)
-     (global-set-key [(control f5)] '(lambda() (interactive)
-                                     (load-file "~/.config/emacs/init.el")))
+     (global-set-key [(control f5)] '(lambda()
+       (interactive)
+       (load-file "~/.config/emacs/init.el")))
      (global-set-key [f6] '(lambda() (interactive)
-                           (toggle-truncate-lines)
-                           (fci-mode)))
+       (toggle-truncate-lines)
+       (fci-mode)))
    #+END_SRC
 
 ** switch theme
@@ -602,8 +597,12 @@
      (require 'undo-tree)
      (global-undo-tree-mode 1)
      (setq undo-tree-visualizer-timestamps t)
-     (global-unset-key (kbd "C-/"))
-     (global-unset-key (kbd "C-z"))
+
+     ;; these binding are just too weird
+     (global-unset-key (kbd "C-/")) ; unbind (undo)
+     (global-unset-key (kbd "C-z")) ; unbind (suspend-frame)
+
+     ;; normal undo and redo
      (global-set-key (kbd "C-z") 'undo-only)
      (global-set-key (kbd "C-S-z") 'undo-tree-redo)
    #+END_SRC
@@ -827,8 +826,8 @@
 
 
    #+BEGIN_SRC emacs-lisp
-     (global-unset-key [(control prior)]) ;; default is set-to scroll-right
-     (global-unset-key [(control next)])  ;; default is set-to scroll-left
+     (global-unset-key [(control prior)]) ; unbind (scroll-right)
+     (global-unset-key [(control next)])  ; unbind (scroll-left)
 
      (define-key global-map [(control next)] 'tabbar-forward)
      (define-key global-map [(control prior)] 'tabbar-backward)
@@ -996,7 +995,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (require 'goto-chg)
-     (global-unset-key (kbd "C-j"))
+     (global-unset-key (kbd "C-j")) ; unbind (eval-print-last-sexp)
      (global-set-key (kbd "C-j") 'goto-last-change)
    #+END_SRC
 
