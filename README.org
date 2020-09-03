@@ -624,34 +624,32 @@
    is on of them, some time its the *WOW* moment and other time its
    *WTF*.
 
-*** replace selected text
+   This is weird one when you expect selected text to be replaced, you
+   end up in mess, thankfully there is the in-build mode to fix this.
 
-    This is weird one when you expect selected text to be replaced,
-    you end up in mess, thankfully there is the in-build mode to fix
-    this.
+   #+BEGIN_SRC emacs-lisp
+     ;; replace selected text
+     (delete-selection-mode 1)
+   #+END_SRC
 
-    #+BEGIN_SRC emacs-lisp
-      (delete-selection-mode 1)
-    #+END_SRC
+   #+BEGIN_HTML
+     <p><kbd>S</kbd>-<kbd>primary-click</kbd> don't mark-region
+     (select text) between previous cursor and point clicked, but pop
+     up with weird <b>font dialog</b>, seriously <b>emacs</b>, which
+     can be used to changing font face and size.  In the effort of not
+     being weird used in region/text selection =mouse-save-then-kill=.
+     </p>
+   #+END_HTML
 
-*** changing font
+   #+BEGIN_SRC emacs-lisp
+     (global-unset-key [(shift down-mouse-1)]) ; unbind (mouse-apperance-menu EVENT)
+     (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
+   #+END_SRC
 
-    Hotkey for *font dialog* is kinda absurd, that to for changing
-    font-face, although for resize has :mouse2: *Ctrl* *mouse-scroll*
-    might be sensible option.
+   *so called wow moments*
 
-    In the effort of not being weird *Shift* *mouse-primary-click* is
-    used in region/text selection =mouse-save-then-kill=.
-
-    #+BEGIN_SRC emacs-lisp
-      (global-unset-key [(shift down-mouse-1)])
-      (global-set-key [(shift down-mouse-1)] 'mouse-save-then-kill)
-    #+END_SRC
-
-    *so called wow moments*
-
-    as you think selecting selection, emacs binds the selection
-    keyboard free, when followed by *mouse-secondary-click*.
+   as you think selecting selection, emacs binds the selection
+   keyboard free, when followed by *mouse-secondary-click*.
 
 *** [[https://github.com/magnars/expand-region.el][expand region]]
 
