@@ -530,6 +530,18 @@
      (global-set-key [f9] 'speedbar)
    #+END_SRC
 
+** goto-last-change
+
+   This is the gem feature, this might be true answer to the /sublime
+   mini-map/ which is over rated, this is what you need.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'goto-chg)
+     (global-unset-key (kbd "C-j"))  ; unbind (eval-print-last-sexp)
+     (global-set-key (kbd "C-j") 'goto-last-change)
+   #+END_SRC
+
 * UX
 
   Fundamentally *emacs* is more over a scratchpad for *elisp*, which
