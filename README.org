@@ -1385,11 +1385,16 @@
 
   #+BEGIN_SRC emacs-lisp
     (require 'lsp-mode)
+
+    ;; don't override ('er/expand-region)
+    (define-key lsp-mode-map (kbd "C-S-SPC") nil) ; unset (lsp-signature-activate)
     ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
   #+END_SRC
 
 ** language
 *** python
+
+    Install the *python-language-server* into your environment.
 
     #+HEADER: :exports both :eval no-export
     #+BEGIN_SRC sh :results output
