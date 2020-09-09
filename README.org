@@ -1343,6 +1343,18 @@
      (setq realgud:pdb-command-name "python -m pdb")
    #+END_SRC
 
+** auto-complete
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'company)
+     (diminish 'company-mode)
+     (global-company-mode +1)
+
+     (require 'company-box)
+     (diminish 'company-box-mode)
+     (add-hook 'company-mode-hook 'company-box-mode)
+   #+END_SRC
+   
 ** [[https://github.com/leoliu/ggtags][ggtags]]
 
    Using [[https://langserver.org/][language server protocol]] (LSP) since, ggtags make my emacs
