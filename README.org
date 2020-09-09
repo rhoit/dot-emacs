@@ -1193,6 +1193,19 @@
                (concat dired-omit-files "\\|\\.git$\\|venv$"))))
    #+END_SRC
 
+** auto-complete
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'company)
+     (dim-minor-name 'company-mode "")
+     (global-company-mode +1)
+
+     (require 'company-box)
+     (dim-minor-name 'company-box-mode "")
+     (add-hook 'company-mode-hook 'company-box-mode)
+   #+END_SRC
+
 ** [[https://github.com/leoliu/ggtags][ggtags]]
 
    Using [[https://langserver.org/][language server protocol]] (LSP) since, ggtags make my emacs
