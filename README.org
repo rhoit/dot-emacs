@@ -1003,6 +1003,21 @@
     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
   #+END_SRC
 
+** auto-complete
+
+   [[https://company-mode.github.io/manual/index.html][Company]] is a modular text completion framework for GNU Emacs.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'company)
+     (dim-minor-name 'company-mode "")
+     (global-company-mode +1)
+
+     (require 'company-box)
+     (dim-minor-name 'company-box-mode "")
+     (add-hook 'company-mode-hook 'company-box-mode)
+   #+END_SRC
+
 ** comments
 
    Yet again, bad default for *emacs* 😳 the /key-binding/ does not
