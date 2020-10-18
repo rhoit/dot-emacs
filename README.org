@@ -142,10 +142,10 @@
    #+BEGIN_EXAMPLE
      ~/.config/emacs -> dot-emacs
      ├── elpa                   # pacman
-     ├── config                 # config subsection
-     │   ├── compile.cfg.el
+     ├── cfg.compile.el
+     ├── cfg.tabbar.el
      :   :
-     │   └── tabbar.cfg.el
+     │
      ├── ...
      :
      ├── 00testing              # testing stuffs
@@ -464,7 +464,7 @@
 
      (setq tabbar-ruler-style 'firefox)
 
-     (load "~/.config/emacs/config/tabbar.cfg.el")
+     (load "~/.config/emacs/cfg.tabbar.el")
      (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
    #+END_SRC
 
