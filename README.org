@@ -515,6 +515,16 @@
      (global-set-key [(control shift next)] 'tabbar-forward-group)
    #+END_SRC
 
+** buffer
+
+   Sensible unique buffer names, *[ inbuilt: package ]*
+   by default in >= 24.4.1 else add =(require 'uniquify)=
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq uniquify-buffer-name-style 'forward)
+   #+END_SRC
+
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
 
    I prefer speedbar outside the frame, for without separate frame see
