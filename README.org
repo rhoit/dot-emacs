@@ -324,10 +324,6 @@
   these editor, even without touching 🐁 pointing device, but really
   does it really need to be like this.
 
-  #+BEGIN_SRC emacs-lisp
-    (load "~/.config/emacs/config/ui.cfg.el")
-  #+END_SRC
-
 ** early-init
 
    Version [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][27.1]] introduces [[https://github.com/rhoit/dot-emacs/blob/master/early-init.el][~/emacs.d/early-init.el]], which is run
@@ -517,6 +513,16 @@
    #+BEGIN_SRC emacs-lisp
      (global-set-key [(control shift prior)] 'tabbar-backward-group)
      (global-set-key [(control shift next)] 'tabbar-forward-group)
+   #+END_SRC
+
+** buffer
+
+   Sensible unique buffer names, *[ inbuilt: package ]*
+   by default in >= 24.4.1 else add =(require 'uniquify)=
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq uniquify-buffer-name-style 'forward)
    #+END_SRC
 
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
@@ -992,6 +998,16 @@
 
       (drag-stuff-define-keys)
     #+END_SRC
+
+** layout
+
+   winner mode saving the window configure
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (when (fboundp 'winner-mode)
+         (winner-mode 1))
+   #+END_SRC
 
 * PROGRAMMING
 
