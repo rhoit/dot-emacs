@@ -31,27 +31,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(android-mode-sdk-dir "/opt/android")
- '(custom-safe-themes
-   (quote
-    ("68b7d8301bf8121abb8a92bbe7c247fbc3e64a0adfdda534daefd18f18c44a55" default)))
  '(grep-command "grep --exclude-dir={.git,venv,vendors} --color -nH -r -e ")
- '(inhibit-startup-screen t)
- '(magit-diff-refine-hunk (quote all))
+ '(line-number-mode nil)
+ '(magit-diff-refine-hunk 'all)
  '(package-selected-packages
-   (quote
-    (magit-todos orglink auto-dim-other-buffers yasnippet-snippets dockerfile-mode smart-hungry-delete nlinum yasnippet ox-reveal)))
- '(projectile-globally-ignored-directories
-   (quote
-    (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors")))
- '(projectile-globally-ignored-file-suffixes (quote ("db" "jpeg" "png" "jpg")))
+   '(zenburn-theme pyvenv diminish company-box company-lsp company json-mode web-mode polymode yasnippet-snippets yasnippet multi-web-mode python-docstring nginx-mode ob-ipython mmm-mako mmm-jinja2 org-re-reveal drag-stuff highlight-symbol orglink popup-kill-ring outshine projectile multiple-cursors goto-chg beacon bm anzu helm tabbar powerline smooth-scroll fill-column-indicator org-radiobutton hideshowvis sql-upcase poet-theme auto-dim-other-buffers dockerfile-mode smart-hungry-delete nlinum ox-reveal))
+  '(projectile-globally-ignored-directories
+   '(".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors"))
+ '(projectile-globally-ignored-file-suffixes '("db" "jpeg" "png" "jpg"))
  '(python-shell-completion-native-enable nil)
  '(safe-local-variable-values
-   (quote
-    ((eval projectile-mode t)
+   '((eval projectile-mode t)
      (eval outline-hide-sublevels 1)
-     (lisp-mode . t)
-     (eval server-force-delete)))))
+     (eval server-force-delete))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
