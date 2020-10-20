@@ -1372,7 +1372,7 @@
      (diminish 'company-box-mode)
      (add-hook 'company-mode-hook 'company-box-mode)
    #+END_SRC
-   
+
 ** [[https://github.com/leoliu/ggtags][ggtags]]
 
    Using [[https://langserver.org/][language server protocol]] (LSP) since, ggtags make my emacs
@@ -1422,26 +1422,43 @@
   #+END_SRC
 
 ** language
+
+   Different language uses different backends these are few I use for
+   my development.
+
+   | lang   | server      | status      |
+   |--------+-------------+-------------|
+   | html   | [[https://github.com/vscode-langservers/vscode-html-languageserver][vscode-html]] |             |
+   | python | [[https://github.com/microsoft/python-language-server][ms-pls]]      |             |
+   |        | [[https://github.com/palantir/python-language-server][palantir]]    | depreciated |
+   |        | [[https://github.com/psf/black][black]]       |             |
+   |        | [[https://github.com/Microsoft/pyright][pyright]]     |             |
+
 *** python
-
-    Install the *python-language-server* into your environment.
-
-    #+HEADER: :exports both :eval no-export
-    #+BEGIN_SRC sh :results output
-      pacman -S python-language-server
-
-      #if you want microsoft one
-      yaourt -S microsoft-python-language-server
-    #+END_SRC
 
     #+BEGIN_SRC emacs-lisp
       (add-hook 'python-mode-hook #'lsp)
     #+END_SRC
 
-    - <2020-08-25 Tue> buggy python-jedi 17.0
+    - <2020-10-14 Wed>
 
-      need manually editing in path variable setting as =.as_posix()=
-      or use =yaourt -S python-jedi-git=
+      /usr/lib/python3.8/site-packages/pyls/uris.py:110
+      path = path if isinstance(path, str) else path.as_posix()
+
+    - <2020-09-24 Thu>
+
+      python-jedi 0.17.2 in system, lsp works without aur
+
+    - <2020-08-25 Tue>
+
+      buggy python-jedi 17.0. Needed manually editing in path variable
+      setting as =.as_posix()= or use =yaourt -S python-jedi-git=
+
+*** html
+
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'web-mode-hook #'lsp)
+    #+END_SRC
 
 ** extension
 *** lsp-ui
