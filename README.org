@@ -1240,6 +1240,9 @@
    #+BEGIN_HTML
       <p>The proper way to start lsp-mode is using
       <kbd>M</kbd>-<kbd>x</kbd> lsp </p>
+
+      <p>To check its capabilities on running lsp
+      <kbd>M</kbd>-<kbd>x</kbd> lsp-describe-session </p>
    #+END_HTML
 
    #+BEGIN_SRC emacs-lisp
@@ -1250,6 +1253,12 @@
 
      ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
    #+END_SRC
+
+*** servers
+
+    language-servers should be installed ⚒️ manually you can see the
+    list of supported languages at their [[https://emacs-lsp.github.io/lsp-mode/page/languages/][website]] and documented at
+    [[https://github.com/emacs-lsp/lsp-mode/blob/master/docs/lsp-clients.json][lsp-clients.json]].
 
 *** lsp-ui
 
