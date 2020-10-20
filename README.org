@@ -1165,6 +1165,14 @@
      flycheck and projectile.
    #+END_QUOTE
 
+   #+BEGIN_HTML
+      <p>The proper way to start lsp-mode is using
+      <kbd>M</kbd>-<kbd>x</kbd> lsp </p>
+
+      <p>To check its capabilities on running lsp
+      <kbd>M</kbd>-<kbd>x</kbd> lsp-describe-session </p>
+   #+END_HTML
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (require 'lsp-mode)
