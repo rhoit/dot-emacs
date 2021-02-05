@@ -869,6 +869,25 @@
 
       lynx style navigation [[https://github.com/emacs-helm/helm/issues/2175][fix]] after new update
 
+** text-drag
+
+   After using *org-mode* nothing is same, moving the section is one
+   of the feature you want to have every where. Although many do have
+   feature to drag a lines or the region.
+
+*** [[https://github.com/rejeep/drag-stuff.el][drag-stuff]]
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'drag-stuff)
+
+      ;; better bindings
+      (global-set-key [(meta shift up)] 'drag-stuff-up)
+      (global-set-key [(meta shift down)] 'drag-stuff-down)
+      (global-set-key [(meta shift left)] 'drag-stuff-left)
+      (global-set-key [(meta shift right)] 'drag-stuff-right)
+    #+END_SRC
+
 ** text-zoom
 
    I still don't understand 😒 why *emacs* way of changing font [[https://www.emacswiki.org/emacs/SetFonts#ChangingFontSize][size]]
