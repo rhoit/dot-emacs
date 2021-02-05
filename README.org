@@ -688,12 +688,17 @@
      create any problem.</p>
    #+END_HTML
 
-   *BEWARE*: it breaks the *org-mode* don't enable it in org!
-
    #+BEGIN_SRC emacs-lisp
      (require 'drag-stuff)
-     (drag-stuff-define-keys)
-     (add-hook 'prog-mode-hook 'drag-stuff-mode)
+
+     ;;; default bindings conflicts with org mode
+     ;; (drag-stuff-define-keys)
+
+     ;; better bindings
+     (global-set-key [(meta shift up)] 'drag-stuff-up)
+     (global-set-key [(meta shift down)] 'drag-stuff-down)
+     (global-set-key [(meta shift left)] 'drag-stuff-left)
+     (global-set-key [(meta shift right)] 'drag-stuff-right)
    #+END_SRC
 
 ** scroll
