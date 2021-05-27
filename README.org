@@ -274,10 +274,10 @@
     after adding these for the first time.
 
     #+BEGIN_HTML
-      <p>Updating all packages is kinda strange chore type
-      <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
-      <b>Packages</b> buffer, and then type <kbd>U</kbd>
-      <kbd>x</kbd>.</p>
+      # <p>Updating all packages is kinda strange chore type
+      <kbd>M</kbd>-<kbd>x</kbd> <code>package-list-packages</code>
+      which will take you to the <b>Packages</b> buffer, and then type
+      <kbd>U</kbd> <kbd>x</kbd>.</p>
     #+END_HTML
 
     - <2020-02-02 Sun>
