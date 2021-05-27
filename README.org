@@ -335,9 +335,9 @@
 
    #+BEGIN_HTML
      <p>Updating all packages is kinda strange chore type
-     <kbd>M</kbd>-<kbd>x</kbd> which will take you to the
-     <b>Packages</b> buffer, and then type <kbd>U</kbd>
-     <kbd>x</kbd>.</p>
+     <kbd>M</kbd>-<kbd>x</kbd> <code>package-list-packages</code>
+     which will take you to the <b>Packages</b> buffer, and then type
+     <kbd>U</kbd> <kbd>x</kbd>.</p>
    #+END_HTML
 
    - <2020-02-02 Sun>
@@ -510,6 +510,11 @@
      (global-set-key [(control f5)] '(lambda()
        (interactive)
        (load-file "~/.config/emacs/init.el")))
+   #+END_SRC
+
+** word wrap
+
+   #+BEGIN_SRC emacs-lisp
      (global-set-key [f6] '(lambda() (interactive)
        (toggle-truncate-lines)
        (fci-mode)))
@@ -679,7 +684,7 @@
 
    After seeing [[https://github.com/prtx][@prtx]] using sublime, moving lines up and down, similar
    to word transpose *M-t* in emacs, I also want to same, made my mind
-   to go though the hell once more to write the =elisp= again until i
+   to go though the hell once more to write the =elisp= again until I
    was saved by [[https://github.com/rejeep/drag-stuff.el][drag-stuff]].
 
    #+BEGIN_HTML
@@ -763,9 +768,8 @@
 ** initial screen
 
    #+BEGIN_SRC emacs-lisp
-     (setq inhibit-startup-message t
-       ;; initial-major-mode 'fundamental-mode
-       inhibit-splash-screen t)
+     (setq inhibit-startup-message t)
+     (setq inhibit-splash-screen t)
    #+END_SRC
 
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/modeline.cfg.el][modeline]]
@@ -1263,7 +1267,7 @@
      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
    #+END_SRC
 
-** magit
+** git
 
    its amazing but magit and yes its magic! there is so much things it
    which puts the other git tools in shame.
@@ -1399,7 +1403,6 @@
    #+BEGIN_HTML
      </details>
    #+END_HTML
-
 * LSP
 
   [[https://langserver.org/][Language Server Protocol]] is a JSON-RPC protocol to delegate language
@@ -1424,6 +1427,7 @@
 
     ;; don't override ('er/expand-region)
     (define-key lsp-mode-map (kbd "C-S-SPC") nil) ; unset (lsp-signature-activate)
+
     ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
   #+END_SRC
 
