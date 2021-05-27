@@ -453,6 +453,11 @@
      ;; redundent with f10 and gtk-menu
      (global-unset-key [(control down-mouse-3)]) ; unbind (global-menu)
 
+     ;; M-C-t opens terminals
+     (global-unset-key (kbd "C-M-t")) ; unbind (transpose-sexps)
+
+     (global-unset-key [(control down-mouse-3)]) ; unbind (global-menu)
+
      ;; yet useful but utterly misplaced, using tabbar
      (global-unset-key [(control down-mouse-1)]) ; unbind (buffer-menu)
    #+END_SRC
