@@ -1511,9 +1511,23 @@
 
    Welcome to flying circus 🎪.
 
+   My *python* familiarity predates *emacs*, I even dabbling through
+   script to execute [[https://gitlab.com/rhoit/py-exec][py-exec]] form buffer, yet my configuration has
+   been simplest for decades.
+
+   Recently I have been testing [[LSP][language server protocol]]for
+   development it has never been better, countless hours wasted
+   configuring code jumps using *ggtags* gives be nightmare which
+   never worked out in practical sense .
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (setq-default py-indent-offset 4)
+     (add-hook
+      'python-mode-hook
+      (lambda()
+        (local-set-key (kbd "C-<") 'python-indent-shift-left)
+        (local-set-key (kbd "C->") 'python-indent-shift-right)))
    #+END_SRC
 
 *** docstring
@@ -1534,6 +1548,9 @@
 *** jedi
 
     [[http://tkf.github.io/emacs-jedi/]]
+
+    Since *python3.3* virtual environment can be created using =python
+    -m venv env= without *python-virtualenv*.
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp :tangle no
