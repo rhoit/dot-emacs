@@ -547,6 +547,11 @@
      (global-set-key [f9] 'speedbar)
    #+END_SRC
 
+   - [2021-05-27 Thu]
+
+     Opening another frame (application-window) breaks the tabbar mode
+     theme.
+
 ** goto-last-change
 
    This is the gem feature, this might be true answer to the /sublime
