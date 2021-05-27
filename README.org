@@ -1216,6 +1216,8 @@
 
      ;; don't override ('er/expand-region)
      (define-key lsp-mode-map (kbd "C-S-SPC") nil) ; unset (lsp-signature-activate)
+
+     (setq lsp-headerline-breadcrumb-enable nil)
    #+END_SRC
 
 *** lsp-ui
