@@ -1225,6 +1225,7 @@
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][compile]]
 
    #+BEGIN_SRC emacs-lisp
+     (setq compile-command "scons")
      (load "~/.config/emacs/cfg.compile.el")
 
      (require 'fill-column-indicator)
@@ -1663,6 +1664,32 @@
      (add-hook 'python-mode-hook (lambda()
        (require 'py-exec)
        (local-set-key (kbd "<C-return>") 'py-execution)))
+   #+END_SRC
+
+** scons
+
+   If any one had created the Makefile in this day an age, it would
+   definitely should be considered as crime. [[https://en.wikipedia.org/wiki/Make_(software)][Make]] came out in 1976 and
+   did more that what it promised to do now it has started showing the
+   age. Many of complex projects are still handled by the Make which
+   is shows the robustness of the system but its excruciatingly
+   difficult to wrap you head around it, since make file is mostly the
+   vomit of [[https://en.wikipedia.org/wiki/Automake][automake]] which I find absolutely ridiculous.
+
+   After years of ignorance and pain staking writing Makefile I have
+   to hang the white flag. Its worst than *elisp* which has at least
+   documentation you don't wander around searching how to do the
+   simplest task. At times it made me think why not replace it with
+   bash script! but make was built to replace bash script, do you
+   sense the conundrum.
+
+   The SCons Github [[https://github.com/SCons/scons/wiki/FromMakeToScons][wiki]] has an in-depth explanation about why Make
+   comes up short. But if some one told me it was written in python I
+   would have been sold in first palace, Let see where it leads to.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq auto-mode-alist (cons '("SConstruct" . python-mode) auto-mode-alist))
+     (setq auto-mode-alist (cons '("SConscript" . python-mode) auto-mode-alist))
    #+END_SRC
 
 * ORG-MODE
