@@ -1274,6 +1274,11 @@
    which puts the other git tools in shame.
 
    #+BEGIN_SRC emacs-lisp
+     (require 'magit)
+     (setq magit-diff-refine-hunk 'all)
+     (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+     (global-set-key (kbd "C-x C-g") 'magit-status)
+
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
