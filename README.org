@@ -1403,6 +1403,7 @@
    #+BEGIN_HTML
      </details>
    #+END_HTML
+
 * LSP
 
   [[https://langserver.org/][Language Server Protocol]] is a JSON-RPC protocol to delegate language
@@ -1425,10 +1426,11 @@
   #+BEGIN_SRC emacs-lisp
     (require 'lsp-mode)
 
+    (setq lsp-headerline-breadcrumb-enable nil)
+    ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
+
     ;; don't override ('er/expand-region)
     (define-key lsp-mode-map (kbd "C-S-SPC") nil) ; unset (lsp-signature-activate)
-
-    ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
   #+END_SRC
 
 ** language
