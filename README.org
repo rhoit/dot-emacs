@@ -1525,6 +1525,15 @@
       (setq gdb-show-main t)
     #+END_SRC
 
+** latex
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'latex-mode-hook (lambda ()
+       (display-line-numbers-mode)
+       (toggle-truncate-lines +1)))
+   #+END_SRC
+
 ** python
 
    Welcome to flying circus 🎪.
