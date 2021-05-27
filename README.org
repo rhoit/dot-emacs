@@ -1208,6 +1208,13 @@
      (setq web-mode-enable-block-face t)
      (setq web-mode-enable-current-column-highlight t)
 
+     ;; padding
+     (setq web-mode-style-padding 4)
+     (setq web-mode-script-padding 4)
+     (setq web-mode-code-indent-offset 4)    ;; JS/PHP/etc.
+     (setq web-mode-css-indent-offset 4)     ;; CSS
+     (setq web-mode-markup-indent-offset 4)  ;; HTML
+
      ;; they don't descend from prog-mode
      (add-hook 'web-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 
