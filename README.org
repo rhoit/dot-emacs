@@ -551,8 +551,12 @@
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (setq speedbar-show-unknown-files t)
-     (global-set-key [f9] 'speedbar)
+     ;; (global-set-key [f9] 'speedbar)
    #+END_SRC
+
+   - <2021-05-27 Thu>
+
+     its projectile now days and speedbar breaks my theme
 
 ** goto-last-change
 
