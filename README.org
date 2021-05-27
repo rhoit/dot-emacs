@@ -1936,6 +1936,15 @@
      (add-to-list 'auto-mode-alist '("\.md" . markdown-mode))
    #+END_SRC
 
+** latex
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'latex-mode-hook (lambda ()
+       (nlinum-mode)
+       (drag-stuff-mode-rho-bindings)
+       (toggle-truncate-lines +1)))
+   #+END_SRC
+
 ** [[https://github.com/joaotavora/yasnippet][yasnippet]]
 
    YASnippet is template system for emacs, snippet collection in
