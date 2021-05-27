@@ -1113,6 +1113,24 @@
           (highlight-indent-guides-mode)))
     #+END_SRC
 
+** folding
+
+   It is 😠 frustrating many code folding packages not [[https://www.emacswiki.org/emacs/FoldingMode][folding-mode]]
+   does not 🚧 work as planned. so many corner cases and constantly 💔
+   breaking. Some of the code folding I have tried are
+
+   - [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]]
+   - [[https://github.com/gregsexton/origami.el][origimi]]
+   - [[https://github.com/mrkkrp/vimish-fold][vimish-fold]]
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'prog-mode-hook 'hideshowvis-minor-mode)
+   #+END_SRC
+
+   - <2021-05-27 Thu> org export problem
+
+     hideshow vis has trouble with org export disabling it for now
+
 ** white-spaces
 
    If you have working with non-emacs people sooner or later you might
