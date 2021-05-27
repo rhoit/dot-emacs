@@ -1201,6 +1201,8 @@
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
+     (global-set-key (kbd "C-x C-g") 'magit-status)
+
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
