@@ -963,10 +963,12 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq speedbar-show-unknown-files t)
-     (global-set-key [f9] 'speedbar)
+     ;; (global-set-key [f9] 'speedbar)
    #+END_SRC
 
-   I have yet to figure out why it affects tabbar theme.
+   - <2021-05-27 Thu>
+
+     its projectile now days and it breaks my theme
 
 ** [[https://github.com/joodland/bm][bookmark]]
 
