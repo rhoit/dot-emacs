@@ -1149,6 +1149,17 @@
      (define-key lsp-mode-map (kbd "C-S-SPC") nil)  ; unset (lsp-signature-activate)
    #+END_SRC
 
+*** features
+**** headline-breadcrumb
+
+     [[https://emacs-lsp.github.io/lsp-mode/page/main-features/#breadcrumb-on-headerline][breadcrumb-on-headline]] conflicts with [[tabbar]] since both use
+     headline.
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (setq lsp-headerline-breadcrumb-enable nil)  ; default t
+     #+END_SRC
+
 *** lsp-ui
 
     This [[https://emacs-lsp.github.io/lsp-ui/][extension]] is for all the higher level UI 🎨 modules of [[LSP]].
