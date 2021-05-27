@@ -1681,6 +1681,7 @@
    #+BEGIN_SRC emacs-lisp
      (org-babel-do-load-languages 'org-babel-load-languages
          '((shell . t)
+           (rust . t)
            (sql . t)
            (js . t)
            (C . t)
@@ -1872,6 +1873,21 @@
      (c-set-offset 'arglist-intro '+)
      (add-hook 'c-mode-common-hook '(lambda() (c-toggle-hungry-state 1)))
      (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+   #+END_SRC
+
+** rust
+
+   https://github.com/rust-lang/rust-mode
+
+   =ob-rust= for org mode
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'rust-mode)
+
+     (add-hook 'rust-mode-hook (lambda ()
+         (setq indent-tabs-mode nil)))
+
+     ;; (setq rust-format-on-save t) ; needs rustfmt
    #+END_SRC
 
 ** sql
