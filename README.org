@@ -1579,6 +1579,26 @@
       venv modes trying to find *venv* folder.
     #+END_QUOTE
 
+    Yet for emacs environment using lsp and console this might only
+    option! yeah I'm eating on my own words bite me! but seriously all
+    env packages gives me creeps.
+
+    to check if which venv is activated =(getenv "VIRTUAL_ENV")=
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defun pyvenv-autoload()
+           (interactive)
+           "auto activate venv directory if exists"
+           (require 'pyvenv)
+           (f-traverse-upwards (lambda (path)
+               (let ((venv-path (f-expand "venv" path)))
+               (when (f-exists? venv-path)
+               (pyvenv-activate venv-path))))))
+
+      (add-hook 'python-mode-hook 'pyvenv-autoload)
+    #+END_SRC
+
 ** sql
 
    Starting with version 21.4-a, [[https://www.emacswiki.org/emacs/SqlMode][sql-mode]] included with *emacs*.
