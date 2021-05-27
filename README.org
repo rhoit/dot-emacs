@@ -1157,11 +1157,14 @@
 
 ** folding
 
+   - <2021-05-27 Thu> I barely use it have and has trouble with org
+     export disable it for now
+
    I had trouble using [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]] for long time, seems too be fixed
    now happy 2020!
 
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'prog-mode-hook 'hideshowvis-minor-mode)
+     ;; (add-hook 'prog-mode-hook 'hideshowvis-minor-mode)
    #+END_SRC
 
    need to checkout [[https://github.com/gregsexton/origami.el][origimi]].
