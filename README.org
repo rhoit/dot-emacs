@@ -1491,6 +1491,36 @@
             lsp-ui-peek-peek-height 25)
     #+END_SRC
 
+** linter
+
+   Its shameful that I haven't used linter for all these years, I
+   Finally in 2021, I accidentally found [[https://www.emacswiki.org/emacs/FlyMake][flymake]] working, as I can
+   remember I had autopep8 recently. Since my [[language server protocol][lsp]] was already
+   configure it started linting my code it was magical! 😀
+
+   I had kept my head under the sand, because its pain using self
+   configured *emacs* and how a productive day goes to waste setting
+   up your enviroment just right. Finally after to 2 days of I changed
+   to [[https://www.flycheck.org/en/latest/user/flycheck-versus-flymake.html][flycheck]] as [[lsp][lsp]] recommended yet dealing with the virtual
+   enivroment was frustrating which asked you to install flake8 in
+   every enviroment.
+
+   #+BEGIN_SRC emacs-lisp
+     ; (require 'flycheck) ;; seems like it not needed
+     (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
+     (setq flycheck-checker 'python-flake8)
+     (setq flycheck-flake8rc "~/.config/flake8")
+     (setq flycheck-python-flake8-executable "/usr/bin/python") ;; skip venv
+     (setq flycheck-python-pylint-executable "/usr/bin/python") ;; skip venv
+     (setq flycheck-python-complie-executable "/usr/bin/python") ;; skip venv
+
+     (setq flycheck-disabled-checkers '(python-pylint)) ;; running out side venv
+     (add-hook 'python-mode-hook 'flycheck-mode)
+   #+END_SRC
+
+   flake8 is suported by lsp which can be enable via
+   =(setq lsp-pyls-plugins-flake8-enabled t)=
+
 * WEB
 ** web-mode
 
