@@ -1358,8 +1358,22 @@
 
   Welcome to flying circus 🎪.
 
+  My *python* familiarity predates *emacs*, It definitely should have
+  its own section by now (<2021-05-27 Thu>) but I strangely even after
+  dabbling through [[https://gitlab.com/rhoit/py-exec][py-exec]], python configuration has been simplest for
+  decades.
+
+  Recently I have been testing [[language server protocol][lsp]] for development it has never been
+  better, countless hours wasted configuring code jumps using [[ggtags]]
+  gives be nightmare which never worked out in practical sense .
+
   #+BEGIN_SRC emacs-lisp
     (setq-default py-indent-offset 4)
+    (add-hook
+     'python-mode-hook
+     (lambda()
+       (local-set-key (kbd "C-<") 'python-indent-shift-left)
+       (local-set-key (kbd "C->") 'python-indent-shift-right)))
   #+END_SRC
 
 ** docstring
@@ -1376,11 +1390,17 @@
 
    [[http://tkf.github.io/emacs-jedi/]]
 
-   #+BEGIN_SRC emacs-lisp
+   Since *python3.3* virtual environment can be created using =python
+   -m venv env= without *python-virtualenv*.
+
+   #+BEGIN_SRC emacs-lisp :tangle no
      (autoload 'jedi:setup "jedi" nil t)
      (add-hook 'python-mode-hook 'jedi:setup)
      (setq jedi:complete-on-dot t) ; optional
-     ;; (setq jedi:setup-keys t) ; optional
+
+     (setq jedi:environment-virtualenv "python -m venv")
+
+     (setq jedi:setup-keys t) ; optional
    #+END_SRC
 
 ** venv
