@@ -1580,8 +1580,29 @@
    *pip*. but for running just execute directly form
    =./venv/bin/python your.py=.
 
-   Damn don't try to solve artificial problems! so goes for idiotic
-   venv modes trying to find *venv* folder.
+   #+BEGIN_QUOTE
+     Damn don't try to solve artificial problems! so goes for idiotic
+     venv modes trying to find *venv* folder.
+   #+END_QUOTE
+
+   Yet for emacs environment using lsp and console this might only
+   option! yeah I'm eating on my own words bite me! but seriously all
+   env packages gives me creeps.
+
+   to check if which venv is activated =(getenv "VIRTUAL_ENV")=
+
+   #+BEGIN_SRC emacs-lisp
+     (defun pyvenv-autoload ()
+          (interactive)
+          "auto activate venv directory if exists"
+          (require 'pyvenv)
+          (f-traverse-upwards (lambda (path)
+              (let ((venv-path (f-expand "venv" path)))
+              (when (f-exists? venv-path)
+              (pyvenv-activate venv-path))))))
+
+     (add-hook 'python-mode-hook 'pyvenv-autoload)
+   #+END_SRC
 
 ** python-info-look
 
