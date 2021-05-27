@@ -942,12 +942,14 @@
 
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
 
+   - <2021-05-27 Thu> its projectile now days and it breaks my theme
+
    I prefer speedbar outside the frame, for without separate frame see
    [[https://www.emacswiki.org/emacs/SrSpeedbar][SrSpeedbar]].
 
    #+BEGIN_SRC emacs-lisp
      (setq speedbar-show-unknown-files t)
-     (global-set-key [f9] 'speedbar)
+     ;; (global-set-key [f9] 'speedbar)
    #+END_SRC
 
    I have yet to figure out why it affects tabbar theme.
