@@ -1344,6 +1344,8 @@
 
      (setq web-mode-enable-block-face t)
      (setq web-mode-enable-current-column-highlight t)
+     (setq web-mode-style-padding 4)
+     (setq web-mode-script-padding 4)
 
      ;; they don't descend from prog-mode
      (add-hook 'web-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
