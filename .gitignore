@@ -11,6 +11,7 @@ el-get/
 elpa/
 emojis/
 eshell/*
+games/
 history
 ido.last
 projectile-bookmarks.eld
