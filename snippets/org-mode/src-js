@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src-js
+# key: js
+# --
+
+#+HEADER: :results output :eval no-export
+#+BEGIN_SRC js :exports both
+  $0
+#+END_SRC
