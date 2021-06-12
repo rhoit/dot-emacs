@@ -1,0 +1,101 @@
+pkgname="emacs-git"
+pkgver=28.0.50.1
+pkgrel=1
+pkgdesc="GNU Emacs from git"
+arch=('x86_64')
+url="http://www.gnu.org/software/emacs/"
+license=('GPL3')
+depends=('libgccjit' 'm17n-lib' 'libotf' 'harfbuzz' 'cairo' 'jansson')
+makedepends=('git')
+provides=('emacs' 'emacs-28-git')
+conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+# source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
+# source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/pgtk"")
+# source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+options=(!strip)
+b2sums=('SKIP')
+
+
+pkgver() {
+    cd "$srcdir/emacs-git"
+    printf "%s.%s" \
+           $(sed -n '/AC_INIT/s/.*GNU Emacs, \([0-9.]*\).*/\1/p' configure.ac) \
+           $(git rev-list --count HEAD)
+}
+
+
+prepare() {
+    cd "$srcdir/emacs-git"
+    if [[ ! -x configure ]]; then
+        ./autogen.sh git
+        ./autogen.sh autoconf
+    fi
+}
+
+
+build() {
+    cd "$srcdir/emacs-git"
+
+    export CFLAGS=" -g"
+    export CXXFLAGS=" -g"
+
+    # gold linker
+    #
+    # TLDR; gold is around 2x times faster than GNU binutils linker. The
+    # gold linker was designed as an ELF-specific linker unlink ld which
+    # has support formats uses relies on heavy abstraction resulting more
+    # memory and CPU resources.
+    export LD='/usr/bin/ld.gold'
+    export CFLAGS+=" -fuse-ld=gold"
+    export CXXFLAGS+=" -fuse-ld=gold"
+
+    # fuse
+    #
+    # link-time optimization
+    export CFLAGS+=" -flto"
+    export CXXFLAGS+=" -flto"
+
+    CONF_ARGS=(
+        --disable-build-details
+        --enable-link-time-optimization # LTO
+        --libexecdir=/usr/lib
+        --localstatedir=/var
+        --mandir=/usr/share/man
+        --prefix=/usr
+        --sysconfdir=/etc
+        --with-cairo                    # needs cairo
+        --with-file-notification=yes
+        --with-gameuser=no
+        --with-harfbuzz                 # default after 27.1
+        --with-json                     # default after 27.1, needs jansson
+        --with-modules
+        --with-native-compilation       # JIT yeah! needs libgccjit
+        --with-pgtk                     # pure gtk, branch=feature/pgtk
+        --with-sound=alsa
+        --with-x-toolkit=gtk3
+        --with-xwidgets                 # needs webkit2gtk
+        --without-compress-install
+        --without-gconf                 # breaks set font from config
+        --without-gsettings             # breaks set font from config
+        --without-xaw3d
+    )
+    ./configure "${CONF_ARGS[@]}"
+
+    # min elisp modue pre-compile deferred for later
+    make -j$(nproc) NATIVE_FAST_BOOT=1
+}
+
+
+package() {
+    cd "$srcdir/emacs-git"
+
+    make DESTDIR="$pkgdir/" install
+
+    find "$pkgdir"/usr | xargs chown root:root
+}
+
+# Local Variables:
+# mode: shell-script
+# End:
