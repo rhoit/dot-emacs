@@ -2,6 +2,7 @@
 .mc-lists.el
 README.el
 elpa/
+network-security.data
 recentf
 session.*
 tramp
