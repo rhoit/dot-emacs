@@ -1,9 +1,11 @@
 *.elc
+*.eln
 *~
 .mc-lists.el
 00testing/*
 README.el
 elpa/
+network-security.data
 recentf
 session.*
 tramp
