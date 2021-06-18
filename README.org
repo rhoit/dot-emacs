@@ -295,12 +295,6 @@
    don't think I'm only one who feel cheated getting HDD of *1 TB* and
    you getting *0.931* TB.
 
-** recent files
-
-   #+BEGIN_SRC emacs-lisp
-     ;; (recentf-mode nil)
-   #+END_SRC
-
 * PACMAN
 
   It has been harder to maintain :package: packages with two
