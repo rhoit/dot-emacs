@@ -1,0 +1,17 @@
+#+TITLE: building from source
+#+DATE: 2021 Jun 18, Friday
+
+
+* LIST
+
+  These are build I have done form emacs source. Build are bit buggy
+  but workable.
+
+  #+HEADER: :dir ./repo
+  #+HEADER: :results output prepend  :eval no-export
+  #+BEGIN_SRC sh :exports both
+    git log -1 --oneline
+  #+END_SRC
+
+  #+RESULTS:
+  : 663fb3b * Do not produce .elc temporary file when unnecessary (bug#48978)
