@@ -50,6 +50,17 @@
   editor, which mean switching to new editor will need significant
   investment of time, not to mention [[https://en.wikipedia.org/wiki/IKEA_effect][IKEA effect]].
 
+** introspect
+
+   We need more contributors to make *emacs* better. We need better
+   *emacs* to attract more users who can later contribute back. Its
+   never ending dilemma. Still there number of unfortunate facts about
+   how *emacs* works. Most users will eventually need to dive into
+   *elisp* in order get to their particular tastes. I have been using
+   *emacs* for years sheer size of the project hard to comprehend
+   itself. But recent years *emacs* has seen numerous improvement like
+   [[lsp][lsp]], native-compilation, yet *emacs* still needs more.
+
 ** about
 
    Customization began with *single-file* =~/.emacs= with few settings
