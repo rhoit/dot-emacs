@@ -1252,7 +1252,7 @@
 ** [[https://github.com/rhoit/dot-emacs/blob/master/config/compile.cfg.el][compile]]
 
    #+BEGIN_SRC emacs-lisp
-     (setq compile-command "scons")
+     (setq compile-command "/usr/bin/python /usr/bin/scons")
      (load "~/.config/emacs/cfg.compile.el")
 
      (defun my-compilation-mode-hook ()
