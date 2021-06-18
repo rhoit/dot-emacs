@@ -379,6 +379,9 @@
    Or change my [[https://github.com/rhoit/dot-emacs/issues/new][mind]]!
 
 ** el-get
+   :PROPERTIES:
+   :header-args: :tangle no
+   :END:
 
    [[https://github.com/dimitri/el-get][el-get]] is the package manager, which is similar to *apt-get*. Not
    using since starting of *2020*.
@@ -393,10 +396,10 @@
    =(setq package-enable-at-startup nil)=.
 
    #+BEGIN_SRC emacs-lisp
-     ;;(add-to-list 'load-path "~/.config/emacs/el-get")
-     ;;(require 'el-get)
-     ;;(setq el-get-git-shallow-clone 't)
-     ;;(el-get 'sync)
+     (add-to-list 'load-path "~/.config/emacs/el-get")
+     (require 'el-get)
+     (setq el-get-git-shallow-clone 't)
+     (el-get 'sync)
    #+END_SRC
 
    To replicate a package set for another emacs installation is
@@ -404,11 +407,11 @@
 
    you can list current installed package using.
 
-   #+BEGIN_EXAMPLE
+   #+BEGIN_SRC emacs-lisp
      `(setq my-packages
          ',(mapcar #'el-get-as-symbol
                (el-get-list-package-names-with-status "installed")))
-   #+END_EXAMPLE
+   #+END_SRC
 
    Might be wondering why there isn't any package *listed* here, coz I
    have broken down list into parts where its needed, you will see
