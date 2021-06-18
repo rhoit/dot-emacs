@@ -527,8 +527,6 @@
      ;; since, C-x k <return> too much acrobat
      (global-set-key [(control d)] 'kill-buffer) ; same as terminal
 
-     (require 'fill-column-indicator)
-
      (global-set-key (kbd "<f5>") 'redraw-display)
      (global-set-key [(control f5)] '(lambda()
        (interactive)
@@ -539,8 +537,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (global-set-key [f6] '(lambda() (interactive)
-       (toggle-truncate-lines)
-       (fci-mode)))
+       (toggle-truncate-lines)))
    #+END_SRC
 
 ** switch theme
@@ -1256,12 +1253,10 @@
      (setq compile-command "scons")
      (load "~/.config/emacs/cfg.compile.el")
 
-     (require 'fill-column-indicator)
      (defun my-compilation-mode-hook ()
        (setq truncate-lines nil) ; automatically becomes buffer local
        (set (make-local-variable 'truncate-partial-width-windows) nil)
-       (toggle-truncate-lines +1)
-       (fci-mode))
+       (toggle-truncate-lines +1))
      (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
 
      ;; bindings
