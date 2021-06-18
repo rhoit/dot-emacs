@@ -216,7 +216,8 @@
      ;; restore gc
      (add-hook 'emacs-startup-hook
        (lambda ()
-         (setq gc-cons-threshold (* 64 1024 1024)) ; 64 MB
+         (setq gc-cons-threshold (* 256 1024 1024))  ; 256 MB
+         (setq read-process-output-max (* 2 1024 1024))  ; 2 MB
          gc-cons-percentage 0.1))
    #+END_SRC
 
