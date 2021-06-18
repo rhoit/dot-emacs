@@ -1182,14 +1182,16 @@
    - <2021-05-27 Thu> I barely use it have and has trouble with org
      export disable it for now
 
-   I had trouble using [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]] for long time, seems too be fixed
-   now happy 2020!
+   It is frustrating to see folding breaking each time in emacs
+   there are multiple of those.
 
-   #+BEGIN_SRC emacs-lisp
-     ;; (add-hook 'prog-mode-hook 'hideshowvis-minor-mode)
+   - [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]]
+   - [[https://github.com/gregsexton/origami.el][origimi]]
+   - [[https://github.com/mrkkrp/vimish-fold][vimish-fold]]
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (add-hook 'prog-mode-hook 'hideshowvis-minor-mode)
    #+END_SRC
-
-   need to checkout [[https://github.com/gregsexton/origami.el][origimi]].
 
 ** white-spaces
 
