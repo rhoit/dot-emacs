@@ -1,0 +1,2 @@
+#+TITLE: bulding from source
+#+DATE: 2021 Jun 18, Friday
