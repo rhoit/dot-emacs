@@ -1587,6 +1587,19 @@
     (add-hook 'org-mode-hook 'lambda() (require 'org-mouse))
   #+END_SRC
 
+** auto-fill
+
+   =auto-fill-mode= is named by =auto-fill-function= via [[https://github.com/magnars/.emacs.d/blob/master/site-lisp/diminish.el#L87][magnars]].
+
+   #+BEGIN_SRC emacs-lisp
+     (dim-minor-name 'auto-fill-function "")
+     (add-hook 'org-mode-hook 'turn-on-auto-fill)
+   #+END_SRC
+
+   - <2020-02-01 Sat>
+
+     problem with *emacs 26* this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue
+
 ** babel
 
    active Babel languages
