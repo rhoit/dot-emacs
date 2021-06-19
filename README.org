@@ -1382,16 +1382,6 @@
    - projectile-globally-ignored-file-suffixes
    - projectile-globally-ignored-modes
 
-** dired mode
-
-   facing trouble when in fresh copy of repo, will fix later
-
-   #+BEGIN_SRC emacs-lisp
-     ;;(add-hook 'prog-mode-hook '(lambda ()
-     ;;    (setq dired-omit-files
-     ;;        (concat dired-omit-files "\\|\\.git$\\|venv$"))))
-   #+END_SRC
-
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
