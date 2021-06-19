@@ -1148,11 +1148,11 @@
     hate default fill method.
 
     #+BEGIN_SRC emacs-lisp
-      (require 'highlight-indent-guides)
-
       (setq highlight-indent-guides-method 'character)
-      (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
       (setq highlight-indent-guides-character ?\┊)
+      (add-hook 'prog-mode-hook '(lambda()
+        (require 'highlight-indent-guides)
+        (highlight-indent-guides-mode)))
     #+END_SRC
 
 *** highlight-indentation
