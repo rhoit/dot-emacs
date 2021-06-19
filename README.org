@@ -1636,13 +1636,13 @@
    -m venv env= making *python-virtualenv* kinda obsolete, but create
    the problem with jedi, will fix it some other day!
 
-   #+BEGIN_SRC emacs-lisp
-     ;; (autoload 'jedi:setup "jedi" nil t)
-     ;; (add-hook 'python-mode-hook 'jedi:setup)
-     ;; (setq jedi:complete-on-dot t) ; optional
-     ;; (setq jedi:environment-virtualenv "python -m venv")
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (autoload 'jedi:setup "jedi" nil t)
+     (add-hook 'python-mode-hook 'jedi:setup)
+     (setq jedi:complete-on-dot t) ; optional
+     (setq jedi:environment-virtualenv "python -m venv")
 
-     ;; (setq jedi:setup-keys t) ; optional
+     (setq jedi:setup-keys t) ; optional
    #+END_SRC
 
 ** running at venv
