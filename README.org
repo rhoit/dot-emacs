@@ -1421,6 +1421,14 @@
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
+*** diff
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq magit-ediff-dwim-show-on-hunks t)
+      (setq ediff-split-window-function 'split-window-horizontally)
+    #+END_SRC
+
 * WEB
 ** web-mode
 
