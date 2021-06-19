@@ -1057,14 +1057,12 @@
 
 ** [[https://github.com/mina86/auto-dim-other-buffers.el][auto-dim-other-buffer]]
 
-   package is only available in MELPA
-
    having problems with themes, will deal with it later.
 
-   #+BEGIN_SRC emacs-lisp
-     ;;(when window-system
-     ;;  (require 'auto-dim-other-buffers)
-     ;;  (auto-dim-other-buffers-mode t))
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (when window-system
+      (require 'auto-dim-other-buffers)
+      (auto-dim-other-buffers-mode t))
    #+END_SRC
 
 ** [[https://github.com/iqbalansari/emacs-emojify][emoji]]
