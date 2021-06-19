@@ -1754,12 +1754,14 @@
 
 ** auto-fill text
 
+   =auto-fill-mode= is named by =auto-fill-function= via [[https://github.com/magnars/.emacs.d/blob/master/site-lisp/diminish.el#L87][magnars]].
+
    #+BEGIN_SRC emacs-lisp
+     (diminish 'auto-fill-function)
      (add-hook 'org-mode-hook 'turn-on-auto-fill)
    #+END_SRC
 
-   currently having problem with *emacs 26* have reverted to *25* with
-   this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue.
+   - <2020-02-01 Sat> problem with *emacs 26*  this see [[https://github.com/syl20bnr/spacemacs/issues/5697][spacemacs]] issue
 
 ** babel
 
