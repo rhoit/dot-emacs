@@ -1352,6 +1352,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (require 'projectile)
+
+     (diminish 'projectile-mode)
      (projectile-mode +1)
 
      (require 'helm-projectile)
