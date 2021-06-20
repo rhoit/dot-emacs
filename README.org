@@ -1888,6 +1888,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (require 'yasnippet)
+     (require 'yasnippet-snippets)
      (yas-reload-all)
      (add-hook 'prog-mode-hook 'yas-minor-mode-on)
      (add-hook 'org-mode-hook 'yas-minor-mode-on)
