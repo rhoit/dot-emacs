@@ -10,16 +10,16 @@ makedepends=('git')
 provides=('emacs' 'emacs-28-git')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
 replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
-# source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
-# source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/pgtk"")
-# source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+source=("repo::git://git.savannah.gnu.org/emacs.git")
+# source=("repo::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
+# source=("repo::git://git.savannah.gnu.org/emacs.git#branch=feature/pgtk"")
+# source=("repo::git://github.com/emacs-mirror/emacs.git")
 options=(!strip)
 b2sums=('SKIP')
 
 
 pkgver() {
-    cd "$srcdir/emacs-git"
+    cd "$srcdir/repo"
     printf "%s.%s" \
            $(sed -n '/AC_INIT/s/.*GNU Emacs, \([0-9.]*\).*/\1/p' configure.ac) \
            $(git rev-list --count HEAD)
@@ -27,7 +27,7 @@ pkgver() {
 
 
 prepare() {
-    cd "$srcdir/emacs-git"
+    cd "$srcdir/repo"
     if [[ ! -x configure ]]; then
         ./autogen.sh git
         ./autogen.sh autoconf
@@ -36,7 +36,7 @@ prepare() {
 
 
 build() {
-    cd "$srcdir/emacs-git"
+    cd "$srcdir/repo"
 
     export CFLAGS=" -g"
     export CXXFLAGS=" -g"
@@ -89,7 +89,7 @@ build() {
 
 
 package() {
-    cd "$srcdir/emacs-git"
+    cd "$srcdir/repo"
 
     make DESTDIR="$pkgdir/" install
 
