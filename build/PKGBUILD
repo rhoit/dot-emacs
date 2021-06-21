@@ -84,7 +84,10 @@ build() {
     ./configure "${CONF_ARGS[@]}"
 
     # min elisp modue pre-compile deferred for later
-    make -j$(nproc) NATIVE_FAST_BOOT=1
+    # make -j$(nproc) NATIVE_FAST_BOOT=1
+
+    # native compile ahead-of-time
+    make -j$(nproc) NATIVE_FULL_AOT=1
 }
 
 
