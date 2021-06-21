@@ -845,7 +845,8 @@
      (setq tabbar-ruler-style 'firefox)
 
      (load "~/.config/emacs/cfg.tabbar.el")
-     (global-set-key [f7] 'tabbar-mode)
+     (global-set-key [f7] 'centaur-tabs-mode)
+     (global-set-key [(shift f7)] 'tabbar-mode)
      (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
    #+END_SRC
 
