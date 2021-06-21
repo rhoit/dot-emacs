@@ -508,9 +508,12 @@
      (global-set-key [(control d)] 'kill-buffer) ; same as terminal
 
      (global-set-key (kbd "<f5>") 'redraw-display)
-     (global-set-key [(control f5)] '(lambda()
+     (global-set-key [(shift f5)] '(lambda()
        (interactive)
        (load-file "~/.config/emacs/init.el")))
+     (global-set-key [(control f5)] '(lambda()
+       (interactive)
+       (find-file "~/.config/emacs/README.org")))
    #+END_SRC
 
 ** word wrap
