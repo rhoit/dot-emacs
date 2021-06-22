@@ -1,5 +1,5 @@
 pkgname="emacs-git"
-pkgver=28.0.50.1
+pkgver=28.0.50.183
 pkgrel=1
 pkgdesc="GNU Emacs from git"
 arch=('x86_64')
@@ -84,10 +84,10 @@ build() {
     ./configure "${CONF_ARGS[@]}"
 
     # min elisp modue pre-compile deferred for later
-    # make -j$(nproc) NATIVE_FAST_BOOT=1
+    make -j$(nproc) NATIVE_FAST_BOOT=1
 
     # native compile ahead-of-time
-    make -j$(nproc) NATIVE_FULL_AOT=1
+    # make -j$(nproc) NATIVE_FULL_AOT=1
 }
 
 
