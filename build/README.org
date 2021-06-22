@@ -2,23 +2,45 @@
 #+DATE: 2021 Jun 18, Friday
 
 
-* GOOD BUILD
+* LAST BUILD
 
-  These are list workable build list for emacs source repository.
+  These are build I have done form emacs source (still buggy but workable).
 
-  #+HEADER: :exports both :eval no-export
-  #+BEGIN_SRC sh :results output prepend :dir ./repo
-    git log -1 --pretty=short
-    echo
+  #+HEADER: :eval no-export :dir ./repo
+  #+BEGIN_SRC sh :results output prepend :exports both
+    git log -1
   #+END_SRC
 
   #+RESULTS:
-  : commit 64dd2b1a2a0a65a571c2bef5a004fd59cd61bb1e
-  : Author: Stephen Gildea <stepheng+emacs@gildea.com>
-  :
-  :     time-stamp: add principled, expressive %z
-  :
-  : commit 663fb3b774887d3d15a6791c3f35af56daa3c676
-  : Author: Andrea Corallo <akrl@sdf.org>
-  :
-  :     * Do not produce .elc temporary file when unnecessary (bug#48978)
+  #+begin_example
+  commit 64dd2b1a2a0a65a571c2bef5a004fd59cd61bb1e
+  Author: Stephen Gildea <stepheng+emacs@gildea.com>
+  Date:   Mon Jun 21 21:28:20 2021 -0700
+
+      time-stamp: add principled, expressive %z
+
+      ,* lisp/time-stamp.el (time-stamp-formatz-from-parsed-options): New
+      function for time zone offset formatting ("%z" variants).
+
+      ,* test/lisp/time-stamp-tests.el (formatz*): New unit tests to cover
+      the new implementation of %5z.
+
+  #+end_example
+  #+begin_example
+  commit 663fb3b774887d3d15a6791c3f35af56daa3c676
+  Author: Andrea Corallo <akrl@sdf.org>
+  Date:   Mon Jun 14 14:37:14 2021 +0200
+
+      ,* Do not produce .elc temporary file when unnecessary (bug#48978)
+
+      ,* lisp/emacs-lisp/bytecomp.el (byte-compile-file): Produce .elc
+      temporary files only when non native compiling or when native
+      compiling but `byte+native-compile' is non nil.
+
+  #+end_example
+
+* KNOWN ISSUES
+
+  - <2021-06-24 Thu> auto revert mode with segfault crash
+
+    Solved by updating all the dependencies.
