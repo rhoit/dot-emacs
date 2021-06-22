@@ -1,2 +1,24 @@
 #+TITLE: bulding from source
 #+DATE: 2021 Jun 18, Friday
+
+
+* GOOD BUILD
+
+  These are list workable build list for emacs source repository.
+
+  #+HEADER: :exports both :eval no-export
+  #+BEGIN_SRC sh :results output prepend :dir ./repo
+    git log -1 --pretty=short
+    echo
+  #+END_SRC
+
+  #+RESULTS:
+  : commit 64dd2b1a2a0a65a571c2bef5a004fd59cd61bb1e
+  : Author: Stephen Gildea <stepheng+emacs@gildea.com>
+  :
+  :     time-stamp: add principled, expressive %z
+  :
+  : commit 663fb3b774887d3d15a6791c3f35af56daa3c676
+  : Author: Andrea Corallo <akrl@sdf.org>
+  :
+  :     * Do not produce .elc temporary file when unnecessary (bug#48978)
