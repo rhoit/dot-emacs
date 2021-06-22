@@ -15,3 +15,9 @@
 
   #+RESULTS:
   : 663fb3b * Do not produce .elc temporary file when unnecessary (bug#48978)
+
+* ISSUES
+
+  + <2021-06-24 Thu> auto revert mode with segfault crash
+
+    Solved by updating all the dependencies.
