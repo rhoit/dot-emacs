@@ -423,6 +423,10 @@
      (setq mouse-wheel-follow-mouse 't)
    #+END_SRC
 
+   - <2021-06-24 Thu>
+
+     I'm completely disabling the scroll packages for now.
+
 *** scroll-horizontal
 
     Similar to *nano* single line horizontal scroll in *v26.1*
