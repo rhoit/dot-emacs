@@ -1508,6 +1508,16 @@
       (add-hook 'web-mode-hook #'lsp)
     #+END_SRC
 
+** performance
+
+   =lsp-doctor= is really handy but still there other tweak in
+   lsp-mode [[https://emacs-lsp.github.io/lsp-mode/page/performance/][docs]].
+
+   #+BEGIN_SRC emacs-lisp
+     (setq lsp-idle-delay 0.500)
+     (setq lsp-log-io nil)
+   #+END_SRC
+
 ** extension
 *** lsp-ui
 
