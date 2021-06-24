@@ -13,6 +13,21 @@
 
   #+RESULTS:
   #+begin_example
+  commit 7be75f17e79b547dc03e26e3980d4ce75bfa668d
+  Author: Saroj Thirumalai <emacs_bugs.saroj@thirumalai.com>
+  Date:   Wed Jun 23 23:17:03 2021 +0300
+
+      ,* lisp/printing.el (pr-global-menubar): Fix duplicate menu problem.
+
+      In Emacs 27.1 Print menu items were moved to a submenu of the File menu.
+      The Printing package (lisp/printing.el) replaces the Print menu (via the
+      function: pr-global-menubar).  The latter needs to be updated to reflect the
+      changes; otherwise, a second Print (sub)menu is created at the end of the
+      File menu.
+
+      Copyright-paperwork-exempt: yes
+  #+end_example
+  #+begin_example
   commit 64dd2b1a2a0a65a571c2bef5a004fd59cd61bb1e
   Author: Stephen Gildea <stepheng+emacs@gildea.com>
   Date:   Mon Jun 21 21:28:20 2021 -0700
