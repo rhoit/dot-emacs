@@ -239,6 +239,29 @@
      (setq create-lockfiles nil)
    #+END_SRC
 
+** custom
+
+   <2021-06-24 Thu> Ignoring for now because I want it to be in
+   separate file but problem is file doesn't load back.
+
+   As written in  [[https://blog.sumtypeofway.com/posts/emacs-config.html#cb11][Emacs is Agar for Brain Worms]]
+
+   #+BEGIN_QUOTE
+     By default, Emacs stores any configuration you make through its UI
+     by writing custom-set-variables invocations to your init file, or
+     to the file specified by custom-file. Though this is convenient,
+     it’s also an excellent way to cause aggravation when the variable
+     you keep trying to modify is being set in some custom-set-variables
+     invocation. We can’t disable this behavior, and the custom-file
+     variable can’t be nil, but we can make it look in a different place
+     every time.
+   #+END_QUOTE
+
+   #+BEGIN_SRC emacs-lisp :tangle no
+     ;; (setq custom-file (make-temp-file ""))  ; ignore
+    (setq custom-file "/home/rho/.config/emacs/custom.el")
+   #+END_SRC
+
 ** big files
 
    Warn when opening files bigger than 1 MiB. yup *emacs* kitchen sink
