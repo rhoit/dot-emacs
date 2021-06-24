@@ -736,9 +736,14 @@
 
 ** scroll
 
-   Unfortunately *emacs* :barber: scrolling :barber: is not smooth.
+   Unfortunately *emacs* :barber: scrolling :barber: is not smooth,
+   and riddled with bugs, although =pixel-scroll-mode=, available
+   since v26.
 
-   #+BEGIN_SRC emacs-lisp
+   <2021-06-24 Thu> I'm completely disabling the scroll packages for
+   now.
+
+   #+BEGIN_SRC emacs-lisp :tangle no
      (require 'smooth-scroll)
      (smooth-scroll-mode t)
 
