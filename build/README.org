@@ -14,6 +14,7 @@
   #+END_SRC
 
   #+RESULTS:
+  : 7be75f1 * lisp/printing.el (pr-global-menubar): Fix duplicate menu problem.
   : 663fb3b * Do not produce .elc temporary file when unnecessary (bug#48978)
 
 * ISSUES
