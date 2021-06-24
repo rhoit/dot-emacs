@@ -1373,6 +1373,18 @@
     list of supported languages at their [[https://emacs-lsp.github.io/lsp-mode/page/languages/][website]] and documented at
     [[https://github.com/emacs-lsp/lsp-mode/blob/master/docs/lsp-clients.json][lsp-clients.json]].
 
+*** performance
+
+    @@html:<kbd>@@M@@html:</kbd>@@-@@html:<kbd>@@x@@html:</kbd>@@
+    =lsp-doctor= 🚑 is really handy to get started but still there
+    other tweak 🔧 in lsp-mode [[https://emacs-lsp.github.io/lsp-mode/page/performance/][docs]].
+
+    #+BEGIN_SRC emacs-lisp
+      ;; (setq lsp-log-io nil)  ; default:nil, for debugging
+      (setq lsp-idle-delay 0.500)
+      (setq company-lsp-cache-candidates t)
+    #+END_SRC
+
 *** lsp-ui
 
     This is [[https://emacs-lsp.github.io/lsp-ui/][extension]] for all the higher level UI modules of [[LSP]], like
