@@ -1280,6 +1280,18 @@
      (setq lsp-headerline-breadcrumb-enable nil)
    #+END_SRC
 
+*** performance
+
+    @@html:<kbd>@@M@@html:</kbd>@@-@@html:<kbd>@@x@@html:</kbd>@@
+    =lsp-doctor= 🚑 is really handy to get started but still there
+    other tweak 🔧 in lsp-mode [[https://emacs-lsp.github.io/lsp-mode/page/performance/][docs]].
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq lsp-idle-delay 0.500)
+      (setq company-lsp-cache-candidates t)
+    #+END_SRC
+
 *** lsp-ui
 
     This [[https://emacs-lsp.github.io/lsp-ui/][extension]] is for all the higher level UI modules of [[LSP]].
