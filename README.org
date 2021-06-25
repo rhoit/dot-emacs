@@ -194,15 +194,10 @@
    startup to save time! so says [[https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#how-does-doom-start-up-so-quickly][hlissner/doom-emacs]]!
 
    #+BEGIN_SRC emacs-lisp
-     ;; stolen from doom-emacs
-     ;; suppress gc temporarily
-     (setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
-       gc-cons-percentage 0.6)
-
-     ;; restore gc
+     ;; restore gc suppress during early-init.el
      (add-hook 'emacs-startup-hook
        (lambda ()
-         (setq gc-cons-threshold (* 256 1024 1024))  ; 256 MB
+         (setq gc-cons-threshold (* 8 1024 1024))  ; 8 MB default is 800 kilobytes
          (setq read-process-output-max (* 2 1024 1024))  ; 2 MB
          gc-cons-percentage 0.1))
    #+END_SRC
