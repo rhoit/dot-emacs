@@ -1,8 +1,9 @@
 ;;======================================================================
 ;;; early-init file of emacs 27.1
 ;;======================================================================
-
-(setq gc-cons-threshold (* 100 1024 1024)) ; ~ 100 MB
+;; suppress gc temporarily; stolen from doom-emacs
+(setq gc-cons-threshold most-positive-fixnum) ; 2^61 bytes
+(setq gc-cons-percentage 0.6)
 
 ;;----------------------------------------------------------------------
 ;;; Window
