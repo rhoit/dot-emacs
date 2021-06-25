@@ -183,6 +183,23 @@
      #+END_SRC
 
 * CORE
+** garbage collector
+
+   I don't really understand what its happening but here are some
+   /chatter/ over the years on [[https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/][reddit]] and [[https://emacs.stackexchange.com/questions/34342/is-there-any-downside-to-setting-gc-cons-threshold-very-high-and-collecting-ga][stackexchange]]. Original
+   motivation was let the *emacs* use more RAM, if java based IDE can
+   eat up more than *200 Mb* :rage1: to get started. Don't gc during
+   startup to save time! so says [[https://github.com/hlissner/doom-emacs/blob/develop/docs/faq.org#how-does-doom-start-up-so-quickly][hlissner/doom-emacs]]!
+
+   #+BEGIN_SRC emacs-lisp
+     ;;; restore gc suppress during early-init.el
+     (add-hook 'emacs-startup-hook
+       (lambda ()
+         (setq gc-cons-threshold (* 8 1024 1024))  ; default: 800000 bytes
+         (setq read-process-output-max (* 2 1024 1024))  ; default : 4KB
+         gc-cons-percentage 0.1))
+   #+END_SRC
+
 ** load-time
 
    Show emacs-init-time at startup
