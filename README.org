@@ -420,25 +420,7 @@
      </details>
    #+END_HTML
 
-* UI/UX
-
-  As of today, most people who use *vi* or *emacs* are [[https://github.com/fuqcool/atom-emacs-mode#deprecated][incapable]] of
-  using the other editor without using curse words :rage1:. Not
-  surprisingly normal people without prior knowledge any text editor
-  are pretty comfortable even *windows* notepad make much more sense
-  than *emacs* or *vi*. Yes you can pretty much do any *text foo* with
-  these editor, even without touching :mouse2: pointing device, but
-  really does it really need to be like this.
-
-  Fundamentally *emacs* is more over a scratchpad for *elisp*, which
-  has been mistaken for the editor. Just 30+ years focused on editing
-  features accumulation with barely any attention to GUI, I'm baffled
-  when people come up with config full keybinding, and for each mode
-  they add another. And mode to manage those binding. I'm one of those
-  who can't remember all those fancy keyboard *kungfu*.  And why do
-  they generalize everyone uses same key layout and so call most
-  efficient *vi* binding, just locks me inside without the exit door!
-
+* UI
 ** early-init
 
    Version [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][27.1]] introduces [[https://github.com/rhoit/dot-emacs/blob/master/early-init.el][~/emacs.d/early-init.el]], which is run
@@ -1101,6 +1083,25 @@
      ;; (add-hook 'markdown-mode-hook 'emojify-mode)
      ;; (add-hook 'git-commit-mode-hook 'emojify-mode)
    #+END_SRC
+
+* UX
+
+  As of today, most people who use *vi* or *emacs* are [[https://github.com/fuqcool/atom-emacs-mode#deprecated][incapable]] of
+  using the other editor without using curse words :rage1:. Not
+  surprisingly normal people without prior knowledge any text editor
+  are pretty comfortable even *windows* notepad make much more sense
+  than *emacs* or *vi*. Yes you can pretty much do any *text foo* with
+  these editor, even without touching :mouse2: pointing device, but
+  really does it really need to be like this.
+
+  Fundamentally *emacs* is more over a scratchpad for *elisp*, which
+  has been mistaken for the editor. Just 30+ years focused on editing
+  features accumulation with barely any attention to GUI, I'm baffled
+  when people come up with config full keybinding, and for each mode
+  they add another. And mode to manage those binding. I'm one of those
+  who can't remember all those fancy keyboard *kungfu*.  And why do
+  they generalize everyone uses same key layout and so call most
+  efficient *vi* binding, just locks me inside without the exit door!
 
 * PROGRAMMING
 
