@@ -1412,6 +1412,10 @@
     list of supported languages at their [[https://emacs-lsp.github.io/lsp-mode/page/languages/][website]] and documented at
     [[https://github.com/emacs-lsp/lsp-mode/blob/master/docs/lsp-clients.json][lsp-clients.json]].
 
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'sh-mode-hook #'lsp)
+    #+END_SRC
+
 *** performance
 
     @@html:<kbd>@@M@@html:</kbd>@@-@@html:<kbd>@@x@@html:</kbd>@@
