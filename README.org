@@ -1327,6 +1327,19 @@
       (setq ediff-split-window-function 'split-window-horizontally)
     #+END_SRC
 
+*** performance
+
+    Tuning *magit* for performance ⚡ from [[https://magit.vc/manual/magit/Performance.html][manual]].
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      ;; disable auto refresh
+      (setq magit-refresh-status-buffer nil)
+
+      ;; refs buffer performance
+      (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+    #+END_SRC
+
 * WEB
 ** html
 
