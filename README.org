@@ -1645,6 +1645,9 @@
 
     (setq org-support-shift-select t) ; enable text-selection when possible
     (add-hook 'org-mode-hook 'lambda() (require 'org-mouse))
+
+    (setq sentence-end-double-space nil)
+    (add-hook 'org-mode-hook 'flyspell-mode)
   #+END_SRC
 
 ** auto-fill
