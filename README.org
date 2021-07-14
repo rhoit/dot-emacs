@@ -1286,6 +1286,18 @@
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
+   magit performance can be [[https://www.reddit.com/r/emacs/comments/9n1ck6/call_to_arms_emacs_bindings_for_libgit2/][boosted]] using [[https://github.com/magit/libegit2][libgit]] which is a thin
+   wrapper written in C around [[https://github.com/libgit2][libgit2]], Install =cmake= to build
+   *libgit* first time. More stuff about the tuning can be found in
+   its [[https://magit.vc/manual/magit/Performance.html][manual]].
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'libgit)
+     (require 'magit-libgit)
+     (setq magit-refresh-status-buffer nil)
+     (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+   #+END_SRC
+
 *** diff
 
     #+BEGIN_SRC emacs-lisp
