@@ -1513,13 +1513,17 @@
    Different language uses different backends these are few I use for
    my development.
 
-   | lang   | server      | status      |
-   |--------+-------------+-------------|
-   | html   | [[https://github.com/vscode-langservers/vscode-html-languageserver][vscode-html]] |             |
-   | python | [[https://github.com/microsoft/python-language-server][ms-pls]]      |             |
-   |        | [[https://github.com/palantir/python-language-server][palantir]]    | depreciated |
-   |        | [[https://github.com/psf/black][black]]       |             |
-   |        | [[https://github.com/Microsoft/pyright][pyright]]     |             |
+   M-x lsp-describe-session
+
+   | lang   | server               | status      |
+   |--------+----------------------+-------------|
+   | html   | [[https://github.com/vscode-langservers/vscode-html-languageserver][vscode-html]]          |             |
+   | bash   | [[https://github.com/bash-lsp/bash-language-server][bash-language-server]] |             |
+   | python | [[https://github.com/microsoft/python-language-server][ms-pls]]               |             |
+   |        | [[https://github.com/palantir/python-language-server][palantir]]             | depreciated |
+   |        | [[https://github.com/psf/black][black]]                |             |
+   |        | [[https://github.com/Microsoft/pyright][pyright]]              |             |
+   |        |                      |             |
 
 *** python
 
@@ -1540,6 +1544,12 @@
 
       buggy python-jedi 17.0. Needed manually editing in path variable
       setting as =.as_posix()= or use =yaourt -S python-jedi-git=
+
+*** bash
+
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'sh-mode-hook #'lsp)
+    #+END_SRC
 
 *** html
 
