@@ -1663,6 +1663,15 @@
       (setq gdb-show-main t)
     #+END_SRC
 
+** conf
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'conf-mode-hook 'display-line-numbers-mode)
+     (add-hook 'conf-mode-hook 'company-mode)
+     (add-hook 'conf-mode-hook 'toggle-truncate-lines)
+   #+END_SRC
+
 ** latex
 
    #+HEADER: :results silent
