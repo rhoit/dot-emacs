@@ -1328,16 +1328,28 @@
 
 ** git
 
-   its amazing but magit and yes its magic! there is so much things it
-   which puts the other git tools in shame.
+   Git is amazing but [[https://github.com/magit][magit]] is magic!
 
    #+BEGIN_SRC emacs-lisp
      (require 'magit)
+     (global-set-key (kbd "C-x C-g") 'magit-status)
+     (global-set-key (kbd "C-x C-b") 'magit-log-buffer-file) ;; unbind (list-buffers)
+
      (setq magit-diff-refine-hunk 'all)
      (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-     (global-set-key (kbd "C-x C-g") 'magit-status)
 
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+   #+END_SRC
+
+   I have been using [[https://github.com/magit/libegit2][libegit]] which is a thin wrapper written in C
+   around [[https://github.com/libgit2][libgit2]], to [[https://www.reddit.com/r/emacs/comments/9n1ck6/call_to_arms_emacs_bindings_for_libgit2/][boost]] the performance of magit. More stuff about
+   the tuning can be found in its [[https://magit.vc/manual/magit/Performance.html][manual]].
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'libgit)
+     (require 'magit-libgit)
+     (setq magit-refresh-status-buffer nil)
+     (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
    #+END_SRC
 
 *** diff
