@@ -2073,6 +2073,12 @@
      (setq lua-indent-level 4)
    #+end_src
 
+** conf
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'conf-mode-hook 'nlinum-mode)
+   #+END_SRC
+
 ** dockerfile
 
    Goodies for :whale: :whale: :whale:
