@@ -2077,6 +2077,12 @@
            (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
     #+END_SRC
 
+** conf
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'conf-mode-hook 'nlinum-mode)
+   #+END_SRC
+
 ** dockerfile
 
    Goodies for :whale: :whale: :whale:
