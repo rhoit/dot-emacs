@@ -1448,6 +1448,14 @@
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
+   Tuning magit for performance from [[https://magit.vc/manual/magit/Performance.html][manual]].
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq magit-refresh-status-buffer nil)
+     (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
+   #+END_SRC
+
 *** diff
 
     #+HEADER: :results silent
