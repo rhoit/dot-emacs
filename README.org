@@ -2073,62 +2073,6 @@
      (setq lua-indent-level 4)
    #+end_src
 
-** eww/xwidget
-
-   eww "Emacs Web Wowser" is a web browser written entirely in
-   elisp available since version 24.4
-
-   As much awesome it sounds you will be ridiculed if you try to show
-   of to normal users! :stuck_out_tongue_winking_eye:
-
-   As of version 25.1 *webkit* has been introduced although you have
-   enable it while compiling (kinda ridiculous), it pretty :cool:
-   feature too have :sunglasses:.
-
-   *NOTE*: me lazy, no compile, not using
-
-   config is based on [[https://www.reddit.com/r/emacs/comments/4srze9/watching_youtube_inside_emacs_25/][reddit]] post to make behave like normal browser
-
-   #+BEGIN_SRC emacs-lisp
-     ;;(add-hook 'xwidget-webkit-mode (lambda ()
-     ;;  (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
-     ;;  (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
-     ;;  (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
-     ;;  (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
-     ;;  (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
-     ;;  (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)))
-   #+END_SRC
-
-   Adapt webkit according to window configuration change automatically
-   without this hook, every time you change your window configuration,
-   you must press =a= to adapt webkit content to new window size.
-
-   #+BEGIN_SRC emacs-lisp
-     ;; (add-hook 'window-configuration-change-hook (lambda ()
-     ;;               (when (equal major-mode 'xwidget-webkit-mode)
-     ;;                 (xwidget-webkit-adjust-size-dispatch))))
-   #+END_SRC
-
-   by default, xwidget reuses previous xwidget window, thus overriding
-   your current website, unless a prefix argument is supplied. This
-   function always opens a new website in a new window
-
-   #+BEGIN_SRC emacs-lisp
-     ;; (defun xwidget-browse-url-no-reuse (url &optional session)
-     ;;  (interactive (progn
-     ;;                 (require 'browse-url)
-     ;;                 (browse-url-interactive-arg "xwidget-webkit URL: ")))
-     ;;  (xwidget-webkit-browse-url url t))
-   #+END_SRC
-
-   make xwidget default browser
-
-   #+begin_src emacs-lisp
-     ;; (setq browse-url-browser-function (lambda (url session)
-     ;;                    (other-window 1)
-     ;;                    (xwidget-browse-url-no-reuse url)))
-   #+end_src
-
 ** dockerfile
 
    Goodies for :whale: :whale: :whale:
