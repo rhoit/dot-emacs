@@ -932,9 +932,9 @@
    movement. It can be understood better with this [[https://raw.githubusercontent.com/Malabarba/beacon/master/example-beacon.gif][gify]] from original
    repo.
 
-   #+BEGIN_SRC emacs-lisp :tangle no
+   #+BEGIN_SRC emacs-lisp
      (require 'beacon)
-     (diminish 'beacon-mode)
+     (dim-minor-name 'beacon-mode "")
      (setq beacon-blink-delay '0.2)
      (setq beacon-blink-when-focused 't)
      (setq beacon-dont-blink-commands 'nil)
