@@ -1792,6 +1792,13 @@
   the emacs distinct from every other editor. You should definitely
   checkout [[http://orgmode.org/org.html][org-mode]]. Like the emacs config it has out grown.
 
+** writing
+
+   #+BEGIN_SRC emacs-lisp
+     (setq sentence-end-double-space nil)
+     (add-hook 'org-mode-hook 'flyspell-mode)
+   #+END_SRC
+
 ** keybindings
 
    org-mode introduces to the you to different world all but one
