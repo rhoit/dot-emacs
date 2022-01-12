@@ -339,7 +339,7 @@
      (add-to-list 'load-path "~/.config/emacs/elpa/")
      (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-     (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+     ;; (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t) ;; handled by gnu elpa ater 9.5
      (package-initialize)
    #+END_SRC
 
