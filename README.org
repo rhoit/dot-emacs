@@ -317,7 +317,6 @@
       (add-to-list 'load-path "~/.config/emacs/elpa/")
       (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-      (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
       (package-initialize)
     #+END_SRC
 
@@ -330,6 +329,10 @@
       which will take you to the <b>Packages</b> buffer, and then type
       <kbd>U</kbd> <kbd>x</kbd>.</p>
     #+END_HTML
+
+    - <2022-01-12 Wed>
+
+      org package is handled by gnu elpa after 9.5
 
     - <2020-02-02 Sun>
 
