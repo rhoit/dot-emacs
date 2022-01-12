@@ -1,4 +1,9 @@
 ;;----------------------------------------------------------------------
+;;; native complie since v28
+
+(setq package-native-compile t)
+
+;;----------------------------------------------------------------------
 ;;; garbage collector
 ;; suppress gc temporarily stolen from doom-emacs
 
