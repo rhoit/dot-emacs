@@ -1726,6 +1726,13 @@
 
 ** latex
 
+   [[https://github.com/io12/org-fragtog][fragtog]] mode automatically toggle Org mode LaTeX fragment previews
+   as the cursor enters and exits them.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'org-mode-hook 'org-fragtog-mode)
+   #+END_SRC
+
    based on
    [[https://emacs.stackexchange.com/questions/3387/how-to-enlarge-latex-fragments-in-org-mode-at-the-same-time-as-the-buffer-text][zoom latex fragments relative to buffer text]]
 
@@ -1738,8 +1745,6 @@
      (add-hook 'org-mode-hook (lambda()
                                 (add-hook 'text-scale-mode-hook 'update-org-latex-fragments)))
    #+END_SRC
-
-   [[https://github.com/io12/org-fragtog][fragtog]] mode
 
 ** html export
 
