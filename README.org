@@ -1789,8 +1789,13 @@
      (add-hook 'prog-mode-hook 'outline-minor-mode)
      (add-hook 'compilation-mode-hook 'outline-minor-mode)
 
-     (add-hook 'outline-minor-mode-hook 'outshine-hook-function)
-     (add-hook 'outline-minor-mode-hook '(lambda()
+     (add-hook 'outline-minor-mode-hook 'outshine-mode)
+     (add-hook
+      'outline-minor-mode-hook
+      '(lambda()
+         (dim-minor-name 'outshine-mode "")
+         (dim-minor-name 'outline-minor-mode "")
+
          (global-unset-key (kbd "<M-right>"))
          (local-set-key (kbd "<M-right>") 'outline-promote)
          (global-unset-key (kbd "<M-left>"))
@@ -1807,6 +1812,10 @@
         (orglink-mode)
         (dim-minor-name 'orglink-mode "")))
    #+END_SRC
+
+   - <2022-02-27 Sun>
+
+     Warning (emacs): ‘outshine-hook-function’ has been deprecated, use ‘outshine-mode’ Disable showing Disable logging
 
 ** reveal.js
 
