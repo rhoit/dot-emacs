@@ -1,5 +1,5 @@
 pkgname="emacs-git"
-pkgver=28.0.50.183
+pkgver=29.0.50.1
 pkgrel=1
 pkgdesc="GNU Emacs from git"
 arch=('x86_64')
@@ -38,8 +38,8 @@ prepare() {
 build() {
     cd "$srcdir/repo"
 
-    export CFLAGS=" -g"
-    export CXXFLAGS=" -g"
+    # export CFLAGS=" -g"
+    # export CXXFLAGS=" -g"
 
     # gold linker
     #
@@ -47,15 +47,15 @@ build() {
     # gold linker was designed as an ELF-specific linker unlink ld which
     # has support formats uses relies on heavy abstraction resulting more
     # memory and CPU resources.
-    export LD='/usr/bin/ld.gold'
-    export CFLAGS+=" -fuse-ld=gold"
-    export CXXFLAGS+=" -fuse-ld=gold"
+    # export LD='/usr/bin/ld.gold'
+    # export CFLAGS+=" -fuse-ld=gold"
+    # export CXXFLAGS+=" -fuse-ld=gold"
 
     # fuse
     #
     # link-time optimization
-    export CFLAGS+=" -flto"
-    export CXXFLAGS+=" -flto"
+    # export CFLAGS+=" -flto"
+    # export CXXFLAGS+=" -flto"
 
     CONF_ARGS=(
         --disable-build-details
@@ -72,10 +72,11 @@ build() {
         --with-json                     # default after 27.1, needs jansson
         --with-modules
         --with-native-compilation       # JIT yeah! needs libgccjit
-        --with-pgtk                     # pure gtk, branch=feature/pgtk
+        # --with-pgtk                     # pure gtk, branch=feature/pgtk
         --with-sound=alsa
-        --with-x-toolkit=gtk3
-        --with-xwidgets                 # needs webkit2gtk
+        --with-x-toolkit=gtk3           # {no, gtk3, lucid}
+        # --with-xwidgets                 # requires --with-x-toolkit=gtk3
+        # --without-toolkit-scroll-bars
         --without-compress-install
         --without-gconf                 # breaks set font from config
         --without-gsettings             # breaks set font from config
