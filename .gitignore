@@ -7,6 +7,7 @@
 README.el
 auto-save-list
 custom.el
+eln-cache/
 elpa/
 eshell/
 games/
