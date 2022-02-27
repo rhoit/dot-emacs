@@ -1735,7 +1735,8 @@
        (plist-put org-format-latex-options :scale text-scale-mode-amount)
        (org-toggle-latex-fragment '(16)))
 
-     (add-hook 'text-scale-mode-hook 'update-org-latex-fragments)
+     (add-hook 'org-mode-hook (lambda()
+                                (add-hook 'text-scale-mode-hook 'update-org-latex-fragments)))
    #+END_SRC
 
    [[https://github.com/io12/org-fragtog][fragtog]] mode
