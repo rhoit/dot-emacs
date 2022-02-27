@@ -4,6 +4,7 @@
 .mc-lists.el
 00testing/*
 README.el
+eln-cache/
 elpa/
 network-security.data
 recentf
