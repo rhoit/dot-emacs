@@ -1,6 +1,7 @@
 *.elc
 .mc-lists.el
 README.el
+eln-cache/
 elpa/
 network-security.data
 recentf
