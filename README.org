@@ -1468,13 +1468,20 @@
     #+END_SRC
 
 * WEB
+** javascript
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'auto-mode-alist '("\\.mjs$" . js-mode))
+   #+END_SRC
+
 ** web-mode
 
    [[https://web-mode.org/][web-mode]] is an autonomous emacs major-mode for editing web
    templates.
 
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'auto-mode-alist '("\\.html$'" . web-mode))
+     (require 'web-mode)
+     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
      (setq web-mode-enable-block-face t)
      (setq web-mode-enable-current-column-highlight t)
