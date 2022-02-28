@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src-py-session
+# key: pys
+# --
+
+#+HEADER: :results value :eval no-export
+#+BEGIN_SRC python :exports both :session ${1}
+  $0
+#+END_SRC
