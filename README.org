@@ -1404,6 +1404,13 @@
     #+END_SRC
 
 * WEB
+** javascript
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'auto-mode-alist '("\\.mjs$" . js-mode))
+   #+END_SRC
+
 ** html
 
    [[https://web-mode.org/][web-mode]] is an autonomous emacs major-mode for editing web
