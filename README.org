@@ -1407,6 +1407,23 @@
       (setq company-lsp-cache-candidates t)
     #+END_SRC
 
+**** [[https://emacs-lsp.github.io/lsp-mode/page/file-watchers/][file-watcher]]
+
+     Watching all the files in huge project directories, may slow down
+     performance.
+
+     Default warning threshold is *1000* which can be changing variable
+     =(setq lsp-file-watch-threshold 1000)=
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (with-eval-after-load 'lsp-mode
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\pickles\\'")
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendors\\'")
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\__pycache__\\'"))
+     #+END_SRC
+
 *** lsp-ui
 
     This [[https://emacs-lsp.github.io/lsp-ui/][extension]] is for all the higher level UI modules of [[LSP]].
