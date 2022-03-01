@@ -1760,13 +1760,17 @@
     and re Structured text formats.
 
     #+HEADER: :results silent
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (add-hook
        'python-mode-hook
        (lambda ()
          (python-docstring-mode)
          (dim-minor-name 'python-docstring-mode "")))
     #+END_SRC
+
+    - [2022-03-01 Tue]
+
+      not working as expected something is not correct
 
 *** jedi
 
