@@ -1091,6 +1091,11 @@
          (winner-mode 1))
    #+END_SRC
 
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq split-width-threshold 120)
+   #+END_SRC
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
