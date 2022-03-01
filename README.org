@@ -1567,8 +1567,16 @@
    and re Structured text formats.
 
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'python-mode-hook 'python-docstring-mode)
+     (add-hook
+      'python-mode-hook
+      (lambda ()
+        (python-docstring-mode)
+        (dim-minor-name 'python-docstring-mode "")))
    #+END_SRC
+
+   - <2022-03-01 Tue>
+
+     not working as expected something is not correct
 
 ** jedi
 
