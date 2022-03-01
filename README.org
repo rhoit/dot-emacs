@@ -1281,6 +1281,26 @@
       (setq lsp-idle-delay 0.500)
     #+END_SRC
 
+**** file-watcher
+
+     [[https://emacs-lsp.github.io/lsp-mode/page/file-watchers/][file-watcher]] monitor the workspace folders for changes and notify
+     the server about them.
+
+     🙅‍♂️ Watching all the files in huge project directories, may slow
+     ⏱️ down performance some have the `node_modules` and `.git`. ⚠️
+     Default warning threshold is *1000* which can be a problem,
+     changing this variable =(setq lsp-file-watch-threshold 1000)=
+     although.
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (with-eval-after-load 'lsp-mode
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\pickles\\'")
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendors\\'")
+         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\__pycache__\\'"))
+     #+END_SRC
+
 *** lsp-ui
 
     This [[https://emacs-lsp.github.io/lsp-ui/][extension]] is for all the higher level UI 🎨 modules of [[LSP]].
