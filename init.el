@@ -31,7 +31,7 @@
  '(line-number-mode nil)
  '(magit-diff-refine-hunk 'all)
  '(package-selected-packages
-   '(org-fragtog zenburn-theme pyvenv diminish company-box company-lsp company json-mode web-mode polymode yasnippet-snippets yasnippet multi-web-mode python-docstring nginx-mode ob-ipython mmm-mako mmm-jinja2 org-re-reveal drag-stuff highlight-symbol orglink popup-kill-ring outshine projectile multiple-cursors goto-chg beacon bm anzu helm tabbar powerline smooth-scroll fill-column-indicator org-radiobutton hideshowvis sql-upcase poet-theme auto-dim-other-buffers dockerfile-mode smart-hungry-delete nlinum ox-reveal))
+   '(lsp-pyright flycheck-pos-tip flycheck dim lsp-ui lsp-mode helm-projectile highlight-indent-guides rainbow-delimiters magit-libgit libgit magit hungry-delete mode-icons expand-region undo-tree org-fragtog zenburn-theme pyvenv diminish company-box company-lsp company json-mode web-mode polymode yasnippet-snippets yasnippet multi-web-mode python-docstring nginx-mode ob-ipython mmm-mako mmm-jinja2 org-re-reveal drag-stuff highlight-symbol orglink popup-kill-ring outshine projectile multiple-cursors goto-chg beacon bm anzu helm tabbar powerline smooth-scroll fill-column-indicator org-radiobutton hideshowvis sql-upcase poet-theme auto-dim-other-buffers dockerfile-mode smart-hungry-delete nlinum ox-reveal))
  '(projectile-globally-ignored-directories
    '(".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "vendors"))
  '(projectile-globally-ignored-file-suffixes '("db" "jpeg" "png" "jpg"))
