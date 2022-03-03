@@ -22,3 +22,5 @@
 ;;; themes
 
 (load-theme 'wombat t)
+;; (add-to-list 'default-frame-alist '(font . "Inconsolata 12"))
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-12"))
