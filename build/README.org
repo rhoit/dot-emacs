@@ -11,55 +11,20 @@
     git log -1
   #+END_SRC
 
-  #+RESULTS:
-  #+begin_example
-  commit e2d96ffa6a920684e67f013b5e5eae8c2379bc84
-  Author: Po Lu <luangruo@yahoo.com>
-  Date:   Sun Feb 27 14:56:34 2022 +0800
+* HOW TO BUILD
 
-      * src/xterm.c (handle_one_xevent): Translate motion events on Motif.
-  #+end_example
-  #+begin_example
-  commit 7be75f17e79b547dc03e26e3980d4ce75bfa668d
-  Author: Saroj Thirumalai <emacs_bugs.saroj@thirumalai.com>
-  Date:   Wed Jun 23 23:17:03 2021 +0300
+  [[http://savannah.gnu.org/projects/emacs][savannah]] doesn't support
 
-      ,* lisp/printing.el (pr-global-menubar): Fix duplicate menu problem.
+  #+HEADER: :results output :eval no-export
+  #+BEGIN_SRC sh :exports both
+    git pull mirror 7be75f17e79b547dc03e26e3980d4ce75bfa668d
+    git chekckout 7be75f17e79b547dc03e26e3980d4ce75bfa668d
+  #+END_SRC
 
-      In Emacs 27.1 Print menu items were moved to a submenu of the File menu.
-      The Printing package (lisp/printing.el) replaces the Print menu (via the
-      function: pr-global-menubar).  The latter needs to be updated to reflect the
-      changes; otherwise, a second Print (sub)menu is created at the end of the
-      File menu.
+  libgccjit is
 
-      Copyright-paperwork-exempt: yes
-  #+end_example
-  #+begin_example
-  commit 64dd2b1a2a0a65a571c2bef5a004fd59cd61bb1e
-  Author: Stephen Gildea <stepheng+emacs@gildea.com>
-  Date:   Mon Jun 21 21:28:20 2021 -0700
-
-      time-stamp: add principled, expressive %z
-
-      ,* lisp/time-stamp.el (time-stamp-formatz-from-parsed-options): New
-      function for time zone offset formatting ("%z" variants).
-
-      ,* test/lisp/time-stamp-tests.el (formatz*): New unit tests to cover
-      the new implementation of %5z.
-
-  #+end_example
-  #+begin_example
-  commit 663fb3b774887d3d15a6791c3f35af56daa3c676
-  Author: Andrea Corallo <akrl@sdf.org>
-  Date:   Mon Jun 14 14:37:14 2021 +0200
-
-      ,* Do not produce .elc temporary file when unnecessary (bug#48978)
-
-      ,* lisp/emacs-lisp/bytecomp.el (byte-compile-file): Produce .elc
-      temporary files only when non native compiling or when native
-      compiling but `byte+native-compile' is non nil.
-
-  #+end_example
+  core/libgccjit 11.2.0-4 [installed]
+    Just-In-Time Compilation with GCC backend
 
 * KNOWN ISSUES
 
