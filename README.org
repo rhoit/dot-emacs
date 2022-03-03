@@ -496,6 +496,18 @@
    its name, associated file, depth of recursive editing, and major
    and minor modes.
 
+*** dim
+
+    The purpose of [[https://github.com/alezost/dim.el][dim]] package is to "customize" the mode-line names of
+    major and minor modes.  An example of using:
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'dim)
+    #+END_SRC
+
+    you can use =dim-major-name= and =dim-minor-name= to change the
+    names by one.
+
 *** [[https://github.com/emacsmirror/diminish][diminish]]
 
     #+BEGIN_QUOTE
