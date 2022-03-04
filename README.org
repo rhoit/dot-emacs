@@ -1257,6 +1257,25 @@
           (highlight-indent-guides-mode)))
     #+END_SRC
 
+** linter
+
+   I'm ashamed to say I haven't used linter much before 2020. I
+   accidentally found [[https://www.emacswiki.org/emacs/FlyMake][flymake]] working, as I can remember I had
+   *autopep8* recently in 2021. Since my [[LSP][lsp]] was already configure it
+   started linting my code it was magical! 😀
+
+   I had kept my head under the sand, because its pain using self
+   configured *emacs* and how a productive day goes to waste setting
+   up your environment just right. Finally after to 2 days of I
+   changed to [[https://www.flycheck.org/en/latest/user/flycheck-versus-flymake.html][flycheck]] as [[LSP][lsp]] recommended yet dealing with the virtual
+   enivroment was frustrating which asked you to install flake8 in
+   every environment.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq flycheck-check-syntax-automatically '(save))
+   #+END_SRC
+
 ** parenthesis
 
    #+HEADER: :results silent
@@ -1398,6 +1417,7 @@
      (define-key lsp-mode-map (kbd "C-S-SPC") nil) ; unset (lsp-signature-activate)
 
      (setq lsp-headerline-breadcrumb-enable nil)
+     (setq lsp-diagnostics-provider :none) ;; disable flycheck
      ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
    #+END_SRC
 
