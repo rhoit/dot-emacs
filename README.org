@@ -2105,47 +2105,6 @@
      (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
    #+END_SRC
 
-* TESTING
-
-  This :construction: section :construction: contain modes (plug-in)
-  which modified to *extreme* or :bug: *buggy*. May still not be
-  *available* in =el-get=.
-
-  #+BEGIN_SRC emacs-lisp
-    (add-to-list 'load-path "~/.config/emacs/00testing/")
-  #+END_SRC
-
-** ansi-color
-
-   Need to fix 265-color support, has been such for a long
-   time, since we very few work on teminal colors it might
-   not be fixed anytime sooner.
-
-   This is what I meant [[https://camo.githubusercontent.com/67e508f03a93d4e9935e38ea201dff7cc32c0afd/68747470733a2f2f7261772e6769746875622e636f6d2f72686f69742f72686f69742e6769746875622e636f6d2f6d61737465722f73637265656e73686f74732f656d6163732d323536636f6c6f722e706e67][screenshot]] was produced using [[https://github.com/bekar/vt100_colors][code]].
-
-   #+BEGIN_SRC emacs-lisp
-     (require 'ansi-color)
-     (defun colorize-compilation-buffer ()
-       (read-only-mode)
-       (ansi-color-apply-on-region (point-min) (point-max))
-       (read-only-mode))
-     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-   #+END_SRC
-
-** isend-mode
-
-   #+BEGIN_SRC emacs-lisp
-     ;; (add-to-list 'load-path "~/.config/emacs/00testing/isend-mode/")
-     ;; (require 'isend)
-   #+END_SRC
-
-** LFG mode
-
-   #+BEGIN_SRC emacs-lisp
-     ;; (setq xle-buffer-process-coding-system 'utf-8)
-     ;; (load-library "/opt/xle/emacs/lfg-mode")
-   #+END_SRC
-
 * META :noexport:
 
   # Local Variables:
