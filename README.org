@@ -1444,6 +1444,14 @@
      ;; (setq lsp-prefer-flymake nil) ;; use flycheck over flymake
    #+END_SRC
 
+   debugging variables
+
+   #+BEGIN_SRC emacs-lisp
+     ;; (setq lsp-print-io t)
+     ;; (setq lsp-trace t)
+     (setq lsp-print-performance t)
+   #+END_SRC
+
 *** servers
 
     language-servers should be installed ⚒️ manually you can see the
