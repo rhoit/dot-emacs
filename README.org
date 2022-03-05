@@ -1744,6 +1744,7 @@
      (lambda () ; used for (goto-last-change)
        (define-key org-mode-map (kbd "C-j") nil)))
 
+    (setq org-adapt-indentation t) ; edit structure (indent content also)
     (setq org-support-shift-select t) ; enable text-selection when possible
     (add-hook 'org-mode-hook 'lambda() (require 'org-mouse))
 
