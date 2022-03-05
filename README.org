@@ -1146,6 +1146,29 @@
     (add-hook 'prog-mode-hook 'toggle-truncate-lines)
   #+END_SRC
 
+** align
+
+   *align.el* has a few commands that can line up text with respect to
+   white-space, assignment, columns or regexp specified delimiters,
+   which can be modified using =align-rules-list=, more info can be
+   found in [[https://www.emacswiki.org/emacs/AlignCommands][wiki]].
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (eval-after-load "align"
+       '(add-to-list
+         'align-rules-list
+         '(prog-align-colon
+           (regexp . "\\(\\s-*\\):\\(\\s-*\\)")
+           (mode   . '(prog-mode))
+           (repeat . nil))))
+
+     (add-hook
+      'prog-mode-hook
+      (lambda()
+        (local-set-key (kbd "C-S-a") 'align-entire)))
+   #+END_SRC
+
 ** auto-complete
 
    [[https://company-mode.github.io/manual/index.html][Company]] is a modular text completion framework for GNU Emacs.
