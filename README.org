@@ -1669,7 +1669,11 @@
    using *pyright* which need extra emacs package *lsp-pyright*.
 
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'python-mode-hook #'lsp)
+     (add-hook
+      'python-mode-hook
+      (lambda()
+        (when (not (derived-mode-p 'scons-mode))
+          (lsp))))
    #+END_SRC
 
    - <2020-10-14 Wed>
@@ -1757,8 +1761,12 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq compile-command "/usr/bin/python /usr/bin/scons")
-     (setq auto-mode-alist (cons '("SConstruct" . python-mode) auto-mode-alist))
-     (setq auto-mode-alist (cons '("SConscript" . python-mode) auto-mode-alist))
+
+     (define-derived-mode scons-mode python-mode "scons"
+       "A python-mode for scons files")
+
+     (add-to-list 'auto-mode-alist '("SConstruct" . scons-mode))
+     (add-to-list 'auto-mode-alist '("SConscript" . scons-mode))
    #+END_SRC
 
 * ORG-MODE
