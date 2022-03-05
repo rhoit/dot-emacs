@@ -1655,6 +1655,29 @@
      (setq jedi:setup-keys t) ; optional
    #+END_SRC
 
+** lsp
+
+   For python *lsp* looks for *pyls* and *pylsp* by default, I use
+   using *pyright* which need extra emacs package *lsp-pyright*.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'python-mode-hook #'lsp)
+   #+END_SRC
+
+   - <2020-10-14 Wed>
+
+     /usr/lib/python3.8/site-packages/pyls/uris.py:110
+     path = path if isinstance(path, str) else path.as_posix()
+
+   - <2020-09-24 Thu>
+
+     python-jedi 0.17.2 in system, lsp works without AUR
+
+   - <2020-08-25 Tue>
+
+     buggy python-jedi 17.0. Needed manually editing in path variable
+     setting as =.as_posix()= or use =yaourt -S python-jedi-git=
+
 ** venv
 
    Yes! we work on *virtual environment (venv)*, and we do love to
