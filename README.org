@@ -1424,6 +1424,16 @@
      (add-hook 'company-mode-hook 'company-box-mode)
    #+END_SRC
 
+   company mode supports [[https://github.com/dunn/company-emoji][emoji]].
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'company-emoji)
+     (add-to-list 'company-backends 'company-emoji)
+
+     (add-to-list 'company-emoji-aliases '(:poop: . ":hankey:"))
+   #+END_SRC
+
 ** [[https://github.com/leoliu/ggtags][ggtags]]
 
    Using [[https://langserver.org/][language server protocol]] (LSP) since, ggtags make my emacs
