@@ -1051,10 +1051,18 @@
      (require 'bm)
      (setq bm-marker 'bm-marker-left)
 
-     (global-set-key (kbd "<left-fringe> <mouse-5>") 'bm-next-mouse)
-     (global-set-key (kbd "<left-fringe> <mouse-4>") 'bm-previous-mouse)
+     (global-set-key (kbd "<left-margin> <mouse-1>") 'bm-toggle-mouse)
      (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
+     (global-set-key (kbd "S-<mouse-5>") 'bm-next-mouse)
+     (global-set-key (kbd "S-<mouse-4>") 'bm-previous-mouse)
+
+     ;;; org-mode to expand the region containing a bookmark
+     (add-hook 'bm-after-goto-hook 'org-bookmark-jump-unhide)
    #+END_SRC
+
+   - <2022-03-10 Thu> better key binding
+
+     fringe are too small to be used precisely as suggest
 
 ** killing group
 
