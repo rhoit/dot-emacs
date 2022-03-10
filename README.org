@@ -1256,15 +1256,20 @@
    - [[http://www.emacswiki.org/emacs/download/hideshowvis.el][hideshowvis]]
    - [[https://github.com/gregsexton/origami.el][origimi]]
    - [[https://github.com/mrkkrp/vimish-fold][vimish-fold]]
+   - [[https://github.com/zenozeng/yafolding.el][yafolding]]
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'prog-mode-hook 'hideshowvis-minor-mode)
+     (add-hook 'prog-mode-hook 'yafolding-mode)
    #+END_SRC
+
+   - <2022-03-11 Fri> hello ya-folding
+
+     have been using for a while
 
    - <2021-05-27 Thu> org export problem
 
-     hideshow vis has trouble with org export disabling it for now
+     hideshow vis has trouble with org export
 
 ** indentation
 
