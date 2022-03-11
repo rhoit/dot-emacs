@@ -1502,6 +1502,14 @@
       (setq company-lsp-cache-candidates t)
     #+END_SRC
 
+**** native compile
+
+     It has been a while I have been using the native compile since it
+     merge into main branch although its still worth it increased
+     overall performance not just [[LSP]],
+
+     To know about my builds see [[ https://github.com/rhoit/dot-emacs/tree/master/build][build]] or check my [[https://github.com/rhoit/dot-emacs/releases][releases]].
+
 **** plists
 
      #+BEGIN_SRC emacs-lisp
