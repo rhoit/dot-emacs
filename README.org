@@ -1507,6 +1507,11 @@
      Watching all the files in huge project directories, may slow down
      performance.
 
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (setq lsp-enable-file-watchers nil) ; default:t
+     #+END_SRC
+
      Default warning threshold is *1000* which can be changing variable
      =(setq lsp-file-watch-threshold 1000)=
 
