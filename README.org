@@ -1502,6 +1502,25 @@
       (setq company-lsp-cache-candidates t)
     #+END_SRC
 
+**** plists
+
+     #+BEGIN_SRC emacs-lisp
+      (setq lsp-use-plists t)
+     #+END_SRC
+
+     Using *plists* for de-serialization :feelsgood: is only triggers
+     when *emacs* starts with =LSP_USE_PLISTS= is =true=, and lsp [[https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization][wiki]]
+     recommending shell to start, But it could be better 😎 just need
+     to replace emacs with 🐚 shell-script.
+
+     #+HEADER: :results output :eval no-export
+     #+BEGIN_SRC sh :exports both
+       cat /usr/local/bin/emacs
+     #+END_SRC
+
+     #+RESULTS:
+     : LSP_USE_PLISTS=true exec /usr/bin/emacs $*
+
 **** [[https://emacs-lsp.github.io/lsp-mode/page/file-watchers/][file-watcher]]
 
      Watching all the files in huge project directories, may slow down
