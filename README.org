@@ -1091,6 +1091,15 @@
       (global-set-key [(control v)] 'yank) ; unbind (scroll-up-command)
     #+END_SRC
 
+    Binding the default cycle behaviors to [[helm]]'s
+    =helm-show-kill-ring=.
+
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+    #+END_SRC
+
+    Other ways of browsing can are listed in [[https://www.emacswiki.org/emacs/BrowseKillRing][wiki]],
+
 *** [[https://www.emacswiki.org/emacs/popup-kill-ring.el][popup kill ring]]
 
     kill ☠️ ring 💍
