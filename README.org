@@ -1629,6 +1629,12 @@
      (add-to-list 'auto-mode-alist '("\\.mjs$" . js-mode))
    #+END_SRC
 
+** lsp-support
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'js-mode-hook #'lsp)
+   #+END_SRC
+
 ** web-mode
 
    [[https://web-mode.org/][web-mode]] is an autonomous emacs major-mode for editing web
