@@ -1014,6 +1014,14 @@
 
       lynx style navigation [[https://github.com/emacs-helm/helm/issues/2175][fix]] after new update
 
+*** orderless
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'orderless)
+      (setq completion-styles '(orderless))
+    #+END_SRC
+
 ** text zoom
 
    I still don't understand 😒 why *emacs* way of changing font [[https://www.emacswiki.org/emacs/SetFonts#ChangingFontSize][size]]
