@@ -498,17 +498,19 @@
 
 *** dim
 
-    The purpose of [[https://github.com/alezost/dim.el][dim]] package is to "customize" the mode-line names of
-    major and minor modes.  An example of using:
+    The purpose of [[https://github.com/alezost/dim.el][dim]] package is to "customize" the mode-line names
+    of major and minor modes using =dim-major-name= and
+    =dim-minor-name= to change the names by one.
 
     #+BEGIN_SRC emacs-lisp
       (require 'dim)
     #+END_SRC
 
-    you can use =dim-major-name= and =dim-minor-name= to change the
-    names by one.
-
 *** [[https://github.com/emacsmirror/diminish][diminish]]
+
+    #+BEGIN_HTML
+      <details><summary>More</summary>
+    #+END_HTML
 
     #+BEGIN_QUOTE
       When we diminish a mode, we are saying we want it to continue
@@ -523,9 +525,17 @@
       -- Will Mengarini
     #+END_QUOTE
 
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (require 'diminish)
     #+END_SRC
+
+    #+BEGIN_HTML
+      </details>
+    #+END_HTML
+
+    - <2022-03-12 Sat> not using
+
+      preferring [[dim]] instead
 
 *** mode icons
 
