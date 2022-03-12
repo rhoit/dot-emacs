@@ -988,6 +988,18 @@
 
       lynx style navigation [[https://github.com/emacs-helm/helm/issues/2175][fix]] after new update
 
+*** orderless
+
+    If you are using [[helm]] matching space-separated component is
+    provided by default, which I only found out after trying [[https://github.com/oantolin/orderless][orderless]]
+    and its called "multi pattern matching" in helm.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'orderless)
+      (setq completion-styles '(orderless))
+    #+END_SRC
+
 ** text-drag
 
    After using *org-mode* nothing is same, moving the section is one
