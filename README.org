@@ -447,6 +447,20 @@
 
      I'm completely disabling the scroll packages for now.
 
+*** pixel-scroll
+
+    A minor mode =pixel-scroll= built in since *v26*, which scrolls
+    text pixel-by-pixel, in recently *v29* introduces
+    =pixel-scroll-precision= on turning of the mouse wheel. Its better
+    but still needs adjustments.
+
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (pixel-scroll-mode)
+      (pixel-scroll-precision-mode)
+      (setq pixel-scroll-precision-large-scroll-height 40.0)
+      (setq pixel-scroll-precision-interpolation-factor 30)
+    #+END_SRC
+
 *** scroll-horizontal
 
     Similar to *nano* single line horizontal scroll in *v26.1*
