@@ -1474,6 +1474,28 @@
      ;; (setq require-final-newline t)
    #+END_SRC
 
+*** whitespace4r.el
+
+    I have been wanting white-space to be displayed for selected
+    region since I saw feature in [[https://www.sublimetext.com/][sublime]].
+
+    [[https://i.stack.imgur.com/9GInk.png]]
+
+    Yet there was nothing similar to-be [[https://emacs.stackexchange.com/questions/54305/show-white-spaces-only-when-region-is-selected][found]], thankfully 😭 [[https://github.com/twlz0ne][@twlz0ne]]
+    created the new minor [[https://github.com/twlz0ne/whitespace4r.el][mode]], (since, I can't wrap my head to
+    *lisp*).
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'load-path "~/.config/emacs/00-tests/whitespace4r.el/")
+      (require 'whitespace4r)
+      (whitespace4r-mode)
+    #+END_SRC
+
+    - <2022-03-19 Sat> workable
+
+      mode is buggy or just because of my theme or configuration
+
 ** LSP
 
    [[https://langserver.org/][Language Server Protocol]] is a JSON-RPC protocol to delegate
