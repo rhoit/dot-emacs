@@ -1699,6 +1699,16 @@
      (add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
    #+END_SRC
 
+*** template
+
+    *djhtml* is file format is for [[https://www.djangoproject.com/][Django]] or [[https://jinja2docs.readthedocs.io/en/stable/][Jinja]] template which works
+    with mixed *HTML*, *CSS* and *JS* with template tags.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.djhtml?\\'" . web-mode))
+    #+END_SRC
+
 ** browser-refresh
 
    There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]], [[https://github.com/skeeto/impatient-mode][impatient-mode]] but
