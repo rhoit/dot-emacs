@@ -1265,6 +1265,23 @@
      (setq-default comment-start "# ")
    #+END_SRC
 
+** compile
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (load "~/.config/emacs/cfg.compile.el")
+
+     (defun my-compilation-mode-hook ()
+       (set (make-local-variable 'truncate-partial-width-windows) nil))
+     (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+     (add-hook 'compilation-mode-hook (lambda() (setq truncate-lines t)))
+
+     ;; bindings
+     (global-set-key (kbd "C-<f8>") 'save-and-compile-again)
+     (global-set-key (kbd "C-<f9>") 'ask-new-compile-command)
+     (global-set-key (kbd "<f8>") 'toggle-compilation-buffer)
+   #+END_SRC
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
