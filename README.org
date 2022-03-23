@@ -1380,6 +1380,18 @@
      (setq flycheck-check-syntax-automatically '(save))
    #+END_SRC
 
+*** flycheck-pos-tip
+
+    [[https://github.com/flycheck/flycheck-pos-tip][flycheck-pos-tip]] is the [[https://www.flycheck.org/en/latest/user/flycheck-versus-flymake.html][flycheck]] extension shows errors using
+    [[https://github.com/syohex/pos-tip][pos-tip]] popup.
+
+    if you use this with [[lsp]] extension mouse hover function would be
+    overridden by [[lsp-ui]].
+
+    #+BEGIN_SRC emacs-lisp
+      (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
+    #+END_SRC
+
 ** parenthesis
 
    #+HEADER: :results silent
