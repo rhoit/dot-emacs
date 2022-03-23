@@ -1655,6 +1655,19 @@
             lsp-ui-peek-peek-height 25)
     #+END_SRC
 
+** watch-word
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (defun watch-words ()
+       (interactive)
+       (font-lock-add-keywords
+        nil '(("\\<\\(FIX\\|TODO\\|BUGS?\\)"
+               1 font-lock-warning-face t))))
+
+     (add-hook 'prog-mode-hook 'watch-words)
+   #+END_SRC
+
 * GIT
 
   #+BEGIN_QUOTE
