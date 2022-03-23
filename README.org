@@ -1223,11 +1223,11 @@
 
 ** watch-word
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (defun watch-words ()
        (interactive)
        (font-lock-add-keywords
-        nil '(("\\<\\(FIX ?-?\\(ME\\)?\\|TODO\\|BUGS?\\|TIPS?\\|TESTING\\|WARN\\(ING\\)?S?\\|WISH\\|IMP\\|NOTE\\)"
+        nil '(("\\<\\(FIX\\|TODO\\|BUGS?\\)"
                1 font-lock-warning-face t))))
 
      (add-hook 'prog-mode-hook 'watch-words)
