@@ -1740,6 +1740,7 @@
     | type     | packages                   | lsp-mode/client |
     |----------+----------------------------+-----------------|
     | official | [[https://archlinux.org/packages/community/any/vscode-css-languageserver/files/][vscode-css-languageserver]]  | [[https://github.com/emacs-lsp/lsp-mode/blob/828c6c234a3231670ba5649666652e22a9bc4f35/clients/lsp-css.el#L237][lsp-css.el]]      |
+    | official | [[https://archlinux.org/packages/community/any/vscode-html-languageserver/files/][vscode-html-languageserver]] | [[https://github.com/emacs-lsp/lsp-mode/blob/828c6c234a3231670ba5649666652e22a9bc4f35/clients/lsp-html.el#L182][lsp-html.el]]     |
 
     I seem there is no way to change the list on startup other than
     registering the new client to stop using npm.
@@ -1749,6 +1750,11 @@
        (make-lsp-client :new-connection (lsp-stdio-connection (list "vscode-css-languageserver" "--stdio"))
                         :activation-fn (lsp-activate-on "css")
                         :server-id 'my-css-ls))
+
+      (lsp-register-client
+       (make-lsp-client :new-connection (lsp-stdio-connection (list "vscode-css-languageserver" "--stdio"))
+                        :activation-fn (lsp-activate-on "html")
+                        :server-id 'my-html-ls))
     #+END_SRC
 
     - <2022-03-23 Wed> runs on eval expression
