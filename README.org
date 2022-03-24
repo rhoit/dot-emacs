@@ -958,6 +958,14 @@
     #+END_SRC
 
 ** cursor
+
+   Make cursor [[http://pragmaticemacs.com/emacs/adaptive-cursor-width/][adaptive]] the to the width of the character, helpful in
+   showing *non-monospace* characters like TAB and emoji.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq x-stretch-cursor t)
+   #+END_SRC
+
 *** beacon-mode
 
     [[https://github.com/Malabarba/beacon][beacon]] gives extra feedback of cursor's position on big movement.
