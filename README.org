@@ -1766,6 +1766,26 @@
       (add-to-list 'auto-mode-alist '("\\.djhtml?\\'" . web-mode))
     #+END_SRC
 
+*** lsp
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      ;; tell lsp know *djhtml* is *html*
+      (add-to-list 'lsp-language-id-configuration '(web-mode . "html"))
+    #+END_SRC
+
+    | type     | packages                   | lsp-mode/client |
+    |----------+----------------------------+-----------------|
+    | official | [[https://archlinux.org/packages/community/any/vscode-html-languageserver/files/][vscode-html-languageserver]] | [[https://github.com/emacs-lsp/lsp-mode/blob/828c6c234a3231670ba5649666652e22a9bc4f35/clients/lsp-html.el#L182][lsp-html.el]]     |
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (lsp-register-client
+       (make-lsp-client :new-connection (lsp-stdio-connection (list "vscode-css-languageserver" "--stdio"))
+                        :activation-fn (lsp-activate-on "html")
+                        :server-id 'my-html-ls))
+    #+END_SRC
+
 ** browser-refresh
 
    There are stuff like [[http://www.emacswiki.org/emacs/MozRepl][moz-repl]], [[https://github.com/skeeto/skewer-mode][skewer-mode]], [[https://github.com/skeeto/impatient-mode][impatient-mode]] but
