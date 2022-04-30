@@ -1738,7 +1738,7 @@
      (global-set-key (kbd "C-x C-g") 'magit-status)
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
 
-     (global-set-key (kbd "C-x C-b") 'magit-log-buffer-file) ;; unbind (list-buffers)
+     (global-set-key (kbd "C-x C-l") 'magit-log-buffer-file)  ; unbind (downcase-region)
 
      (setq magit-diff-refine-hunk 'all)
      (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
