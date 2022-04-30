@@ -1752,6 +1752,16 @@
      (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
    #+END_SRC
 
+   Many commands that are rarely used in magit are hidden by default.
+   *magit* uses the =transient.el= library for popups and the
+   visibility of infix and suffix commands are controlled by
+   =transient-default-level=. Default level is 4 some of the command I
+   use are in level 7.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq transient-default-level 7)
+   #+END_SRC
+
 *** diff
 
     #+HEADER: :results silent
