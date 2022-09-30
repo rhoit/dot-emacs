@@ -842,27 +842,24 @@
         (interactive)
         (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
         (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1)))
-      (global-set-key [f12] 'toggle-bars-view)
+      (global-set-key [(control f10)] 'toggle-bars-view)
     #+END_SRC
 
 *** helpful
 
     #+BEGIN_SRC emacs-lisp
-      ;;; bacwark kill like terminal
+      ;; escape do its thing
+      (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+      ;;; backward kill like terminal
       (global-unset-key (kbd "C-w"))
       (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
-
-      ;; listing buffer same as C-x C-b
-      (global-set-key (kbd "C-S-b") 'list-buffers)
 
       ;; since, C-x k <return> too much acrobat
       (global-set-key [(control d)] 'kill-buffer) ; same as terminal
 
-      (global-set-key (kbd "<f5>") 'redraw-display)
-      (global-set-key [(shift f5)] '(lambda()
-        (interactive)
-        (load-file "~/.config/emacs/init.el")))
-      (global-set-key [(control f5)] '(lambda()
+      ;; (global-set-key (kbd "<f5>") 'redraw-display)
+      (global-set-key [f12] '(lambda()
         (interactive)
         (find-file "~/.config/emacs/README.org")))
     #+END_SRC
