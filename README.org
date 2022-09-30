@@ -791,6 +791,25 @@
      (global-set-key [(control d)] 'kill-buffer)  ; same as terminal
     #+END_SRC
 
+*** helpful
+
+    #+BEGIN_SRC emacs-lisp
+      ;; escape do its thing
+      (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+      ;;; backward kill like terminal
+      (global-unset-key (kbd "C-w"))
+      (global-set-key (kbd "C-w") 'backward-kill-word) ;; like in terminal
+
+      ;; since, C-x k <return> too much acrobat
+      (global-set-key [(control d)] 'kill-buffer) ; same as terminal
+
+      ;; (global-set-key (kbd "<f5>") 'redraw-display)
+      (global-set-key [f12] '(lambda()
+        (interactive)
+        (find-file "~/.config/emacs/README.org")))
+    #+END_SRC
+
 ** yes-or-no
 
    yup thing are annoying 😤 here! avoid typing complete 'yes' and
