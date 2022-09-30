@@ -998,9 +998,11 @@
       (require 'multiple-cursors)
       (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
-      (global-set-key (kbd "C-S-<mouse-4>") 'mc/mark-previous-like-this)
-      (global-set-key (kbd "C-S-<mouse-5>") 'mc/mark-next-like-this)
-      (global-set-key (kbd "C-S-<mouse-2>") 'mc/mark-all-like-this)
+      (global-set-key (kbd "C-S-<wheel-up>") 'mc/mark-previous-like-this)
+      (global-set-key (kbd "C-S-<wheel-down>") 'mc/mark-next-like-this)
+
+      ;; this need to be key bind needs region to be selected
+      ;; (global-set-key (kbd "C-S-<mouse-2>") 'mc/mark-all-like-this)
     #+END_SRC
 
 ** selection
