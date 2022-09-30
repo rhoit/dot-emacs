@@ -699,11 +699,14 @@
   understand the lack of mouse 🖱️ use when it started, but still, it
   has been so reluctant to changes!
 
-  I'm baffled when people come up with ⌨️ keybinding for each mode and
-  mode to manage them again with keybindings. I'm one of those who
-  can't remember all those fancy keyboard *kungfu*. And why do they
-  generalize everyone uses same key layout and so call most efficient
-  *vi* binding, just 🔒 locks me inside without the exit🚪!
+  It's baffling when people come up with ⌨️ key-bindings for each
+  *mode*, and then a whole new *mode* to manage them again with *more*
+  key-bindings. 🤯 No wonder people get *strain* [[http://xahlee.info/emacs/emacs/emacs_hand_pain_celebrity.html][injuries]]. 🤕
+
+  I'm not the one of those who is keen on 🔥 burning finger tips for
+  efficiency. And why do they generalize everyone uses same keyboard
+  layout (other than qwerty) and so call most efficient *vi* binding,
+  just 🔒 locks me inside without the exit🚪!
 
 ** oem
 
