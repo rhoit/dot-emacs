@@ -841,6 +841,9 @@
 
       (global-undo-tree-mode 1)
       (setq undo-tree-visualizer-timestamps t)
+
+      ;; stop unde tree from saving *.~undo-tree~ everywhere
+      (setq undo-tree-auto-save-history nil)
     #+END_SRC
 
     - [2020-02-12 Wed] retrying undo-tree again!
