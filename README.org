@@ -460,44 +460,20 @@
 
 ** scroll
 
-   Unfortunately *emacs* 💈 [[https://www.emacswiki.org/emacs/SmoothScrolling][scrolling]] 💈 is not smooth, and riddled
-   with bugs, although =pixel-scroll-mode=, available since *v26*, there
-   are numerous scrolling options but it doesn't feel natural.
+   Historically *emacs* 💈 [[https://www.emacswiki.org/emacs/SmoothScrolling][scrolling]] 💈 has bee choppy and riddled
+   with bugs, after pgtk branch was [[https://mail.gnu.org/archive/html/emacs-devel/2021-12/msg00126.html][merged]] on <2021-12-19> emacs has
+   stopped being little less operating system.
 
-   #+BEGIN_SRC emacs-lisp :tangle no
-     (require 'smooth-scroll)
-     (smooth-scroll-mode t)
-
-     ;; (setq scroll-conservatively 100000)
-     (setq scroll-conservatively 0) ;; cursor on the middle of the screen
-     ;; (setq scroll-preserve-screen-position 1)
-
-     (setq scroll-margin 0)
-     (setq scroll-up-aggressively 0.01)
-     (setq scroll-down-aggressively 0.01)
-     (setq auto-window-vscroll nil)
-
-     (setq mouse-wheel-progressive-speed 10)
-     (setq mouse-wheel-follow-mouse 't)
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (when (featurep 'pgtk)
+       (setq-default scroll-margin 0)
+       (pixel-scroll-precision-mode 1))
    #+END_SRC
 
    - <2021-06-24 Thu>
 
      I'm completely disabling the scroll packages for now.
-
-*** pixel-scroll
-
-    A minor mode =pixel-scroll= built in since *v26*, which scrolls
-    text pixel-by-pixel, in recently *v29* introduces
-    =pixel-scroll-precision= on turning of the mouse wheel. Its better
-    but still needs adjustments.
-
-    #+BEGIN_SRC emacs-lisp :tangle no
-      (pixel-scroll-mode)
-      (pixel-scroll-precision-mode)
-      (setq pixel-scroll-precision-large-scroll-height 40.0)
-      (setq pixel-scroll-precision-interpolation-factor 30)
-    #+END_SRC
 
 *** scroll-horizontal
 
