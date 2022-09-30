@@ -749,11 +749,14 @@
   Fundamentally *emacs* is more over a scratchpad for *elisp*, which
   has been mistaken for the *editor*. Just 30+ years focused on
   features accumulation with barely any attention to GUI, I'm baffled
-  when people come up with ⌨️ keybinding for each mode and mode to
-  manage them again with keybindings. I'm one of those who can't
-  remember all those fancy keyboard *kungfu*. And why do they
-  generalize everyone uses same key layout and so call most efficient
-  *vi* binding, just 🔒 locks me inside without the exit🚪!
+  when people come up with ⌨️ keybinding for each *modes* and mode to
+  manage them again with keybindings. No wonder people get strain
+  [[http://xahlee.info/emacs/emacs/emacs_hand_pain_celebrity.html][injuries]].
+
+  I'm one of those who is keen 🔥 burning your finger tips for
+  efficiency. and why do they generalize everyone uses same key layout
+  and so call most efficient *vi* binding, just 🔒 locks me inside
+  without the exit🚪!
 
 ** oem
 
