@@ -509,6 +509,8 @@
 
      (add-hook 'prog-mode-hook 'nlinum-mode)
      (add-hook 'org-mode-hook 'nlinum-mode)
+
+     (global-set-key [f7] 'nlinum-mode)
    #+END_SRC
 
 ** initial-screen
