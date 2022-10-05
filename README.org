@@ -1041,11 +1041,23 @@
     one of reasons might be constant flickering creation of helm
     temporary popup windows 🪟 which I don't like.
 
+    If you want to know more you can into helm [[https://tuhdo.github.io/helm-intro.html][intro]]
+
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
       (require 'helm)
-      (global-set-key (kbd "M-x") 'helm-M-x)
-      (global-set-key (kbd "C-x C-f") 'helm-find-files)
+      (helm-mode 1)
+      (dim-minor-name 'helm-mode "")
+
+      (setq helm-allow-mouse t)
+
+      (define-key global-map [remap list-buffers] 'helm-buffers-list)
+      (define-key global-map [remap execute-extended-command] 'helm-M-x)
+      (define-key global-map [remap find-file] 'helm-find-files)
+
+      (unless (boundp 'completion-in-region-function)
+        (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+        (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
 
       ;;; I need arrow keys
       (customize-set-variable 'helm-ff-lynx-style-map t)
