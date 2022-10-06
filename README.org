@@ -661,6 +661,10 @@
      (global-set-key [(control shift next)] 'tabbar-forward-group)
    #+END_SRC
 
+   Similar packages
+
+   - centaur-tabs from [[https://github.com/seagle0128/.emacs.d][centaur emacs]]
+
 ** buffer
 
    Sensible unique buffer names, *[ inbuilt: package ]*
