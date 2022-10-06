@@ -606,9 +606,13 @@
       (require 'tabbar)
       (tabbar-mode t)
 
-      (require 'tabbar-ruler)
-      (setq tabbar-ruler-style 'firefox)
+      (setq FILE-tabbar "~/.config/emacs/00-tests/tabbar-ruler/tabbar-ruler.el")
+      (if (file-exists-p FILE-tabbar)
+        (load-file FILE-tabbar)
+        (require 'tabbar-ruler))
 
+      (setq tabbar-ruler-style 'firefox)
+      (load "~/.config/emacs/cfg.tabbar.el")
       (define-key global-map (kbd "<header-line> <mouse-3>") 'mouse-buffer-menu)
     #+END_SRC
 
