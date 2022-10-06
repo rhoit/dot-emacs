@@ -1078,7 +1078,7 @@
     and its called "multi pattern matching" in helm.
 
     #+HEADER: :results silent
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (require 'orderless)
       (setq completion-styles '(orderless))
     #+END_SRC
