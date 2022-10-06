@@ -1077,8 +1077,12 @@
 
 *** orderless
 
+    If you are using [[helm]] matching space-separated component is
+    provided by default, which I only found out after trying [[https://github.com/oantolin/orderless][orderless]]
+    and its called "multi pattern matching" in helm.
+
     #+HEADER: :results silent
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (require 'orderless)
       (setq completion-styles '(orderless))
     #+END_SRC
