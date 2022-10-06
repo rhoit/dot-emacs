@@ -1184,31 +1184,50 @@
       (global-set-key [(control v)] 'yank) ; unbind (scroll-up-command)
     #+END_SRC
 
-    Binding the default cycle behaviors to [[helm]]'s
-    =helm-show-kill-ring=.
+*** kill-ring
 
-    #+BEGIN_SRC emacs-lisp :tangle no
-      (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+    *emacs* comes with 📋 clipboard support knows as kill ☠️ ring 💍,
+    [[helm]] provided one of the best way to explore the entries using
+    =helm-show-kill-ring=. Other ways of browsing can are listed in
+    [[https://www.emacswiki.org/emacs/BrowseKillRing][wiki]],
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq repetitive_yank_region_point 0) ; 0 doesn't exist min is 1
+      (defun repetitive-yanking()
+        "yank and yank whats rest are in the kill ring"
+        (interactive)
+        (message "last-command: %S" last-command)
+        (if (string= last-command "yank")
+            (progn
+              (undo-only)
+              (when (= (point) repetitive_yank_region_point)
+                  (progn
+                    (goto-char repetitive_yank_region_mark)
+                    (set-mark-command nil)
+                    (goto-char repetitive_yank_region_point)
+                    (delete-selection-helper "yank")))
+              (helm-show-kill-ring))
+          (progn
+            (when (use-region-p)
+              (setq repetitive_yank_region_mark (mark))
+              (setq repetitive_yank_region_point (point))
+              (message "%s" repetitive_yank_region_point)
+              (delete-selection-helper "yank"))
+            (yank))))
+
+      (global-set-key [(shift insert)] 'repetitive-yanking)
     #+END_SRC
-
-    Other ways of browsing can are listed in [[https://www.emacswiki.org/emacs/BrowseKillRing][wiki]],
 
 *** [[https://www.emacswiki.org/emacs/popup-kill-ring.el][popup kill ring]]
 
-    kill ☠️ ring 💍
-
-    #+BEGIN_HTML
-      <p>Only enable for <kbd>S</kbd>-<kbd>insert</kbd>, you might say
-      why that! if you don't know <kbd>C</kbd>-<kbd>c</kbd> and
-      <kbd>C</kbd>-<kbd>v</kbd> is not only *copy-paste* binding
-      available that too also works in other *OS*.</p>
-    #+END_HTML
-
-    #+BEGIN_SRC emacs-lisp
-      (setq repetitive_yank_region_point 0) ; 0 doesn't exist min is 1
+    #+BEGIN_SRC emacs-lisp :tangle no
       (require 'popup-kill-ring)
-      (global-set-key [(shift insert)] 'repetitive-yanking)
     #+END_SRC
+
+    - <2022-10-06 Thu>
+
+      opted for helm since it hard to see multi-line clips
 
 *** drag
 
