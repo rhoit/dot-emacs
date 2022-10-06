@@ -807,6 +807,22 @@
      (global-unset-key (kbd "M-o")) ;; unbind (facemenu-mode)
    #+END_SRC
 
+*** readonly
+
+    #+BEGIN_HTML
+      In most of the modern applications <kdb>F2</kbd> is use for
+      rename or edit ✏️. Currently <kdb>F2</kbd> binded to <b>2 column
+      mode</b> which I haven't found any use till date. Default
+      binding (<kbd>C</kbd>-<kbd>x</kbd> <kbd>C</kbd>-<kbd>q</kbd>) to
+      toggle <code>read-only-mode</code> don't make any sense in
+      modern day or age.
+    #+END_HTML
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key [f2] 'read-only-mode) ;; unbind (2C-two-columns)
+    #+END_SRC
+
 *** word-wrap
 
     #+BEGIN_SRC emacs-lisp
