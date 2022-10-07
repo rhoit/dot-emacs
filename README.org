@@ -807,6 +807,17 @@
      (global-unset-key (kbd "M-o")) ;; unbind (facemenu-mode)
    #+END_SRC
 
+   #+BEGIN_HTML
+     I prefer to disable exit binding (<kbd>C</kbd>-<kbd>x</kbd>
+     <kbd>C</kbd>-<kbd>c</kbd>), Since I don't use <b>emacs</b> in
+     <b>terminal</b>.
+   #+END_HTML
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (global-unset-key (kbd "C-x C-c"))
+   #+END_SRC
+
 *** readonly
 
     #+BEGIN_HTML
