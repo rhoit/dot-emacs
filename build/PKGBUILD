@@ -15,7 +15,8 @@ depends=(
 )
 makedepends=(git)
 conflicts=(emacs emacs-nox)
-source=("repo::git://git.savannah.gnu.org/emacs.git")
+# source=("repo::git://git.savannah.gnu.org/emacs.git")
+source=("repo::git+https://github.com/emacs-mirror/emacs.git")
 options=(!strip)
 b2sums=('SKIP')
 
