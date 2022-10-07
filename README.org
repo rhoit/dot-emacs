@@ -1840,6 +1840,14 @@
      (add-to-list 'auto-mode-alist '("\\.mjs$" . js-mode))
    #+END_SRC
 
+** linter
+
+   I mainly use [[https://eslint.org/][eslint]] with flycheck.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'js-mode-hook 'flycheck-mode)
+   #+END_SRC
+
 ** lsp-support
 
    #+BEGIN_SRC emacs-lisp
