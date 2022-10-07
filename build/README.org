@@ -11,6 +11,20 @@
     git log -1
   #+END_SRC
 
+  #+RESULTS:
+  #+begin_example
+  commit 12a78711c94ccf5c46dd4e9653596c87b6fe0a18
+  Author: Po Lu <luangruo@yahoo.com>
+  Date:   Fri Sep 30 14:54:15 2022 +0800
+
+      Fix calculation of frame times when X server time overflows
+
+      ,* etc/TODO: Add TODO about frame synchronization and animations.
+      ,* src/xterm.c (x_display_set_last_user_time): Handle cases when
+      the monotonic time is not the server time due to the latter
+      overflowing.
+  #+end_example
+
 * HOW TO BUILD
 
   [[http://savannah.gnu.org/projects/emacs][savannah]] doesn't support
