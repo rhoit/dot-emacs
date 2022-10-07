@@ -1890,6 +1890,15 @@
           '(:system "vscode-css-languageserver"))
       #+END_SRC
 
+** linter
+*** flycheck
+
+    I mainly use [[https://eslint.org/][eslint]] with flycheck.
+
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'js-mode-hook 'flycheck-mode)
+    #+END_SRC
+
 ** web-mode
 
    [[https://web-mode.org/][web-mode]] is an autonomous emacs major-mode for editing web
