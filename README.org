@@ -2221,6 +2221,12 @@
    based on
    [[https://emacs.stackexchange.com/questions/3387/how-to-enlarge-latex-fragments-in-org-mode-at-the-same-time-as-the-buffer-text][zoom latex fragments relative to buffer text]]
 
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (plist-put org-format-latex-options :scale 2.5)
+     ;; (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.8))
+   #+END_SRC
+
    #+BEGIN_SRC emacs-lisp
      (defun update-org-latex-fragments ()
        (org-toggle-latex-fragment '(16))
