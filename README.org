@@ -2387,6 +2387,15 @@
         (add-hook 'sql-interactive-mode-hook 'sql-upcase-mode))
     #+END_SRC
 
+** systemd
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'auto-mode-alist '("\\.service" . systemd-mode))
+     (add-hook 'systemd-mode-hook 'company-mode)
+     (add-hook 'systemd-mode-hook 'toggle-truncate-lines)
+   #+END_SRC
+
 ** yasnippet
 
    [[https://github.com/joaotavora/yasnippet][yasnippet]] is template system for emacs, snippet collection in
