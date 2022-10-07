@@ -1841,6 +1841,13 @@
      (add-to-list 'auto-mode-alist '("\\.mjs$" . js-mode))
    #+END_SRC
 
+*** linter
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'js-mode-hook 'flycheck-mode)
+    #+END_SRC
+
 ** lsp-support
 
    #+BEGIN_SRC emacs-lisp
