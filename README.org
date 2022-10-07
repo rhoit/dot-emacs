@@ -2428,6 +2428,13 @@
      (add-hook 'conf-mode-hook 'nlinum-mode)
    #+END_SRC
 
+** systemd
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'auto-mode-alist '("\\.service" . systemd-mode))
+     (add-hook 'systemd-mode-hook 'company-mode)
+   #+END_SRC
+
 ** dockerfile
 
    Goodies for 🐳 🐳 🐳
