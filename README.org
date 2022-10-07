@@ -818,6 +818,20 @@
      (global-unset-key (kbd "C-x C-c"))
    #+END_SRC
 
+*** find
+
+    #+BEGIN_HTML
+      ⬅️ <a href="https://en.wikipedia.org/wiki/Arrow_keys">Arrows</a>
+      ➡️ keys might have been hard to find before 1980's, but binding
+      <code>forward-char</code> to <kbd>C</kbd>-<kbd>f</kbd> till date
+      is 🤦 dumb, let enable some what common like search/find 🔍.
+    #+END_HTML
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "C-f") 'isearch-repeat-forward)  ;; unbind (forward-char)
+    #+END_SRC
+
 *** readonly
 
     #+BEGIN_HTML
