@@ -19,3 +19,9 @@
   : e2d96ff * src/xterm.c (handle_one_xevent): Translate motion events on Motif.
   : 7be75f1 * lisp/printing.el (pr-global-menubar): Fix duplicate menu problem.
   : 663fb3b * Do not produce .elc temporary file when unnecessary (bug#48978)
+
+* ISSUES
+** clipboard issue [2022-11-11 Fri]
+
+   could not assert ownership over selection seems like it originated
+   from [[https://git.nsb-software.de/joerg/emacs/-/blob/1f61f10d9955c5d8f73749f5b3c880f8a408d782/src/pgtkselect.c#L165][pgtk]].
