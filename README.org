@@ -349,8 +349,9 @@
     #+BEGIN_SRC emacs-lisp
       (require 'package) ;; after 24 its pre-loaded
       (add-to-list 'load-path "~/.config/emacs/elpa/")
-      (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
       (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+      ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
       (package-initialize)
     #+END_SRC
 
