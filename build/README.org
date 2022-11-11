@@ -13,6 +13,25 @@
 
   #+RESULTS:
   #+begin_example
+  commit 68e2a9cd92996dd55ff9599dc1bf99c70070cddb
+  Author: Thomas Fitzsimmons <fitzsim@fitzsim.org>
+  Date:   Mon Nov 7 19:34:33 2022 -0500
+
+      EUDC: Add eudc-ignore-options-file customization
+
+      ,* etc/NEWS (EUDC): Document eudc-ignore-options-file.
+      ,* doc/misc/eudc.texi (The Server Hotlist): Likewise
+      ,* lisp/net/eudc-vars.el (eudc-ignore-options-file): New variable.
+      (eudc-options-file): Mention new variable.
+      ,* lisp/net/eudc.el: Warn on load if eudc-ignore-options-file is
+      set but the options file exists.
+      (eudc-set-server): Support
+      eudc-ignore-options-file.
+      (eudc-bookmark-server): Likewise.
+      (eudc-save-options): Likewise.  (Bug#56154)
+  #+end_example
+
+  #+begin_example
   commit 12a78711c94ccf5c46dd4e9653596c87b6fe0a18
   Author: Po Lu <luangruo@yahoo.com>
   Date:   Fri Sep 30 14:54:15 2022 +0800
