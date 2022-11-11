@@ -305,7 +305,8 @@
     #+BEGIN_SRC emacs-lisp
       (add-to-list 'load-path "~/.config/emacs/elpa/")
 
-      (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+      ;; https://melpa.org/#/getting-started
+      (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
       (package-initialize)
     #+END_SRC
