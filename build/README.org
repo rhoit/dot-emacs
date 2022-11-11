@@ -14,6 +14,7 @@
   #+END_SRC
 
   #+RESULTS:
+  : 68e2a9c EUDC: Add eudc-ignore-options-file customization
   : 12a7871 Fix calculation of frame times when X server time overflows
   : e2d96ff * src/xterm.c (handle_one_xevent): Translate motion events on Motif.
   : 7be75f1 * lisp/printing.el (pr-global-menubar): Fix duplicate menu problem.
