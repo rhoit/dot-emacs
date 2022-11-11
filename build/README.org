@@ -64,3 +64,8 @@
   - <2021-06-24 Thu> auto revert mode with segfault crash
 
     Solved by updating all the dependencies.
+
+  - <2022-11-11 Fri> clipboard issue
+
+    could not assert ownership over selection seems like it originated
+    from [[https://git.nsb-software.de/joerg/emacs/-/blob/1f61f10d9955c5d8f73749f5b3c880f8a408d782/src/pgtkselect.c#L165][pgtk]].
