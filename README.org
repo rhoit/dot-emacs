@@ -141,6 +141,9 @@
    - [[https://github.com/MatthewZMD/.emacs.d][M-EMACS]]
    - [[https://github.com/farlado/dotemacs][Farlado’s Illiterate GNU Emacs]]
    - [[https://blog.sumtypeofway.com/posts/emacs-config.html][Emacs is Agar for Brain Worms]]
+   - [[https://config.daviwil.com/emacs][David Wilson's config]]
+   - [[https://github.com/rougier/dotemacs/blob/master/dotemacs.org][rougier]]
+   - [[https://github.com/novoid/dot-emacs/blob/master/config.org][novoid]]
 
 ** structure
 
