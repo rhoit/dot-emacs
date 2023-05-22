@@ -1415,6 +1415,18 @@
    the virtual environment was frustrating 🤯, as it asked you to
    install flake8 in every environment. 🐍
 
+   #+BEGIN_EXAMPLE
+     In the realm of code, where tales go untold,
+     Amidst chaos, style's worth is shown.
+     Refuse temptation, resist the allure,
+     For clarity and understanding, endure.
+
+     Lost in the scroll, beyond limits surpassed,
+     Let reason guide, and doubts be outlast.
+     Expand horizons, with clarity set sail,
+     Embrace new paths, where beauty prevails.
+   #+END_EXAMPLE
+
 *** flycheck
 
     #+HEADER: :results silent
