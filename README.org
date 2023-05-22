@@ -685,6 +685,15 @@
      (setq uniquify-buffer-name-style 'forward)
    #+END_SRC
 
+** emoji
+
+   Since emacs 28.1 Improved support for Emoji. On capable systems,
+   Emacs now correctly displays Emoji and Emoji sequences by default,
+   provided that a suitable font is available to Emacs. With a few
+   exceptions.
+
+   "Noto Color Emoji" is automatically used if it's installed.
+
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
 
    I prefer speedbar outside the frame, for without separate frame see
