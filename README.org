@@ -1499,6 +1499,18 @@
      (setq flycheck-check-syntax-automatically '(save))
    #+END_SRC
 
+   #+BEGIN_EXAMPLE
+     In the realm of code, where tales go untold,
+     Amidst chaos, style's worth is shown.
+     Refuse temptation, resist the allure,
+     For clarity and understanding, endure.
+
+     Lost in the scroll, beyond limits surpassed,
+     Let reason guide, and doubts be outlast.
+     Expand horizons, with clarity set sail,
+     Embrace new paths, where beauty prevails.
+   #+END_EXAMPLE
+
 *** flycheck-pos-tip
 
     [[https://github.com/flycheck/flycheck-pos-tip][flycheck-pos-tip]] is the [[https://www.flycheck.org/en/latest/user/flycheck-versus-flymake.html][flycheck]] extension shows errors using
