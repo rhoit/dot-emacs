@@ -2085,6 +2085,36 @@
      (add-hook 'python-mode-hook 'pyvenv-autoload)
    #+END_SRC
 
+** linter
+
+   Go beyond *pycodestyle* (PEP8) here is my [[https://github.com/rhoit/my-config/blob/master/python/flake8][config]] using flake8.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'python-mode-hook 'flycheck-mode)
+
+     ;; append the default config for fallback
+     (add-to-list 'flycheck-flake8rc "~/.config/flake8" t)
+     (setq flycheck-python-flake8-executable "/usr/bin/flake8") ;; skip venv
+
+     ;; (setq flycheck-disabled-checkers '(python-pylint))
+     (setq flycheck-python-pylint-executable "/usr/bin/python") ;; skip venv
+
+     ;; (setq flycheck-python-complie-executable "/usr/bin/python") ;; skip venv
+   #+END_SRC
+
+   flake8 is suported by lsp which can be enable via
+   =(setq lsp-pyls-plugins-flake8-enabled t)=
+
+   flycheck allows multiple checker which can be enabled with or by
+   verify setup UI.
+
+   #+BEGIN_SRC emacs-lisp
+     (flycheck-add-next-checker 'python-flake8 'python-pyright)
+   #+END_SRC
+
+   #+RESULTS:
+   : (python-pyright (warning . python-pylint) (warning . python-mypy))
+
 ** py-exec
 
    [[https://github.com/rhoit/py-exec][py-exec]] is ess-style execution for /python/ script.
