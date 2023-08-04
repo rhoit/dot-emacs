@@ -1230,6 +1230,7 @@
    #+BEGIN_SRC emacs-lisp
      (require 'bm)
      (setq bm-marker 'bm-marker-left)
+     ;; (setq bm-cycle-all-buffers t)  ;; Allow cross-buffer
 
      (global-set-key (kbd "<left-margin> <mouse-1>") 'bm-toggle-mouse)
      (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
