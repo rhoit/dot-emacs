@@ -475,19 +475,16 @@
 ** scroll
 
    Historically *emacs* 💈 [[https://www.emacswiki.org/emacs/SmoothScrolling][scrolling]] 💈 has bee choppy and riddled
-   with bugs, after pgtk branch was [[https://mail.gnu.org/archive/html/emacs-devel/2021-12/msg00126.html][merged]] on <2021-12-19> emacs has
-   stopped being little less operating system.
+   with bugs, after pgtk branch was [[https://mail.gnu.org/archive/html/emacs-devel/2021-12/msg00126.html][merged]] on <2021-12-19> this has
+   been better. Now in emacs 29.1 *pixel-scroll-precision-mode*
+   builtin, no more custom 🛠️ builds.
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
-     (when (featurep 'pgtk)
-       (setq-default scroll-margin 0)
-       (pixel-scroll-precision-mode 1))
+     (pixel-scroll-precision-mode t)
+     ;; (setq pixel-scroll-precision-large-scroll-height 50.0)
+     ;; (setq pixel-scroll-precision-use-momentum nil)
    #+END_SRC
-
-   - <2021-06-24 Thu>
-
-     I'm completely disabling the scroll packages for now.
 
 *** scroll-horizontal
 
