@@ -1346,7 +1346,7 @@
        '(add-to-list
          'align-rules-list
          '(prog-align-colon
-           (regexp . "\\(\\s-*\\):\\(\\s-*\\)")
+           (regexp . "\\(\\s-*\\)[=:]\\(\\s-*\\)")
            (mode   . '(prog-mode))
            (repeat . nil))))
 
