@@ -984,6 +984,17 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
+      (require 'symbol-overlay)
+
+      (global-set-key
+       (kbd "<C-mouse-3>")
+       (lambda (event)
+         (interactive "e")
+         (save-excursion
+           (goto-char (posn-point (event-start event)))
+           (symbol-overlay-put))))
+    #+END_SRC
+
     #+BEGIN_HTML
       <details><summary>More</summary>
     #+END_HTML
@@ -1006,6 +1017,11 @@
     #+BEGIN_HTML
       </details>
     #+END_HTML
+
+    - <2023-08-01 Tue>
+
+      [[https://github.com/nschum/highlight-symbol.el][highlight symbol]] has been un-mantained since 2016 switching to
+      alternative symbol-overlay
 
 ** cursor
 
