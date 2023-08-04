@@ -725,6 +725,12 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
+    #+BEGIN_HTML
+      <details><summary>More</summary>
+    #+END_HTML
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp :tangle no
       (require 'highlight-symbol)
 
       (global-set-key (kbd "C-S-r") 'highlight-symbol-prev)
@@ -738,6 +744,9 @@
           (highlight-symbol-at-point))))
     #+END_SRC
 
+    #+BEGIN_HTML
+      </details>
+    #+END_HTML
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
 
    I prefer speedbar outside the frame, for without separate frame see
