@@ -475,11 +475,14 @@
    with bugs, after pgtk branch was [[https://mail.gnu.org/archive/html/emacs-devel/2021-12/msg00126.html][merged]] on [2021-12-19 Sun] this
    has been better.
 
+   As of v29.1 *pixel-scroll-precision-mode* is built-in , no more
+   custom 🛠️ [[file:build/][builds]].
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
-     (when (featurep 'pgtk)
-       (setq-default scroll-margin 0)
-       (pixel-scroll-precision-mode 1))
+     (pixel-scroll-precision-mode t)
+     ;; (setq pixel-scroll-precision-large-scroll-height 50.0)
+     ;; (setq pixel-scroll-precision-use-momentum nil)
    #+END_SRC
 
 *** horizontal
