@@ -1173,6 +1173,15 @@
 
       lynx style navigation [[https://github.com/emacs-helm/helm/issues/2175][fix]] after new update
 
+**** helm-packages
+
+     Some useful helm packages 🤩.
+
+     | name           | description                                       |
+     |----------------+---------------------------------------------------|
+     | helm-descbinds | A convenient helm version of =describe-bindings=. |
+     | helm-xref      | Helm interface for xref results                   |
+
 *** orderless
 
     If you are using [[helm]] matching space-separated component is
