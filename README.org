@@ -1156,6 +1156,19 @@
       (define-key helm-map (kbd "<left>") 'helm-execute-persistent-action)
     #+END_SRC
 
+    - <2023-08-02 Wed>
+
+      helm fixed! 🥳
+
+    - <2023-08-01 Tue>
+
+      After switing to emacs 29.1 and updating packages, helm stopped
+      working, details in https://github.com/emacs-helm/helm/issues/2608
+
+      #+BEGIN_EXAMPLE
+       custom-initialize-reset: Symbol's value as variable is void: helm-info-source
+      #+END_EXAMPLE
+
     - <2020-08-31 Mon>
 
       lynx style navigation [[https://github.com/emacs-helm/helm/issues/2175][fix]] after new update
