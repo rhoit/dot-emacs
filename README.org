@@ -1661,9 +1661,10 @@
      (global-set-key (kbd "S-<backspace>") 'hungry-delete-backward)
    #+END_SRC
 
-   There is the interesting outlook of [[https://github.com/hrehfeld/emacs-smart-hungry-delete/issues][smart-hungry-delete]].
+   There is the interesting outlook of [[https://github.com/hrehfeld/emacs-smart-hungry-delete/issues][smart-hungry-delete]], which I
+   have not used for the while.
 
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (require 'smart-hungry-delete)
      (smart-hungry-delete-add-default-hooks)
      (global-set-key (kbd "<backspace>") 'smart-hungry-delete-backward-char)
