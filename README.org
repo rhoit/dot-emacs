@@ -918,6 +918,12 @@
       (setq undo-tree-auto-save-history nil)
     #+END_SRC
 
+    - [2023-08-04 Fri] undo region
+
+      Have been using *undo-tree* for so long, didn't know undo region
+      existed using [[elisp:(setq undo-tree-enable-undo-in-region t)][(setq undo-tree-enable-undo-in-region t)]] more in
+      irreal [[https://irreal.org/blog/?p=8614][blog]]. But confusing to use.
+
     - [2020-02-12 Wed] retrying undo-tree again!
 
       There are moments when =undo-tree= [[http://www.dr-qubit.org/Lost_undo-tree_history.html][breaks down]] but, it has been
