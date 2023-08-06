@@ -905,10 +905,18 @@
       ;; stop unde tree from saving *.~undo-tree~ everywhere
       (setq undo-tree-auto-save-history nil)
 
+      ;; region undo
+      ;; (setq undo-tree-enable-undo-in-region t)
+
       ;; normal undo and redo
       (global-set-key (kbd "C-z") 'undo-only)
       (global-set-key (kbd "C-S-z") 'undo-tree-redo)
     #+END_SRC
+
+    - <2023-08-04 Fri>
+
+      Have been using *undo-tree* for so long, didn't know undo region
+      existed more in irreal [[https://irreal.org/blog/?p=8614][blog]], but confusing to use.
 
     - <2020-02-12 Wed> retrying undo-tree again!
 
