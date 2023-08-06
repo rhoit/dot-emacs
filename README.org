@@ -839,20 +839,6 @@
      (global-set-key [(control d)] 'kill-buffer)  ; same as terminal
     #+END_SRC
 
-*** window
-
-    Just a personal preference to not to have tool-bar, menu-bar, and
-    scroll-bar, take the buffer workspace, so lets hide it and also set
-    some handy key to toggle it.
-
-    #+BEGIN_SRC emacs-lisp
-      (defun toggle-bars-view()
-        (interactive)
-        (if tool-bar-mode (tool-bar-mode 0) (tool-bar-mode 1))
-        (if menu-bar-mode (menu-bar-mode 0) (menu-bar-mode 1)))
-      (global-set-key [(control f10)] 'toggle-bars-view)
-    #+END_SRC
-
 *** helpful
 
     #+BEGIN_SRC emacs-lisp
