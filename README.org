@@ -379,6 +379,13 @@
       having troubles with org-version babel [[https://github.com/io12/org-fragtog/issues/1][support]]. using org
       package-archives for latest stuff.
 
+    - <2023-08-08 Tue>
+
+      In Emacs 29.1 =package.el= can install packages directly from
+      git with the new function =package-vc-install=, and packages
+      installed that way can be updated with =package-vc-update= or
+      =package-vc-update-all=.
+
 *** why-no-use-package
 
     #+BEGIN_EXAMPLE
