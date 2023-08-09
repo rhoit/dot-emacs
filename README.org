@@ -132,6 +132,17 @@
     explain in el-get [[https://github.com/dimitri/el-get#replicating-a-package-set-on-another-emacs-installation][README]].
 
 * UI
+** splash-screen
+
+   I guess ~(about-emacs)~ screen is not bad, but binding it too
+   annoying. If you want to disable it set ~inhibit-splash-screen~ to
+   ~t~.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (setq inhibit-splash-screen t)
+   #+END_SRC
+
 ** [[https://www.emacswiki.org/emacs/SpeedBar][speedbar]]
 
    I prefer speedbar outside the frame, for without separate frame see
