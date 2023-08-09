@@ -1448,6 +1448,11 @@
      (global-set-key (kbd "<f8>") 'toggle-compilation-buffer)
    #+END_SRC
 
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'compilation-mode-hook (lambda() (setq truncate-lines t)))
+   #+END_SRC
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
