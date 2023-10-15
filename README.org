@@ -503,6 +503,17 @@
       (setq auto-hscroll-mode 'current-line)
     #+END_SRC
 
+** fringe
+
+   Vim does this with *~* (tildes) characters at the bottom of a
+   window to indicate that there is nothing in the buffer, so emacs
+   can do it too 🏁.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (toggle-indicate-empty-lines t)
+   #+END_SRC
+
 ** line-number
 
    As in this [[http://ergoemacs.org/emacs/emacs_line_number_mode.html][article]] of *ergoemacs*, 2 line numbers mode is been
