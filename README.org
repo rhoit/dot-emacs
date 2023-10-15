@@ -517,6 +517,12 @@
    config stood out for me the, but *linum* give lots of flicker, now
    using with *nlinum* which is quite good until it was deprecated.
 
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+     (add-hook 'org-mode-hook 'display-line-numbers-mode)
+   #+END_SRC
+
    - <2023-08-29 Tue>
 
      nlinum is unusable
