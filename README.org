@@ -737,6 +737,9 @@
 
      ;; C-M-t opens terminals by DE
      (global-unset-key (kbd "C-M-t"))  ; unbind (transpose-sexps)
+
+     ;; no want to see shortcuts for these help-sections
+     (global-unset-key (kbd "C-h C-c"))  ; unbind (describe-coping)
    #+END_SRC
 
    #+BEGIN_HTML
