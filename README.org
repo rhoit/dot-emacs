@@ -515,21 +515,11 @@
 
    I used multiple [[https://www.emacswiki.org/emacs/LineNumbers][line number]] plugins over years now, [[https://github.com/thefrontside/frontmacs/blob/master/frontmacs-windowing.el][frontmacs]]
    config stood out for me the, but *linum* give lots of flicker, now
-   using with *nlinum* which is quite good.
+   using with *nlinum* which is quite good until it was deprecated.
 
-   #+HEADER: :results silent
-   #+BEGIN_SRC emacs-lisp
-     (require 'nlinum)
+   - <2023-08-29 Tue>
 
-     (setq nlinum-delay t)
-     (setq nlinum-highlight-current-line t)
-     (setq nlinum-format " %4d ")
-
-     (add-hook 'prog-mode-hook 'nlinum-mode)
-     (add-hook 'org-mode-hook 'nlinum-mode)
-
-     (global-set-key [f7] 'nlinum-mode)
-   #+END_SRC
+     nlinum is unusable
 
 ** initial-screen
 
