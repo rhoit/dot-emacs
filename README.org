@@ -957,6 +957,27 @@
             (isearch-yank-string region)))))
    #+END_SRC
 
+   Search forward and backward for word under cursor.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (defun search-forward-under-cursor ()
+       "Search for the word under the cursor."
+       (interactive)
+       (let ((word (thing-at-point 'word)))
+     (if word (search-forward word nil t))))
+
+     (global-set-key (kbd "C-S-s") 'search-forward-under-cursor)
+
+     (defun search-backward-under-cursor ()
+       "Search for the word under the cursor."
+       (interactive)
+       (let ((word (thing-at-point 'word)))
+     (if word (search-backward word nil t))))
+
+     (global-set-key (kbd "C-S-r") 'search-backward-under-cursor)
+   #+END_SRC
+
 *** anzu
 
     [[https://github.com/syohex/emacs-anzu][anzu]] highlight all search matches, most of the text editor does
