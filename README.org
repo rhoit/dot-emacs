@@ -769,6 +769,9 @@
 
      ;; it dosn't make sense
      (global-unset-key (kbd "M-o")) ;; unbind (facemenu-mode)
+
+     ;; gnu license
+     (global-unset-key (kbd "C-h w"))
    #+END_SRC
 
    #+BEGIN_HTML
