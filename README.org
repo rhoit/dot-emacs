@@ -1506,6 +1506,7 @@
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (add-hook 'prog-mode-hook 'yafolding-mode)
+     (add-hook 'compilation-mode-hook 'yafolding-mode)
    #+END_SRC
 
    - <2022-03-11 Fri> hello ya-folding
