@@ -1645,7 +1645,7 @@
     #+END_HTML
 
     #+HEADER: :results silent
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (require 'projectile)
       (projectile-mode +1)
 
