@@ -537,6 +537,9 @@
    #+BEGIN_SRC emacs-lisp
      (add-hook 'prog-mode-hook 'display-line-numbers-mode)
      (add-hook 'org-mode-hook 'display-line-numbers-mode)
+     (add-hook 'display-line-numbers-mode-hook
+               (lambda ()
+                 (setq display-line-numbers-width 4)))
    #+END_SRC
 
    - <2023-08-29 Tue>
