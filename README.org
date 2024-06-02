@@ -1949,6 +1949,17 @@
       (setq ediff-split-window-function 'split-window-horizontally)
     #+END_SRC
 
+    magit status doesn't show white space removal as mention in this
+    [[https://github.com/magit/magit/issues/3671][issue]]
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq magit-diff-paint-whitespace-lines 'all)
+      (setq magit-diff-paint-whitespace t)
+      (setq magit-diff-refine-ignore-whitespace nil)
+      (setq magit-diff-refine-hunk nil)
+    #+END_SRC
+
 * WEB
 ** javascript
 
