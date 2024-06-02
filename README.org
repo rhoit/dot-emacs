@@ -79,9 +79,8 @@
    *code*. To =org= organize was most sane thing till now
    [[https://github.com/rhoit/dot-emacs/blob/master/init.el][~/emacs.d/init.el]] was orgified (org-babel-tangle).
 
-   In summary its,
-
-   - highly opinionated configuration tracked in git
+   In summary, its not easy to declare [[https://www.emacswiki.org/emacs/DotEmacsBankruptcy][bankruptcy]] when your config is:
+   - highly opinionated configuration
    - does'nt provide the any layer of abstraction
    - more of notes and rants and reason to do so
 
