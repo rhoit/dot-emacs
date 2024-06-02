@@ -80,6 +80,11 @@
    =org= organize was most sane thing till now =~/emacs.d/init.el= was
    orgified =(org-babel-load-file)=.
 
+   In summary, its not easy to declare [[https://www.emacswiki.org/emacs/DotEmacsBankruptcy][bankruptcy]] when your config is:
+   - highly opinionated configuration
+   - does'nt provide the any layer of abstraction
+   - more of notes and rants and reason to do so
+
    Since, version [[https://www.masteringemacs.org/article/whats-new-in-emacs-27-1#startup-changes-in-emacs-27.1][27.1]] *emacs* supported [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][XDG]] convention every thing
    can be in =~/.config/emacs=
 
