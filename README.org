@@ -455,7 +455,13 @@
    provided that a suitable font is available to Emacs. With a few
    exceptions.
 
-   "Noto Color Emoji" is automatically used if it's installed.
+   "Noto Color Emoji" is automatically used if it's installed if not
+   install run for Arch Linux.
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC sh :exports both
+     pacman -S extra/noto-fonts-emoji
+   #+END_SRC
 
 ** theme
 
