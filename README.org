@@ -1960,6 +1960,10 @@
       (setq magit-diff-refine-hunk nil)
     #+END_SRC
 
+*** lfs
+
+    [[https://github.com/ailrun/magit-lfs][magit-lfs]] plugin for large-file-storage
+
 * WEB
 ** javascript
 
