@@ -671,6 +671,21 @@
      (setq uniquify-buffer-name-style 'forward)
    #+END_SRC
 
+** emoji
+
+   Since v28.1 improved support for /emoji/, on capable systems,
+   *emacs* now correctly displays emoji and emoji sequences by
+   default, provided that a suitable font is available to Emacs, with
+   a few exceptions.
+
+   "Noto Color Emoji" is automatically used if it's installed if not
+   install run for Arch Linux.
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC sh :exports both
+     pacman --sync extra/noto-fonts-emoji
+   #+END_SRC
+
 ** speedbar
 
    [[https://www.emacswiki.org/emacs/SpeedBar][Speedbar]] is another frame which displays information about the
