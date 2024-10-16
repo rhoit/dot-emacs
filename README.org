@@ -1835,6 +1835,8 @@
      (global-set-key (kbd "C-x C-l") 'magit-log-buffer-file)  ; unbind (downcase-region)
 
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
+
+     (setq magit-process-finish-apply-ansi-colors t)
    #+END_SRC
 
    Many commands that are rarely used in magit are hidden by default.
