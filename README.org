@@ -1449,6 +1449,14 @@
      (add-to-list 'company-emoji-aliases '(:poop: . ":hankey:"))
    #+END_SRC
 
+   customize face company-tooltip-selection
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (custom-set-faces
+      '(company-tooltip-selection ((t (:inherit company-tooltip-selection :extend t :inverse-video t)))))
+   #+END_SRC
+
 ** comments
 
    Yet again, bad default for *emacs* 😳 the /key-binding/ does not
