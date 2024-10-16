@@ -1947,6 +1947,11 @@
      (setq transient-default-level 7)
    #+END_SRC
 
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq magit-process-finish-apply-ansi-colors t)
+   #+END_SRC
+
 *** diff
 
     #+HEADER: :results silent
