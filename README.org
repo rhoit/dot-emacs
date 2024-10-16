@@ -1489,6 +1489,12 @@
                          (display-buffer "*compilation*"))))
    #+END_SRC
 
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'ansi-color)  ;; buitin 28.1
+     (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+   #+END_SRC
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
