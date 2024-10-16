@@ -1751,6 +1751,22 @@
       (global-set-key (kbd "C-S-g") 'helm-projectile-grep)
     #+END_SRC
 
+** grep
+
+   Search files for the occurrence of a string of characters that
+   matches a specified pattern.
+
+*** ripgrep
+
+    [[https://github.com/BurntSushi/ripgrep][ripgrep]] is modern rendition grep command using Rust's regex
+    engine which is extremely fast. [[https://github.com/nlamirault/ripgrep.el][ripgrep.el]] package integrates the
+    command with emacs.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (advice-add #'project-find-regexp :override #'ripgrep-regexp)
+    #+END_SRC
+
 ** dired-mode
 
    facing trouble when in fresh copy of repo, will fix later
