@@ -1482,6 +1482,14 @@
    a with output going to the '*compilation*' buffer that acts as an
    integrated terminal.
 
+   Enable terminal colors by translating ANSI escape codes.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'ansi-color)  ;; buitin 28.1
+     (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+   #+END_SRC
+
    Some of the key-binding related to compile.
 
    #+HEADER: :results silent
