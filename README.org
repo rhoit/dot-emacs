@@ -1746,6 +1746,14 @@
      (add-to-list 'company-emoji-aliases '(:poop: . ":hankey:"))
    #+END_SRC
 
+   customize face company-tooltip-selection
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (custom-set-faces
+      '(company-tooltip-selection ((t (:inherit company-tooltip-selection :extend t :inverse-video t)))))
+   #+END_SRC
+
 ** [[https://github.com/leoliu/ggtags][ggtags]]
 
    Using [[https://langserver.org/][language server protocol]] (LSP) since, ggtags make my emacs
