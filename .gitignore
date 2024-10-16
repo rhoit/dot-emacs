@@ -1,6 +1,7 @@
 *.elc
 *.eln
 *~
+.lsp-session*
 .mc-lists.el
 00testing/*
 README.el
