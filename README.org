@@ -1638,6 +1638,31 @@
     #+END_SRC
 
 ** projects
+*** project.el
+
+    project.el is a build-in package introduced around *v26* which
+    provides basic action for managing code project similar to
+    [[projectile]] where I only use to find a file, or run grep.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "C-<f9>") 'project-compile)
+      (global-set-key (kbd "C-S-t") 'project-shell)
+      (global-set-key (kbd "C-S-f") 'project-find-file)
+      (global-set-key (kbd "C-S-g") 'project-find-regexp)
+    #+END_SRC
+
+    - https://www.youtube.com/watch?v=1sn8m5u5VaE&t=8s
+
+    *project.el* marks the project by the version control if there is
+    no version control file aren't tracked.
+
+    https://andreyorst.gitlab.io/posts/2022-07-16-project-el-enhancements/
+    https://christiantietze.de/posts/2022/03/mark-local-project.el-directories/
+
+    # create the =.project= file as the marker in the
+    # root of the project.
+
 *** projectile
 
     If your source consist of hundreds of line then don't be like me
