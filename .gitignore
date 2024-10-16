@@ -1,6 +1,7 @@
 *.elc
 *.eln
 *~
+.lsp-session*
 .mc-lists.el
 README.el
 eln-cache/
