@@ -2024,6 +2024,16 @@
 
     [[https://github.com/ailrun/magit-lfs][magit-lfs]] plugin for large-file-storage
 
+** blamer.el
+
+   A git blame [[https://github.com/Artawower/blamer.el][mode]] for emacs inspired by [[https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens][GitLens]] plugin.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'blamer)
+     (add-hook 'prog-mode-hook 'blamer-mode)
+   #+END_SRC
+
 * WEB
 ** javascript
 
