@@ -465,6 +465,10 @@
 
 ** theme
 
+   There seems to be new website for theme now days
+   https://emacsthemes.com, but I have be using default *wombat* theme
+   for long time now.
+
 *** theme-switch
 
     Worst part of switching theme by loading is active theme is one
