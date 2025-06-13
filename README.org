@@ -1580,8 +1580,8 @@
    #+BEGIN_SRC emacs-lisp
      (setq-default standard-indent 4)
      (setq-default indent-tabs-mode nil)
-     (setq-default tab-width 4)
-     (setq tab-width 4)
+     (setq-default tab-width 8)
+     (setq tab-width 8)
    #+END_SRC
 
 *** highlight-indent-guides
