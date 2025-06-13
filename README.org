@@ -931,6 +931,7 @@
 
       (global-undo-tree-mode 1)
       (setq undo-tree-visualizer-timestamps t)
+      (setq undo-tree-visualizer-diff t)
 
       ;; stop unde tree from saving *.~undo-tree~ everywhere
       (setq undo-tree-auto-save-history nil)
