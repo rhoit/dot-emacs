@@ -488,6 +488,15 @@
           (load-theme theme t)))
     #+END_SRC
 
+** title
+
+   show full path of the buffer
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq frame-title-format '((buffer-file-name "%f" "%b")))
+   #+END_SRC
+
 ** scroll
 
    Historically *emacs* 💈 [[https://www.emacswiki.org/emacs/SmoothScrolling][scrolling]] 💈 has bee choppy and riddled
