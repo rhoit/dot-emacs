@@ -2120,10 +2120,17 @@
    #+END_SRC
 
 ** javascript
+*** tree-sitter
 
-   #+BEGIN_SRC emacs-lisp
-     (add-to-list 'auto-mode-alist '("\\.mjs$" . js-mode))
-   #+END_SRC
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (treesit-install-language-grammar 'javascript)
+    #+END_SRC
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.mjs$" . js-ts-mode))
+    #+END_SRC
 
 ** linter
 
@@ -2136,7 +2143,7 @@
 ** lsp-support
 
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'js-mode-hook #'lsp)
+     (add-hook 'js-ts-mode-hook #'lsp)
      (add-hook 'css-mode-hook #'lsp)
    #+END_SRC
 
