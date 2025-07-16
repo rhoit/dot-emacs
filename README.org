@@ -2108,6 +2108,17 @@
    #+END_SRC
 
 * WEB
+** html
+
+   Starting with *emacs* 22, the builtin =HtmlMode= and =SgmlMode=
+   have some indentation based on tag structure, done with the usual
+   Tab commands. To set the indentation level of HTML, add a hook that
+   changes =sgml-basic-offset=.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq sgml-basic-offset 4)
+   #+END_SRC
+
 ** javascript
 
    #+BEGIN_SRC emacs-lisp
