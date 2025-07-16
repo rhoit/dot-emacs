@@ -804,6 +804,14 @@
 
      ;; gnu license
      (global-unset-key (kbd "C-h w"))
+
+     ;; help section
+     (global-unset-key (kbd "C-h n")) ;; unbind (view-emacs-news)
+     (global-unset-key (kbd "C-h r")) ;; unbind (info-emacs-manual)
+     (global-unset-key (kbd "C-h t")) ;; unbind (help-with-tutorial)
+     (global-unset-key (kbd "C-h RET")) ;; unbind (view-order-manual)
+     (global-unset-key (kbd "C-h C-f")) ;; unbind (view-emacs-FAQ)
+     (global-unset-key (kbd "C-h C-e")) ;; unbind (view-external-packages)
    #+END_SRC
 
    #+BEGIN_HTML
