@@ -2133,7 +2133,7 @@
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'auto-mode-alist '("\\.mjs$" . js-mode))
+     (add-to-list 'auto-mode-alist '("\\.mjs$" . js-ts-mode))
    #+END_SRC
 
 *** linter
