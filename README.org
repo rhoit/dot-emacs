@@ -1734,6 +1734,45 @@
       (global-set-key (kbd "C-S-g") 'helm-projectile-grep)
     #+END_SRC
 
+** tree-sitter
+
+   The command =M-x treesit-install-language-grammar= installs a
+   language grammar by first cloning the git repo hosting it and then
+   compiling it and storing the shared library in your config
+   directory.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     ;; check treesitter for the language
+     (treesit-language-available-p 'python)
+   #+END_SRC
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp: tangle no
+     (setq major-mode-remap-alist
+           '((python-mode . python-ts-mode)))
+   #+END_SRC
+
+   #+CAPTION: Setting up for adding major mode features
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'treesit)  ; load tree-sitter with
+     (treesit-available-p)  ; check treesit is built-in
+   #+END_SRC
+
+   #+RESULTS:
+   : t
+
+   =treesit-explore-mode= Enables exploring the current buffer’s
+   syntax tree.
+
+*** references
+
+    - https://git.savannah.gnu.org/cgit/emacs.git/tree/admin/notes/tree-sitter/starter-guide?h=feature/tree-sitter
+    - https://www.masteringemacs.org/article/how-to-get-started-tree-sitter
+    - https://emacsconf.org/2022/talks/treesitter/
+    - https://www.youtube.com/watch?v=DAPIzyV4ovs
+    - https://github.com/tree-sitter/tree-sitter-python/blob/master/grammar.js
+
 ** white-spaces
 
    If you have working with non-emacs people sooner or later you might
