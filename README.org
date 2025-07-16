@@ -1871,6 +1871,14 @@
     list of supported languages at their [[https://emacs-lsp.github.io/lsp-mode/page/languages/][website]] and documented at
     [[https://github.com/emacs-lsp/lsp-mode/blob/master/docs/lsp-clients.json][lsp-clients.json]].
 
+    [[https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-disable-automatic-installation][Disable]] automatic installation because can be shared across the
+    multiple editor therefore should be manage by system centrally.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq lsp-enable-suggest-server-download nil)
+    #+END_SRC
+
 *** performance
 
     @@html:<kbd>@@M@@html:</kbd>@@-@@html:<kbd>@@x@@html:</kbd>@@
