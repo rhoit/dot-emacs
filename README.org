@@ -1950,6 +1950,50 @@
             lsp-ui-peek-peek-height 25)
     #+END_SRC
 
+** tree-sitter
+
+   The command =M-x treesit-install-language-grammar= installs a
+   language grammar by first cloning the git repo hosting it and then
+   compiling it and storing the shared library in your config
+   directory.
+
+   https://www.masteringemacs.org/article/how-to-get-started-tree-sitter
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     ;; check treesitter for the language
+     (treesit-language-available-p 'python)
+   #+END_SRC
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp: tangle no
+     (setq major-mode-remap-alist
+           '((python-mode . python-ts-mode)))
+   #+END_SRC
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC sh :exports both
+     # pacman --sync tree-sitter
+   #+END_SRC
+
+   https://git.savannah.gnu.org/cgit/emacs.git/tree/admin/notes/tree-sitter/starter-guide?h=feature/tree-sitter
+
+   #+CAPTION: Setting up for adding major mode features
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'treesit)  ; load tree-sitter with
+     (treesit-available-p)  ; check treesit is built-in
+   #+END_SRC
+
+   #+RESULTS:
+   : t
+
+   =treesit-explore-mode= Enables exploring the current buffer’s
+   syntax tree.
+
+   https://emacsconf.org/2022/talks/treesitter/
+   https://www.youtube.com/watch?v=DAPIzyV4ovs
+   https://github.com/tree-sitter/tree-sitter-python/blob/master/grammar.js
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
