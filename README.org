@@ -1683,6 +1683,25 @@
       (global-set-key (kbd "C-S-g") 'helm-projectile-grep)
     #+END_SRC
 
+** tree-sitter
+
+   Starting with *emacs* v29 supported [[https://tree-sitter.github.io/tree-sitter/][tree-sitter]], to check if its
+   included int build
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (require 'treesit)  ; load tree-sitter with
+     (treesit-available-p)  ; check treesit is built-in
+   #+END_SRC
+
+   The grammar should be build or [[grammars][installed]] separately. The command
+   =M-x treesit-install-language-grammar= installs via emacs by
+   cloning the git repository and compiling it and storing the shared
+   library in your [[file:tree-sitter/][tree-sitter]] directory.
+
+   =treesit-explore-mode= Enables exploring the current buffer syntax
+   tree.
+
 ** white-spaces
 *** hungry-delete
 
