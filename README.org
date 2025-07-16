@@ -2156,6 +2156,15 @@
 
       officially available as extra/typescript-language-server 4.3.3-1
 
+    Enable/disable semantic checking of JavaScript files. Existing
+    jsconfig.json or tsconfig.json files override this setting.
+    Requires using TypeScript 2.3.1 or newer in the workspace.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq lsp-javascript-implicit-project-config-check-js t)
+    #+END_SRC
+
     But it generates =.log= directory on project root which can be
     address by setting option to the server as mentioned in [[https://github.com/emacs-lsp/lsp-mode/issues/1490][#1490]]
     using [[https://emacs-lsp.github.io/lsp-mode/page/lsp-typescript/][configuration]] variables. Since version 2.0.0 variable has
