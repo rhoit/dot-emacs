@@ -2196,6 +2196,14 @@
       (add-hook 'js-mode-hook 'flycheck-mode)
     #+END_SRC
 
+** css
+*** tree-sitter
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.css$" . css-ts-mode))
+    #+END_SRC
+
 ** lsp-support
 
    #+BEGIN_SRC emacs-lisp
