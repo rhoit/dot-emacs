@@ -2053,6 +2053,11 @@
       (add-hook 'js-mode-hook 'flycheck-mode)
     #+END_SRC
 
+*** jsdoc
+
+    [[https://github.com/isamert/jsdoc.el][jsdoc.el]] provides functionality to automatically generate
+    JSDoc-style comment blocks for functions.
+
 ** css
 *** lsp
 
