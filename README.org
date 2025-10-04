@@ -2169,6 +2169,14 @@
     functionality to automatically generate JSDoc-style comment blocks
     for functions.
 
+** css
+*** tree-sitter
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'auto-mode-alist '("\\.css$" . css-ts-mode))
+    #+END_SRC
+
 ** linter
 
    I mainly use [[https://eslint.org/][eslint]] with flycheck.
