@@ -2149,6 +2149,26 @@
       (add-to-list 'auto-mode-alist '("\\.mjs$" . js-ts-mode))
     #+END_SRC
 
+*** jsdoc
+
+    [[https://github.com/KarimAziev/jsdoc-font-lock-keywords][jsdoc-font-lock-keywords]] enhances the standard syntax highlighting
+    for JSDoc comments.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'load-path "~/.config/emacs/00-tests/jsdoc-font-lock-keywords/")
+
+      (with-eval-after-load "js"
+        (require 'jsdoc-font-lock-keywords)
+        (defvar jsdoc-font-lock-keywords)
+        (dolist (mode '(js-mode js-jsx-mode js-ts-mode))
+          (font-lock-add-keywords mode jsdoc-font-lock-keywords)))
+    #+END_SRC
+
+    [[https://github.com/isamert/jsdoc.el][jsdoc.el]] provides
+    functionality to automatically generate JSDoc-style comment blocks
+    for functions.
+
 ** linter
 
    I mainly use [[https://eslint.org/][eslint]] with flycheck.
