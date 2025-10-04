@@ -295,10 +295,7 @@
 
 ** custom
 
-   <2021-06-24 Thu> Ignoring for now because I want it to be in
-   separate file but problem is file doesn't load back.
-
-   As written in  [[https://blog.sumtypeofway.com/posts/emacs-config.html#cb11][Emacs is Agar for Brain Worms]]
+   As written in [[https://blog.sumtypeofway.com/posts/emacs-config.html#cb11][Emacs is Agar for Brain Worms]]
 
    #+BEGIN_QUOTE
      By default, Emacs stores any configuration you make through its UI
@@ -310,6 +307,16 @@
      variable can’t be nil, but we can make it look in a different place
      every time.
    #+END_QUOTE
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq custom-file "~/.config/emacs/custom.el")
+     (load custom-file)
+   #+END_SRC
+
+   - <2025-08-13 Wed>
+
+     fixed, problem was file was never loaded back.
 
    - <2021-06-24 Thu>
 
