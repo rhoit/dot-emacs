@@ -1709,6 +1709,38 @@
    =treesit-explore-mode= Enables exploring the current buffer syntax
    tree.
 
+*** grammars
+
+    To verify certain language grammar available can be done using
+    =treesit-language-available-p= function as show below for python.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (treesit-language-available-p 'python)
+    #+END_SRC
+
+    Most popular grammars are already available official distribution
+    package.
+
+    #+HEADER: :results output :eval no-export
+    #+BEGIN_SRC sh :exports both
+      pacman --sync --groups tree-sitter-grammars
+    #+END_SRC
+
+    #+RESULTS:
+    #+begin_example
+    tree-sitter-grammars tree-sitter-bash
+    tree-sitter-grammars tree-sitter-c
+    tree-sitter-grammars tree-sitter-javascript
+    tree-sitter-grammars tree-sitter-lua
+    tree-sitter-grammars tree-sitter-markdown
+    tree-sitter-grammars tree-sitter-python
+    tree-sitter-grammars tree-sitter-query
+    tree-sitter-grammars tree-sitter-rust
+    tree-sitter-grammars tree-sitter-vim
+    tree-sitter-grammars tree-sitter-vimdoc
+    #+end_example
+
 ** white-spaces
 *** hungry-delete
 
