@@ -1743,6 +1743,29 @@
 
 ** tree-sitter
 
+   Starting with *emacs* 29 supported [[https://tree-sitter.github.io/tree-sitter/][tree-sitter]], but its grammars
+   should be build separately. Most popular grammars are already
+   available official package.
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC sh :exports both
+     pacman --sync --groups tree-sitter-grammars
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+   tree-sitter-grammars tree-sitter-bash
+   tree-sitter-grammars tree-sitter-c
+   tree-sitter-grammars tree-sitter-javascript
+   tree-sitter-grammars tree-sitter-lua
+   tree-sitter-grammars tree-sitter-markdown
+   tree-sitter-grammars tree-sitter-python
+   tree-sitter-grammars tree-sitter-query
+   tree-sitter-grammars tree-sitter-rust
+   tree-sitter-grammars tree-sitter-vim
+   tree-sitter-grammars tree-sitter-vimdoc
+   #+end_example
+
    The command =M-x treesit-install-language-grammar= installs a
    language grammar by first cloning the git repo hosting it and then
    compiling it and storing the shared library in your config
