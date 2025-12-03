@@ -145,6 +145,28 @@
    - [[https://github.com/rougier/dotemacs/blob/master/dotemacs.org][rougier]]
    - [[https://github.com/novoid/dot-emacs/blob/master/config.org][novoid]]
 
+** structure
+
+   #+BEGIN_EXAMPLE
+     Entropy is important but not here
+   #+END_EXAMPLE
+
+   This is the way, I keep my things have been same for many year now!
+
+   #+BEGIN_EXAMPLE
+     ~/.config/emacs
+     ├── elpa                   # pacman
+     ├── cfg.compile.el         # config subsection
+     :   :
+     ├── ...
+     :
+     ├── 00-tests               # testing stuffs
+     └── snippets               # yasnippet stuffs
+         ├── fundamental-mode
+         :
+         └── python-mode
+   #+END_EXAMPLE
+
 * CORE
 ** garbage-collector
 
