@@ -161,7 +161,7 @@
      │
      ├── ...
      :
-     ├── 00testing              # testing stuffs
+     ├── 00-tests               # testing stuffs
      └── snippets               # yasnippet stuffs
          ├── fundamental-mode
          :
