@@ -1731,6 +1731,13 @@
    cloning the git repository and compiling it and storing the shared
    library in your [[file:tree-sitter/][tree-sitter]] directory.
 
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     ;; check the font-lock level for rich syntax highlighting
+     (describe-variable 'treesit-font-lock-level)
+     ;; level 3 is adequate, I have 3 this might be default
+   #+END_SRC
+
    =treesit-explore-mode= Enables exploring the current buffer syntax
    tree.
 
