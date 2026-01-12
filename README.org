@@ -1773,6 +1773,15 @@
     tree-sitter-grammars tree-sitter-vimdoc
     #+end_example
 
+*** references
+
+    - https://www.gnu.org/software/emacs/manual//html_node/elisp/Tree_002dsitter-Major-Modes.html
+    - https://git.savannah.gnu.org/cgit/emacs.git/tree/admin/notes/tree-sitter/starter-guide?h=feature/tree-sitter
+    - https://www.masteringemacs.org/article/how-to-get-started-tree-sitter
+    - https://emacsconf.org/2022/talks/treesitter/
+    - https://www.youtube.com/watch?v=DAPIzyV4ovs
+    - https://github.com/tree-sitter/tree-sitter-python/blob/master/grammar.js
+
 ** white-spaces
 *** hungry-delete
 
