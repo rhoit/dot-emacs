@@ -1787,6 +1787,14 @@
      ;; level 3 is adequate, I have 3 this might be default
    #+END_SRC
 
+   Ensure running of =base-mode-hooks= in the =new-mode-hook= using
+   =(run-hooks)= function shown below for =python-mode=
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     (add-hook 'python-ts-mode-hook (lambda() (run-hooks 'python-mode-hook)))
+   #+END_SRC
+
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp: tangle no
      (setq major-mode-remap-alist
