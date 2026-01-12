@@ -1781,6 +1781,13 @@
    #+END_SRC
 
    #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp :tangle no
+     ;; check the font-lock level for rich syntax highlighting
+     (describe-variable 'treesit-font-lock-level)
+     ;; level 3 is adequate, I have 3 this might be default
+   #+END_SRC
+
+   #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp: tangle no
      (setq major-mode-remap-alist
            '((python-mode . python-ts-mode)))
