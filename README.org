@@ -1126,10 +1126,12 @@
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
       (require 'multiple-cursors)
-      (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
-      (global-set-key (kbd "C-S-<wheel-up>") 'mc/mark-previous-like-this)
-      (global-set-key (kbd "C-S-<wheel-down>") 'mc/mark-next-like-this)
+      ;; shortcut compatible with vscode default
+      (global-set-key (kbd "M-S-<mouse-1>") 'mc/add-cursor-on-click)
+
+      (global-set-key (kbd "M-S-<wheel-up>") 'mc/mark-previous-like-this)
+      (global-set-key (kbd "M-S-<wheel-down>") 'mc/mark-next-like-this)
 
       ;; this need to be key bind needs region to be selected
       ;; (global-set-key (kbd "C-S-<mouse-2>") 'mc/mark-all-like-this)
