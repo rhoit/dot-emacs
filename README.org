@@ -1558,6 +1558,27 @@
      (setq realgud:pdb-command-name "python -m pdb")
    #+END_SRC
 
+** ediff
+
+   A comprehensive visual interface to diff & patch
+
+   My experience with *ediff* was to accidentally opening it, which
+   opens the *ediff-control-panel* window which would mess up my theme
+   (broken 💔) and force me to restart *emacs*. This changed at 2026
+   January, when [[https://github.com/leabstrait][@leabstrait]], synced up two files using *vscode*.
+
+   💡 Ohhh! it finally clicked, better way to sync. Since the theme
+   was still an issue, I did bit of research, and found a [[https://www.youtube.com/watch?v=pSvsAutseO0][video]] by
+   [[https://protesilaos.com][@protesilaos]], his configuration to prevent splitting the panel was
+   exactly what I needed to get it going.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;; do not use separate window control panel
+     (setq ediff-split-window-function 'split-window-horizontally)
+     (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+   #+END_SRC
+
 ** folding
 
    It is 😠 frustrating many code folding packages not [[https://www.emacswiki.org/emacs/FoldingMode][folding-mode]]
