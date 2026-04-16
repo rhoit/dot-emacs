@@ -2232,6 +2232,7 @@
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
       (setq magit-ediff-dwim-show-on-hunks t)
+      (setq magit-diff-refine-hunk t)   ; word-level-diff
       (setq ediff-split-window-function 'split-window-horizontally)
     #+END_SRC
 
