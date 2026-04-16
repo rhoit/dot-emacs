@@ -1347,6 +1347,21 @@
      <kbd>M</kbd>-<kbd>y</kbd> can be bit alarming.</p>
    #+END_HTML
 
+*** copy
+
+    on point line copy only enable for =C-<insert>=
+
+    #+BEGIN_SRC emacs-lisp
+      (defun kill-ring-save-current-line()
+        "on point line copy"
+        (interactive)
+        (if (use-region-p)
+            (kill-ring-save (point) (mark))
+          (kill-new (thing-at-point 'line))))
+
+      (global-set-key (kbd "C-<insert>") 'kill-ring-save-current-line)
+    #+END_SRC
+
 *** paste
 
     Beginners find *Ctrl+v* jump outlandish and sometime also for me.
