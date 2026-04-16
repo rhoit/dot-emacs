@@ -22,6 +22,14 @@
 
 * ISSUES
 
+  + <2026-04-16 Thu> tree-sitter problem
+
+    #+BEGIN_EXAMPLE
+      Error during redisplay: (jit-lock-function 1) signaled (treesit-query-error "Syntax error at" 358 "[\"as\" \"assert\" \"async\" \"await\" \"break\" \"case\" \"class\" \"continue\" \"def\" \"del\" \"elif\" \"else\" \"except\" \"exec\" \"finally\" \"for\" \"from\" \"global\" \"if\" \"import\" \"lambda\" \"match\" \"nonlocal\" \"pass\" \"print\" \"raise\" \"return\" \"try\" \"while\" \"with\" \"yield\" \"and\" \"in\" \"is\" \"not\" \"or\" \"not in\" \"is not\"] @font-lock-keyword-face ((identifier) @font-lock-keyword-face (#match \"\\\\`self\\\\'\" @font-lock-keyword-face))" "Debug the query with `treesit-query-validate'")
+    #+END_EXAMPLE
+
+    [[https://github.com/emacs-mirror/emacs/commit/d587ce8c65][d587ce8]] seem to be patch but not working from official packages
+
   + <2022-11-11 Fri> clipboard issue
 
     could not assert ownership over selection seems like it originated
