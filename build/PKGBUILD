@@ -1,27 +1,60 @@
-pkgname="emacs-git"
-pkgver=29.0.50.2
+# https://gitlab.archlinux.org/archlinux/packaging/packages/emacs/-/blob/main/PKGBUILD
+
+pkgname=emacs-git
+pkgver=31.0.50
 pkgrel=1
 pkgdesc='GNU Emacs from git'
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
-license=('GPL3')
-depends=('libgccjit' 'm17n-lib' 'libotf' 'harfbuzz' 'cairo' 'jansson')
-makedepends=('git')
-provides=('emacs' 'emacs-28-git')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
-replaces=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq' 'emacs-nox')
+license=(GPL-3.0-or-later)
+depends=(
+    gmp
+    gnutls
+    lcms2
+    libacl.so
+    libasound.so
+    libgccjit
+    libdbus-1.so
+    libfontconfig.so
+    libfreetype.so
+    libgdk-3.so
+    libgdk_pixbuf-2.0.so
+    libgif.so
+    libgio-2.0.so
+    libglib-2.0.so
+    libgobject-2.0.so
+    libgpm.so
+    libgtk-3.so
+    libharfbuzz.so
+    libice
+    libjpeg.so
+    libncursesw.so
+    libotf
+    libpango-1.0.so
+    libpng
+    librsvg-2.so
+    libsm
+    sqlite libsqlite3.so
+    libsystemd.so
+    libtiff.so
+    libtree-sitter.so
+    libwebp.so
+    libwebpdemux.so
+    libxfixes
+    libxml2.so
+    m17n-lib
+    zlib
+    harfbuzz
+    cairo
+    jansson
+    texinfo  # for makeinfo
+)
+makedepends=(git)
+conflicts=(emacs emacs-nox emacs-wayland)
 # source=("repo::git://git.savannah.gnu.org/emacs.git")
 source=("repo::git+https://github.com/emacs-mirror/emacs.git")
 options=(!strip)
 b2sums=('SKIP')
-
-
-pkgver() {
-    cd "$srcdir/repo"
-    printf "%s.%s" \
-           $(sed -n '/AC_INIT/s/.*GNU Emacs, \([0-9.]*\).*/\1/p' configure.ac) \
-           $(git rev-list --count HEAD)
-}
 
 
 prepare() {
@@ -52,6 +85,8 @@ build() {
     # export CFLAGS+=" -flto"
     # export CXXFLAGS+=" -flto"
 
+    export ac_cv_lib_gif_EGifPutExtensionLast=yes
+
     CONF_ARGS=(
         --prefix=/usr
         --sysconfdir=/etc
@@ -66,11 +101,13 @@ build() {
         --with-sound=alsa
 
         --with-json                     # default after 27.1, needs jansson
-        --with-native-compilation       # JIT yeah! needs libgccjit
+        --with-native-compilation=aot   # JIT yeah! needs libgccjit
+        --with-tree-sitter
         --with-file-notification=yes
 
-        --with-pgtk                     # needed or ibus integration
+        # --with-pgtk                   # is not supported with X-windows
         --with-cairo                    # needs cairo
+        --with-libsystemd
         --with-harfbuzz                 # default after 27.1
         --with-x-toolkit=gtk3           # {no, gtk3, lucid}
         --without-gconf                 # breaks set font from config
