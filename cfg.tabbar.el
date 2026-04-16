@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; original-author: David.Villa@uclm.es
 ;; image:: http://crysol.org/files/emacs-tabbar.png
 
