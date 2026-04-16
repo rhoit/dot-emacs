@@ -21,6 +21,29 @@
   : 663fb3b * Do not produce .elc temporary file when unnecessary (bug#48978)
 
 * ISSUES
+** tree-sitter crash [2026-04-16 Thu]
+
+   After system upgrade the tree-sitter highlighting did not work
+   showing error in =*Messages*= buffer.
+
+   #+BEGIN_EXAMPLE
+     Error during redisplay: (jit-lock-function 1) signaled (treesit-query-error "Syntax error at" 358 "[\"as\" \"assert\" \"async\" \"await\" \"break\" \"case\" \"class\" \"continue\" \"def\" \"del\" \"elif\" \"else\" \"except\" \"exec\" \"finally\" \"for\" \"from\" \"global\" \"if\" \"import\" \"lambda\" \"match\" \"nonlocal\" \"pass\" \"print\" \"raise\" \"return\" \"try\" \"while\" \"with\" \"yield\" \"and\" \"in\" \"is\" \"not\" \"or\" \"not in\" \"is not\"] @font-lock-keyword-face ((identifier) @font-lock-keyword-face (#match \"\\\\`self\\\\'\" @font-lock-keyword-face))" "Debug the query with `treesit-query-validate'")
+   #+END_EXAMPLE
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC emacs-lisp
+    (princ (format "treesit-library-abi-version: %s\n" (treesit-library-abi-version)))
+    (princ (format "treesit-library-abi-version python: %s\n" (treesit-language-abi-version 'python)))
+   #+END_SRC
+
+   #+RESULTS:
+   : treesit-library-abi-version: 15
+   : treesit-library-abi-version python: 15
+
+   + references
+     - [[https://github.com/emacs-mirror/emacs/commit/d587ce8c65][d587ce8]] seem to be patch but not working from official packages
+     - [[https://emacs.stackexchange.com/questions/85489/solve-version-mismatch-with-tree-sitter-in-emacs-30-1-and-later-without-recom][stackoverflow]] "version-mismatch" with tree-sitter in Emacs 30.1 and later, without recompiling
+
 ** clipboard issue [2022-11-11 Fri]
 
    could not assert ownership over selection seems like it originated
