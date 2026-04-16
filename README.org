@@ -185,6 +185,23 @@
      #+END_SRC
 
 * CORE
+** lexical-binding
+
+   emacs 31.0.50 seem to require *lexical-binding* this for README.el
+
+   THIS SHOULD BE ADDED TO TOP
+
+   *TEMP* fix for now
+
+   #+BEGIN_EXAMPLE
+     ⛔ Warning (files): Missing ‘lexical-binding’ cookie in "~/.config/emacs/README.el".
+   #+END_EXAMPLE
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     ;; -*- lexical-binding: t; -*-
+   #+END_SRC
+
 ** garbage-collector
 
    I don't really understand what its happening but here are some
