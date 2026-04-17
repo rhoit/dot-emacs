@@ -2141,6 +2141,19 @@
       (setq magit-diff-refine-ignore-whitespace nil)
     #+END_SRC
 
+*** todo
+
+    [[https://github.com/alphapapa/magit-todos][magit-todo]] 📝 displays keyword entries from repository to magit
+    status buffer.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'magit-todos)
+      (with-eval-after-load 'magit
+        (require 'magit-todos)
+        (magit-todos-mode 1))
+    #+END_SRC
+
 *** performance
 
     Tuning *magit* for performance ⚡ from [[https://magit.vc/manual/magit/Performance.html][manual]].
