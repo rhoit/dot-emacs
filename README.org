@@ -2220,6 +2220,19 @@
       (add-hook 'magit-pre-refresh-hook 'magit-prime-refresh-cache)
     #+END_SRC
 
+*** todo
+
+    [[https://github.com/alphapapa/magit-todos][magit-todo]] displays keyword entries from repository to magit
+    status buffer.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'magit-todos)
+      (with-eval-after-load 'magit
+        (require 'magit-todos)
+        (magit-todos-mode 1))
+    #+END_SRC
+
 ** blamer.el
 
    A git blame [[https://github.com/Artawower/blamer.el][mode]] for emacs inspired by [[https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens][GitLens]] plugin.
