@@ -1309,7 +1309,7 @@
 *** [[https://github.com/rejeep/drag-stuff.el][drag-stuff]]
 
     #+HEADER: :results silent
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp :tangle no
       (require 'drag-stuff)
 
       ;; better bindings
@@ -1318,6 +1318,11 @@
       (global-set-key [(meta shift left)] 'drag-stuff-left)
       (global-set-key [(meta shift right)] 'drag-stuff-right)
     #+END_SRC
+
+    - [2026-04-25 Sat] using move-text
+
+      drag stuff has been unmaintained for last 10 years and now
+      raises warnings.
 
 ** text-zoom
 
