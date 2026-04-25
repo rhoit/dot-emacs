@@ -1295,6 +1295,17 @@
    of the feature you want to have every where. Although many do have
    feature to drag a lines or the region.
 
+*** [[https://github.com/emacsfodder/move-text/blob/master/move-text.el][move-text]]
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'move-text)
+      ;; (move-text-default-bindings)
+
+      (global-set-key [(meta shift down)] 'move-text-down)
+      (global-set-key [(meta shift up)] 'move-text-up)
+    #+END_SRC
+
 *** [[https://github.com/rejeep/drag-stuff.el][drag-stuff]]
 
     #+HEADER: :results silent
