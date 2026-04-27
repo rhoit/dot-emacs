@@ -2324,9 +2324,29 @@
 
 *** linter
 
+    There are the popular I have heard of
+
+    | name        | year | description           |
+    |-------------+------+-----------------------|
+    | [[https://www.jslint.com][JSLint]]      | 2002 | Legacy                |
+    | [[https://jshint.com/about/][JSHint]]      | 2011 | no updates since 2023 |
+    | [[https://eslint.org/][ESLint]]      | 2013 | most popular          |
+    | [[https://standardjs.com][Standard JS]] | 2014 | rule set of ESLint    |
+    | [[https://biomejs.dev][Biome]]       | 2023 | in 🦀 Rust            |
+
+    While ESLint is supported out of the box, for Biome we use
+    [[https://github.com/craneduck/flycheck-biomejs][flycheck-biomejs]].
+
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
-      (add-hook 'js-mode-hook 'flycheck-mode)
+      (add-to-list 'load-path "~/.config/emacs/00-tests/flycheck-biomejs/")
+      (require 'flycheck-biomejs)
+
+      (add-hook 'js-ts-mode-hook
+                (lambda ()
+                  (flycheck-mode)
+                  (flycheck-add-next-checker 'javascript-biome 'javascript-eslint)
+                  (run-hooks 'prog-mode-hook)))
     #+END_SRC
 
 ** css
