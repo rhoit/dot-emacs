@@ -1462,6 +1462,25 @@
      (setq split-width-threshold 120)
    #+END_SRC
 
+** performance
+*** bidirectional-scanning
+
+    These settings tell Emacs to assume left-to-right text everywhere
+    and skip the bidirectional parenthesis algorithm
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq-default bidi-display-reordering 'left-to-right)
+      (setq-default bidi-paragraph-direction 'left-to-right)
+      (setq bidi-inhibit-bpa t)
+    #+END_SRC
+
+    If you don't edit right-to-left languages (Arabic, Hebrew, etc.),
+    Emacs is doing a bunch of work on every redisplay cycle for
+    nothing.
+
+    reference [[https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs][Stealing from the Best Emacs Configs]]
+
 * PROGRAMMING
 
   some of the basic things provide by *emacs* internal packages.
