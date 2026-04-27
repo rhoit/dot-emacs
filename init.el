@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (setq user-full-name "rho"
       user-mail-address "rho.rhoit@gmail.com")
 
