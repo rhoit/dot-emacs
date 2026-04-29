@@ -2243,6 +2243,7 @@
 
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
 
+     (global-set-key (kbd "C-x g") 'magit-file-dispatch)
      (global-set-key (kbd "C-x C-l") 'magit-log-buffer-file)  ; unbind (downcase-region)
 
      (setq magit-diff-refine-hunk 'all)
