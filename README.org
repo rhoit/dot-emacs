@@ -796,6 +796,16 @@
   layout (other than qwerty) and so call most efficient *vi* binding,
   just 🔒 locks me inside without the exit🚪!
 
+  Although there are a few conventions to speak of one of them is
+  provided by *emacs*. [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html#Key-Binding-Conventions][Manual]] 📔 urges to follow strict conventions to
+  separate user space from developer territory.
+
+  | reserved for | bindings                                                   |
+  |--------------+------------------------------------------------------------|
+  | users        | ~C-c [letter]~ and ~F5 to F9~ (no modifiers)               |
+  | major-mode   | ~C-c [control-char]~, ~C-c [digit]~, ~C-c [ { } < > : ; ]~ |
+  | minor-mode   | ~C-c [other punctuation/symbols]~                          |
+
 ** oem
 
    I don't understand why laptops 💻 OEM constantly change the key
