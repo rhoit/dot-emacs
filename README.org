@@ -779,17 +779,27 @@
 
 * UX
 
-  Fundamentally *emacs* is more over a scratchpad for *elisp*, which
-  has been mistaken for the *editor*. Just 30+ years focused on
-  features accumulation with barely any attention to GUI, I'm baffled
-  when people come up with ⌨️ keybinding for each *modes* and mode to
-  manage them again with keybindings. No wonder people get strain
-  [[http://xahlee.info/emacs/emacs/emacs_hand_pain_celebrity.html][injuries]].
+  Fundamentally *emacs* is more of a scratchpad for *elisp*, which has
+  been mistaken for the *editor*. Just 30+ years focused on features
+  accumulation with barely any attention to ✨ UX or mouse 🖱️, I'm
+  baffled when people come up with ⌨️ key-bindings for each *modes* and
+  a new *mode* to manage them again with *more* key-bindings. No
+  wonder people get strain [[http://xahlee.info/emacs/emacs/emacs_hand_pain_celebrity.html][injuries]].
 
-  I'm one of those who is keen 🔥 burning your finger tips for
-  efficiency. and why do they generalize everyone uses same key layout
-  and so call most efficient *vi* binding, just 🔒 locks me inside
-  without the exit🚪!
+  I'm not the one of those who is keen on 🔥 burning finger tips for
+  efficiency. And why do they generalize everyone uses same keyboard
+  layout (other than qwerty) and so call most efficient *vi* binding,
+  just 🔒 locks me inside without the exit🚪!
+
+  Although there are a few conventions to speak of one of them is
+  provided by *emacs*. [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html#Key-Binding-Conventions][Manual]] 📔 urges to follow strict conventions to
+  separate user space from developer territory.
+
+  | reserved for | bindings                                                   |
+  |--------------+------------------------------------------------------------|
+  | users        | ~C-c [letter]~ and ~F5 to F9~ (no modifiers)               |
+  | major-mode   | ~C-c [control-char]~, ~C-c [digit]~, ~C-c [ { } < > : ; ]~ |
+  | minor-mode   | ~C-c [other punctuation/symbols]~                          |
 
 ** oem
 
