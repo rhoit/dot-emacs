@@ -1604,6 +1604,7 @@
 
      (global-set-key (kbd "<f8>") 'compile-buffer-show-toggle)
      (global-set-key (kbd "C-<f8>") 'recompile)
+     (global-set-key (kbd "C-<f9>") 'project-compile)
    #+END_SRC
 
    #+HEADER: :results silent
