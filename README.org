@@ -474,14 +474,9 @@
 
 ** splash-screen
 
-   I guess ~(about-emacs)~ screen is not bad, but binding it too
-   annoying. If you want to disable it set ~inhibit-splash-screen~ to
-   ~t~.
-
-   #+HEADER: :results silent
-   #+BEGIN_SRC emacs-lisp :tangle no
-     (setq inhibit-splash-screen t)
-   #+END_SRC
+   I guess ~(about-emacs)~ screen is not bad. If you want to disable
+   it set ~inhibit-splash-screen~ to ~t~. My take is only show it when
+   opening without file argument see in [[file:early-init.el]]
 
 ** theme
 
