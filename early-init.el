@@ -15,6 +15,18 @@
 
 
 ;;----------------------------------------------------------------------
+;;; splash screen
+
+(let ((has-file-arg nil))
+  (dolist (arg (cdr command-line-args))
+    ;; ignore standard options with hyphen (like --version)
+    (unless (string-prefix-p "-" arg)
+      (setq has-file-arg t)))
+  (when has-file-arg
+    (setq inhibit-startup-screen t)))
+
+
+;;----------------------------------------------------------------------
 ;;; window
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
