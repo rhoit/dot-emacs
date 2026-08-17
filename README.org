@@ -1227,6 +1227,7 @@
       (dim-minor-name 'helm-mode "")
 
       (setq helm-allow-mouse t)
+      (setq helm-display-function #'helm-display-buffer-in-own-frame)
 
       (define-key global-map [remap list-buffers] 'helm-buffers-list)
       (define-key global-map [remap execute-extended-command] 'helm-M-x)
