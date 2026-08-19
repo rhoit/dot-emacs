@@ -658,6 +658,23 @@
    days. Although emacs has buffers but which is only accessible with
    few more steps just to peek and then to switch is not way to go.
 
+*** tab-line-mode
+
+    Although [[https://github.com/dholm/tabbar][tabbar]] got me started but it has not been update since
+    2018, and emacs 27.1 introduced [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Line.html][tab-line-mode]] around 2020. I have
+    been putting it away for such a long time because I was thought
+    [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html][tab-bar-mode]] was mean to show me buffer tabs which was turn out be
+    entirely different thing.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (global-tab-line-mode 1)
+
+      (setq tab-line-switch-cycling nil); default:t
+      (setq tab-line-close-tab-function 'kill-buffer)  ; default:bury-buffer
+      (setq tab-line-close-button-show 'selected)  ; default:t (close tab button on all tabs)
+    #+END_SRC
+
 *** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]] with [[https://github.com/mattfidler/tabbar-ruler.el][tabbar-ruler]]
 
     #+ATTR_HTML: title="tabbar-screenshot"
