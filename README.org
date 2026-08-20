@@ -675,6 +675,30 @@
       (setq tab-line-close-button-show 'selected)  ; default:t (close tab button on all tabs)
     #+END_SRC
 
+**** group-buffers
+
+     Existing =tab-line-tabs-function= only groups by *mode* or
+     *projects* which is are 😵‍💫 nuisance in scenarios of project.
+     Project can have multiple type of files which uses different
+     modes, although it allows us to define the custom group function.
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (defun my-tab-line-buffer-group (buffer)
+         "Group buffers in a simple and useful way."
+         (with-current-buffer buffer
+           (cond
+            ((derived-mode-p 'magit-mode) "magit")
+            ((string-match "*helm.*" (buffer-name)) "helm")
+            ((string-equal "*" (substring (buffer-name) 0 1)) "*emacs*")
+            ((derived-mode-p 'vterm-mode 'eshell-mode 'shell-mode 'term-mode) "terminal")
+            ((and-let* ((project (project-current nil))) (project-name project)))
+            (t "files"))))  ;; Fallback
+
+       (setq tab-line-tabs-function #'tab-line-tabs-buffer-groups)  ; default:tab-line-tabs-fixed-window-buffers
+       (setq tab-line-tabs-buffer-group-function #'my-tab-line-buffer-group)  ; default:nil
+     #+END_SRC
+
 *** [[https://github.com/rhoit/dot-emacs/blob/master/config/tabbar.cfg.el][tabbar]] with [[https://github.com/mattfidler/tabbar-ruler.el][tabbar-ruler]]
 
     #+ATTR_HTML: title="tabbar-screenshot"
