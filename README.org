@@ -2465,6 +2465,14 @@
       (add-hook 'js-mode-hook #'lsp)
     #+END_SRC
 
+    Naming seems to be different in Arch Official Packages 📦 and
+    [[https://github.com/emacs-lsp/lsp-mode/blob/master/docs/lsp-clients.json][lsp-client]], which lets lsp to not find executable.
+
+    | type     | packages                   | lsp-mode/client |
+    |----------+----------------------------+-----------------|
+    | official | [[https://archlinux.org/packages/community/any/vscode-html-languageserver/files/][vscode-html-languageserver]] | [[https://github.com/emacs-lsp/lsp-mode/blob/828c6c234a3231670ba5649666652e22a9bc4f35/clients/lsp-html.el#L182][lsp-html.el]]     |
+    | official | typescript-language-server |                 |
+
     Enable/disable semantic checking of JavaScript files. Existing
     ~jsconfig.json~ or ~tsconfig.json~ files override this setting.
     Requires using TypeScript 2.3.1 or newer in the workspace.
