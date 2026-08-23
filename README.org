@@ -2868,6 +2868,14 @@
      (add-hook 'conf-mode-hook 'toggle-truncate-lines)
    #+END_SRC
 
+** json
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq auto-mode-alist
+        (cons '("\\.json$" . json-mode) auto-mode-alist))
+   #+END_SRC
+
 ** latex
 
    #+HEADER: :results silent
