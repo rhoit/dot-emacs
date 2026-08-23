@@ -1504,6 +1504,25 @@
 
       opted for helm since it hard to see multi-line clips
 
+*** duplicate-current-line
+
+    Since =C-<insert>= is copy and =S-<insert>= is paste 📋 duplicate
+    may be =C-S-<insert>=
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defun duplicate-current-line ()
+        (interactive)
+        (let ((line-text (thing-at-point 'line t)))
+          (save-excursion
+            (forward-line 1)
+            (insert line-text))
+          (forward-line 1)
+          (back-to-indentation)))
+
+      (global-set-key (kbd "C-S-<insert>") 'duplicate-current-line)
+    #+END_SRC
+
 ** layout
 
    winner mode saving the window configure
