@@ -2534,6 +2534,10 @@
                         :server-id 'my-css-ls))
     #+END_SRC
 
+    - [2025-07-24 Thu] re-checking vscode-css-languageserver works
+
+      lsp found the system binary.
+
     - [2022-03-23 Wed] runs on eval expression
 
       lsp couldn't find the system binary if the change dependencies
