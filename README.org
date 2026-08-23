@@ -2941,6 +2941,27 @@
         (local-set-key (kbd "C->") 'python-indent-shift-right)))
    #+END_SRC
 
+*** tree-sitter
+
+    Installing the python tree-sitter grammar via system.
+
+    #+HEADER: :results output :eval no
+    #+BEGIN_SRC sh :exports both
+      pacman --sync tree-sitter-python
+    #+END_SRC
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+    #+END_SRC
+
+    ensure any =python-mode= hooks also run in =python-ts-mode=
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'python-ts-mode-hook (lambda() (run-hooks 'python-mode-hook)))
+    #+END_SRC
+
 *** docstring
 
     [[https://github.com/glyph/python-docstring-mode/blob/master/README.md][python-docstring]] is a package that overrides fill-paragraph so it
@@ -2988,29 +3009,28 @@
       buggy python-jedi 17.0. Needed manually editing in path variable
       setting as =.as_posix()= or use =yaourt -S python-jedi-git=
 
-** linter
+*** linter
 
-   #+HEADER: :results silent
-   #+BEGIN_SRC emacs-lisp
-     (add-hook 'python-mode-hook 'flycheck-mode)
-   #+END_SRC
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'python-mode-hook 'flycheck-mode)
+    #+END_SRC
 
-   configure checkers, see [[elisp:(flycheck-verify-setup)][(flycheck-verify-setup)]] do it manually.
+    configure checkers, see [[elisp:(flycheck-verify-setup)][(flycheck-verify-setup)]] do it manually.
 
-   #+HEADER: :results silent
-   #+BEGIN_SRC emacs-lisp
-     ;; flake8
-     (add-to-list 'flycheck-flake8rc "~/.config/flake8" t)
-     (setq flycheck-python-flake8-executable "/usr/bin/flake8") ;; skip venv
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      ;; flake8
+      (add-to-list 'flycheck-flake8rc "~/.config/flake8" t)
+      (setq flycheck-python-flake8-executable "/usr/bin/flake8") ;; skip venv
 
-     ;; pylint
-     (setq flycheck-python-pylint-executable "/usr/bin/python") ;; skip venv
+      ;; pylint
+      (setq flycheck-python-pylint-executable "/usr/bin/python") ;; skip venv
 
-     (flycheck-add-next-checker 'python-flake8 'python-pyright)
-   #+END_SRC
+      (flycheck-add-next-checker 'python-flake8 'python-pyright)
+    #+END_SRC
 
-   Go beyond PEP8 here is my [[https://github.com/rhoit/my-config/blob/master/python][config]] for different linters.
-
+    Go beyond PEP8 here is my [[https://github.com/rhoit/my-config/blob/master/python][config]] for different linters.
 
 *** jedi
 
