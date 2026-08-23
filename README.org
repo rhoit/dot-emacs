@@ -772,6 +772,54 @@
      (setq uniquify-buffer-name-style 'forward)
    #+END_SRC
 
+*** buffer-as-tabs
+
+    Map to de-facto shortcuts as a modern tab 🗂️ system rather than
+    keyboard 🤸️ acrobatics!
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      ;;; since, C-x k <return> too much acrobat
+      (global-set-key (kbd "C-d") #'kill-buffer)  ; same as terminal
+    #+END_SRC
+
+    Track the file history to resurrect them on 😱 accident!
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defvar my-recent-closed-file-stack nil
+        "Stack of absolute file paths closed.")
+
+      (defvar my-recent-closed-file-stack-size 50
+        "Maximum number of paths to keep in the closed file stack.")
+
+      (defun my-recent-closed-file-track ()
+        "Record the file of the buffer being killed (if any)."
+        (when buffer-file-name
+          (let ((file (expand-file-name buffer-file-name)))
+            ;; add-to-history handles uniqueness, moves to front, and limits size automatically!
+            (add-to-history 'my-recent-closed-file-stack file my-recent-closed-file-stack-size))))
+
+      (add-hook 'kill-buffer-hook #'my-recent-closed-file-track)
+
+      (defun my-recent-closed-file-open ()
+        "Reopen recent closed file."
+        (interactive)
+        (let ((found nil))
+          (while (and my-recent-closed-file-stack (not found))
+            (let ((file (pop my-recent-closed-file-stack)))
+              (cond
+               ((find-buffer-visiting file))  ; already open → keep looking
+               ((not (file-exists-p file)))   ; missing → keep looking
+               (t
+                (find-file file)
+                (setq found t)))))
+          (unless found
+            (message "No more closed files in this session!"))))
+
+      (global-set-key (kbd "C-S-t") #'my-recent-closed-file-open)
+    #+END_SRC
+
 ** emoji
 
    Since emacs 28.1 Improved support for Emoji. On capable systems,
