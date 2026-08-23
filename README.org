@@ -2671,6 +2671,19 @@
     (add-hook 'org-mode-hook 'flyspell-mode)
   #+END_SRC
 
+** ox-extra
+
+   | Tag        | Effect on Export                                                       |
+   |------------+------------------------------------------------------------------------|
+   | :noexport: | Deletes the entire section (heading + all subheadings)                 |
+   | :ignore:   | Deletes the heading only; children are moved up a level in the export. |
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'ox-extra)   ; package org-contrib
+     (ox-extras-activate '(ignore-headlines))
+   #+END_SRC
+
 ** babel
 
    #+HEADER: :results silent
