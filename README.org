@@ -2328,6 +2328,39 @@
      (setq magit-process-finish-apply-ansi-colors t)
    #+END_SRC
 
+*** show-level-cycle
+
+    Expand section like org mode for magit buffer (like status buffer)
+    has many shortcut command which conflict with traditional
+    expectation like emacs does lets fix it.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defvar my-magit-section-level 1
+        "Current global section level for cycling.")
+
+      (defun my-magit-section-cycle-levels ()
+        "Cycle global section visibility through levels 1 → 2 → 3 → 4 → 1."
+        (interactive)
+        (setq my-magit-section-level (1+ (mod my-magit-section-level 4)))
+        (pcase my-magit-section-level
+          (1 (magit-section-show-level-1-all))
+          (2 (magit-section-show-level-2-all))
+          (3 (magit-section-show-level-3-all))
+          (4 (magit-section-show-level-4-all)))
+        (message "Magit section level: %d" my-magit-section-level))
+
+      ;; Use Shift-Tab to cycle levels 1-4 like org mode
+      (with-eval-after-load 'magit
+        ;; M-[1:4] is binded to (magit-section-show-level-n-all) with is better used for tabs
+        (define-key magit-mode-map (kbd "M-1") nil)
+        (define-key magit-mode-map (kbd "M-2") nil)
+        (define-key magit-mode-map (kbd "M-3") nil)
+        (define-key magit-mode-map (kbd "M-4") nil)
+
+        (define-key magit-mode-map (kbd "<backtab>") #'my-magit-section-cycle-levels))
+    #+END_SRC
+
 *** diff
 
     #+HEADER: :results silent
