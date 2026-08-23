@@ -1745,6 +1745,13 @@
       (setq lsp-clients-typescript-server-args '("--stdio" "/tmp/lsp.log"))
     #+END_SRC
 
+    For javascript [[https://github.com/typescript-language-server/typescript-language-server][typescript-language-server]] has been recommended by
+    the [[https://emacs-lsp.github.io/lsp-mode/page/lsp-typescript/][wiki]].
+
+    - [2024-03-27 Wed]
+
+      officially available as extra/typescript-language-server 4.3.3-1
+
 ** css
 *** lsp
 
