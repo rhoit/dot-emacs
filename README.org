@@ -3141,7 +3141,7 @@
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
-     (setq compile-command "/usr/bin/python /usr/bin/scons")
+     (setq compile-command "/usr/bin/scons --debug=explain")
 
      (define-derived-mode scons-mode python-mode "scons"
        "A python-mode for scons files")
