@@ -2174,6 +2174,15 @@
      (setq lsp-headerline-breadcrumb-enable nil)
    #+END_SRC
 
+   ⚠️ Without the integration snippet, [[which-key]] will only show generic
+   labels like +prefix for sub-menus.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (with-eval-after-load 'lsp-mode
+       (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+   #+END_SRC
+
 *** servers
 
     language-servers should be installed ⚒️ manually you can see the
