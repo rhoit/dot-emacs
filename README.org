@@ -2513,7 +2513,7 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
-      (add-hook 'js-mode-hook #'lsp)
+      (add-hook 'js-ts-mode-hook #'lsp)
     #+END_SRC
 
     Naming seems to be different in Arch Official Packages 📦 and
