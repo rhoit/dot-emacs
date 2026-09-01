@@ -1586,6 +1586,24 @@
      (setq split-width-threshold 120)
    #+END_SRC
 
+** which-key
+
+   I should have used this mode a long time ago. 🤔 Thinking about it
+   now, it must have been a beginner's frustration with layers of
+   keybinding over keybinding. Now, 🤷‍♂️ maybe after a decade of use,
+   there are more modes I use than I can count on my fingers. 🖐️ Since
+   it's built-in starting with Emacs 30, 🎉 why not enable it?
+
+   Yet, the use of this "unnecessary" 🩼 crutch should be encouraged.
+   My take used to be that if you can't remember a binding, it's not a
+   binding you want to use.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (which-key-mode 1)
+     (dim-minor-name 'which-key-mode "")
+   #+END_SRC
+
 ** performance
 *** bidirectional-scanning
 
