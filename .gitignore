@@ -3,6 +3,7 @@
 *~
 .lsp-session*
 .mc-lists.el
+00-tests/
 README.el
 eln-cache/
 elpa/
