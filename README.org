@@ -2473,6 +2473,20 @@
      (add-to-list 'auto-mode-alist '("\\.mjs$" . js-ts-mode))
    #+END_SRC
 
+*** compile-mode
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (with-eval-after-load 'compile
+        (add-to-list 'compilation-error-regexp-alist 'node)  ; Activate the 'node' pattern
+        (add-to-list 'compilation-error-regexp-alist-alist
+                     '(node
+                       "^[[:blank:]]*at .*?(\\(.+?\\):\\([0-9]+\\):\\([0-9]+\\))"
+                       1     ; 1 → 'filename'
+                       2     ; 2 → 'line'
+                       3)))  ; 3 → 'column'
+    #+END_SRC
+
 *** jsdoc
 
     [[https://github.com/KarimAziev/jsdoc-font-lock-keywords][jsdoc-font-lock-keywords]] enhances the standard syntax highlighting
