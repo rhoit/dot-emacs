@@ -2731,6 +2731,13 @@
     (add-hook 'org-mode-hook 'flyspell-mode)
   #+END_SRC
 
+** linter
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'org-mode-hook 'flycheck-mode)
+   #+END_SRC
+
 ** ox-extra
 
    | Tag        | Effect on Export                                                       |
