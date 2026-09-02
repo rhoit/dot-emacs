@@ -161,6 +161,7 @@
      ├── ...
      :
      ├── 00-tests               # testing stuffs
+     ├── user-lisp/             # autoload dir new in v31.1
      └── snippets               # yasnippet stuffs
          ├── fundamental-mode
          :
