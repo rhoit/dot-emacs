@@ -2297,6 +2297,24 @@
             lsp-ui-peek-peek-height 25)
     #+END_SRC
 
+    - [2026-09-02 Wed] lsp-ui-doc nuisance
+
+      When hovering over a code symbol, the 💡 documentation popup is
+      helpful, but it often spawns directly over the symbol itself.
+      This blocks your view when you are trying to select, edit, or
+      read the active code line.
+
+      This solution is based on ideas from this [[https://magnus.therning.org/2026-02-16-using-advice-to-limit-lsp-ui-doc-nuisance.html][blog]].
+
+      #+HEADER: :results silent
+      #+BEGIN_SRC emacs-lisp
+        (defun my-lsp-ui-doc-offset-pad (orig-fun frame width height start-x start-y)
+          "Prevent documentation popups from overlapping and blocking active text."
+          (funcall orig-fun frame width height start-x (+ start-y height 5)))
+
+        (advice-add 'lsp-ui-doc--mv-at-point :around #'my-lsp-ui-doc-offset-pad)
+      #+END_SRC
+
 ** watch-word
 
    #+HEADER: :results silent
