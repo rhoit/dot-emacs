@@ -3086,7 +3086,7 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
-      (add-hook 'python-mode-hook 'flycheck-mode)
+      (add-hook 'python-ts-mode-hook 'flycheck-mode)
     #+END_SRC
 
     configure checkers, see [[elisp:(flycheck-verify-setup)][(flycheck-verify-setup)]] do it manually.
