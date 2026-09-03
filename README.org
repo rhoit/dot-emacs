@@ -2992,6 +2992,21 @@
       (setq gdb-show-main t)
     #+END_SRC
 
+*** tree-sitter
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      ;; prefer tree-sitter-mode
+      (add-to-list 'auto-mode-alist '("\\.c\\'" . c-ts-mode))
+    #+END_SRC
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (setq-default c-ts-mode-indent-offset 4)
+      (setq-default c-ts-basic-offset 4)
+      (setq-default c-basic-offset 4)
+    #+END_SRC
+
 ** conf
 
    #+HEADER: :results silent
