@@ -3120,14 +3120,16 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
-      ;; flake8
-      (add-to-list 'flycheck-flake8rc "~/.config/flake8" t)
-      (setq flycheck-python-flake8-executable "/usr/bin/flake8") ;; skip venv
+      (add-to-list 'flycheck-python-ruff-config "~/.config/ruff.toml" t)  ; global fallback
 
-      ;; pylint
-      (setq flycheck-python-pylint-executable "/usr/bin/python") ;; skip venv
+      (add-hook 'lsp-managed-mode-hook
+                (lambda ()
+                  (when (derived-mode-p 'python-mode 'python-ts-mode)
+                    (require 'flycheck)
+                    (lsp-diagnostics-lsp-checker-if-needed)  ; ensure it exists
+                    (flycheck-add-next-checker 'lsp '(t . python-ruff)))))
 
-      (flycheck-add-next-checker 'python-flake8 'python-pyright)
+      (setq-default flycheck-disabled-checkers '(python-mypy python-flake8 python-mypy python-pylint))
     #+END_SRC
 
     Go beyond PEP8 here is my [[https://github.com/rhoit/my-config/blob/master/python][config]] for different linters.
