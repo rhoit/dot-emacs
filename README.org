@@ -3007,6 +3007,21 @@
       (setq-default c-basic-offset 4)
     #+END_SRC
 
+*** lsp
+
+    There are 2 servers mentioned the [[https://emacs-lsp.github.io/lsp-mode/tutorials/CPP-guide/][lsp-mode guide]] *clangd* and
+    *ccls* which are both available in Arch Official Packages 📦.
+
+    | server | package     | description                     |
+    |--------+-------------+---------------------------------|
+    | clangd | extra/clang | part of the llvm c language     |
+    | ccls   | extra/clang | https://github.com/MaskRay/ccls |
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'c-ts-mode-hook #'lsp)
+    #+END_SRC
+
 ** conf
 
    #+HEADER: :results silent
