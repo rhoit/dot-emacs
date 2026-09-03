@@ -1892,6 +1892,19 @@
      Embrace new paths, where beauty prevails.
    #+END_EXAMPLE
 
+   Prefer a vertical right split 📋 for the Flycheck error list
+   buffer. Any matching entry in =display-buffer-alist= takes
+   precedence over the =flycheck-error-list-display-buffer-action=
+   variable.
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (setq flycheck-error-list-display-buffer-action
+           '((display-buffer-reuse-window display-buffer-pop-up-window)
+             (window-height . 0.3)
+             (reusable-frames . visible)))
+   #+END_SRC
+
 *** flycheck-pos-tip
 
     [[https://github.com/flycheck/flycheck-pos-tip][flycheck-pos-tip]] is the [[https://www.flycheck.org/en/latest/user/flycheck-versus-flymake.html][flycheck]] extension shows errors using
