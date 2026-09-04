@@ -2882,7 +2882,7 @@
    org's *outline* with [[https://github.com/alphapapa/outshine][outshine]] extension.
 
    #+HEADER: :results silent
-   #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp :tangle no
      (require 'outshine)
 
      (add-hook 'prog-mode-hook 'outline-minor-mode)
