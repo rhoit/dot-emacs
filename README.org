@@ -701,6 +701,28 @@
        (setq tab-line-tabs-buffer-group-function #'my-tab-line-buffer-group)  ; default:nil
      #+END_SRC
 
+**** hide-buffers-from-tab
+
+     Hide unwanted buffers from your 🗂️ *tab-line* like =*scratch*=,
+     =*Help*=, or =*Messages*= 🚫, special-mode or magit-mode, dired-mode or
+     completion-list-mode 🔍.
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (setq tab-line-exclude-buffers
+             '(or "\\*scratch\\*"
+                  "\\*GNU Emacs\\*"
+                  "\\*Help\\*"
+                  "\\*Messages\\*"
+                  (derived-mode special-mode
+                                magit-mode
+                                completion-list-mode
+                                dired-mode)))
+
+       (setq tab-line-tabs-function 'tab-line-tabs-fixed-window-buffers)  ; default:tab-line-tabs-fixed-window-buffers
+       (setq tab-line-tabs-window-buffers-filter-function #'tab-line-tabs-non-excluded)
+     #+END_SRC
+
 *** tabbar
     :PROPERTIES:
     :header-args: :tangle no
