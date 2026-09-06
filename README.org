@@ -1885,6 +1885,24 @@
      (add-hook 'compilation-mode-hook (lambda() (setq truncate-lines t)))  ;; do not wrap
    #+END_SRC
 
+*** compilation-error-regexp
+
+    Make file path clickable in *compilation* buffer.
+
+**** ruff
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (with-eval-after-load 'compile
+         (add-to-list 'compilation-error-regexp-alist 'ruff)
+         (add-to-list 'compilation-error-regexp-alist-alist
+                      '(ruff
+                        "^\\s-*--> \\([^:]+\\):\\([0-9]+\\):\\([0-9]+\\)"
+                        1     ; 1 → 'filename'
+                        2     ; 2 → 'line'
+                        3)))  ; 3 → 'column'
+     #+END_SRC
+
 ** debugger
 
    Although I barely use *debugger*, lets say I'm more of =print()=
