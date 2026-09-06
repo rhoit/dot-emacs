@@ -758,6 +758,38 @@
        (global-set-key [C-next]  #'tab-line-switch-to-next-tab)  ; Ctrl + PageDown → next
      #+END_SRC
 
+     Most modern applications lets you to select the first 9-tabs 🗂️
+     using =M= (Alt key) with /tab-position-index/, unfortunately
+     *emacs* uses this binding for party-ticks 🎉 =(digit-argument)=.
+     I do not 😕 understand why there are so many of redundancy like
+     you ⌨️ key-board has gone through war 🪖 missing keys.
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (defun my/tab-line-select-nth (n)
+         "Switch to the N-th tab (1-based) in the current window's tab line."
+         (interactive "p")
+         (let* ((tabs (funcall tab-line-tabs-function))
+                (tab  (nth (1- n) tabs)))
+           (cond
+            ((null tab)
+             (message "No tab %d (only %d tabs)" n (length tabs)))
+            ((bufferp tab)
+             (switch-to-buffer tab))
+            ((and (consp tab) (assq 'buffer tab))
+             (switch-to-buffer (cdr (assq 'buffer tab))))
+            (t
+             (message "Tab %d is not a buffer" n)))))
+
+       ;; M-1 … M-9
+       (dotimes (i 9)
+         (let ((n (1+ i)))
+           (global-set-key (kbd (format "M-%d" n))
+                           (lambda ()
+                             (interactive)
+                             (my/tab-line-select-nth n)))))
+     #+END_SRC
+
 *** tabbar
     :PROPERTIES:
     :header-args: :tangle no
