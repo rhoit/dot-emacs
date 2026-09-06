@@ -678,6 +678,9 @@
     #+END_SRC
 
 **** group-buffers
+     :PROPERTIES:
+     :header-args: :tangle no
+     :END:
 
      Existing =tab-line-tabs-function= only groups by *mode* or
      *projects* which is are 😵‍💫 nuisance in scenarios of project.
