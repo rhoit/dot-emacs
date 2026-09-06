@@ -736,6 +736,30 @@
        (setq tab-line-tabs-window-buffers-filter-function #'tab-line-tabs-non-excluded)
      #+END_SRC
 
+**** bindings
+
+     By default *tab-line-modes* binds buffer-switching keys on
+     =ctl-x-map= which can be disabled using =(tab-line-define-keys)=.
+     These defaults are pretty 🤮 terrible if you expect tabs to
+     behave like they do in modern apps 👎 you are up for
+     disappointment 😠
+
+     | key                         | action                      |
+     |-----------------------------+-----------------------------|
+     | C-x <left> / C-x C-<left>   | tab-line-switch-to-prev-tab |
+     | C-x <right> / C-x C-<right> | tab-line-switch-to-next-tab |
+     | C-x M-<left>                | tab-line-move-tab-backward  |
+     | C-x M-<right>               | tab-line-move-tab-forward   |
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (setq tab-line-define-keys nil)  ; default:t
+
+       ;; better bindings than C-x RIGHT|LEFT
+       (global-set-key (kbd "C-<prior>") #'tab-line-switch-to-prev-tab)  ; Ctrl + PageUp  → previous
+       (global-set-key (kbd "C-<next>")  #'tab-line-switch-to-next-tab)  ; Ctrl + PageDown → next
+     #+END_SRC
+
 *** tabbar
     :PROPERTIES:
     :header-args: :tangle no
