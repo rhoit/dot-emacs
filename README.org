@@ -677,6 +677,16 @@
       (setq tab-line-close-button-show 'selected)  ; default:t (close tab button on all tabs)
     #+END_SRC
 
+    - [2026-09-03 Thu] 🚨 group with unsorted tab conflict
+
+      It's nice to have grouping, but open order must 🔒, we cannot
+      have both since a single variable =(tab-line-tabs-function)=
+      controls either group 😕 =tab-line-tabs-buffer-groups= or
+      fixed-ordering =tab-line-tabs-fixed-window-buffers=
+      =sort-order-function= might solve this but needs reimplement 🛠️.
+      But still binding indexing needs massive undertaking 💪.
+      Dropping it in favor of hiding buffers 🙈.
+
 **** group-buffers
      :PROPERTIES:
      :header-args: :tangle no
