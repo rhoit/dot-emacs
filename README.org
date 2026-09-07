@@ -2655,6 +2655,17 @@
         (magit-todos-mode 1))
     #+END_SRC
 
+*** gptel-magit
+
+    Extending the already fantastic 🪄 *magit* using 🤖 `gptel` to add
+    some delightful LLM-powered features.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (with-eval-after-load 'magit
+        (gptel-magit-install))
+    #+END_SRC
+
 ** blamer.el
 
    A git blame 🕵️ [[https://github.com/Artawower/blamer.el][mode]] for emacs inspired by [[https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens][GitLens]] plugin.
