@@ -987,6 +987,11 @@
   | major-mode   | ~C-c [control-char]~, ~C-c [digit]~, ~C-c [ { } < > : ; ]~ |
   | minor-mode   | ~C-c [other punctuation/symbols]~                          |
 
+  Ironically I came to know about =C-u= prefix just today
+  [2026-09-06 Sun], which is known as the *universal prefix argument*
+  . It passes an argument or a special 🚩 flag to the subsequent
+  command to modify its execution.
+
 ** oem
 
    I don't understand why laptops 💻 OEM constantly change the key
