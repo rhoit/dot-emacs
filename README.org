@@ -1735,6 +1735,7 @@
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
+     (setq split-window-preferred-direction 'horizontal)  ; introduced in v31.1
      (setq split-width-threshold 120)  ; default 150
    #+END_SRC
 
