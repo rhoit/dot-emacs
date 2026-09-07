@@ -5,6 +5,8 @@
 #+OPTIONS: num:t toc:1
 #+STARTUP: overview
 
+#+EXPORT_EXCLUDE_TAGS: noexport
+
 
 *BEWARE:* AUTHOR does'nt know much *elisp* and suffer from
 *parenthesiophobia*, but couldn't stop tinker around.
