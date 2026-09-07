@@ -2327,7 +2327,7 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
-      (add-to-list 'load-path "~/.config/emacs/00-tests/whitespace4r.el/")
+      ;; v31.1 shift to repo to ~/.config/emacs/user-lisp/
       (require 'whitespace4r)
       (whitespace4r-mode)
     #+END_SRC
