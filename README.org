@@ -2917,6 +2917,18 @@
     (add-hook 'org-mode-hook 'flyspell-mode)
   #+END_SRC
 
+** binding
+
+   removing the C-j bind for [[goto-last-change]]
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (add-hook
+      'org-mode-hook
+      (lambda () ; used for (goto-last-change)
+        (define-key org-mode-map (kbd "C-j") nil)))
+   #+END_SRC
+
 ** linter
 
    #+HEADER: :results silent
