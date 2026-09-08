@@ -3202,6 +3202,43 @@
      (global-set-key (kbd "C-c C-<return>") 'gptel-menu)  ; Open the interactive transient menu
    #+END_SRC
 
+*** switch-backend
+
+    Rather than using the internal functions =gptel--model-candidates=
+    and =gptel-menu--set-model=, we opted for the explicit version,
+    because those functions live in =gptel-transient.el= and are not
+    loaded by default 🫩. They only get defined after the first call
+    to =M-x gptel-menu=, otherwise producing a =(void-function
+    gptel--model-candidates)= error 💥.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defun my-gptel-switch-backend ()
+        "Interactively switch the active gptel backend and model."
+        (interactive)
+        (let ((candidates
+               ;; Flatten all backends into a single list of
+               (mapcan
+                (lambda (pair)
+                  (let ((name    (car pair))   ; Backend display name (string)
+                        (backend (cdr pair)))  ; The actual gptel-backend struct
+                    (mapcar (lambda (model)
+                              (cons (format "%s → %s" name model)
+                                    (cons backend model)))
+                            (gptel-backend-models backend))))
+                gptel--known-backends)))
+          (when-let* ((choice (completing-read "Select Model: "
+                                               (mapcar #'car candidates)
+                                               nil t))
+                      (selected (cdr (assoc choice candidates))))
+            ;; selected is (backend-object . model-symbol)
+            (setq gptel-backend (car selected)
+                  gptel-model   (cdr selected))
+            (message "gptel: %s → %s"
+                     (gptel-backend-name gptel-backend)
+                     gptel-model))))
+    #+END_SRC
+
 ** json
 
    #+HEADER: :results silent
