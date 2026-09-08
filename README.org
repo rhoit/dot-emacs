@@ -3178,6 +3178,30 @@
      (add-hook 'conf-mode-hook 'toggle-truncate-lines)
    #+END_SRC
 
+** gptel
+
+   [[https://github.com/karthink/gptel][gptel]] is a simple LLM chat 🤖 client for Emacs, supporting ✨ multiple
+   models and back-ends. It operates entirely within the spirit of
+   Emacs, remaining instantly available and uniform across any buffer.q
+
+   #+HEADER: :results silent
+   #+BEGIN_SRC emacs-lisp
+     (require 'gptel)
+     (setq gptel-default-mode 'org-mode)
+
+     (setq ollama-local
+           (gptel-make-ollama "ollama-local"
+             :host "localhost:11434"
+             :stream t
+             :models '(llama3.2:1b deepseek-coder:1.3b qwen2.5-coder:3b gemma3:4b)))
+
+     (setq gptel-backend ollama-local)
+     (setq gptel-model 'qwen2.5-coder:3b)
+
+     (global-set-key (kbd "C-c RET") 'gptel-send)
+     (global-set-key (kbd "C-c C-<return>") 'gptel-menu)  ; Open the interactive transient menu
+   #+END_SRC
+
 ** json
 
    #+HEADER: :results silent
