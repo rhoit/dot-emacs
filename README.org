@@ -2128,6 +2128,33 @@
       (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
     #+END_SRC
 
+*** lsp-diagnostics
+
+    By default, [[LSP]] automatically hooks into *flycheck* to display
+    diagnostics 🔍. This integration can be disabled using:
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp :tangle no
+      (setq lsp-diagnostics-provider :none) ; default is :auto
+    #+END_SRC
+
+    ⚠️ There is no built-in way for =(flycheck-verify-setup)= to
+    inspect the active 🛠️ configuration used by *lsp-server*. The
+    underlying diagnostics 🔍 tool must be run manually to verify the
+    configuration, as shown below for *pyright*.
+
+    #+HEADER: :results output :eval no-export
+    #+BEGIN_SRC sh :exports both
+      pyright --verbose /path/to/source/file.py  # verbose shows configuration load
+    #+END_SRC
+
+    *lsp-diagnostics* run inside a persistent /server/ *session* that
+    loads the configuration only at *startup*. Any subsequent ✍️ change
+    is not reflected 💫 immediately as it is in other checkers, so the
+    manual 🔨 restart (=M-x lsp-workspace-restart=) is required to
+    reload rules change. Due to the cache, stale artifacts may still
+    linger, which can be cleared 🧹 using =(flycheck-clear)=.
+
 ** parenthesis
 
    #+HEADER: :results silent
