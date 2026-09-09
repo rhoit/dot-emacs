@@ -2060,6 +2060,10 @@
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (setq flycheck-check-syntax-automatically '(save))
+
+     ;; using modline menu, I am not going to memorize keybinding
+     (with-eval-after-load 'flycheck
+       (define-key flycheck-mode-map (kbd "C-c !") nil))  ; disable conflits with org-mode
    #+END_SRC
 
    #+BEGIN_EXAMPLE
