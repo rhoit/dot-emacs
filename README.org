@@ -792,6 +792,25 @@
                              (my/tab-line-select-nth n)))))
      #+END_SRC
 
+     🖱️ Double-click a tab 🗂️ to open the same file (buffer) in a new split.
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (defun my/tab-line-open-in-other-window (event)
+         (interactive "e")
+         (when-let* ((pos         (event-start event))
+                     (window      (posn-window pos))
+                     ((window-live-p window))
+                     (string-info (posn-string pos))
+                     (buffer      (get-pos-property 1 'tab (car string-info)))
+                     ((buffer-live-p buffer)))
+           (pop-to-buffer buffer
+                          '((display-buffer-use-some-window)
+                            (inhibit-same-window . t)))))
+
+       (define-key tab-line-tab-map [tab-line double-mouse-1] #'my/tab-line-open-in-other-window)
+     #+END_SRC
+
 *** tabbar
     :PROPERTIES:
     :header-args: :tangle no
