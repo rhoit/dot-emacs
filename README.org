@@ -964,6 +964,11 @@
      (global-set-key [f9] 'speedbar)
    #+END_SRC
 
+   - [2026-09-09 Wed]
+
+     This was the hold up for so long i have switched to [[tab-line-mode]]
+     from [[tabbar]].
+
    - [2021-05-27 Thu]
 
      Opening another frame (application-window) breaks the tabbar mode
