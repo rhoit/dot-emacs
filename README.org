@@ -2463,6 +2463,16 @@
       (setq company-lsp-cache-candidates t)
     #+END_SRC
 
+**** debug-variables
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp :tangle no
+       (setq lsp-log-io t)  ; default:nil, for debugging
+       (setq lsp-print-io t)
+       (setq lsp-trace t)
+       (setq lsp-print-performance t)
+     #+END_SRC
+
 **** native-compile
 
      It has been a while I have been using the native compile since it
