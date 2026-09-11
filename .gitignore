@@ -12,4 +12,5 @@ recentf
 session.*
 tramp
 transient/
+tree-sitter/
 url/
