@@ -2326,6 +2326,18 @@
     tree-sitter-grammars tree-sitter-vimdoc
     #+end_example
 
+*** breadcrumb
+
+    [[https://github.com/joaotavora/breadcrumb][Breadcrumbs]] are sequences of short strings indicating your
+    location. This can be particularly useful for navigating through
+    deeply nested directories. I prefer the =breadcrumb-local-mode=
+    over the global.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'breadcrumb)
+    #+END_SRC
+
 *** references
 
     - https://www.gnu.org/software/emacs/manual//html_node/elisp/Tree_002dsitter-Major-Modes.html
