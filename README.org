@@ -737,6 +737,82 @@
        (setq tab-line-tabs-window-buffers-filter-function #'tab-line-tabs-non-excluded)
      #+END_SRC
 
+**** tab-line-tab-context-menu
+
+     ✨ Add file deletion and renaming support for tab-associated
+     files in Emacs, complete with a new context menu for tab
+     management.
+
+     #+HEADER: :results silent
+     #+BEGIN_SRC emacs-lisp
+       (defun my/tab-line-delete-file (&optional event)
+         "Permanently delete the file belonging to the tab clicked with EVENT."
+         (interactive (list last-nonmenu-event))
+         (let* ((posnp (tab-line-event-start event))
+                (tab (if (consp event)
+                         (tab-line--get-tab-property 'tab (car (posn-string posnp)))
+                       (tab-line--current-tab)))
+                (buffer (if (bufferp tab) tab (cdr (assq 'buffer tab)))))
+           (if (and (buffer-live-p buffer) (buffer-local-value 'buffer-file-name buffer))
+               (with-current-buffer buffer
+                 (when (yes-or-no-p (format "Permanently delete %s? " (buffer-file-name)))
+                   (delete-file (buffer-file-name))
+                   (kill-buffer buffer)
+                   (message "File deleted.")))
+             (user-error "Tab is not visiting a file"))))
+
+       (defun my/tab-line-rename-file (&optional event)
+         "Rename the file belonging to the tab clicked with EVENT."
+         (interactive (list last-nonmenu-event))
+         (let* ((posnp (tab-line-event-start event))
+                (tab (if (consp event)
+                         (tab-line--get-tab-property 'tab (car (posn-string posnp)))
+                       (tab-line--current-tab)))
+                (buffer (if (bufferp tab) tab (cdr (assq 'buffer tab)))))
+           (if (and (buffer-live-p buffer) (buffer-local-value 'buffer-file-name buffer))
+               (with-current-buffer buffer
+                 (if (fboundp 'rename-visited-file)  ; Native to Emacs 29+
+                     (call-interactively #'rename-visited-file)
+                   (call-interactively #'rename-file)))
+             (user-error "Tab is not visiting a file"))))
+
+       (defun my/tab-line-tab-context-menu-advisor (orig-fun &optional event)
+         "Extend `tab-line-tab-context-menu' following native event conventions."
+         (interactive "e")
+         (let* ((posnp (tab-line-event-start event))
+                (tab (if (consp event)
+                         (tab-line--get-tab-property 'tab (car (posn-string posnp)))
+                       (tab-line--current-tab)))
+                (buffer (if (bufferp tab) tab (cdr (assq 'buffer tab)))))
+
+           (if (and (buffer-live-p buffer) (buffer-local-value 'buffer-file-name buffer))
+               (let ((menu (make-sparse-keymap (propertize "Context Menu" 'hide t))))
+                 ;; Standard module behaviors
+                 (define-key-after menu [close]
+                   '(menu-item "Close" tab-line-close-tab :help "Close the tab"))
+                 (define-key-after menu [close-other]
+                   '(menu-item "Close other tabs" tab-line-close-other-tabs
+                               :help "Close all other tabs"))
+
+                 ;; Visual separator
+                 (define-key-after menu [sep] menu-bar-separator)
+
+                 ;; Appended target file management actions
+                 (define-key-after menu [delete-file]
+                   '(menu-item "Delete File" my/tab-line-delete-file
+                               :help "Permanently delete this file"))
+                 (define-key-after menu [rename-file]
+                   '(menu-item "Rename File..." my/tab-line-rename-file
+                               :help "Rename the file visited by this tab"))
+
+                 (popup-menu menu event))
+
+             ;; Fallback to standard menu layout for scratch, dired, etc.
+             (funcall orig-fun event))))
+
+       (advice-add 'tab-line-tab-context-menu :around #'my/tab-line-tab-context-menu-advisor)
+     #+END_SRC
+
 **** bindings
 
      By default *tab-line-modes* binds buffer-switching keys on
