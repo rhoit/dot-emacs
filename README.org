@@ -3362,6 +3362,7 @@
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
       (add-hook 'python-ts-mode-hook (lambda() (run-hooks 'python-mode-hook)))
+      (add-hook 'python-ts-mode-hook 'breadcrumb-local-mode)
     #+END_SRC
 
 *** docstring
