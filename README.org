@@ -2745,6 +2745,7 @@
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
       (add-to-list 'auto-mode-alist '("\\.mjs$" . js-ts-mode))
+      (add-hook 'js-ts-mode-hook 'breadcrumb-local-mode)
     #+END_SRC
 
 *** lsp
