@@ -2798,6 +2798,14 @@
       (add-hook 'js-ts-mode-hook 'flycheck-mode)
     #+END_SRC
 
+    | checkers    | year | description           | flycheck         |
+    |-------------+------+-----------------------+------------------|
+    | [[https://www.jslint.com][JSLint]]      | 2002 | Legacy                |                  |
+    | [[https://jshint.com/about/][JSHint]]      | 2011 | no updates since 2023 |                  |
+    | [[https://eslint.org/][ESLint]]      | 2013 | most popular          | built-in         |
+    | [[https://standardjs.com][Standard JS]] | 2014 | rule set of ESLint    | built-in         |
+    | [[https://biomejs.dev][Biome]]       | 2023 | in 🦀 Rust            | [[https://github.com/craneduck/flycheck-biomejs][flycheck-biomejs]] |
+
 *** jsdoc
 
     [[https://github.com/isamert/jsdoc.el][jsdoc.el]] provides functionality to automatically generate
