@@ -2806,6 +2806,20 @@
     | [[https://standardjs.com][Standard JS]] | 2014 | rule set of ESLint    | built-in         |
     | [[https://biomejs.dev][Biome]]       | 2023 | in 🦀 Rust            | [[https://github.com/craneduck/flycheck-biomejs][flycheck-biomejs]] |
 
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      ;; v31.1 ~/.config/emacs/user-lisp/flycheck-biomejs/
+      (with-eval-after-load 'flycheck
+        (require 'flycheck-biomejs nil t)
+        (flycheck-add-next-checker 'javascript-eslint '(t . javascript-biome)))
+
+      (add-hook 'lsp-managed-mode-hook
+                (lambda ()
+                  (when (derived-mode-p 'js-mode 'js-ts-mode)
+                    (lsp-diagnostics-lsp-checker-if-needed)
+                    (flycheck-add-next-checker 'lsp '(t . javascript-eslint)))))
+    #+END_SRC
+
 *** jsdoc
 
     [[https://github.com/isamert/jsdoc.el][jsdoc.el]] provides functionality to automatically generate
