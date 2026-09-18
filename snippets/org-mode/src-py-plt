@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: src-py-plt
+# key: plt
+# --
+
+#+HEADER: :epilogue "fig.savefig(f:='$0'); return f"
+#+HEADER: :results file link :eval no-export
+#+BEGIN_SRC python :exports results
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  fig, ax = plt.subplots()
+
+  plt.show()
+#+END_SRC
+$1
