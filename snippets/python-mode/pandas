@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: pandas
+# key: pd
+# group : import
+# --
+import pandas as pd
+$0
