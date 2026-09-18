@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: src-d2
+# key: d2
+# --
+
+#+HEADER: :results output :eval no-export
+#+BEGIN_SRC d2 :exports results :file $0
+  $1
+#+END_SRC
