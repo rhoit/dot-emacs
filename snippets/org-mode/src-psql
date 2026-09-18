@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: src-psql
+# key: psql
+# --
+
+#+HEADER: :cmdline --username=${1} ${2:$$(yas-choose-value (split-string (shell-command-to-string "psql --no-psqlrc --username=postgres --no-align --tuples-only --command 'SELECT datname FROM pg_database WHERE datistemplate = false'") "\n" t))}
+#+HEADER: :prologue "\\\\pset linestyle ascii\\\\pset format aligned"
+#+HEADER: :results output :eval no-export
+#+BEGIN_SRC sql :engine postgresql :exports both
+  $0
+#+END_SRC
