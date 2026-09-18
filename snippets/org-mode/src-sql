@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: src-sql
+# key: sql
+# --
+
+#+HEADER: :cmdline ${1:$$(yas-choose-value (split-string (shell-command-to-string "psql --no-psqlrc --username=postgres --no-align --tuples-only --command 'SELECT datname FROM pg_database WHERE datistemplate = false'") "\n" t))}
+#+HEADER: :results output table :eval no-export
+#+BEGIN_SRC sql :engine postgresql :exports both
+  $0
+#+END_SRC
