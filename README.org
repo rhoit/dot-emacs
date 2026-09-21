@@ -1429,7 +1429,10 @@
 
    Some of the default behavior of *emacs* 💩 weird, text-selection is
    on of them, some time its the 🌈 *WOW* 🦄 moment 🥳 and other time
-   its *WTF*.
+   its *WTF* 🤦‍♂️. Selection is defined as the *region* between the
+   /mark/ and the /cursor/ 🧐 which causes cursor to change view port
+   if 📺 selection exceeds the view limit i.e [[elisp:(mark-whole-buffer)][(mark-whole-buffer)]] will
+   🖱️ cursor to jump to the top along with 🔝 view.
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
