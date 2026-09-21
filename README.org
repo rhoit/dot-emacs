@@ -1436,6 +1436,9 @@
 
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
+     ;; for multiline editor do what everyone expects
+     (global-set-key (kbd "C-a") 'mark-whole-buffer)  ; unbind (move-beginning-of-line ARG)
+
      ;; replace selected text as expected
      (delete-selection-mode 1)
    #+END_SRC
