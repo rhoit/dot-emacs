@@ -1,6 +1,12 @@
 ;; -*- lexical-binding: t; -*-
 
 ;;----------------------------------------------------------------------
+;;; set enviroment variables
+
+(setenv "LSP_USE_PLISTS" "true")  ;; preformance tuning for LSP
+
+
+;;----------------------------------------------------------------------
 ;;; native complie since v28
 
 (setq package-native-compile t)
