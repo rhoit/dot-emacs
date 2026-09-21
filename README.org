@@ -3037,6 +3037,22 @@
 
      v26 is official *sh* should be *shell*
 
+*** tangle
+
+    By default =(org-babel-tangle)= Extract the bodies of all
+    source-code blocks from the current file into their own 📂
+    specific-files all at once. This hack lets a single block-at-point
+    code-block to be written without using universal-prefix-argument
+    as per docs and this [[https://www.reddit.com/r/orgmode/comments/xj0z0x/orgbabel_tangle_exampleblock_into_file/][reddit-post]] 🚀.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defun my/org-babel-tangle-block ()
+        (interactive)
+        (let ((current-prefix-arg '(4)))
+          (call-interactively 'org-babel-tangle)))
+    #+END_SRC
+
 ** open-with-defaults
 
    Its most 😞 disappointing when application opens doesn't open in
