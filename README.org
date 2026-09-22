@@ -2391,11 +2391,17 @@
     Ideally, no empty lines at the end of a file, no trailing
     white-space, no mixture of tabs and spaces 🧹.
 
+    The older =delete-trailing-whitespace= command simply deletes
+    trailing whitespace, whereas =whitespace-cleanup= is aware of the
+    =whitespace-style= variable used by =whitespace-mode=. 🛠️ Because it
+    is smarter, we only need to rely on =whitespace-cleanup=.
+
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
       (defun nuke-trailing-whitespace ()
-        (add-hook 'before-save-hooks #'whitespace-cleanup)
-        (add-hook 'write-file-hooks #'delete-trailing-whitespace))
+        ;; The 't' at the end makes this hook buffer-local, preventing it from leaking into non-programming modes.
+        (add-hook 'before-save-hook #'whitespace-cleanup nil t)
+        (add-hook 'write-file-functions #'delete-trailing-whitespace))
 
       (add-hook 'prog-mode-hook #'nuke-trailing-whitespace)
     #+END_SRC
