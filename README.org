@@ -2347,6 +2347,20 @@
       (require 'breadcrumb)
     #+END_SRC
 
+*** ts-docstr
+
+    [[https://github.com/emacs-vs/ts-docstr][ts-docstr]] 📝 supports the document string for [[tree-sitter]] 🌳
+    minor-modes, it is installed using the [[https://github.com/emacs-vs/ts-docstr][jcs-elpa]] 📦 repository.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'ts-docstr)
+
+      (add-hook 'c-ts-mode-hook #'ts-docstr-mode)
+      (add-hook 'js-ts-mode-hook #'ts-docstr-mode)
+      (add-hook 'python-ts-mode-hook #'ts-docstr-mode)
+    #+END_SRC
+
 *** references
 
     - https://www.gnu.org/software/emacs/manual//html_node/elisp/Tree_002dsitter-Major-Modes.html
