@@ -691,6 +691,11 @@
       But still binding indexing needs massive undertaking 💪.
       Dropping it in favor of hiding buffers 🙈.
 
+    - [2026-09-18 Fri] other modifications
+
+      This package 📦 [[https://github.com/thread314/intuitive-tab-line-mode/][intuitive-tab-line-mode]] has a similar 💡 idea to
+      what I want, though I still need to explore.
+
 **** group-buffers
      :PROPERTIES:
      :header-args: :tangle no
