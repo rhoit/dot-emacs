@@ -3441,11 +3441,7 @@
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
-      (add-hook
-       'python-mode-hook
-       (lambda()
-         (when (not (derived-mode-p 'scons-mode))
-           (lsp))))
+      (add-hook 'python-ts-mode-hook #'lsp)
     #+END_SRC
 
     - <2020-10-14 Wed>
