@@ -2357,6 +2357,11 @@
     - https://github.com/tree-sitter/tree-sitter-python/blob/master/grammar.js
 
 ** white-spaces
+
+   #+BEGIN_EXAMPLE
+     ✨ Phenomenal 🌌 Cosmic Powers! Itty Bitty 🧞 trailing spaces!
+   #+END_EXAMPLE
+
 *** hungry-delete
 
     [[https://github.com/nflath/hungry-delete][hungry-delete]] mode is interesting, but pretty 🤪 quirky. Mapping
