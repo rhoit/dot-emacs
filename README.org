@@ -1341,6 +1341,13 @@
      (global-set-key (kbd "C-S-z") 'undo-tree-redo)
    #+END_SRC
 
+   - [2026-09-24 Thu] switch to [[vundo]]
+
+     While exploring 🔍 undo-region 🗺️, I came to know there is another
+     undo package 📦 called [[vundo]] . Unlike the full undo system of
+     [[undo-tree]] 🌲, it's only a visual layer 👀, which has significant
+     speed benefits ⚡.
+
 *** vundo
 
     [[https://github.com/casouri/vundo][vundo]] (visual undo) displays the undo history as a 🌲 tree.
@@ -1353,6 +1360,9 @@
     #+END_SRC
 
 *** undo-tree
+    :PROPERTIES:
+    :header-args: :tangle no
+    :END:
 
     [[http://www.dr-qubit.org/undo-tree.html][undo-tree]] preserves your undo chain and maintain undo branching.
 
