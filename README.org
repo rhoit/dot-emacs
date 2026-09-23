@@ -1341,6 +1341,17 @@
      (global-set-key (kbd "C-S-z") 'undo-tree-redo)
    #+END_SRC
 
+*** vundo
+
+    [[https://github.com/casouri/vundo][vundo]] (visual undo) displays the undo history as a 🌲 tree.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (with-eval-after-load 'vundo
+        ;; Use cleaner Unicode characters for the tree rendering layout
+        (setq vundo-glyph-alist vundo-unicode-symbols))
+    #+END_SRC
+
 *** undo-tree
 
     [[http://www.dr-qubit.org/undo-tree.html][undo-tree]] preserves your undo chain and maintain undo branching.
