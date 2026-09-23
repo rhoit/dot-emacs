@@ -325,6 +325,23 @@
      (global-set-key (kbd "C-S-z") 'undo-tree-redo)
    #+END_SRC
 
+*** undo-tree
+
+    [[http://www.dr-qubit.org/undo-tree.html][undo-tree]] preserves your undo chain and maintain undo branching.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (require 'undo-tree)
+      (dim-minor-name 'undo-tree-mode "")
+
+      (global-undo-tree-mode 1)
+      (setq undo-tree-visualizer-timestamps t)
+    #+END_SRC
+
+    - [2018-11-13 Tue] stopped using undo-tree
+
+      full days work vanished 😱 thought undo would handle it 😥.
+
 ** yes-or-no
 
    yup thing are annoying 😤 here! avoid typing complete 'yes' and
