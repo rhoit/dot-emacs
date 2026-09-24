@@ -2746,6 +2746,9 @@
       ;; disable auto refresh
       (setq magit-refresh-status-buffer nil)
 
+      ;; reverts buffer
+      (setq auto-revert-buffer-list-filter 'magit-auto-revert-repository-buffer-p)
+
       ;; refs buffer performance
       (remove-hook 'magit-refs-sections-hook 'magit-insert-tags)
     #+END_SRC
