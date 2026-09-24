@@ -2677,6 +2677,7 @@
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
 
      (setq magit-process-finish-apply-ansi-colors t)
+     (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
    #+END_SRC
 
    Many commands that are rarely used in magit are hidden by default.
