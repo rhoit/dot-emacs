@@ -2689,6 +2689,20 @@
      (setq transient-default-level 7)
    #+END_SRC
 
+*** inital-commit
+
+    🛠️ fix magit crash on first commit on new repositories.
+
+    #+HEADER: :results silent
+    #+BEGIN_SRC emacs-lisp
+      (defun my/safe-magit-commit-diff-advice (orig-fun &rest args)
+        "Only allow `magit-commit-diff' to run if HEAD exists."
+        (when (magit-rev-verify "HEAD")
+          (apply orig-fun args)))
+
+      (advice-add 'magit-commit-diff :around #'my/safe-magit-commit-diff-advice)
+    #+END_SRC
+
 *** diff
 
     #+HEADER: :results silent
