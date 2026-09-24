@@ -2671,7 +2671,8 @@
    #+HEADER: :results silent
    #+BEGIN_SRC emacs-lisp
      (global-set-key (kbd "C-x C-g") 'magit-status)
-     (global-set-key (kbd "C-x g") 'magit-file-dispatch)
+     (global-set-key (kbd "C-c C-g") 'magit-dispatch)
+     (global-set-key (kbd "C-c f") 'magit-file-dispatch)
      (global-set-key (kbd "C-x C-l") 'magit-log-buffer-file)  ; unbind (downcase-region)
 
      (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
