@@ -2738,7 +2738,7 @@
 
 *** performance
 
-    Tuning *magit* for performance ⚡ from [[https://magit.vc/manual/magit/Performance.html][manual]].
+    Tuning *magit* for performance ⚡ from [[https://docs.magit.vc/magit/Essential-Settings.html#Performance-1][manual]].
 
     #+HEADER: :results silent
     #+BEGIN_SRC emacs-lisp
